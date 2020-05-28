@@ -1,0 +1,14 @@
+{
+  "exclude": [
+    "**/index.ts",
+    "**/cli/**/*.ts",
+    "**/*.impl.ts",
+    "**/spec/**/*.ts",
+    "**/*.spec.ts"
+  ],
+  "excludeNotExported": true,
+  "mode": "modules",
+  "name": "Route Match",
+  "out": "./target/typedoc",
+  "tsconfig": "tsconfig.main.json"
+}
