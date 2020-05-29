@@ -107,12 +107,13 @@ export namespace RouteMatcher {
      * be applied to the same route entry. If that fails, the next entry will be used, while the offset will be set to
      * zero.
      *
-     * @default The length of current entry name.
+     * @default The length of current entry name, unless [[entries]] set to non-zero value, in which case it defaults
+     * to zero.
      */
     readonly nameChars?: number;
 
     /**
-     * A map of results to bind to final match result.
+     * A map of results to bind to {@link RouteMatch.results final match results}.
      */
     readonly results?: RouteMatch.Results;
 
