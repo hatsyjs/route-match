@@ -1,13 +1,13 @@
 import { pathRouteByURL } from '../path-route';
 import { routeMatch } from '../route-match';
-import { rmatchSuffix } from './rmatch-suffix';
+import { rmatchAnySuffix } from './rmatch-any-suffix';
 
-describe('rmatchSuffix', () => {
+describe('rmatchAnySuffix', () => {
   it('matches file entry', () => {
 
     const route = pathRouteByURL(new URL('http://localhost/test'));
 
-    expect(routeMatch(route, [rmatchSuffix])).toEqual({
+    expect(routeMatch(route, [rmatchAnySuffix])).toEqual({
       spec: [],
       results: {},
     });
@@ -16,7 +16,7 @@ describe('rmatchSuffix', () => {
 
     const route = pathRouteByURL(new URL('http://localhost/test/'));
 
-    expect(routeMatch(route, [rmatchSuffix])).toEqual({
+    expect(routeMatch(route, [rmatchAnySuffix])).toEqual({
       spec: [],
       results: {},
     });

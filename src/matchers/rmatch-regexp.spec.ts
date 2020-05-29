@@ -1,7 +1,7 @@
 import { pathRouteByURL } from '../path-route';
 import { routeMatch } from '../route-match';
+import { rmatchAnySuffix } from './rmatch-any-suffix';
 import { rmatchRegExp } from './rmatch-regexp';
-import { rmatchSuffix } from './rmatch-suffix';
 
 describe('rmatchRegExp', () => {
   it('matches entry name', () => {
@@ -34,7 +34,7 @@ describe('rmatchRegExp', () => {
 
     const route = pathRouteByURL(new URL('http://localhost/test-TEST'));
 
-    expect(routeMatch(route, [rmatchRegExp(/(test)[-]/i, 'group1', 'group2'), rmatchSuffix])).toEqual({
+    expect(routeMatch(route, [rmatchRegExp(/(test)[-]/i, 'group1', 'group2'), rmatchAnySuffix])).toEqual({
       spec: [1, 0],
       results: {
         group1: 'test',

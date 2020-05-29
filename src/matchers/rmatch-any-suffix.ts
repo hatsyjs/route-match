@@ -4,7 +4,7 @@
  */
 import type { RouteMatcher } from '../route-matcher';
 
-export const rmatchSuffix: RouteMatcher = ({ entry: { name } }): RouteMatcher.Match => ({
+export const rmatchAnySuffix: RouteMatcher = ({ entry: { name } }): RouteMatcher.Match => ({
   spec: [],
   nameChars: name.length,
 });

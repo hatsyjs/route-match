@@ -1,7 +1,7 @@
 import { pathRouteByURL } from '../path-route';
 import { routeMatch } from '../route-match';
+import { rmatchAnySuffix } from './rmatch-any-suffix';
 import { rmatchPart } from './rmatch-part';
-import { rmatchSuffix } from './rmatch-suffix';
 
 describe('rmatchPart', () => {
   it('matches file name', () => {
@@ -41,7 +41,7 @@ describe('rmatchPart', () => {
 
     const route = pathRouteByURL(new URL('http://localhost/test!/'));
 
-    expect(routeMatch(route, [rmatchPart('test'), rmatchSuffix])).toEqual({
+    expect(routeMatch(route, [rmatchPart('test'), rmatchAnySuffix])).toEqual({
       spec: [1, 0],
       results: {},
     });
