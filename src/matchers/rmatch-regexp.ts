@@ -4,13 +4,13 @@
  */
 import type { RouteMatcher } from '../route-matcher';
 
-export function rmatchRegExp(pattern: RegExp, ...groups: string[]): RouteMatcher {
+export function rmatchRegExp(expected: RegExp, ...groups: string[]): RouteMatcher {
 
-  const global = pattern.global;
-  const re = pattern.sticky ? new RegExp(pattern) : new RegExp(pattern.source, `${pattern.flags}y`);
+  const global = expected.global;
+  const re = expected.sticky ? new RegExp(expected) : new RegExp(expected.source, `${expected.flags}y`);
 
   return {
-    match({ entry: { name }, nameOffset }): RouteMatcher.Match | undefined {
+    test({ entry: { name }, nameOffset }): RouteMatcher.Match | undefined {
       re.lastIndex = nameOffset;
 
       let execResult = re.exec(name);
@@ -40,7 +40,7 @@ export function rmatchRegExp(pattern: RegExp, ...groups: string[]): RouteMatcher
       }
 
       return {
-        spec: [Math.max(1, nameIdx), 0],
+        spec: [0, Math.max(1, nameIdx)],
         nameChars,
         results: result,
       };

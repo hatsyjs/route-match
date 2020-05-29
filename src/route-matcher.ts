@@ -17,18 +17,41 @@ export interface RouteMatcher<
     > {
 
   /**
-   * Tests whether some fragment of the given route satisfies this matcher's conditions or not. If so, then it specifies
-   * the fragment of the route that matches, a {@link RouteMatch.Specificity specificity} of this match, and may also
-   * bind some values to final {@link RouteMatch.Results match result}.
+   * Whether this matcher still matches after the end of the route.
+   */
+  readonly tail?: boolean;
+
+  /**
+   * Tests whether a fragment of the route satisfying this matcher's conditions. If so, then specifies the fragment
+   * of the route that matches, a {@link RouteMatch.Specificity specificity} of this match, and optionally binds values
+   * to {@link RouteMatch.results final match result}.
    *
    * @param context  Route matching context.
    *
-   * @returns `true` when entry name matches, {@link RouteMatcher.Match route match} object when some part of the route
-   * matches, or `false`/`null`/`undefined` when nothing matched.
+   * @returns {@link RouteMatcher.Match Route match} instance when some part of the route matches,
+   * or `false`/`null`/`undefined` otherwise.
    */
-  match(
+  test(
       context: RouteMatcher.Context<TEntry, TRoute>,
-  ): RouteMatcher.Match | boolean | null | undefined;
+  ): RouteMatcher.Match | false | null | undefined;
+
+  /**
+   * Searches for the fragment of the route satisfying this matcher's conditions.
+   *
+   * In contrast to the [[test]] method this one attempts to find the matching fragment starting at some offset from
+   * current position specified by `context`, and then tries to match the remaining path against the remaining pattern.
+   *
+   * The matching route fragment always starts within current route entry.
+   *
+   * @param context  Route matching context.
+   *
+   * @returns A tuple containing a {@link RouteMatch match} of the remaining path against the remaining pattern and
+   * an offset within current entry name the matching route fragment starts at, or `false`/`null`/`undefined` if match
+   * not found.
+   */
+  find?(
+      context: RouteMatcher.Context<TEntry, TRoute>,
+  ): readonly [RouteMatch<TEntry, TRoute>, number] | false | null | undefined;
 
 }
 
@@ -37,7 +60,8 @@ export namespace RouteMatcher {
   /**
    * Route match context.
    *
-   * This is passed to {@link RouteMatcher route matcher} to indicate the beginning of the route to match against.
+   * This is passed to {@link RouteMatcher route matcher} to indicate the position inside the route the match should be
+   * searched at.
    *
    * @typeparam TEntry  A type of tested route entries.
    * @typeparam TRoute  A type of tested route.
@@ -88,7 +112,7 @@ export namespace RouteMatcher {
      *
      * @default `[1]`
      */
-    readonly spec?: number[];
+    readonly spec?: RouteMatch.Specificity;
 
     /**
      * The number of fully matching route entries.
@@ -118,6 +142,11 @@ export namespace RouteMatcher {
      * A map of results to bind to {@link RouteMatch.results final match results}.
      */
     readonly results?: RouteMatch.Results;
+
+    /**
+     * Whether this is a full match of the route against the pattern.
+     */
+    readonly full?: boolean;
 
   }
 

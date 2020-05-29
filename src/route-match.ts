@@ -11,7 +11,10 @@ import type { RouteMatcher } from './route-matcher';
  * @typeparam TEntry  A type of matching route entries.
  * @typeparam TRoute  A type of matching route.
  */
-export interface RouteMatch<TEntry extends PathRoute.Entry, TRoute extends PathRoute<TEntry>> {
+export interface RouteMatch<
+    TEntry extends PathRoute.Entry = PathRoute.Entry,
+    TRoute extends PathRoute<TEntry> = PathRoute<TEntry>,
+    > {
 
   /**
    * The final specificity of this match.
@@ -36,7 +39,7 @@ export interface RouteMatch<TEntry extends PathRoute.Entry, TRoute extends PathR
  * @typeparam TRoute  A type of supported route.
  */
 export type RoutePattern<
-    TEntry extends PathRoute.Entry,
+    TEntry extends PathRoute.Entry = PathRoute.Entry,
     TRoute extends PathRoute<TEntry> = PathRoute<TEntry>,
     > = readonly RouteMatcher<TEntry, TRoute>[];
 
@@ -122,15 +125,26 @@ export function routeMatch<TEntry extends PathRoute.Entry, TRoute extends PathRo
   while (entryIndex < path.length) {
 
     const entry = path[entryIndex];
+    const { name } = entry;
     const matcher = pattern[matcherIndex];
 
     if (!matcher) {
-      return null; // No more matchers
+      // No more matchers
+      if (nameOffset < name.length) {
+        return null;
+      }
+
+      // The name of current entry is fully matched.
+      // Move to the next entry.
+      nameOffset = 0;
+      ++entryIndex;
+
+      continue;
     }
 
     nameOffset = Math.max(0, nameOffset);
 
-    let match = matcher.match({
+    const match = matcher.test({
       route,
       entry,
       entryIndex,
@@ -140,23 +154,16 @@ export function routeMatch<TEntry extends PathRoute.Entry, TRoute extends PathRo
     });
 
     if (!match) {
-      // No match
-      if (nameOffset >= entry.name.length) {
-        // ...but the name is fully consumed. Try the next route entry against the same matcher.
-        nameOffset = 0;
-        ++entryIndex;
-        continue;
-      }
-      return null;
+      return null; // No match.
     }
 
-    if (match === true) {
-      // Do not move to next route entry.
-      // Consume the name of current one instead, and try the next matcher on it.
-      match = { nameChars: entry.name.length };
-    }
-
-    const { spec = defaultRouteMatchSpecificity, entries, nameChars = 0, results } = match;
+    const {
+      spec = defaultRouteMatchSpecificity,
+      entries,
+      nameChars = entries ? 0 : name.length,
+      results,
+      full,
+    } = match;
 
     if (entries) {
       // Some entries matched.
@@ -168,29 +175,33 @@ export function routeMatch<TEntry extends PathRoute.Entry, TRoute extends PathRo
       nameOffset += nameChars;
     }
 
-    if (matcherIndex === pattern.length - 1 && nameOffset >= entry.name.length) {
-      // The last matcher.
-      // Move to next route entry if the name of matching one is fully consumed.
-      nameOffset = 0;
-      ++entryIndex;
-    }
-
     // Apply the match result.
     if (results) {
       Object.assign(finalResult, results);
     }
 
     // Adjust the specificity.
-    spec.forEach((s, i) => {
-      finalSpec[i] = (finalSpec[i] || 0) + s;
-    });
+    for (let i = 0; i < spec.length; ++i) {
+      finalSpec[i] = (finalSpec[i] || 0) + (spec[i] || 0);
+    }
+
+    if (full) {
+      // Full match.
+      // Further match is not needed.
+      matcherIndex = pattern.length;
+      break;
+    }
 
     // Move to next matcher.
     ++matcherIndex;
   }
 
-  if (matcherIndex < pattern.length) {
-    return null; // Non-matching matchers left.
+  while (matcherIndex < pattern.length) {
+    // Non-matching matchers left.
+    // Require them all to match after the end.
+    if (!pattern[matcherIndex++].tail) {
+      return null;
+    }
   }
 
   return {
