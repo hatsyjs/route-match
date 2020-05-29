@@ -22,7 +22,7 @@ export interface PathRoute<TEntry extends PathRoute.Entry = PathRoute.Entry> {
 export namespace PathRoute {
 
   /**
-   * A route path entry.
+   * Route entry.
    *
    * Represents either file or directory.
    */

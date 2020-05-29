@@ -12,7 +12,7 @@ import type { RouteMatch, RoutePattern } from './route-match';
  * the part of the route path that matches, a {@link RouteMatch.Specificity specificity} of this match, and may also
  * bind some values to final {@link RouteMatch.Results match result}.
  *
- * @typeparam TEntry  A type of supported route path entries.
+ * @typeparam TEntry  A type of supported route entries.
  * @typeparam TRoute  A type of supported route path.
  */
 export type RouteMatcher<
@@ -37,7 +37,7 @@ export namespace RouteMatcher {
    *
    * This is passed to {@link RouteMatcher route matcher} to indicate the start of the path to match against.
    *
-   * @typeparam TEntry  A type of tested route path entries.
+   * @typeparam TEntry  A type of tested route entries.
    * @typeparam TRoute  A type of tested route path.
    */
   export interface Context<TEntry extends PathRoute.Entry, TRoute extends PathRoute<TEntry>> {
@@ -89,9 +89,9 @@ export namespace RouteMatcher {
     readonly spec?: number[];
 
     /**
-     * The number of fully matching path entries.
+     * The number of fully matching route entries.
      *
-     * When set, this value increases the index of the {@link Context.entryIndex path entry} to apply subsequent
+     * When set, this value increases the index of the {@link Context.entryIndex route entry} to apply subsequent
      * matchers to.
      *
      * @default `0`, which means the subsequent matcher will be applied to {@link Context.entry current entry}.
@@ -100,11 +100,11 @@ export namespace RouteMatcher {
     readonly entries?: number;
 
     /**
-     * The number matching of character in the name of current path entry.
+     * The number of matching characters in the name of current route entry.
      *
-     * This value increases the {@link Context.nameOffset offset in the name} of the path entry to apply subsequent
+     * This value increases the {@link Context.nameOffset offset in the name} of the route entry to apply subsequent
      * matchers to. If the resulting offset is equal or greater than the length of the name, then the next matcher will
-     * be applied to the same path entry. If that fails, the next entry will be used, while the offset will be set to
+     * be applied to the same route entry. If that fails, the next entry will be used, while the offset will be set to
      * zero.
      *
      * @default The length of current entry name.

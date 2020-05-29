@@ -8,7 +8,7 @@ import type { RouteMatcher } from './route-matcher';
 /**
  * A successful {@link routeMatch match of the route} against {@link RoutePattern pattern}.
  *
- * @typeparam TEntry  A type of matching route path entries.
+ * @typeparam TEntry  A type of matching route entries.
  * @typeparam TRoute  A type of matching route path.
  */
 export interface RouteMatch<TEntry extends PathRoute.Entry, TRoute extends PathRoute<TEntry>> {
@@ -32,7 +32,7 @@ export interface RouteMatch<TEntry extends PathRoute.Entry, TRoute extends PathR
  *
  * This is an array of {@link RouteMatch matchers}.
  *
- * @typeparam TEntry  A type of supported route path entries.
+ * @typeparam TEntry  A type of supported route entries.
  * @typeparam TRoute  A type of supported route path.
  */
 export type RoutePattern<
@@ -142,7 +142,7 @@ export function routeMatch<TEntry extends PathRoute.Entry, TRoute extends PathRo
     if (!match) {
       // No match
       if (nameOffset >= entry.name.length) {
-        // ...but the name is fully consumed. Try the next path entry against the same matcher.
+        // ...but the name is fully consumed. Try the next route entry against the same matcher.
         nameOffset = 0;
         ++entryIndex;
         continue;
@@ -151,7 +151,7 @@ export function routeMatch<TEntry extends PathRoute.Entry, TRoute extends PathRo
     }
 
     if (match === true) {
-      // Do not move to next path entry.
+      // Do not move to next route entry.
       // Consume the name of current one instead, and try the next matcher on it.
       match = { nameChars: entry.name.length };
     }
@@ -170,7 +170,7 @@ export function routeMatch<TEntry extends PathRoute.Entry, TRoute extends PathRo
 
     if (matcherIndex === pattern.length - 1 && nameOffset >= entry.name.length) {
       // The last matcher.
-      // Move to next path entry if the name of matching one is fully consumed.
+      // Move to next route entry if the name of matching one is fully consumed.
       nameOffset = 0;
       ++entryIndex;
     }
