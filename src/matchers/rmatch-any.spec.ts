@@ -6,17 +6,10 @@ import { rmatchDirSep } from './rmatch-dir-sep';
 describe('rmatchAny', () => {
   describe('*', () => {
 
-    let pattern: RoutePattern;
+    const pattern: RoutePattern = [rmatchAny];
 
-    beforeAll(() => {
-      pattern = [rmatchAny];
-    });
-
-    it('matches empty route', () => {
-      expect(routeMatch(pathRouteByURL(new URL('http://localhost/')), pattern)).toEqual({
-        spec: [],
-        results: {},
-      });
+    it('does not match empty route', () => {
+      expect(routeMatch(pathRouteByURL(new URL('http://localhost/')), pattern)).toBeNull();
     });
     it('matches file', () => {
       expect(routeMatch(pathRouteByURL(new URL('http://localhost/file')), pattern)).toEqual({
@@ -37,20 +30,13 @@ describe('rmatchAny', () => {
 
   describe('*/*', () => {
 
-    let pattern: RoutePattern;
-
-    beforeAll(() => {
-      pattern = [rmatchAny, rmatchDirSep, rmatchAny];
-    });
+    const pattern = [rmatchAny, rmatchDirSep, rmatchAny];
 
     it('does not match single file', () => {
       expect(routeMatch(pathRouteByURL(new URL('http://localhost/file')), pattern)).toBeNull();
     });
-    it('matches single directory', () => {
-      expect(routeMatch(pathRouteByURL(new URL('http://localhost/dir/')), pattern)).toEqual({
-        spec: [],
-        results: {},
-      });
+    it('does not match single directory', () => {
+      expect(routeMatch(pathRouteByURL(new URL('http://localhost/dir/')), pattern)).toBeNull();
     });
     it('matches two entries', () => {
       expect(routeMatch(pathRouteByURL(new URL('http://localhost/dir/file')), pattern)).toEqual({
