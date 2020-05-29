@@ -17,6 +17,13 @@ export interface PathRoute<TEntry extends PathRoute.Entry = PathRoute.Entry> {
    */
   readonly dir: boolean;
 
+  /**
+   * Builds a string representation of this route.
+   *
+   * @returns URL-encoded pathname without leading `/`.
+   */
+  toString(): string;
+
 }
 
 export namespace PathRoute {
@@ -40,10 +47,23 @@ export namespace PathRoute {
 /**
  * @internal
  */
-const EmptyPathRoute: PathRoute = {
-  path: [],
-  dir: true,
-};
+function pathRouteToString(this: PathRoute): string {
+
+  let out = '';
+
+  for (const { name } of this.path) {
+    if (out) {
+      out += '/';
+    }
+    out += encodeURIComponent(name);
+  }
+
+  if (this.dir && out) {
+    out += '/';
+  }
+
+  return out;
+}
 
 /**
  * Constructs a path route by the given URL.
@@ -54,14 +74,18 @@ const EmptyPathRoute: PathRoute = {
  *
  * @param url URL to extract the route from.
  *
- * @returns A route constructed from the given URL's pathname.
+ * @returns New route constructed from the given URL's pathname.
  */
 export function pathRouteByURL(url: URL): PathRoute {
 
   let { pathname } = url;
 
   if (pathname.length <= 1) {
-    return EmptyPathRoute;
+    return {
+      path: [],
+      dir: true,
+      toString: pathRouteToString,
+    };
   }
 
   let dir = false;
@@ -76,5 +100,6 @@ export function pathRouteByURL(url: URL): PathRoute {
   return {
     path: pathname.split('/').map(name => ({ name: decodeURIComponent(name) })),
     dir,
+    toString: pathRouteToString,
   };
 }
