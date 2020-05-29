@@ -1,4 +1,4 @@
-import { pathRouteByURL } from '../path-route';
+import { pathRouteByURL } from '../path';
 import { routeMatch } from '../route-match';
 import { rmatchEqual } from './rmatch-equal';
 

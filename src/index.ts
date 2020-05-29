@@ -1,5 +1,5 @@
 export * from './matchers';
-export * from './path-route';
+export * from './path';
 export * from './route-match';
 export * from './route-matcher';
-export * from './url-route';
+export * from './url';
