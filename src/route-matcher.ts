@@ -6,39 +6,41 @@ import type { PathRoute } from './path';
 import type { RouteMatch, RoutePattern } from './route-match';
 
 /**
- * Route matcher function signature.
- *
- * Tests whether some part of the given route satisfies this matcher's conditions or not. If so, then it specifies
- * the part of the route path that matches, a {@link RouteMatch.Specificity specificity} of this match, and may also
- * bind some values to final {@link RouteMatch.Results match result}.
+ * Route fragment matcher.
  *
  * @typeparam TEntry  A type of supported route entries.
- * @typeparam TRoute  A type of supported route path.
+ * @typeparam TRoute  A type of supported route.
  */
-export type RouteMatcher<
+export interface RouteMatcher<
     TEntry extends PathRoute.Entry = PathRoute.Entry,
     TRoute extends PathRoute<TEntry> = PathRoute<TEntry>,
-    > =
-/**
- * @param context  Route matching context.
- *
- * @returns `true` when entry name matches, {@link RouteMatcher.Match route match} object when some part of the path
- * matches, or `false`/`null`/`undefined` when nothing matched.
- */
-    (
-        this: void,
-        context: RouteMatcher.Context<TEntry, TRoute>,
-    ) => RouteMatcher.Match | boolean | null | undefined;
+    > {
+
+  /**
+   * Tests whether some fragment of the given route satisfies this matcher's conditions or not. If so, then it specifies
+   * the fragment of the route that matches, a {@link RouteMatch.Specificity specificity} of this match, and may also
+   * bind some values to final {@link RouteMatch.Results match result}.
+   *
+   * @param context  Route matching context.
+   *
+   * @returns `true` when entry name matches, {@link RouteMatcher.Match route match} object when some part of the route
+   * matches, or `false`/`null`/`undefined` when nothing matched.
+   */
+  match(
+      context: RouteMatcher.Context<TEntry, TRoute>,
+  ): RouteMatcher.Match | boolean | null | undefined;
+
+}
 
 export namespace RouteMatcher {
 
   /**
    * Route match context.
    *
-   * This is passed to {@link RouteMatcher route matcher} to indicate the start of the path to match against.
+   * This is passed to {@link RouteMatcher route matcher} to indicate the beginning of the route to match against.
    *
    * @typeparam TEntry  A type of tested route entries.
-   * @typeparam TRoute  A type of tested route path.
+   * @typeparam TRoute  A type of tested route.
    */
   export interface Context<TEntry extends PathRoute.Entry, TRoute extends PathRoute<TEntry>> {
 
@@ -77,7 +79,7 @@ export namespace RouteMatcher {
   /**
    * Route match.
    *
-   * This is returned from {@link RouteMatch route matcher} and indicates the matching part of the path.
+   * This is returned from {@link RouteMatch route matcher} and indicates the matching part of the route.
    */
   export interface Match {
 

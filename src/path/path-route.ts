@@ -13,7 +13,7 @@ export interface PathRoute<TEntry extends PathRoute.Entry = PathRoute.Entry> {
   readonly path: readonly TEntry[];
 
   /**
-   * Whether this route represents a path to directory.
+   * Whether this is a route to directory.
    */
   readonly dir: boolean;
 
@@ -46,15 +46,15 @@ const EmptyPathRoute: PathRoute = {
 };
 
 /**
- * Constructs path route by the given URL.
+ * Constructs a path route by the given URL.
  *
  * Each route entry corresponds to directory or file of URL's pathname. Their names are URL-decoded.
  *
  * The path is considered a directory path if the pathname ends with `/`.
  *
- * @param url URL to extract the path from.
+ * @param url URL to extract the route from.
  *
- * @returns A part route constructed from the given URL's pathname.
+ * @returns A route constructed from the given URL's pathname.
  */
 export function pathRouteByURL(url: URL): PathRoute {
 

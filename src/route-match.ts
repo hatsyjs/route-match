@@ -9,7 +9,7 @@ import type { RouteMatcher } from './route-matcher';
  * A successful {@link routeMatch match of the route} against {@link RoutePattern pattern}.
  *
  * @typeparam TEntry  A type of matching route entries.
- * @typeparam TRoute  A type of matching route path.
+ * @typeparam TRoute  A type of matching route.
  */
 export interface RouteMatch<TEntry extends PathRoute.Entry, TRoute extends PathRoute<TEntry>> {
 
@@ -33,7 +33,7 @@ export interface RouteMatch<TEntry extends PathRoute.Entry, TRoute extends PathR
  * This is an array of {@link RouteMatch matchers}.
  *
  * @typeparam TEntry  A type of supported route entries.
- * @typeparam TRoute  A type of supported route path.
+ * @typeparam TRoute  A type of supported route.
  */
 export type RoutePattern<
     TEntry extends PathRoute.Entry,
@@ -130,7 +130,7 @@ export function routeMatch<TEntry extends PathRoute.Entry, TRoute extends PathRo
 
     nameOffset = Math.max(0, nameOffset);
 
-    let match = matcher({
+    let match = matcher.match({
       route,
       entry,
       entryIndex,
