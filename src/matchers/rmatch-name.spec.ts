@@ -13,7 +13,7 @@ describe('rmatchName', () => {
 
       expect(routeMatch(route, pattern)).toEqual({
         spec: [1],
-        results: {},
+        callback: expect.any(Function),
       });
     });
     it('matches dir name', () => {
@@ -22,7 +22,7 @@ describe('rmatchName', () => {
 
       expect(routeMatch(route, pattern)).toEqual({
         spec: [1],
-        results: {},
+        callback: expect.any(Function),
       });
     });
     it('does not match the after offset', () => {

@@ -14,7 +14,7 @@ describe('rmatchString', () => {
 
       expect(routeMatch(route, pattern)).toEqual({
         spec: [0, 1],
-        results: {},
+        callback: expect.any(Function),
       });
     });
     it('matches dir name', () => {
@@ -23,7 +23,7 @@ describe('rmatchString', () => {
 
       expect(routeMatch(route, pattern)).toEqual({
         spec: [0, 1],
-        results: {},
+        callback: expect.any(Function),
       });
     });
     it('matches string at offset', () => {
@@ -32,7 +32,7 @@ describe('rmatchString', () => {
 
       expect(routeMatch(route, pattern, { nameOffset: 4 })).toEqual({
         spec: [0, 1],
-        results: {},
+        callback: expect.any(Function),
       });
     });
     it('does not match name with suffix', () => {
@@ -50,7 +50,7 @@ describe('rmatchString', () => {
 
       expect(routeMatch(route, [rmatchString('test'), rmatchAny])).toEqual({
         spec: [0, 1],
-        results: {},
+        callback: expect.any(Function),
       });
     });
   });
@@ -62,7 +62,7 @@ describe('rmatchString', () => {
 
       expect(routeMatch(route, [rmatchString('test'), rmatchString('!')])).toEqual({
         spec: [0, 2],
-        results: {},
+        callback: expect.any(Function),
       });
     });
   });
@@ -77,7 +77,7 @@ describe('rmatchString', () => {
 
       expect(routeMatch(route, pattern)).toEqual({
         spec: [0, 1],
-        results: {},
+        callback: expect.any(Function),
       });
     });
     it('matches string with prefix', () => {
@@ -86,7 +86,7 @@ describe('rmatchString', () => {
 
       expect(routeMatch(route, pattern)).toEqual({
         spec: [0, 1],
-        results: {},
+        callback: expect.any(Function),
       });
     });
     it('does not match wrong string', () => {
@@ -107,7 +107,7 @@ describe('rmatchString', () => {
 
       expect(routeMatch(route, pattern)).toEqual({
         spec: [0, 2],
-        results: {},
+        callback: expect.any(Function),
       });
     });
     it('matches strings after prefix', () => {
@@ -116,7 +116,7 @@ describe('rmatchString', () => {
 
       expect(routeMatch(route, pattern)).toEqual({
         spec: [0, 2],
-        results: {},
+        callback: expect.any(Function),
       });
     });
     it('does not match wrong first string', () => {

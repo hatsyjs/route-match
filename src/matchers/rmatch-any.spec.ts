@@ -14,13 +14,13 @@ describe('rmatchAny', () => {
     it('matches file', () => {
       expect(routeMatch(pathRouteByURL(new URL('http://localhost/file')), pattern)).toEqual({
         spec: [],
-        results: {},
+        callback: expect.any(Function),
       });
     });
     it('matches directory', () => {
       expect(routeMatch(pathRouteByURL(new URL('http://localhost/dir/')), pattern)).toEqual({
         spec: [],
-        results: {},
+        callback: expect.any(Function),
       });
     });
     it('does not match multiple entries', () => {
@@ -41,7 +41,7 @@ describe('rmatchAny', () => {
     it('matches two entries', () => {
       expect(routeMatch(pathRouteByURL(new URL('http://localhost/dir/file')), pattern)).toEqual({
         spec: [],
-        results: {},
+        callback: expect.any(Function),
       });
     });
   });

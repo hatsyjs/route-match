@@ -37,7 +37,7 @@ export const rmatchDirSep: RouteMatcher = {
 
   find(context) {
 
-    const { route, entry: { name }, entryIndex, pattern, matcherIndex } = context;
+    const { route, entry: { name }, entryIndex, pattern, matcherIndex, input } = context;
     const fromEntry = entryIndex + 1;
 
     if (!route.dir && fromEntry >= route.path.length) {
@@ -50,6 +50,7 @@ export const rmatchDirSep: RouteMatcher = {
         {
           fromEntry,
           fromMatcher: matcherIndex + 1,
+          input,
         },
     );
 

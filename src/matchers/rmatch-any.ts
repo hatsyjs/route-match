@@ -3,6 +3,6 @@
  * @module @hatsy/route-match
  */
 import type { RouteMatcher } from '../route-matcher';
-import { rmatchBind } from './rmatch-bind';
+import { rmatchCapture } from './rmatch-capture';
 
-export const rmatchAny: RouteMatcher = (/*#__PURE__*/ rmatchBind());
+export const rmatchAny: RouteMatcher = (/*#__PURE__*/ rmatchCapture());

@@ -7,14 +7,8 @@ import type { RouteMatcher } from './route-matcher';
 
 /**
  * A successful {@link routeMatch match of the route} against {@link RoutePattern pattern}.
- *
- * @typeparam TEntry  A type of matching route entries.
- * @typeparam TRoute  A type of matching route.
  */
-export interface RouteMatch<
-    TEntry extends PathRoute.Entry = PathRoute.Entry,
-    TRoute extends PathRoute<TEntry> = PathRoute<TEntry>,
-    > {
+export interface RouteMatch {
 
   /**
    * The final specificity of this match.
@@ -24,9 +18,9 @@ export interface RouteMatch<
   readonly spec: RouteMatch.Specificity;
 
   /**
-   * The final results map bound to this match by all matchers.
+   * A function that calls all callbacks of all {@link RouteMatcher.Match.callback matches}.
    */
-  readonly results: RouteMatch.Results;
+  readonly callback: (this: void) => void;
 
 }
 
@@ -37,11 +31,13 @@ export interface RouteMatch<
  *
  * @typeparam TEntry  A type of supported route entries.
  * @typeparam TRoute  A type of supported route.
+ * @typeparam TInput  A type of supported route match input.
  */
 export type RoutePattern<
     TEntry extends PathRoute.Entry = PathRoute.Entry,
     TRoute extends PathRoute<TEntry> = PathRoute<TEntry>,
-    > = readonly RouteMatcher<TEntry, TRoute>[];
+    TInput = undefined,
+    > = readonly RouteMatcher<TEntry, TRoute, TInput>[];
 
 export namespace RouteMatch {
 
@@ -53,18 +49,7 @@ export namespace RouteMatch {
   export type Specificity = readonly number[];
 
   /**
-   * A map of match results.
-   *
-   * Contains named values bound by matchers.
-   */
-  export interface Results {
-
-    readonly [name: string]: any;
-
-  }
-
-  /**
-   * Route match options.
+   * Route match options without input.
    */
   export interface Options {
 
@@ -91,6 +76,20 @@ export namespace RouteMatch {
 
   }
 
+  /**
+   * Route match options supporting input.
+   *
+   * @typeparam TInput  A type of route match input.
+   */
+  export interface InputOptions<TInput> extends Options {
+
+    /**
+     * Route match input.
+     */
+    readonly input: TInput;
+
+  }
+
 }
 
 /**
@@ -114,12 +113,47 @@ export function routeMatch<TEntry extends PathRoute.Entry, TRoute extends PathRo
     this: void,
     route: TRoute,
     pattern: RoutePattern<TEntry, TRoute>,
-    options: RouteMatch.Options = {},
-): RouteMatch<TEntry, TRoute> | null {
+    options?: RouteMatch.Options,
+): RouteMatch | null;
+
+/**
+ * Performs a match of the given pattern against the given route with the given input input.
+ *
+ * Tries to match fragments of the given route by each of the pattern matchers, in order. If some matcher fails, the
+ * match fails too. If all matchers succeed, the match result is constructed and returned.
+ *
+ * @param route  Target route to match against.
+ * @param pattern  A pattern to match.
+ * @param options  Route match options.
+ *
+ * @returns  Either successful route match object, or `null` if the route does not match the given pattern.
+ */
+export function routeMatch<
+    TEntry extends PathRoute.Entry,
+    TRoute extends PathRoute<TEntry>,
+    TInput,
+    >(
+    this: void,
+    route: TRoute,
+    pattern: RoutePattern<TEntry, TRoute>,
+    options: RouteMatch.InputOptions<TInput>,
+): RouteMatch | null;
+
+export function routeMatch<
+    TEntry extends PathRoute.Entry,
+    TRoute extends PathRoute<TEntry>,
+    TInput,
+    >(
+    this: void,
+    route: TRoute,
+    pattern: RoutePattern<TEntry, TRoute, TInput>,
+    options: RouteMatch.Options | RouteMatch.InputOptions<TInput> = {} as RouteMatch.InputOptions<TInput>,
+): RouteMatch | null {
 
   const { path } = route;
+  const { input } = options as RouteMatch.InputOptions<TInput>;
   const finalSpec: number[] = [];
-  const finalResult: Record<string, any> = {};
+  let finalCallback: () => void = () => {/* empty callback */};
   let { fromEntry: entryIndex = 0, nameOffset = 0, fromMatcher: matcherIndex = 0 } = options;
 
   while (entryIndex < path.length) {
@@ -151,6 +185,7 @@ export function routeMatch<TEntry extends PathRoute.Entry, TRoute extends PathRo
       nameOffset,
       pattern,
       matcherIndex,
+      input,
     });
 
     if (!match) {
@@ -161,7 +196,7 @@ export function routeMatch<TEntry extends PathRoute.Entry, TRoute extends PathRo
       spec = defaultRouteMatchSpecificity,
       entries,
       nameChars = entries ? 0 : name.length,
-      results,
+      callback,
       full,
     } = match;
 
@@ -176,8 +211,14 @@ export function routeMatch<TEntry extends PathRoute.Entry, TRoute extends PathRo
     }
 
     // Apply the match result.
-    if (results) {
-      Object.assign(finalResult, results);
+    if (callback) {
+
+      const prevCallback = finalCallback;
+
+      finalCallback = () => {
+        prevCallback();
+        callback();
+      };
     }
 
     // Adjust the specificity.
@@ -206,6 +247,6 @@ export function routeMatch<TEntry extends PathRoute.Entry, TRoute extends PathRo
 
   return {
     spec: finalSpec,
-    results: finalResult,
+    callback: finalCallback,
   };
 }

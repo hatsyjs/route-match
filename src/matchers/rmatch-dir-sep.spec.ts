@@ -13,7 +13,7 @@ describe('rmatchDirSep', () => {
     it('matches empty route', () => {
       expect(routeMatch(urlRoute(new URL('http://localhost')), pattern)).toEqual({
         spec: [],
-        results: {},
+        callback: expect.any(Function),
       });
     });
     it('does not match file route', () => {
@@ -37,7 +37,7 @@ describe('rmatchDirSep', () => {
     it('does not match directory route', () => {
       expect(routeMatch(urlRoute(new URL('http://localhost/test/')), pattern)).toEqual({
         spec: [0, 1],
-        results: {},
+        callback: expect.any(Function),
       });
     });
     it('does not match directory route with incomplete prefix', () => {
@@ -58,7 +58,7 @@ describe('rmatchDirSep', () => {
     it('does not match directory route', () => {
       expect(routeMatch(urlRoute(new URL('http://localhost/test/')), pattern)).toEqual({
         spec: [1],
-        results: {},
+        callback: expect.any(Function),
       });
     });
     it('does not match directory route with incomplete prefix', () => {
@@ -79,13 +79,13 @@ describe('rmatchDirSep', () => {
     it('matches file route', () => {
       expect(routeMatch(urlRoute(new URL('http://localhost/dir/file')), pattern)).toEqual({
         spec: [1],
-        results: {},
+        callback: expect.any(Function),
       });
     });
     it('matches directory route', () => {
       expect(routeMatch(urlRoute(new URL('http://localhost/dir/file/')), pattern)).toEqual({
         spec: [1],
-        results: {},
+        callback: expect.any(Function),
       });
     });
     it('does not match too long route route with incomplete prefix', () => {

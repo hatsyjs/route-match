@@ -4,15 +4,26 @@ import { rmatchAny } from './rmatch-any';
 import { rmatchRegExp } from './rmatch-regexp';
 
 describe('rmatchRegExp', () => {
+
+  let cb: jest.Mock;
+
+  beforeEach(() => {
+    cb = jest.fn();
+  });
+
   describe('/regexp/', () => {
     it('matches entry name', () => {
 
       const route = pathRouteByURL(new URL('http://localhost/the-test!'));
+      const match = routeMatch(route, [rmatchRegExp(/.*test.*/, cb)]);
 
-      expect(routeMatch(route, [rmatchRegExp(/.*test.*/)])).toEqual({
+      expect(match).toEqual({
         spec: [0, 1],
-        results: {},
+        callback: expect.any(Function),
       });
+      match?.callback();
+      expect(cb).toHaveBeenCalledTimes(1);
+      expect([...cb.mock.calls[0][0]]).toEqual(['the-test!']);
     });
     it('does not match non-matching entry name', () => {
 
@@ -23,13 +34,15 @@ describe('rmatchRegExp', () => {
     it('captures the first matching group when the pattern is not global', () => {
 
       const route = pathRouteByURL(new URL('http://localhost/test-TEST'));
+      const match = routeMatch(route, [rmatchRegExp(/(test)-?/i, cb), rmatchAny]);
 
-      expect(routeMatch(route, [rmatchRegExp(/(test)[-]/i, 'group1', 'group2'), rmatchAny])).toEqual({
+      expect(match).toEqual({
         spec: [0, 1],
-        results: {
-          group1: 'test',
-        },
+        callback: expect.any(Function),
       });
+      match?.callback();
+      expect(cb).toHaveBeenCalledTimes(1);
+      expect([...cb.mock.calls[0][0]]).toEqual(['test-', 'test']);
     });
   });
 
@@ -37,14 +50,16 @@ describe('rmatchRegExp', () => {
     it('captures all matching groups', () => {
 
       const route = pathRouteByURL(new URL('http://localhost/test-TEST'));
+      const match = routeMatch(route, [rmatchRegExp(/(test)-?/gi, cb)]);
 
-      expect(routeMatch(route, [rmatchRegExp(/(test)[-]*/gi, 'group1', 'group2', 'group3')])).toEqual({
+      expect(match).toEqual({
         spec: [0, 2],
-        results: {
-          group1: 'test',
-          group2: 'TEST',
-        },
+        callback: expect.any(Function),
       });
+      match?.callback();
+      expect(cb).toHaveBeenCalledTimes(2);
+      expect([...cb.mock.calls[0][0]]).toEqual(['test-', 'test']);
+      expect([...cb.mock.calls[1][0]]).toEqual(['TEST', 'TEST']);
     });
   });
 
@@ -53,10 +68,11 @@ describe('rmatchRegExp', () => {
 
       const route = pathRouteByURL(new URL('http://localhost/the-test!'));
       const pattern = /.*test.*/y;
+      const match = routeMatch(route, [rmatchRegExp(pattern)]);
 
-      expect(routeMatch(route, [rmatchRegExp(pattern)])).toEqual({
+      expect(match).toEqual({
         spec: [0, 1],
-        results: {},
+        callback: expect.any(Function),
       });
       expect(pattern.lastIndex).toBe(0);
     });

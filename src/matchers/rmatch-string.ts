@@ -25,6 +25,7 @@ export function rmatchString(
       nameOffset,
       pattern,
       matcherIndex,
+      input,
     }): readonly [RouteMatch, number] | null | undefined {
 
       const start = name.indexOf(expected, nameOffset);
@@ -40,6 +41,7 @@ export function rmatchString(
             fromEntry: entryIndex,
             nameOffset: start + expected.length,
             fromMatcher: matcherIndex + 1,
+            input,
           },
       );
 

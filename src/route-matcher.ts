@@ -10,10 +10,12 @@ import type { RouteMatch, RoutePattern } from './route-match';
  *
  * @typeparam TEntry  A type of supported route entries.
  * @typeparam TRoute  A type of supported route.
+ * @typeparam TInput  A type of supported route match input.
  */
 export interface RouteMatcher<
     TEntry extends PathRoute.Entry = PathRoute.Entry,
     TRoute extends PathRoute<TEntry> = PathRoute<TEntry>,
+    TInput = undefined,
     > {
 
   /**
@@ -32,7 +34,7 @@ export interface RouteMatcher<
    * or `false`/`null`/`undefined` otherwise.
    */
   test(
-      context: RouteMatcher.Context<TEntry, TRoute>,
+      context: RouteMatcher.Context<TEntry, TRoute, TInput>,
   ): RouteMatcher.Match | false | null | undefined;
 
   /**
@@ -50,8 +52,8 @@ export interface RouteMatcher<
    * not found.
    */
   find?(
-      context: RouteMatcher.Context<TEntry, TRoute>,
-  ): readonly [RouteMatch<TEntry, TRoute>, number] | false | null | undefined;
+      context: RouteMatcher.Context<TEntry, TRoute, TInput>,
+  ): readonly [RouteMatch, number] | false | null | undefined;
 
 }
 
@@ -65,8 +67,13 @@ export namespace RouteMatcher {
    *
    * @typeparam TEntry  A type of tested route entries.
    * @typeparam TRoute  A type of tested route.
+   * @typeparam TInput  A type of route match input.
    */
-  export interface Context<TEntry extends PathRoute.Entry, TRoute extends PathRoute<TEntry>> {
+  export interface Context<
+      TEntry extends PathRoute.Entry,
+      TRoute extends PathRoute<TEntry>,
+      TInput,
+      > {
 
     /**
      * Route path.
@@ -91,12 +98,17 @@ export namespace RouteMatcher {
     /**
      * Route pattern the matcher belongs to.
      */
-    readonly pattern: RoutePattern<TEntry, TRoute>;
+    readonly pattern: RoutePattern<TEntry, TRoute, TInput>;
 
     /**
      * The index of the matcher in the route pattern.
      */
     readonly matcherIndex: number;
+
+    /**
+     * Route match {@link RouteMatch.InputOptions.input input} passed to [[routeMatch]] function.
+     */
+    readonly input: TInput;
 
   }
 
@@ -139,14 +151,14 @@ export namespace RouteMatcher {
     readonly nameChars?: number;
 
     /**
-     * A map of results to bind to {@link RouteMatch.results final match results}.
-     */
-    readonly results?: RouteMatch.Results;
-
-    /**
      * Whether this is a full match of the route against the pattern.
      */
     readonly full?: boolean;
+
+    /**
+     * A callback function that will be called by the {@link RouteMatch.callback final match callback}.
+     */
+    readonly callback?: () => void;
 
   }
 

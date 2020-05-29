@@ -2,15 +2,30 @@
  * @packageDocumentation
  * @module @hatsy/route-match
  */
+import type { PathRoute } from '../path';
 import type { RouteMatcher } from '../route-matcher';
 
-export function rmatchRegExp(expected: RegExp, ...groups: string[]): RouteMatcher {
+export function rmatchRegExp<
+    TEntry extends PathRoute.Entry,
+    TRoute extends PathRoute<TEntry>,
+    TInput,
+    >(
+    expected: RegExp,
+    callback?: (
+        this: void,
+        match: RegExpMatchArray,
+        context: RouteMatcher.Context<TEntry, TRoute, TInput>,
+    ) => void,
+): RouteMatcher<TEntry, TRoute, TInput> {
 
   const global = expected.global;
   const re = expected.sticky ? new RegExp(expected) : new RegExp(expected.source, `${expected.flags}y`);
 
   return {
-    test({ entry: { name }, nameOffset }): RouteMatcher.Match | undefined {
+    test(context): RouteMatcher.Match | undefined {
+
+      const { entry: { name }, nameOffset } = context;
+
       re.lastIndex = nameOffset;
 
       let execResult = re.exec(name);
@@ -20,17 +35,27 @@ export function rmatchRegExp(expected: RegExp, ...groups: string[]): RouteMatche
       }
 
       let nameChars = re.lastIndex;
-      let nameIdx = 0;
-      const result: Record<string, string> = {};
+      let resultCallback!: () => void | undefined;
+      let weight = 0;
 
       // Fill group names.
-      while (nameIdx < groups.length) {
-        for (let i = 1; i < execResult.length && nameIdx < groups.length; ++i) {
-          result[groups[nameIdx++]] = execResult[i];
+      for (;;) {
+        weight += Math.max(1, execResult.length - 1);
+        if (callback) {
+
+          const prevCallback = resultCallback;
+          const match = execResult;
+          const nextCallback = (): void => callback(match, context);
+
+          resultCallback = prevCallback
+              ? () => { prevCallback(); nextCallback(); }
+              : nextCallback;
         }
+
         if (!global) {
           break;
         }
+
         // Repeat the search for global pattern.
         execResult = re.exec(name);
         if (!execResult) {
@@ -40,9 +65,9 @@ export function rmatchRegExp(expected: RegExp, ...groups: string[]): RouteMatche
       }
 
       return {
-        spec: [0, Math.max(1, nameIdx)],
+        spec: [0, weight],
         nameChars,
-        results: result,
+        callback: resultCallback,
       };
     },
   };
