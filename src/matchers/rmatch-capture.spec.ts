@@ -29,10 +29,6 @@ describe('rmatchCapture', () => {
 
       const match = routeMatch(urlRoute(new URL('http://localhost/file')), pattern);
 
-      expect(match).toEqual({
-        spec: [],
-        callback: expect.any(Function),
-      });
       match?.callback();
       expect(cb).toHaveBeenCalledWith('file', expect.anything());
     });
@@ -40,10 +36,6 @@ describe('rmatchCapture', () => {
 
       const match = routeMatch(urlRoute(new URL('http://localhost/dir/')), pattern);
 
-      expect(match).toEqual({
-        spec: [],
-        callback: expect.any(Function),
-      });
       match?.callback();
       expect(cb).toHaveBeenCalledWith('dir', expect.anything());
     });
@@ -64,10 +56,6 @@ describe('rmatchCapture', () => {
 
       const match = routeMatch(pathRouteByURL(new URL('http://localhost/dir/file')), pattern);
 
-      expect(match).toEqual({
-        spec: [],
-        callback: expect.any(Function),
-      });
       match?.callback();
       expect(cb).toHaveBeenCalledWith('dir', expect.anything());
     });
@@ -85,10 +73,6 @@ describe('rmatchCapture', () => {
 
       const match = routeMatch(pathRouteByURL(new URL('http://localhost/dir/file')), pattern);
 
-      expect(match).toEqual({
-        spec: [],
-        callback: expect.any(Function),
-      });
       match?.callback();
       expect(cb).toHaveBeenCalledWith('file', expect.anything());
     });
@@ -106,10 +90,6 @@ describe('rmatchCapture', () => {
 
       const match = routeMatch(pathRouteByURL(new URL('http://localhost/page-1')), pattern);
 
-      expect(match).toEqual({
-        spec: [0, 1],
-        callback: expect.any(Function),
-      });
       match?.callback();
       expect(cb).toHaveBeenCalledWith('1', expect.anything());
     });
@@ -130,10 +110,6 @@ describe('rmatchCapture', () => {
 
       const match = routeMatch(pathRouteByURL(new URL('http://localhost/index.html')), pattern);
 
-      expect(match).toEqual({
-        spec: [0, 1],
-        callback: expect.any(Function),
-      });
       match?.callback();
       expect(cb).toHaveBeenCalledWith('index', expect.anything());
     });

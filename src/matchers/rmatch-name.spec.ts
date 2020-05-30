@@ -11,19 +11,13 @@ describe('rmatchName', () => {
 
       const route = urlRoute(new URL('http://localhost/test'));
 
-      expect(routeMatch(route, pattern)).toEqual({
-        spec: [1],
-        callback: expect.any(Function),
-      });
+      expect(routeMatch(route, pattern)).toBeTruthy();
     });
     it('matches dir name', () => {
 
       const route = urlRoute(new URL('http://localhost/test/'));
 
-      expect(routeMatch(route, pattern)).toEqual({
-        spec: [1],
-        callback: expect.any(Function),
-      });
+      expect(routeMatch(route, pattern)).toBeTruthy();
     });
     it('does not match the after offset', () => {
 

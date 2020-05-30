@@ -24,13 +24,11 @@ export interface RouteMatcher<
   readonly tail?: boolean;
 
   /**
-   * Tests whether a fragment of the route satisfying this matcher's conditions. If so, then specifies the fragment
-   * of the route that matches, a {@link RouteMatch.Specificity specificity} of this match, and optionally binds values
-   * to {@link RouteMatch.results final match result}.
+   * Tests whether a fragment of the route satisfying this matcher's conditions.
    *
    * @param context  Route matching context.
    *
-   * @returns {@link RouteMatcher.Match Route match} instance when some part of the route matches,
+   * @returns {@link RouteMatcher.Match Route match} instance specifying a matching route fragment,
    * or `false`/`null`/`undefined` otherwise.
    */
   test(
@@ -118,13 +116,6 @@ export namespace RouteMatcher {
    * This is returned from {@link RouteMatch route matcher} and indicates the matching part of the route.
    */
   export interface Match {
-
-    /**
-     * A specificity of this match.
-     *
-     * @default `[1]`
-     */
-    readonly spec?: RouteMatch.Specificity;
 
     /**
      * The number of fully matching route entries.

@@ -36,11 +36,9 @@ export function rmatchRegExp<
 
       let nameChars = re.lastIndex;
       let resultCallback!: () => void | undefined;
-      let weight = 0;
 
       // Fill group names.
       for (;;) {
-        weight += Math.max(1, execResult.length - 1);
         if (callback) {
 
           const prevCallback = resultCallback;
@@ -65,7 +63,6 @@ export function rmatchRegExp<
       }
 
       return {
-        spec: [0, weight],
         nameChars,
         callback: resultCallback,
       };

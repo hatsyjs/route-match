@@ -13,7 +13,6 @@ export function rmatchString(
 
     test({ entry: { name }, nameOffset }): RouteMatcher.Match | false {
       return name.substr(nameOffset, expected.length) === expected && {
-        spec: [0, 1],
         nameChars: expected.length,
       };
     },
@@ -49,11 +48,7 @@ export function rmatchString(
         return;
       }
 
-      const spec = [...match.spec];
-
-      spec[1] = (spec[1] || 0) + 1;
-
-      return [{ ...match, spec }, start];
+      return [match, start];
     },
 
   };

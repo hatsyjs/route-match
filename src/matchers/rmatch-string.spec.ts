@@ -12,28 +12,19 @@ describe('rmatchString', () => {
 
       const route = urlRoute(new URL('http://localhost/test'));
 
-      expect(routeMatch(route, pattern)).toEqual({
-        spec: [0, 1],
-        callback: expect.any(Function),
-      });
+      expect(routeMatch(route, pattern)).toBeTruthy();
     });
     it('matches dir name', () => {
 
       const route = urlRoute(new URL('http://localhost/test/'));
 
-      expect(routeMatch(route, pattern)).toEqual({
-        spec: [0, 1],
-        callback: expect.any(Function),
-      });
+      expect(routeMatch(route, pattern)).toBeTruthy();
     });
     it('matches string at offset', () => {
 
       const route = urlRoute(new URL('http://localhost/the-test/'));
 
-      expect(routeMatch(route, pattern, { nameOffset: 4 })).toEqual({
-        spec: [0, 1],
-        callback: expect.any(Function),
-      });
+      expect(routeMatch(route, pattern, { nameOffset: 4 })).toBeTruthy();
     });
     it('does not match name with suffix', () => {
 
@@ -48,10 +39,7 @@ describe('rmatchString', () => {
 
       const route = urlRoute(new URL('http://localhost/test!/'));
 
-      expect(routeMatch(route, [rmatchString('test'), rmatchAny])).toEqual({
-        spec: [0, 1],
-        callback: expect.any(Function),
-      });
+      expect(routeMatch(route, [rmatchString('test'), rmatchAny])).toBeTruthy();
     });
   });
 
@@ -60,10 +48,7 @@ describe('rmatchString', () => {
 
       const route = urlRoute(new URL('http://localhost/test!/'));
 
-      expect(routeMatch(route, [rmatchString('test'), rmatchString('!')])).toEqual({
-        spec: [0, 2],
-        callback: expect.any(Function),
-      });
+      expect(routeMatch(route, [rmatchString('test'), rmatchString('!')])).toBeTruthy();
     });
   });
 
@@ -75,19 +60,13 @@ describe('rmatchString', () => {
 
       const route = urlRoute(new URL('http://localhost/test'));
 
-      expect(routeMatch(route, pattern)).toEqual({
-        spec: [0, 1],
-        callback: expect.any(Function),
-      });
+      expect(routeMatch(route, pattern)).toBeTruthy();
     });
     it('matches string with prefix', () => {
 
       const route = urlRoute(new URL('http://localhost/the-test/'));
 
-      expect(routeMatch(route, pattern)).toEqual({
-        spec: [0, 1],
-        callback: expect.any(Function),
-      });
+      expect(routeMatch(route, pattern)).toBeTruthy();
     });
     it('does not match wrong string', () => {
 
@@ -105,19 +84,13 @@ describe('rmatchString', () => {
 
       const route = urlRoute(new URL('http://localhost/test!'));
 
-      expect(routeMatch(route, pattern)).toEqual({
-        spec: [0, 2],
-        callback: expect.any(Function),
-      });
+      expect(routeMatch(route, pattern)).toBeTruthy();
     });
     it('matches strings after prefix', () => {
 
       const route = urlRoute(new URL('http://localhost/the-test!/'));
 
-      expect(routeMatch(route, pattern)).toEqual({
-        spec: [0, 2],
-        callback: expect.any(Function),
-      });
+      expect(routeMatch(route, pattern)).toBeTruthy();
     });
     it('does not match wrong first string', () => {
 

@@ -27,7 +27,6 @@ export function rmatchCapture<
         // This is the last matcher in pattern.
         // Always match.
         return {
-          spec: [],
           callback: callback && (() => callback(
               context.entry.name.substring(context.nameOffset, context.entry.name.length),
               context,
@@ -41,10 +40,9 @@ export function rmatchCapture<
         return;
       }
 
-      const [{ spec, callback: matchCallback }, offset] = found;
+      const [{ callback: matchCallback }, offset] = found;
 
       return {
-        spec,
         entries: context.route.path.length,
         full: true,
         callback: callback

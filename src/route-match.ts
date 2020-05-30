@@ -11,13 +11,6 @@ import type { RouteMatcher } from './route-matcher';
 export interface RouteMatch {
 
   /**
-   * The final specificity of this match.
-   *
-   * Each weight is a sum of weights with the same priority specified by each matcher.
-   */
-  readonly spec: RouteMatch.Specificity;
-
-  /**
    * A function that calls all callbacks of all {@link RouteMatcher.Match.callback matches}.
    */
   readonly callback: (this: void) => void;
@@ -40,13 +33,6 @@ export type RoutePattern<
     > = readonly RouteMatcher<TEntry, TRoute, TInput>[];
 
 export namespace RouteMatch {
-
-  /**
-   * A specificity of the route match.
-   *
-   * This is an array of weight values. The less the index of the weight element the higher priority it has.
-   */
-  export type Specificity = readonly number[];
 
   /**
    * Route match options without input.
@@ -91,11 +77,6 @@ export namespace RouteMatch {
   }
 
 }
-
-/**
- * @internal
- */
-const defaultRouteMatchSpecificity: RouteMatch.Specificity = [1];
 
 /**
  * Performs a match of the given pattern against the given route.
@@ -152,7 +133,6 @@ export function routeMatch<
 
   const { path } = route;
   const { input } = options as RouteMatch.InputOptions<TInput>;
-  const finalSpec: number[] = [];
   let finalCallback: () => void = () => {/* empty callback */};
   let { fromEntry: entryIndex = 0, nameOffset = 0, fromMatcher: matcherIndex = 0 } = options;
 
@@ -193,7 +173,6 @@ export function routeMatch<
     }
 
     const {
-      spec = defaultRouteMatchSpecificity,
       entries,
       nameChars = entries ? 0 : name.length,
       callback,
@@ -221,11 +200,6 @@ export function routeMatch<
       };
     }
 
-    // Adjust the specificity.
-    for (let i = 0; i < spec.length; ++i) {
-      finalSpec[i] = (finalSpec[i] || 0) + (spec[i] || 0);
-    }
-
     if (full) {
       // Full match.
       // Further match is not needed.
@@ -246,7 +220,6 @@ export function routeMatch<
   }
 
   return {
-    spec: finalSpec,
     callback: finalCallback,
   };
 }
