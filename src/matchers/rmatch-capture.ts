@@ -13,7 +13,7 @@ export function rmatchCapture<
 ): RouteMatcher<TEntry, TRoute> {
   return {
 
-    test(context): RouteMatcher.Match | undefined {
+    test(context): RouteMatcher.Match<TEntry, TRoute> | undefined {
 
       const { pattern, matcherIndex } = context;
       const nextMatcher = pattern[matcherIndex + 1];
@@ -23,12 +23,12 @@ export function rmatchCapture<
         // Always match.
         return name != null
             ? {
-              callback: (capture => capture(
+              callback: capture => capture(
                   'capture',
                   name,
                   context.entry.name.substring(context.nameOffset, context.entry.name.length),
                   context,
-              )),
+              ),
             }
             : {};
       }
