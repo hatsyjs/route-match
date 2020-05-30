@@ -31,7 +31,7 @@ describe('rmatchDirSep', () => {
     it('does not match file route', () => {
       expect(routeMatch(urlRoute(new URL('http://localhost/test')), pattern)).toBeNull();
     });
-    it('does not match directory route', () => {
+    it('matches directory route', () => {
       expect(routeMatch(urlRoute(new URL('http://localhost/test/')), pattern)).toBeTruthy();
     });
     it('does not match directory route with incomplete prefix', () => {
@@ -49,7 +49,7 @@ describe('rmatchDirSep', () => {
     it('does not match file route', () => {
       expect(routeMatch(urlRoute(new URL('http://localhost/test')), pattern)).toBeNull();
     });
-    it('does not match directory route', () => {
+    it('matches directory route', () => {
       expect(routeMatch(urlRoute(new URL('http://localhost/test/')), pattern)).toBeTruthy();
     });
     it('does not match directory route with incomplete prefix', () => {
@@ -73,7 +73,7 @@ describe('rmatchDirSep', () => {
     it('matches directory route', () => {
       expect(routeMatch(urlRoute(new URL('http://localhost/dir/file/')), pattern)).toBeTruthy();
     });
-    it('does not match too long route route with incomplete prefix', () => {
+    it('does not match too long route', () => {
       expect(routeMatch(urlRoute(new URL('http://localhost/dir/file/test')), pattern)).toBeNull();
     });
   });
