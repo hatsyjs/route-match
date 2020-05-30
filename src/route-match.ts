@@ -24,18 +24,16 @@ export interface RouteMatch {
  *
  * @typeparam TEntry  A type of supported route entries.
  * @typeparam TRoute  A type of supported route.
- * @typeparam TInput  A type of supported route match input.
  */
 export type RoutePattern<
     TEntry extends PathRoute.Entry = PathRoute.Entry,
     TRoute extends PathRoute<TEntry> = PathRoute<TEntry>,
-    TInput = undefined,
-    > = readonly RouteMatcher<TEntry, TRoute, TInput>[];
+    > = readonly RouteMatcher<TEntry, TRoute>[];
 
 export namespace RouteMatch {
 
   /**
-   * Route match options without input.
+   * Route match options.
    */
   export interface Options {
 
@@ -62,20 +60,6 @@ export namespace RouteMatch {
 
   }
 
-  /**
-   * Route match options supporting input.
-   *
-   * @typeparam TInput  A type of route match input.
-   */
-  export interface InputOptions<TInput> extends Options {
-
-    /**
-     * Route match input.
-     */
-    readonly input: TInput;
-
-  }
-
 }
 
 /**
@@ -94,45 +78,10 @@ export function routeMatch<TEntry extends PathRoute.Entry, TRoute extends PathRo
     this: void,
     route: TRoute,
     pattern: RoutePattern<TEntry, TRoute>,
-    options?: RouteMatch.Options,
-): RouteMatch | null;
-
-/**
- * Performs a match of the given pattern against the given route with the given input input.
- *
- * Tries to match fragments of the given route by each of the pattern matchers, in order. If some matcher fails, the
- * match fails too. If all matchers succeed, the match result is constructed and returned.
- *
- * @param route  Target route to match against.
- * @param pattern  A pattern to match.
- * @param options  Route match options.
- *
- * @returns  Either successful route match object, or `null` if the route does not match the given pattern.
- */
-export function routeMatch<
-    TEntry extends PathRoute.Entry,
-    TRoute extends PathRoute<TEntry>,
-    TInput,
-    >(
-    this: void,
-    route: TRoute,
-    pattern: RoutePattern<TEntry, TRoute>,
-    options: RouteMatch.InputOptions<TInput>,
-): RouteMatch | null;
-
-export function routeMatch<
-    TEntry extends PathRoute.Entry,
-    TRoute extends PathRoute<TEntry>,
-    TInput,
-    >(
-    this: void,
-    route: TRoute,
-    pattern: RoutePattern<TEntry, TRoute, TInput>,
-    options: RouteMatch.Options | RouteMatch.InputOptions<TInput> = {} as RouteMatch.InputOptions<TInput>,
+    options: RouteMatch.Options = {},
 ): RouteMatch | null {
 
   const { path } = route;
-  const { input } = options as RouteMatch.InputOptions<TInput>;
   let finalCallback: () => void = () => {/* empty callback */};
   let { fromEntry: entryIndex = 0, nameOffset = 0, fromMatcher: matcherIndex = 0 } = options;
 
@@ -165,7 +114,6 @@ export function routeMatch<
       nameOffset,
       pattern,
       matcherIndex,
-      input,
     });
 
     if (!match) {

@@ -10,12 +10,10 @@ import type { RouteMatch, RoutePattern } from './route-match';
  *
  * @typeparam TEntry  A type of supported route entries.
  * @typeparam TRoute  A type of supported route.
- * @typeparam TInput  A type of supported route match input.
  */
 export interface RouteMatcher<
     TEntry extends PathRoute.Entry = PathRoute.Entry,
     TRoute extends PathRoute<TEntry> = PathRoute<TEntry>,
-    TInput = undefined,
     > {
 
   /**
@@ -32,7 +30,7 @@ export interface RouteMatcher<
    * or `false`/`null`/`undefined` otherwise.
    */
   test(
-      context: RouteMatcher.Context<TEntry, TRoute, TInput>,
+      context: RouteMatcher.Context<TEntry, TRoute>,
   ): RouteMatcher.Match | false | null | undefined;
 
   /**
@@ -50,7 +48,7 @@ export interface RouteMatcher<
    * not found.
    */
   find?(
-      context: RouteMatcher.Context<TEntry, TRoute, TInput>,
+      context: RouteMatcher.Context<TEntry, TRoute>,
   ): readonly [RouteMatch, number] | false | null | undefined;
 
 }
@@ -65,13 +63,8 @@ export namespace RouteMatcher {
    *
    * @typeparam TEntry  A type of tested route entries.
    * @typeparam TRoute  A type of tested route.
-   * @typeparam TInput  A type of route match input.
    */
-  export interface Context<
-      TEntry extends PathRoute.Entry,
-      TRoute extends PathRoute<TEntry>,
-      TInput,
-      > {
+  export interface Context<TEntry extends PathRoute.Entry, TRoute extends PathRoute<TEntry>> {
 
     /**
      * Route path.
@@ -96,17 +89,12 @@ export namespace RouteMatcher {
     /**
      * Route pattern the matcher belongs to.
      */
-    readonly pattern: RoutePattern<TEntry, TRoute, TInput>;
+    readonly pattern: RoutePattern<TEntry, TRoute>;
 
     /**
      * The index of the matcher in the route pattern.
      */
     readonly matcherIndex: number;
-
-    /**
-     * Route match {@link RouteMatch.InputOptions.input input} passed to [[routeMatch]] function.
-     */
-    readonly input: TInput;
 
   }
 

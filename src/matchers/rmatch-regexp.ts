@@ -8,15 +8,14 @@ import type { RouteMatcher } from '../route-matcher';
 export function rmatchRegExp<
     TEntry extends PathRoute.Entry,
     TRoute extends PathRoute<TEntry>,
-    TInput,
     >(
     expected: RegExp,
     callback?: (
         this: void,
         match: RegExpMatchArray,
-        context: RouteMatcher.Context<TEntry, TRoute, TInput>,
+        context: RouteMatcher.Context<TEntry, TRoute>,
     ) => void,
-): RouteMatcher<TEntry, TRoute, TInput> {
+): RouteMatcher<TEntry, TRoute> {
 
   const global = expected.global;
   const re = expected.sticky ? new RegExp(expected) : new RegExp(expected.source, `${expected.flags}y`);

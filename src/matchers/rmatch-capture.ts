@@ -8,14 +8,13 @@ import type { RouteMatcher } from '../route-matcher';
 export function rmatchCapture<
     TEntry extends PathRoute.Entry,
     TRoute extends PathRoute<TEntry>,
-    TInput,
     >(
     callback?: (
         this: void,
         match: string,
-        context: RouteMatcher.Context<TEntry, TRoute, TInput>,
+        context: RouteMatcher.Context<TEntry, TRoute>,
     ) => void,
-): RouteMatcher<TEntry, TRoute, TInput> {
+): RouteMatcher<TEntry, TRoute> {
   return {
 
     test(context): RouteMatcher.Match | undefined {
