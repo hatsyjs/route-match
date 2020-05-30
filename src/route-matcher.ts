@@ -31,7 +31,7 @@ export interface RouteMatcher<
    */
   test(
       context: RouteMatcher.Context<TEntry, TRoute>,
-  ): RouteMatcher.Match | false | null | undefined;
+  ): RouteMatcher.Match<TEntry, TRoute> | false | null | undefined;
 
   /**
    * Searches for the fragment of the route satisfying this matcher's conditions.
@@ -102,8 +102,14 @@ export namespace RouteMatcher {
    * Route match.
    *
    * This is returned from {@link RouteMatch route matcher} and indicates the matching part of the route.
+   *
+   * @typeparam TEntry  A type of matching route entries.
+   * @typeparam TRoute  A type of matching route.
    */
-  export interface Match {
+  export interface Match<
+      TEntry extends PathRoute.Entry = PathRoute.Entry,
+      TRoute extends PathRoute<TEntry> = PathRoute<TEntry>,
+      > {
 
     /**
      * The number of fully matching route entries.
@@ -135,9 +141,11 @@ export namespace RouteMatcher {
     readonly full?: boolean;
 
     /**
-     * A callback function that will be called by the {@link RouteMatch.callback final match callback}.
+     * A callback function reporting a capture of this match, if any.
+     *
+     * It will be invoked by {@link RouteMatch successful route match} only.
      */
-    readonly callback?: () => void;
+    readonly callback?: RouteMatch<TEntry, TRoute>;
 
   }
 

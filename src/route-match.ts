@@ -3,19 +3,28 @@
  * @module @hatsy/route-match
  */
 import type { PathRoute } from './path';
+import type { RouteCapture } from './route-capture';
 import type { RouteMatcher } from './route-matcher';
 
 /**
  * A successful {@link routeMatch match of the route} against {@link RoutePattern pattern}.
+ *
+ * This is a function that reports registered partial matches via {@link RouteCapture route capture} callback.
+ *
+ * @typeparam TEntry  A type of matching route entries.
+ * @typeparam TRoute  A type of matching route.
  */
-export interface RouteMatch {
-
-  /**
-   * A function that calls all callbacks of all {@link RouteMatcher.Match.callback matches}.
-   */
-  readonly callback: (this: void) => void;
-
-}
+export type RouteMatch<
+    TEntry extends PathRoute.Entry = PathRoute.Entry,
+    TRoute extends PathRoute<TEntry> = PathRoute<TEntry>,
+    > =
+/**
+ * @param capture  A {@link RouteCapture route capture} instance to report partial matches to.
+ */
+    (
+        this: void,
+        capture: RouteCapture<TEntry, TRoute>,
+    ) => void;
 
 /**
  * A pattern to {@link routeMatch match the route} against.
@@ -79,10 +88,10 @@ export function routeMatch<TEntry extends PathRoute.Entry, TRoute extends PathRo
     route: TRoute,
     pattern: RoutePattern<TEntry, TRoute>,
     options: RouteMatch.Options = {},
-): RouteMatch | null {
+): RouteMatch<TEntry, TRoute> | null {
 
   const { path } = route;
-  let finalCallback: () => void = () => {/* empty callback */};
+  let successfulMatch: RouteMatch<TEntry, TRoute> = () => {/* nothing captured */};
   let { fromEntry: entryIndex = 0, nameOffset = 0, fromMatcher: matcherIndex = 0 } = options;
 
   while (entryIndex < path.length) {
@@ -137,14 +146,14 @@ export function routeMatch<TEntry extends PathRoute.Entry, TRoute extends PathRo
       nameOffset += nameChars;
     }
 
-    // Apply the match result.
+    // Register a capture callback.
     if (callback) {
 
-      const prevCallback = finalCallback;
+      const prevMatch = successfulMatch;
 
-      finalCallback = () => {
-        prevCallback();
-        callback();
+      successfulMatch = capture => {
+        prevMatch(capture);
+        callback(capture);
       };
     }
 
@@ -167,7 +176,5 @@ export function routeMatch<TEntry extends PathRoute.Entry, TRoute extends PathRo
     }
   }
 
-  return {
-    callback: finalCallback,
-  };
+  return successfulMatch;
 }

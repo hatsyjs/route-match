@@ -19,7 +19,7 @@ describe('rmatchCapture', () => {
     let pattern: RoutePattern;
 
     beforeEach(() => {
-      pattern = [rmatchCapture(cb)];
+      pattern = [rmatchCapture('out')];
     });
 
     it('does not match empty route', () => {
@@ -29,15 +29,15 @@ describe('rmatchCapture', () => {
 
       const match = routeMatch(urlRoute(new URL('http://localhost/file')), pattern);
 
-      match?.callback();
-      expect(cb).toHaveBeenCalledWith('file', expect.anything());
+      match?.(cb);
+      expect(cb).toHaveBeenCalledWith('capture', 'out', 'file', expect.anything());
     });
     it('matches directory', () => {
 
       const match = routeMatch(urlRoute(new URL('http://localhost/dir/')), pattern);
 
-      match?.callback();
-      expect(cb).toHaveBeenCalledWith('dir', expect.anything());
+      match?.(cb);
+      expect(cb).toHaveBeenCalledWith('capture', 'out', 'dir', expect.anything());
     });
     it('does not match multiple entries', () => {
       expect(routeMatch(urlRoute(new URL('http://localhost/dir/file')), pattern)).toBeNull();
@@ -49,15 +49,15 @@ describe('rmatchCapture', () => {
     let pattern: RoutePattern;
 
     beforeEach(() => {
-      pattern = [rmatchCapture(cb), rmatchDirSep, rmatchAny];
+      pattern = [rmatchCapture('out'), rmatchDirSep, rmatchAny];
     });
 
     it('matches two entries', () => {
 
       const match = routeMatch(pathRouteByURL(new URL('http://localhost/dir/file')), pattern);
 
-      match?.callback();
-      expect(cb).toHaveBeenCalledWith('dir', expect.anything());
+      match?.(cb);
+      expect(cb).toHaveBeenCalledWith('capture', 'out', 'dir', expect.anything());
     });
   });
 
@@ -66,15 +66,15 @@ describe('rmatchCapture', () => {
     let pattern: RoutePattern;
 
     beforeEach(() => {
-      pattern = [rmatchAny, rmatchDirSep, rmatchCapture(cb)];
+      pattern = [rmatchAny, rmatchDirSep, rmatchCapture('out')];
     });
 
     it('matches two entries', () => {
 
       const match = routeMatch(pathRouteByURL(new URL('http://localhost/dir/file')), pattern);
 
-      match?.callback();
-      expect(cb).toHaveBeenCalledWith('file', expect.anything());
+      match?.(cb);
+      expect(cb).toHaveBeenCalledWith('capture', 'out', 'file', expect.anything());
     });
   });
 
@@ -83,15 +83,15 @@ describe('rmatchCapture', () => {
     let pattern: RoutePattern;
 
     beforeEach(() => {
-      pattern = [rmatchString('page-'), rmatchCapture(cb)];
+      pattern = [rmatchString('page-'), rmatchCapture('out')];
     });
 
     it('matches file', () => {
 
       const match = routeMatch(pathRouteByURL(new URL('http://localhost/page-1')), pattern);
 
-      match?.callback();
-      expect(cb).toHaveBeenCalledWith('1', expect.anything());
+      match?.(cb);
+      expect(cb).toHaveBeenCalledWith('capture', 'out', '1', expect.anything());
     });
     it('does not match file with wrong prefix', () => {
       expect(routeMatch(pathRouteByURL(new URL('http://localhost/page1')), pattern)).toBeNull();
@@ -103,15 +103,15 @@ describe('rmatchCapture', () => {
     let pattern: RoutePattern;
 
     beforeEach(() => {
-      pattern = [rmatchCapture(cb), rmatchString('.html')];
+      pattern = [rmatchCapture('out'), rmatchString('.html')];
     });
 
     it('matches file', () => {
 
       const match = routeMatch(pathRouteByURL(new URL('http://localhost/index.html')), pattern);
 
-      match?.callback();
-      expect(cb).toHaveBeenCalledWith('index', expect.anything());
+      match?.(cb);
+      expect(cb).toHaveBeenCalledWith('capture', 'out', 'index', expect.anything());
     });
     it('does not match file with wrong suffix', () => {
       expect(routeMatch(pathRouteByURL(new URL('http://localhost/index.htm')), pattern)).toBeNull();

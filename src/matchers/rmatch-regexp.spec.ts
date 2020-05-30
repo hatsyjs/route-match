@@ -15,11 +15,12 @@ describe('rmatchRegExp', () => {
     it('matches entry name', () => {
 
       const route = pathRouteByURL(new URL('http://localhost/the-test!'));
-      const match = routeMatch(route, [rmatchRegExp(/.*test.*/, cb)]);
+      const match = routeMatch(route, [rmatchRegExp(/.*test.*/, 'out')]);
 
-      match?.callback();
+      match?.(cb);
+      expect(cb).toHaveBeenCalledWith('regexp', 'out', expect.anything(), expect.anything());
       expect(cb).toHaveBeenCalledTimes(1);
-      expect([...cb.mock.calls[0][0]]).toEqual(['the-test!']);
+      expect([...cb.mock.calls[0][2]]).toEqual(['the-test!']);
     });
     it('does not match non-matching entry name', () => {
 
@@ -30,11 +31,12 @@ describe('rmatchRegExp', () => {
     it('captures the first matching group when the pattern is not global', () => {
 
       const route = pathRouteByURL(new URL('http://localhost/test-TEST'));
-      const match = routeMatch(route, [rmatchRegExp(/(test)-?/i, cb), rmatchAny]);
+      const match = routeMatch(route, [rmatchRegExp(/(test)-?/i, 'out'), rmatchAny]);
 
-      match?.callback();
+      match?.(cb);
+      expect(cb).toHaveBeenCalledWith('regexp', 'out', expect.anything(), expect.anything());
       expect(cb).toHaveBeenCalledTimes(1);
-      expect([...cb.mock.calls[0][0]]).toEqual(['test-', 'test']);
+      expect([...cb.mock.calls[0][2]]).toEqual(['test-', 'test']);
     });
   });
 
@@ -42,12 +44,13 @@ describe('rmatchRegExp', () => {
     it('captures all matching groups', () => {
 
       const route = pathRouteByURL(new URL('http://localhost/test-TEST'));
-      const match = routeMatch(route, [rmatchRegExp(/(test)-?/gi, cb)]);
+      const match = routeMatch(route, [rmatchRegExp(/(test)-?/gi, 'out')]);
 
-      match?.callback();
+      match?.(cb);
+      expect(cb).toHaveBeenCalledWith('regexp', 'out', expect.anything(), expect.anything());
       expect(cb).toHaveBeenCalledTimes(2);
-      expect([...cb.mock.calls[0][0]]).toEqual(['test-', 'test']);
-      expect([...cb.mock.calls[1][0]]).toEqual(['TEST', 'TEST']);
+      expect([...cb.mock.calls[0][2]]).toEqual(['test-', 'test']);
+      expect([...cb.mock.calls[1][2]]).toEqual(['TEST', 'TEST']);
     });
   });
 

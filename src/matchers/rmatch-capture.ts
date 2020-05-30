@@ -9,11 +9,7 @@ export function rmatchCapture<
     TEntry extends PathRoute.Entry,
     TRoute extends PathRoute<TEntry>,
     >(
-    callback?: (
-        this: void,
-        match: string,
-        context: RouteMatcher.Context<TEntry, TRoute>,
-    ) => void,
+    name?: string,
 ): RouteMatcher<TEntry, TRoute> {
   return {
 
@@ -25,12 +21,16 @@ export function rmatchCapture<
       if (!nextMatcher || !nextMatcher.find) {
         // This is the last matcher in pattern.
         // Always match.
-        return {
-          callback: callback && (() => callback(
-              context.entry.name.substring(context.nameOffset, context.entry.name.length),
-              context,
-          )),
-        };
+        return name != null
+            ? {
+              callback: (capture => capture(
+                  'capture',
+                  name,
+                  context.entry.name.substring(context.nameOffset, context.entry.name.length),
+                  context,
+              )),
+            }
+            : {};
       }
 
       const found = nextMatcher.find({ ...context, matcherIndex: matcherIndex + 1 });
@@ -39,20 +39,22 @@ export function rmatchCapture<
         return;
       }
 
-      const [{ callback: matchCallback }, offset] = found;
+      const [match, offset] = found;
 
       return {
         entries: context.route.path.length,
         full: true,
-        callback: callback
-            ? () => {
-              matchCallback();
-              callback(
+        callback: name != null
+            ? capture => {
+              match(capture);
+              capture(
+                  'capture',
+                  name,
                   context.entry.name.substring(context.nameOffset, offset),
                   context,
               );
             }
-            : matchCallback,
+            : match,
       };
     },
 

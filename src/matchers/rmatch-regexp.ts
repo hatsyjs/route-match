@@ -3,6 +3,8 @@
  * @module @hatsy/route-match
  */
 import type { PathRoute } from '../path';
+import type { RouteCapture } from '../route-capture';
+import type { RouteMatch } from '../route-match';
 import type { RouteMatcher } from '../route-matcher';
 
 export function rmatchRegExp<
@@ -10,11 +12,7 @@ export function rmatchRegExp<
     TRoute extends PathRoute<TEntry>,
     >(
     expected: RegExp,
-    callback?: (
-        this: void,
-        match: RegExpMatchArray,
-        context: RouteMatcher.Context<TEntry, TRoute>,
-    ) => void,
+    name?: string,
 ): RouteMatcher<TEntry, TRoute> {
 
   const global = expected.global;
@@ -23,29 +21,29 @@ export function rmatchRegExp<
   return {
     test(context): RouteMatcher.Match | undefined {
 
-      const { entry: { name }, nameOffset } = context;
+      const { entry, nameOffset } = context;
 
       re.lastIndex = nameOffset;
 
-      let execResult = re.exec(name);
+      let execResult = re.exec(entry.name);
 
       if (!execResult) {
         return;
       }
 
       let nameChars = re.lastIndex;
-      let resultCallback!: () => void | undefined;
+      let resultCallback!: RouteMatch<TEntry, TRoute> | undefined;
 
       // Fill group names.
       for (;;) {
-        if (callback) {
+        if (name != null) {
 
           const prevCallback = resultCallback;
           const match = execResult;
-          const nextCallback = (): void => callback(match, context);
+          const nextCallback = (capture: RouteCapture<TEntry, TRoute>): void => capture('regexp', name, match, context);
 
           resultCallback = prevCallback
-              ? () => { prevCallback(); nextCallback(); }
+              ? capture => { prevCallback(capture); nextCallback(capture); }
               : nextCallback;
         }
 
@@ -54,7 +52,7 @@ export function rmatchRegExp<
         }
 
         // Repeat the search for global pattern.
-        execResult = re.exec(name);
+        execResult = re.exec(entry.name);
         if (!execResult) {
           break;
         }
