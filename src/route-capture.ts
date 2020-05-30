@@ -58,6 +58,18 @@ export interface RouteCaptureSignatureMap<
   capture(name: string, value: string, context: RouteMatcher.Context<TEntry, TRoute>): void;
 
   /**
+   * Directories capture.
+   *
+   * Captured by {@link rmatchDirs} matcher.
+   *
+   * @param name  The name of the capture.
+   * @param upto  An index of the route entry following the last captured one.
+   * The first captured entry is in {@link RouteMatcher.Context.entryIndex `context`}.
+   * @param context  A context of the capturing matcher.
+   */
+  dirs(name: string, upto: number, context: RouteMatcher.Context<TEntry, TRoute>): void;
+
+  /**
    * Regular expression capture.
    *
    * Captured by {@link rmatchRegExp} matcher.
