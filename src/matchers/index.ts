@@ -4,6 +4,7 @@ export * from './rmatch-any-entry';
 export * from './rmatch-capture';
 export * from './rmatch-dir-sep';
 export * from './rmatch-dirs';
+export * from './rmatch-entry';
 export * from './rmatch-name';
 export * from './rmatch-regexp';
 export * from './rmatch-string';

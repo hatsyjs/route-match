@@ -49,7 +49,7 @@ export interface RouteCaptureSignatureMap<
   /**
    * Arbitrary route capture.
    *
-   * Captured by {@link rmatchCapture} matcher.
+   * Captured by {@link rmatchCapture} and {@link rmatchEntry} matchers.
    *
    * @param name  The name of the capture.
    * @param value  The captured string value.
