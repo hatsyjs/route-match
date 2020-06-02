@@ -1,5 +1,6 @@
 export * from './rmatch-any';
 export * from './rmatch-any-dirs';
+export * from './rmatch-any-entry';
 export * from './rmatch-capture';
 export * from './rmatch-dir-sep';
 export * from './rmatch-dirs';
