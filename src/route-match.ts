@@ -171,9 +171,19 @@ export function routeMatch<TEntry extends PathRoute.Entry, TRoute extends PathRo
   while (matcherIndex < pattern.length) {
     // Non-matching matchers left.
     // Require them all to match after the end.
-    if (!pattern[matcherIndex++].tail) {
+    const matcher = pattern[matcherIndex];
+
+    if (!matcher.tail || !matcher.tail({
+      route,
+      entryIndex: path.length,
+      nameOffset: 0,
+      pattern,
+      matcherIndex,
+    })) {
       return null;
     }
+
+    ++matcherIndex;
   }
 
   return successfulMatch;

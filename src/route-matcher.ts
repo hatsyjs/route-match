@@ -17,14 +17,9 @@ export interface RouteMatcher<
     > {
 
   /**
-   * Whether this matcher still matches after the end of the route.
-   */
-  readonly tail?: boolean;
-
-  /**
    * Tests whether a fragment of the route satisfying this matcher's conditions.
    *
-   * @param context  Route matching context.
+   * @param context  Route match context.
    *
    * @returns {@link RouteMatcher.Match Route match} instance specifying a matching route fragment,
    * or `false`/`null`/`undefined` otherwise.
@@ -41,7 +36,7 @@ export interface RouteMatcher<
    *
    * The matching route fragment always starts within current route entry.
    *
-   * @param context  Route matching context.
+   * @param context  Route match context.
    *
    * @returns A tuple containing a {@link RouteMatch match} of the remaining path against the remaining pattern and
    * an offset within current entry name the matching route fragment starts at, or `false`/`null`/`undefined` if match
@@ -51,25 +46,74 @@ export interface RouteMatcher<
       context: RouteMatcher.Context<TEntry, TRoute>,
   ): readonly [RouteMatch, number] | false | null | undefined;
 
+  /**
+   * Detects whether this matcher still matches after the end of the route.
+   *
+   * @param context  Route tail match context.
+   *
+   * @returns `true` if the route satisfies this matcher's condition, or `false` otherwise.
+   */
+  tail?(context: RouteMatcher.TailContext<TEntry, TRoute>): boolean;
+
 }
 
 export namespace RouteMatcher {
 
   /**
-   * Route match context.
+   * A position of the match inside the route.
    *
-   * This is passed to {@link RouteMatcher route matcher} to indicate the position inside the route the match should be
-   * searched at.
+   * May represent a position after the end of the route.
    *
    * @typeparam TEntry  A type of tested route entries.
    * @typeparam TRoute  A type of tested route.
    */
-  export interface Context<TEntry extends PathRoute.Entry, TRoute extends PathRoute<TEntry>> {
+  export interface Position<TEntry extends PathRoute.Entry, TRoute extends PathRoute<TEntry>> {
 
     /**
-     * Route path.
+     * Target route.
      */
     readonly route: TRoute;
+
+    /**
+     * The first entry of the match or `undefined` for the position after the route end.
+     */
+    readonly entry?: TEntry;
+
+    /**
+     * The index of the {@link entry first entry} of the match.
+     *
+     * Equals to path length for the position after the end of the route.
+     */
+    readonly entryIndex: number;
+
+    /**
+     * An offset of the first character within the {@link entry first entry} of the match.
+     */
+    readonly nameOffset: number;
+
+    /**
+     * The route pattern the matcher belongs to.
+     */
+    readonly pattern: RoutePattern<TEntry, TRoute>;
+
+    /**
+     * The index of the matcher in the route pattern.
+     */
+    readonly matcherIndex: number;
+
+  }
+
+  /**
+   * Route match context.
+   *
+   * This is passed to {@link RouteMatcher.test route matcher} to indicate the position inside the route the match
+   * should be searched at.
+   *
+   * @typeparam TEntry  A type of tested route entries.
+   * @typeparam TRoute  A type of tested route.
+   */
+  export interface Context<TEntry extends PathRoute.Entry, TRoute extends PathRoute<TEntry>>
+      extends Position<TEntry, TRoute> {
 
     /**
      * The first entry the matcher should match against.
@@ -78,6 +122,8 @@ export namespace RouteMatcher {
 
     /**
      * The index of the {@link entry first entry} within the {@link route route path} the matcher should match against.
+     *
+     * Always less than path length.
      */
     readonly entryIndex: number;
 
@@ -86,15 +132,34 @@ export namespace RouteMatcher {
      */
     readonly nameOffset: number;
 
-    /**
-     * Route pattern the matcher belongs to.
-     */
-    readonly pattern: RoutePattern<TEntry, TRoute>;
+  }
+
+  /**
+   * Route tail match context.
+   *
+   * This is passed to {@link RouteMatcher.tail tail route matcher} to indicate the position after the end of the route
+   * the match should be applied to.
+   *
+   * @typeparam TEntry  A type of tested route entries.
+   * @typeparam TRoute  A type of tested route.
+   */
+  export interface TailContext<TEntry extends PathRoute.Entry, TRoute extends PathRoute<TEntry>>
+      extends Position<TEntry, TRoute> {
 
     /**
-     * The index of the matcher in the route pattern.
+     * `undefined` route entry indicating the position after the end of the route.
      */
-    readonly matcherIndex: number;
+    readonly entry?: undefined;
+
+    /**
+     * The length of the route path to indicate the position after the end of the route.
+     */
+    readonly entryIndex: number;
+
+    /**
+     * Always zero to indicate the position after the end of the route.
+     */
+    readonly nameOffset: 0;
 
   }
 

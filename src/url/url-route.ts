@@ -37,6 +37,13 @@ function urlRouteToString(this: URLRoute): string {
   return query ? `${path}?${query}` : path;
 }
 
+/**
+ * Constructs a route by URL.
+ *
+ * @param url  Source URL.
+ *
+ * @returns New URL route instance.
+ */
 export function urlRoute(url: URL): URLRoute {
 
   let { pathname } = url;

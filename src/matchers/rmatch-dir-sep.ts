@@ -2,12 +2,11 @@
  * @packageDocumentation
  * @module @hatsy/route-match
  */
+import { valueProvider } from '@proc7ts/primitives';
 import { routeMatch } from '../route-match';
 import type { RouteMatcher } from '../route-matcher';
 
 export const rmatchDirSep: RouteMatcher = {
-
-  tail: true,
 
   test({
     route,
@@ -56,5 +55,7 @@ export const rmatchDirSep: RouteMatcher = {
 
     return [match, name.length];
   },
+
+  tail: valueProvider(true),
 
 };

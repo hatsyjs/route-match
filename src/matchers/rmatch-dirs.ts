@@ -2,13 +2,12 @@
  * @packageDocumentation
  * @module @hatsy/route-match
  */
+import { valueProvider } from '@proc7ts/primitives';
 import { routeMatch } from '../route-match';
 import type { RouteMatcher } from '../route-matcher';
 
 export function rmatchDirs(name?: string): RouteMatcher {
   return {
-
-    tail: true,
 
     test(context): RouteMatcher.Match | undefined {
 
@@ -70,6 +69,8 @@ export function rmatchDirs(name?: string): RouteMatcher {
 
       return;
     },
+
+    tail: valueProvider(true),
 
   };
 }
