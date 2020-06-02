@@ -1,11 +1,11 @@
 import { routeMatch } from '../route-match';
 import { urlRoute } from '../url';
-import { rmatchAnyEntry } from './rmatch-any-entry';
+import { rmatchEntry } from './rmatch-entry';
 
-describe('rmatchAnyEntry', () => {
+describe('rmatchEntry', () => {
   describe('*', () => {
 
-    const pattern = [rmatchAnyEntry];
+    const pattern = [rmatchEntry];
 
     it('does not match empty route', () => {
       expect(routeMatch(urlRoute(new URL('http://localhost/')), pattern)).toBeNull();

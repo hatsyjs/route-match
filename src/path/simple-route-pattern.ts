@@ -3,12 +3,12 @@
  * @module @hatsy/route-match
  */
 import {
-  rcatchDirs,
-  rcatchEntry,
-  rcatchRegExp,
-  rmatchAnyDirs,
-  rmatchAnyEntry,
+  rcaptureDirs,
+  rcaptureEntry,
+  rcaptureRegExp,
+  rmatchDirs,
   rmatchDirSep,
+  rmatchEntry,
   rmatchName,
 } from '../matchers';
 import type { RoutePattern } from '../route-match';
@@ -27,22 +27,22 @@ import type { RouteMatcher } from '../route-matcher';
  *   Corresponds to {@link rmatchDirSep}.
  *
  * - `/*` matches any route entry.
- *   Corresponds to {@link rmatchAnyEntry}.
+ *   Corresponds to {@link rmatchEntry}.
  *
  * - `/{capture}` captures any route entry as `capture`.
- *   Corresponds to {@link rcatchEntry}.
+ *   Corresponds to {@link rcaptureEntry}.
  *
  * - `/**` matches any number of directories.
- *   Corresponds to {@link rmatchAnyDirs}
+ *   Corresponds to {@link rmatchDirs}
  *
  * - `/{capture:**}` captures any number of directories as `capture`.
- *   Corresponds to {@link rcatchDirs}.
+ *   Corresponds to {@link rcaptureDirs}.
  *
  * - `/{(regexp)flags}` matches the entry name matching the given regular expression with optional flags.
- *   Corresponds to {@link rcatchRegExp}.
+ *   Corresponds to {@link rcaptureRegExp}.
  *
  * - `/{capture(regexp)flags}` captures the entry name matching the regular expression with optional flags.
- *   Corresponds to {@link rcatchRegExp}.
+ *   Corresponds to {@link rcaptureRegExp}.
  *
  * - Everything else matches verbatim and corresponds to {@link rmatchName}.
  *
@@ -80,9 +80,9 @@ export function simpleRoutePattern(pattern: string): RoutePattern {
 function simpleRouteMatcher(pattern: string): RouteMatcher | undefined {
   switch (pattern) {
   case '*':
-    return rmatchAnyEntry;
+    return rmatchEntry;
   case '**':
-    return rmatchAnyDirs;
+    return rmatchDirs;
   default:
     if (pattern.startsWith('{') && pattern.endsWith('}')) {
 
@@ -116,10 +116,10 @@ function simpleRouteWildcard(spec: string): RouteMatcher | undefined {
     const arg = spec.substr(colonIdx + 1).trim();
 
     if (arg === '**') {
-      return capture ? rcatchDirs(decodeURIComponent(capture)) : rmatchAnyDirs;
+      return capture ? rcaptureDirs(decodeURIComponent(capture)) : rmatchDirs;
     }
 
-    return capture ? rcatchEntry(capture) : rmatchAnyEntry;
+    return capture ? rcaptureEntry(capture) : rmatchEntry;
   }
 
   return;
@@ -147,7 +147,7 @@ function simpleRouteRegExp(spec: string): RouteMatcher | undefined {
   const re = new RegExp(pattern, flags);
   const capture = spec.substr(0, openParent).trim();
 
-  return rcatchRegExp(re, capture ? decodeURIComponent(capture) : undefined);
+  return rcaptureRegExp(re, capture ? decodeURIComponent(capture) : undefined);
 }
 
 /**
@@ -157,5 +157,5 @@ function simpleRouteCapture(spec: string): RouteMatcher {
 
   spec = spec.trim();
 
-  return spec ? rcatchEntry(decodeURIComponent(spec)) : rmatchAnyEntry;
+  return spec ? rcaptureEntry(decodeURIComponent(spec)) : rmatchEntry;
 }

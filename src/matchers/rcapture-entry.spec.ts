@@ -1,8 +1,8 @@
 import { routeMatch } from '../route-match';
 import { urlRoute } from '../url';
-import { rcatchEntry } from './rcatch-entry';
+import { rcaptureEntry } from './rcapture-entry';
 
-describe('rcatchEntry', () => {
+describe('rcaptureEntry', () => {
 
   let capture: jest.Mock;
 
@@ -12,7 +12,7 @@ describe('rcatchEntry', () => {
 
   describe('*', () => {
 
-    const pattern = [rcatchEntry('out')];
+    const pattern = [rcaptureEntry('out')];
 
     it('does not match empty route', () => {
       expect(routeMatch(urlRoute(new URL('http://localhost/')), pattern)).toBeNull();

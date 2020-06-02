@@ -3,9 +3,9 @@
  * @module @hatsy/route-match
  */
 import type { RouteMatcher } from '../route-matcher';
-import { rcatch } from './rcatch';
+import { rcaptureAny } from './rcapture-any';
 
 /**
  * Route matcher that matches any part of the entry name.
  */
-export const rmatchAny: RouteMatcher = (/*#__PURE__*/ rcatch());
+export const rmatchAny: RouteMatcher = (/*#__PURE__*/ rcaptureAny());

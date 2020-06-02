@@ -1,11 +1,11 @@
 import { routeMatch, RoutePattern } from '../route-match';
 import { urlRoute } from '../url';
-import { rcatch } from './rcatch';
+import { rcaptureAny } from './rcapture-any';
 import { rmatchAny } from './rmatch-any';
 import { rmatchDirSep } from './rmatch-dir-sep';
 import { rmatchString } from './rmatch-string';
 
-describe('rcatch', () => {
+describe('rcaptureAny', () => {
 
   let cb: jest.Mock;
 
@@ -18,7 +18,7 @@ describe('rcatch', () => {
     let pattern: RoutePattern;
 
     beforeEach(() => {
-      pattern = [rcatch('out')];
+      pattern = [rcaptureAny('out')];
     });
 
     it('does not match empty route', () => {
@@ -48,7 +48,7 @@ describe('rcatch', () => {
     let pattern: RoutePattern;
 
     beforeEach(() => {
-      pattern = [rcatch('out'), rmatchDirSep, rmatchAny];
+      pattern = [rcaptureAny('out'), rmatchDirSep, rmatchAny];
     });
 
     it('matches two entries', () => {
@@ -65,7 +65,7 @@ describe('rcatch', () => {
     let pattern: RoutePattern;
 
     beforeEach(() => {
-      pattern = [rmatchAny, rmatchDirSep, rcatch('out')];
+      pattern = [rmatchAny, rmatchDirSep, rcaptureAny('out')];
     });
 
     it('matches two entries', () => {
@@ -82,7 +82,7 @@ describe('rcatch', () => {
     let pattern: RoutePattern;
 
     beforeEach(() => {
-      pattern = [rmatchString('page-'), rcatch('out')];
+      pattern = [rmatchString('page-'), rcaptureAny('out')];
     });
 
     it('matches file', () => {
@@ -102,7 +102,7 @@ describe('rcatch', () => {
     let pattern: RoutePattern;
 
     beforeEach(() => {
-      pattern = [rcatch('out'), rmatchString('.html')];
+      pattern = [rcaptureAny('out'), rmatchString('.html')];
     });
 
     it('matches file', () => {

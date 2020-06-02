@@ -8,6 +8,6 @@ import type { RouteMatcher } from '../route-matcher';
 /**
  * Route matcher that matches any route entry.
  */
-export const rmatchAnyEntry: RouteMatcher = {
+export const rmatchEntry: RouteMatcher = {
   test: (/*#__PURE__*/ valueProvider({})),
 };

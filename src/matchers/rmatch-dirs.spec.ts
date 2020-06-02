@@ -1,13 +1,13 @@
 import { routeMatch } from '../route-match';
 import { urlRoute } from '../url';
-import { rmatchAnyDirs } from './rmatch-any-dirs';
 import { rmatchDirSep } from './rmatch-dir-sep';
+import { rmatchDirs } from './rmatch-dirs';
 import { rmatchName } from './rmatch-name';
 
-describe('rmatchAnyDirs', () => {
+describe('rmatchDirs', () => {
   describe('**', () => {
 
-    const pattern = [rmatchAnyDirs];
+    const pattern = [rmatchDirs];
 
     it('matches empty route', () => {
       expect(routeMatch(urlRoute(new URL('http://localhost')), pattern)).toBeTruthy();
@@ -25,7 +25,7 @@ describe('rmatchAnyDirs', () => {
 
   describe('**<name>', () => {
 
-    const pattern = [rmatchAnyDirs, rmatchName('test')];
+    const pattern = [rmatchDirs, rmatchName('test')];
 
     it('does not match empty route', () => {
       expect(routeMatch(urlRoute(new URL('http://localhost')), pattern)).toBeNull();
@@ -49,7 +49,7 @@ describe('rmatchAnyDirs', () => {
 
   describe('**/<name>', () => {
 
-    const pattern = [rmatchAnyDirs, rmatchDirSep, rmatchName('test')];
+    const pattern = [rmatchDirs, rmatchDirSep, rmatchName('test')];
 
     it('does not match empty route', () => {
       expect(routeMatch(urlRoute(new URL('http://localhost')), pattern)).toBeNull();
@@ -73,7 +73,7 @@ describe('rmatchAnyDirs', () => {
 
   describe('<name>/**', () => {
 
-    const pattern = [rmatchName('test'), rmatchDirSep, rmatchAnyDirs];
+    const pattern = [rmatchName('test'), rmatchDirSep, rmatchDirs];
 
     it('matches dir itself', () => {
       expect(routeMatch(urlRoute(new URL('http://localhost/test/')), pattern)).toBeTruthy();
