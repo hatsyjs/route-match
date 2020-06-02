@@ -4,14 +4,19 @@
  */
 import type { RouteCapture } from '../route-capture';
 import type { RouteMatch } from '../route-match';
+import { routeMatch } from '../route-match';
 import type { RouteMatcher } from '../route-matcher';
+
+const removeGlobalAndStickyFlagsPattern = /[gy]/;
 
 export function rmatchRegExp(expected: RegExp, name?: string): RouteMatcher {
 
-  const global = expected.global;
-  const re = expected.sticky ? new RegExp(expected) : new RegExp(expected.source, `${expected.flags}y`);
+  const { global, sticky, flags } = expected;
+  const re = sticky ? new RegExp(expected) : new RegExp(expected.source, `${flags}y`);
+  let searchRe: RegExp | undefined;
 
   return {
+
     test(context): RouteMatcher.Match | undefined {
 
       const { entry, nameOffset } = context;
@@ -57,5 +62,43 @@ export function rmatchRegExp(expected: RegExp, name?: string): RouteMatcher {
         callback: resultCallback,
       };
     },
+
+    find({
+      route,
+      entry,
+      entryIndex: fromEntry,
+      nameOffset,
+      pattern,
+      matcherIndex: fromMatcher,
+    }): [RouteMatch, number] | null | undefined {
+      if (!searchRe) {
+        if (global || sticky) {
+          searchRe = new RegExp(expected.source, flags.split(removeGlobalAndStickyFlagsPattern).join(''));
+        } else {
+          searchRe = expected;
+        }
+      }
+
+      const name = entry.name.substring(nameOffset);
+      const found = searchRe.exec(name);
+
+      if (!found) {
+        return;
+      }
+
+      const offset = nameOffset + found.index;
+      const match = routeMatch(
+          route,
+          pattern,
+          {
+            fromEntry,
+            nameOffset: offset,
+            fromMatcher,
+          },
+      );
+
+      return match && [match, offset];
+    },
+
   };
 }
