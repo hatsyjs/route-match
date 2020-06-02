@@ -3,11 +3,11 @@
  * @module @hatsy/route-match
  */
 import type { RouteMatcher } from '../route-matcher';
-import { rmatchDirs } from './rmatch-dirs';
+import { rcatchDirs } from './rcatch-dirs';
 
 /**
  * Route matcher that matches any number of directories, including none.
  *
  * Matches only at the {@link RouteMatcher.Context.nameOffset entry name beginning}.
  */
-export const rmatchAnyDirs: RouteMatcher = (/*#__PURE__*/ rmatchDirs());
+export const rmatchAnyDirs: RouteMatcher = (/*#__PURE__*/ rcatchDirs());

@@ -20,7 +20,7 @@ import type { RouteMatcher } from '../route-matcher';
  *
  * @see Use {@link rmatchAnyDirs} if the capturing is not needed.
  */
-export function rmatchDirs(name?: string): RouteMatcher {
+export function rcatchDirs(name?: string): RouteMatcher {
   return {
 
     test(context): RouteMatcher.Match | undefined {

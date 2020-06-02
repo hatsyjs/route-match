@@ -14,7 +14,7 @@ import type { RouteMatcher } from '../route-matcher';
  *
  * @see Use {@link rmatchAnyEntry} if the capturing is not needed.
  */
-export function rmatchEntry(name: string): RouteMatcher {
+export function rcatchEntry(name: string): RouteMatcher {
   return {
     test: context => !context.nameOffset && {
       callback(capture) {

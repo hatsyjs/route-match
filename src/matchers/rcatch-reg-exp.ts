@@ -20,7 +20,7 @@ const removeGlobalAndStickyFlagsPattern = /[gy]/;
  *
  * @returns New route matcher.
  */
-export function rmatchRegExp(expected: RegExp, name?: string): RouteMatcher {
+export function rcatchRegExp(expected: RegExp, name?: string): RouteMatcher {
 
   const { global, sticky, flags } = expected;
   const re = sticky ? new RegExp(expected) : new RegExp(expected.source, `${flags}y`);

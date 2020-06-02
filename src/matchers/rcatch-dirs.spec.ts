@@ -1,10 +1,10 @@
 import { routeMatch } from '../route-match';
 import { urlRoute } from '../url';
+import { rcatchDirs } from './rcatch-dirs';
 import { rmatchDirSep } from './rmatch-dir-sep';
-import { rmatchDirs } from './rmatch-dirs';
 import { rmatchName } from './rmatch-name';
 
-describe('rmatchDirs', () => {
+describe('rcatchDirs', () => {
 
   let capture: jest.Mock;
 
@@ -14,7 +14,7 @@ describe('rmatchDirs', () => {
 
   describe('{capture:**}', () => {
 
-    const pattern = [rmatchDirs('out')];
+    const pattern = [rcatchDirs('out')];
 
     it('does not capture empty route', () => {
 
@@ -38,7 +38,7 @@ describe('rmatchDirs', () => {
 
   describe('{capture:**}<name>', () => {
 
-    const pattern = [rmatchDirs('out'), rmatchName('test')];
+    const pattern = [rcatchDirs('out'), rmatchName('test')];
 
     it('does not capture named file', () => {
 
@@ -70,7 +70,7 @@ describe('rmatchDirs', () => {
 
   describe('{capture:**}/<name>', () => {
 
-    const pattern = [rmatchDirs('out'), rmatchDirSep, rmatchName('test')];
+    const pattern = [rcatchDirs('out'), rmatchDirSep, rmatchName('test')];
 
     it('does not capture named file', () => {
 
@@ -102,7 +102,7 @@ describe('rmatchDirs', () => {
 
   describe('{capture:/**}', () => {
 
-    const pattern = [rmatchName('test'), rmatchDirSep, rmatchDirs('out')];
+    const pattern = [rmatchName('test'), rmatchDirSep, rcatchDirs('out')];
 
     it('does not capture dir itself', () => {
 

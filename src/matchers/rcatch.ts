@@ -14,7 +14,7 @@ import type { RouteMatcher } from '../route-matcher';
  *
  * @see Use {@link rmatchAny} if the capturing is not needed.
  */
-export function rmatchCapture(name?: string): RouteMatcher {
+export function rcatch(name?: string): RouteMatcher {
   return {
 
     test(context): RouteMatcher.Match | undefined {
