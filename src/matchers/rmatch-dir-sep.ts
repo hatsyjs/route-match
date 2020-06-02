@@ -6,6 +6,15 @@ import { valueProvider } from '@proc7ts/primitives';
 import { routeMatch } from '../route-match';
 import type { RouteMatcher } from '../route-matcher';
 
+/**
+ * Route matcher that matches directory separator.
+ *
+ * This matcher should be the last one of the matchers applicable to the same entry.
+ *
+ * Does not match in the middle of the entry name.
+ *
+ * When matches at the end of the entry name, moves to the next entry.
+ */
 export const rmatchDirSep: RouteMatcher = {
 
   test({

@@ -4,6 +4,16 @@
  */
 import type { RouteMatcher } from '../route-matcher';
 
+/**
+ * Builds a route matcher that matches any part of entry name and optionally captures its name.
+ *
+ * Reports the capture as {@link RouteCaptureSignatureMap.capture `capture`}.
+ *
+ * @param name  The name of the capture or nothing to not capture.
+ * @returns  New route matcher.
+ *
+ * @see Use {@link rmatchAny} if the capturing is not needed.
+ */
 export function rmatchCapture(name?: string): RouteMatcher {
   return {
 

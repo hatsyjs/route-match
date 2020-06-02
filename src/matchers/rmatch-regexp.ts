@@ -9,6 +9,17 @@ import type { RouteMatcher } from '../route-matcher';
 
 const removeGlobalAndStickyFlagsPattern = /[gy]/;
 
+/**
+ * Builds a route matcher that matches a part of the name against expected regular expression, and optionally captures
+ * the match.
+ *
+ * Reports the capture as {@link RouteCaptureSignatureMap.regexp `regexp`}.
+ *
+ * @param expected  The regular expression the name part expected to match.
+ * @param name  The name of the capture or nothing to not capture.
+ *
+ * @returns New route matcher.
+ */
 export function rmatchRegExp(expected: RegExp, name?: string): RouteMatcher {
 
   const { global, sticky, flags } = expected;

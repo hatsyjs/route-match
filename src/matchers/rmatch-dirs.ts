@@ -6,6 +6,20 @@ import { valueProvider } from '@proc7ts/primitives';
 import { routeMatch } from '../route-match';
 import type { RouteMatcher } from '../route-matcher';
 
+/**
+ * Builds a route matcher that matches any number of directories, and captures them.
+ *
+ * Matches only at the {@link RouteMatcher.Context.nameOffset entry name beginning}.
+ *
+ * Reports the capture as {@link RouteCaptureSignatureMap.dirs `dirs`}.
+ *
+ * Never captures empty match.
+ *
+ * @param name  The name of the capture or nothing to not capture.
+ * @returns  New route matcher.
+ *
+ * @see Use {@link rmatchAnyDirs} if the capturing is not needed.
+ */
 export function rmatchDirs(name?: string): RouteMatcher {
   return {
 

@@ -10,6 +10,9 @@ import type { RouteMatcher } from '../route-matcher';
  * Matches only at the {@link RouteMatcher.Context.nameOffset entry name beginning}.
  *
  * @param name  The name of the entry to capture.
+ * @returns New route matcher.
+ *
+ * @see Use {@link rmatchAnyEntry} if the capturing is not needed.
  */
 export function rmatchEntry(name: string): RouteMatcher {
   return {

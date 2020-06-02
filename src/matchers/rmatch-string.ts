@@ -6,6 +6,13 @@ import type { RouteMatch } from '../route-match';
 import { routeMatch } from '../route-match';
 import type { RouteMatcher } from '../route-matcher';
 
+/**
+ * Builds a route matcher that matches if part of the entry name equals to the expected string.
+ *
+ * @param expected  Expected part of the entry name.
+ *
+ * @returns New route matcher.
+ */
 export function rmatchString(expected: string): RouteMatcher {
   return {
 

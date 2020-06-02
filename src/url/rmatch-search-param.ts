@@ -6,6 +6,14 @@ import type { PathRoute } from '../path';
 import type { RouteMatcher } from '../route-matcher';
 import type { URLRoute } from './url-route';
 
+/**
+ * Builds URL route matcher that matches URL search parameter.
+ *
+ * @param name  Required URL search parameter.
+ * @param value  A value the parameter should have. Or nothing to just require the parameter to present.
+ *
+ * @returns New URL route matcher.
+ */
 export function rmatchSearchParam(name: string, value?: string): RouteMatcher<PathRoute.Entry, URLRoute> {
 
   const condition: (position: RouteMatcher.Position<PathRoute.Entry, URLRoute>) => boolean = value == null
