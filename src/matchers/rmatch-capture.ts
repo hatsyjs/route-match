@@ -33,20 +33,21 @@ export function rmatchCapture(name?: string): RouteMatcher {
         return;
       }
 
+      const { nameOffset } = context;
       const [match, offset] = found;
 
       return {
         entries: context.route.path.length,
         full: true,
-        callback: name != null
+        callback: name != null && offset > nameOffset
             ? capture => {
-              match(capture);
               capture(
                   'capture',
                   name,
-                  context.entry.name.substring(context.nameOffset, offset),
+                  context.entry.name.substring(nameOffset, offset),
                   context,
               );
+              match(capture);
             }
             : match,
       };

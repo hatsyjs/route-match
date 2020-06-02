@@ -53,13 +53,13 @@ export function rmatchDirs(name?: string): RouteMatcher {
             full: true,
             callback: name != null && fromEntry > entryIndex // There is something to capture
                 ? capture => {
-                  match(capture);
                   capture(
                       'dirs',
                       name,
                       fromEntry,
                       context,
                   );
+                  match(capture);
                 }
                 : match,
           };
