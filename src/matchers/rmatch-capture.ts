@@ -2,18 +2,12 @@
  * @packageDocumentation
  * @module @hatsy/route-match
  */
-import type { PathRoute } from '../path';
 import type { RouteMatcher } from '../route-matcher';
 
-export function rmatchCapture<
-    TEntry extends PathRoute.Entry,
-    TRoute extends PathRoute<TEntry>,
-    >(
-    name?: string,
-): RouteMatcher<TEntry, TRoute> {
+export function rmatchCapture(name?: string): RouteMatcher {
   return {
 
-    test(context): RouteMatcher.Match<TEntry, TRoute> | undefined {
+    test(context): RouteMatcher.Match | undefined {
 
       const { pattern, matcherIndex } = context;
       const nextMatcher = pattern[matcherIndex + 1];

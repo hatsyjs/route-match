@@ -6,9 +6,7 @@ import type { RouteMatch } from '../route-match';
 import { routeMatch } from '../route-match';
 import type { RouteMatcher } from '../route-matcher';
 
-export function rmatchString(
-    expected: string,
-): RouteMatcher {
+export function rmatchString(expected: string): RouteMatcher {
   return {
 
     test({ entry: { name }, nameOffset }): RouteMatcher.Match | false {

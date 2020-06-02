@@ -2,21 +2,15 @@
  * @packageDocumentation
  * @module @hatsy/route-match
  */
-import type { PathRoute } from '../path';
 import { routeMatch } from '../route-match';
 import type { RouteMatcher } from '../route-matcher';
 
-export function rmatchDirs<
-    TEntry extends PathRoute.Entry,
-    TRoute extends PathRoute<TEntry>,
-    >(
-    name?: string,
-): RouteMatcher<TEntry, TRoute> {
+export function rmatchDirs(name?: string): RouteMatcher {
   return {
 
     tail: true,
 
-    test(context): RouteMatcher.Match<TEntry, TRoute> | undefined {
+    test(context): RouteMatcher.Match | undefined {
 
       const { route, nameOffset, pattern, matcherIndex } = context;
 

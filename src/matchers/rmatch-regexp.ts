@@ -2,18 +2,11 @@
  * @packageDocumentation
  * @module @hatsy/route-match
  */
-import type { PathRoute } from '../path';
 import type { RouteCapture } from '../route-capture';
 import type { RouteMatch } from '../route-match';
 import type { RouteMatcher } from '../route-matcher';
 
-export function rmatchRegExp<
-    TEntry extends PathRoute.Entry,
-    TRoute extends PathRoute<TEntry>,
-    >(
-    expected: RegExp,
-    name?: string,
-): RouteMatcher<TEntry, TRoute> {
+export function rmatchRegExp(expected: RegExp, name?: string): RouteMatcher {
 
   const global = expected.global;
   const re = expected.sticky ? new RegExp(expected) : new RegExp(expected.source, `${expected.flags}y`);
@@ -32,7 +25,7 @@ export function rmatchRegExp<
       }
 
       let nameChars = re.lastIndex;
-      let resultCallback!: RouteMatch<TEntry, TRoute> | undefined;
+      let resultCallback!: RouteMatch | undefined;
 
       // Fill group names.
       for (;;) {
@@ -40,7 +33,7 @@ export function rmatchRegExp<
 
           const prevCallback = resultCallback;
           const match = execResult;
-          const nextCallback = (capture: RouteCapture<TEntry, TRoute>): void => capture('regexp', name, match, context);
+          const nextCallback = (capture: RouteCapture): void => capture('regexp', name, match, context);
 
           resultCallback = prevCallback
               ? capture => { prevCallback(capture); nextCallback(capture); }

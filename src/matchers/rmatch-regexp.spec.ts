@@ -13,9 +13,8 @@ describe('rmatchRegExp', () => {
 
   describe('{capture:/regexp/}', () => {
     it('captures entry name', () => {
-
       const route = urlRoute(new URL('http://localhost/the-test!'));
-      const match = routeMatch(route, [rmatchRegExp(/.*test.*/, 'out')] as const);
+      const match = routeMatch(route, [rmatchRegExp(/.*test.*/, 'out')]);
 
       match?.(capture);
       expect(capture).toHaveBeenCalledWith('regexp', 'out', expect.anything(), expect.anything());
@@ -26,7 +25,7 @@ describe('rmatchRegExp', () => {
 
       const route = urlRoute(new URL('http://localhost/the-test'));
 
-      expect(routeMatch(route, [rmatchRegExp(/test/)] as const)).toBeNull();
+      expect(routeMatch(route, [rmatchRegExp(/test/)])).toBeNull();
     });
     it('captures the first matching group when the pattern is not global', () => {
 
@@ -44,7 +43,7 @@ describe('rmatchRegExp', () => {
     it('captures all matching groups', () => {
 
       const route = urlRoute(new URL('http://localhost/test-TEST'));
-      const match = routeMatch(route, [rmatchRegExp(/(test)-?/gi, 'out')] as const);
+      const match = routeMatch(route, [rmatchRegExp(/(test)-?/gi, 'out')]);
 
       match?.(capture);
       expect(capture).toHaveBeenCalledWith('regexp', 'out', expect.anything(), expect.anything());
@@ -59,7 +58,7 @@ describe('rmatchRegExp', () => {
 
       const route = urlRoute(new URL('http://localhost/the-test!'));
       const pattern = /.*test.*/y;
-      const match = routeMatch(route, [rmatchRegExp(pattern)] as const);
+      const match = routeMatch(route, [rmatchRegExp(pattern)]);
 
       expect(match).toBeTruthy();
       expect(pattern.lastIndex).toBe(0);
