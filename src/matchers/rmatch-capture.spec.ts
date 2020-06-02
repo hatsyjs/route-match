@@ -1,4 +1,3 @@
-import { pathRouteByURL } from '../path';
 import { routeMatch, RoutePattern } from '../route-match';
 import { urlRoute } from '../url';
 import { rmatchAny } from './rmatch-any';
@@ -54,7 +53,7 @@ describe('rmatchCapture', () => {
 
     it('matches two entries', () => {
 
-      const match = routeMatch(pathRouteByURL(new URL('http://localhost/dir/file')), pattern);
+      const match = routeMatch(urlRoute(new URL('http://localhost/dir/file')), pattern);
 
       match?.(cb);
       expect(cb).toHaveBeenCalledWith('capture', 'out', 'dir', expect.anything());
@@ -71,7 +70,7 @@ describe('rmatchCapture', () => {
 
     it('matches two entries', () => {
 
-      const match = routeMatch(pathRouteByURL(new URL('http://localhost/dir/file')), pattern);
+      const match = routeMatch(urlRoute(new URL('http://localhost/dir/file')), pattern);
 
       match?.(cb);
       expect(cb).toHaveBeenCalledWith('capture', 'out', 'file', expect.anything());
@@ -88,13 +87,13 @@ describe('rmatchCapture', () => {
 
     it('matches file', () => {
 
-      const match = routeMatch(pathRouteByURL(new URL('http://localhost/page-1')), pattern);
+      const match = routeMatch(urlRoute(new URL('http://localhost/page-1')), pattern);
 
       match?.(cb);
       expect(cb).toHaveBeenCalledWith('capture', 'out', '1', expect.anything());
     });
     it('does not match file with wrong prefix', () => {
-      expect(routeMatch(pathRouteByURL(new URL('http://localhost/page1')), pattern)).toBeNull();
+      expect(routeMatch(urlRoute(new URL('http://localhost/page1')), pattern)).toBeNull();
     });
   });
 
@@ -108,13 +107,13 @@ describe('rmatchCapture', () => {
 
     it('matches file', () => {
 
-      const match = routeMatch(pathRouteByURL(new URL('http://localhost/index.html')), pattern);
+      const match = routeMatch(urlRoute(new URL('http://localhost/index.html')), pattern);
 
       match?.(cb);
       expect(cb).toHaveBeenCalledWith('capture', 'out', 'index', expect.anything());
     });
     it('does not match file with wrong suffix', () => {
-      expect(routeMatch(pathRouteByURL(new URL('http://localhost/index.htm')), pattern)).toBeNull();
+      expect(routeMatch(urlRoute(new URL('http://localhost/index.htm')), pattern)).toBeNull();
     });
   });
 });

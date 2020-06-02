@@ -3,11 +3,18 @@
  * @module @hatsy/route-match
  */
 import type { PathRoute } from '../path';
-import { pathRouteByURL } from '../path';
 
+/**
+ * A route representing an URL.
+ */
 export interface URLRoute<TEntry extends PathRoute.Entry = PathRoute.Entry> extends PathRoute<TEntry> {
 
-  readonly query: Readonly<Record<string, readonly string[]>>;
+  /**
+   * URL this route represents.
+   *
+   * Do not modify it.
+   */
+  readonly url: URL;
 
   /**
    * Builds a string representation of this route.
@@ -18,38 +25,44 @@ export interface URLRoute<TEntry extends PathRoute.Entry = PathRoute.Entry> exte
 
 }
 
-export function urlRoute(url: URL): URLRoute {
-
-  const urlRoute = pathRouteByURL(url) as PathRoute & { query: Readonly<Record<string, readonly string[]>> };
-  const query: Record<string, readonly string[]> = {};
-
-  url.searchParams.forEach((_value, name, parent) => {
-    query[name] = parent.getAll(name);
-  });
-
-  urlRoute.query = query;
-  urlRoute.toString = urlRouteToString(urlRoute.toString);
-
-  return urlRoute;
-}
-
 /**
  * @internal
  */
-function urlRouteToString(toString: (this: URLRoute) => string): (this: URLRoute) => string {
-  return function (this: URLRoute): string {
+function urlRouteToString(this: URLRoute): string {
 
-    let query = '';
+  const { pathname, searchParams } = this.url;
+  const query = searchParams.toString();
+  const path = pathname.substring(1); // no leading `/`
 
-    for (const [name, values] of Object.entries(this.query)) {
+  return query ? `${path}?${query}` : path;
+}
 
-      const n = encodeURIComponent(name);
+export function urlRoute(url: URL): URLRoute {
 
-      for (const value of values) {
-        query += (query ? '&' : '?') + n + '=' + encodeURIComponent(value);
-      }
-    }
+  let { pathname } = url;
 
-    return toString.call(this) + query;
+  if (pathname.length <= 1) {
+    return {
+      url,
+      path: [],
+      dir: true,
+      toString: urlRouteToString,
+    };
+  }
+
+  let dir = false;
+
+  if (pathname.endsWith('/')) {
+    dir = true;
+    pathname = pathname.substr(1, pathname.length - 2); // Remove leading and trailing slashes
+  } else {
+    pathname = pathname.substr(1); // Remove leading slash
+  }
+
+  return {
+    url,
+    path: pathname.split('/').map(name => ({ name: decodeURIComponent(name) })),
+    dir,
+    toString: urlRouteToString,
   };
 }
