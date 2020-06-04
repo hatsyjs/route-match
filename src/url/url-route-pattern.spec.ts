@@ -185,24 +185,25 @@ describe('urlRoutePattern', () => {
           urlRoutePattern('{name}.{ext}'),
       );
 
-      expect(match).toBeTruthy();
       match?.(capture);
       expect(capture).toHaveBeenCalledWith('capture', 'name', 'file', expect.anything());
       expect(capture).toHaveBeenCalledWith('capture', 'ext', 'html', expect.anything());
+      expect(capture).toHaveBeenCalledTimes(2);
     });
   });
 
   describe('dir/{(file)}', () => {
-    it('matches file', () => {
+    it('captures file', () => {
 
       const match = routeMatch(
           urlRoute(new URL('http://localhost/dir/file')),
           urlRoutePattern('dir/{(file)}'),
       );
 
-      expect(match).toBeTruthy();
       match?.(capture);
-      expect(capture).not.toHaveBeenCalled();
+      expect(capture).toHaveBeenCalledWith('regexp', 1, expect.anything(), expect.anything());
+      expect([...capture.mock.calls[0][2]]).toEqual(['file']);
+      expect(capture).toHaveBeenCalledTimes(1);
     });
   });
 

@@ -16,12 +16,13 @@ const removeGlobalAndStickyFlagsPattern = /[gy]/;
  * Reports the capture as {@link RouteCaptureSignatureMap.regexp `regexp`}.
  *
  * @param expected  The regular expression the name part expected to match.
- * @param name  The name of the capture or nothing to not capture.
+ * @param name  The name of the capture or nothing to capture under match index.
  *
  * @returns New route matcher.
  */
 export function rcaptureRegExp(expected: RegExp, name?: string): RouteMatcher {
 
+  const key = name ?? 0;
   const { global, sticky, flags } = expected;
   const re = sticky ? new RegExp(expected) : new RegExp(expected.source, `${flags}y`);
   let searchRe: RegExp | undefined;
@@ -45,16 +46,14 @@ export function rcaptureRegExp(expected: RegExp, name?: string): RouteMatcher {
 
       // Fill group names.
       for (;;) {
-        if (name != null) {
 
-          const prevCallback = resultCallback;
-          const match = execResult;
-          const nextCallback = (capture: RouteCapture): void => capture('regexp', name, match, context);
+        const prevCallback = resultCallback;
+        const match = execResult;
+        const nextCallback = (capture: RouteCapture): void => capture('regexp', key, match, context);
 
-          resultCallback = prevCallback
-              ? capture => { prevCallback(capture); nextCallback(capture); }
-              : nextCallback;
-        }
+        resultCallback = prevCallback
+            ? capture => { prevCallback(capture); nextCallback(capture); }
+            : nextCallback;
 
         if (!global) {
           break;
