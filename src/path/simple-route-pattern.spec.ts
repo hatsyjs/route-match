@@ -4,10 +4,10 @@ import { simpleRoutePattern } from './simple-route-pattern';
 
 describe('simpleRoutePattern', () => {
 
-  let capture: jest.Mock;
+  let captor: jest.Mock;
 
   beforeEach(() => {
-    capture = jest.fn();
+    captor = jest.fn();
   });
 
   it('is empty on empty string', () => {
@@ -32,8 +32,8 @@ describe('simpleRoutePattern', () => {
       );
 
       expect(match).toBeTruthy();
-      match?.(capture);
-      expect(capture).toHaveBeenCalledWith('dirs', 'out', 3, expect.anything());
+      match?.(captor);
+      expect(captor).toHaveBeenCalledWith('dirs', 'out', 3, expect.anything());
     });
   });
 
@@ -46,9 +46,9 @@ describe('simpleRoutePattern', () => {
       );
 
       expect(match).toBeTruthy();
-      match?.(capture);
-      expect(capture).toHaveBeenCalledWith('dirs', 1, 3, expect.anything());
-      expect(capture).toHaveBeenCalledTimes(1);
+      match?.(captor);
+      expect(captor).toHaveBeenCalledWith('dirs', 1, 3, expect.anything());
+      expect(captor).toHaveBeenCalledTimes(1);
     });
   });
 
@@ -70,8 +70,8 @@ describe('simpleRoutePattern', () => {
       );
 
       expect(match).toBeTruthy();
-      match?.(capture);
-      expect(capture).toHaveBeenCalledWith('capture', 'out', 'dir', expect.anything());
+      match?.(captor);
+      expect(captor).toHaveBeenCalledWith('capture', 'out', 'dir', expect.anything());
     });
   });
 
@@ -84,8 +84,8 @@ describe('simpleRoutePattern', () => {
       );
 
       expect(match).toBeTruthy();
-      match?.(capture);
-      expect(capture).toHaveBeenCalledWith('capture', 'out', 'dir', expect.anything());
+      match?.(captor);
+      expect(captor).toHaveBeenCalledWith('capture', 'out', 'dir', expect.anything());
     });
   });
 
@@ -98,9 +98,9 @@ describe('simpleRoutePattern', () => {
       );
 
       expect(match).toBeTruthy();
-      match?.(capture);
-      expect(capture).toHaveBeenCalledWith('capture', 1, 'dir', expect.anything());
-      expect(capture).toHaveBeenCalledTimes(1);
+      match?.(captor);
+      expect(captor).toHaveBeenCalledWith('capture', 1, 'dir', expect.anything());
+      expect(captor).toHaveBeenCalledTimes(1);
     });
   });
 
@@ -112,9 +112,9 @@ describe('simpleRoutePattern', () => {
           simpleRoutePattern('{}'),
       );
 
-      match?.(capture);
-      expect(capture).toHaveBeenCalledWith('capture', 1, 'test', expect.anything());
-      expect(capture).toHaveBeenCalledTimes(1);
+      match?.(captor);
+      expect(captor).toHaveBeenCalledWith('capture', 1, 'test', expect.anything());
+      expect(captor).toHaveBeenCalledTimes(1);
     });
   });
 
@@ -127,8 +127,8 @@ describe('simpleRoutePattern', () => {
       );
 
       expect(match).toBeTruthy();
-      match?.(capture);
-      expect(capture).toHaveBeenCalledWith('capture', ')(', 'test', expect.anything());
+      match?.(captor);
+      expect(captor).toHaveBeenCalledWith('capture', ')(', 'test', expect.anything());
     });
   });
 

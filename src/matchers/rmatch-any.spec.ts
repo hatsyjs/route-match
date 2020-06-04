@@ -5,10 +5,10 @@ import { rmatchDirSep } from './rmatch-dir-sep';
 
 describe('rmatchAny', () => {
 
-  let capture: jest.Mock;
+  let captor: jest.Mock;
 
   beforeEach(() => {
-    capture = jest.fn();
+    captor = jest.fn();
   });
 
   describe('*', () => {
@@ -22,17 +22,17 @@ describe('rmatchAny', () => {
 
       const match = routeMatch(urlRoute(new URL('http://localhost/file')), pattern);
 
-      match?.(capture);
-      expect(capture).toHaveBeenCalledWith('capture', 1, 'file', expect.anything());
-      expect(capture).toHaveBeenCalledTimes(1);
+      match?.(captor);
+      expect(captor).toHaveBeenCalledWith('capture', 1, 'file', expect.anything());
+      expect(captor).toHaveBeenCalledTimes(1);
     });
     it('captures directory', () => {
 
       const match = routeMatch(urlRoute(new URL('http://localhost/dir/')), pattern);
 
-      match?.(capture);
-      expect(capture).toHaveBeenCalledWith('capture', 1, 'dir', expect.anything());
-      expect(capture).toHaveBeenCalledTimes(1);
+      match?.(captor);
+      expect(captor).toHaveBeenCalledWith('capture', 1, 'dir', expect.anything());
+      expect(captor).toHaveBeenCalledTimes(1);
     });
     it('does not match multiple entries', () => {
       expect(routeMatch(urlRoute(new URL('http://localhost/dir/file')), pattern)).toBeNull();
@@ -53,10 +53,10 @@ describe('rmatchAny', () => {
 
       const match = routeMatch(urlRoute(new URL('http://localhost/dir/file')), pattern);
 
-      match?.(capture);
-      expect(capture).toHaveBeenCalledWith('capture', 1, 'dir', expect.anything());
-      expect(capture).toHaveBeenCalledWith('capture', 2, 'file', expect.anything());
-      expect(capture).toHaveBeenCalledTimes(2);
+      match?.(captor);
+      expect(captor).toHaveBeenCalledWith('capture', 1, 'dir', expect.anything());
+      expect(captor).toHaveBeenCalledWith('capture', 2, 'file', expect.anything());
+      expect(captor).toHaveBeenCalledTimes(2);
     });
   });
 });

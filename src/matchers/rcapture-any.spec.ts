@@ -7,10 +7,10 @@ import { rmatchString } from './rmatch-string';
 
 describe('rcaptureAny', () => {
 
-  let capture: jest.Mock;
+  let captor: jest.Mock;
 
   beforeEach(() => {
-    capture = jest.fn();
+    captor = jest.fn();
   });
 
   describe('{capture}', () => {
@@ -28,16 +28,16 @@ describe('rcaptureAny', () => {
 
       const match = routeMatch(urlRoute(new URL('http://localhost/file')), pattern);
 
-      match?.(capture);
-      expect(capture).toHaveBeenCalledWith('capture', 'out', 'file', expect.anything());
+      match?.(captor);
+      expect(captor).toHaveBeenCalledWith('capture', 'out', 'file', expect.anything());
     });
     it('captures directory', () => {
 
       const match = routeMatch(urlRoute(new URL('http://localhost/dir/')), pattern);
 
-      match?.(capture);
-      expect(capture).toHaveBeenCalledWith('capture', 'out', 'dir', expect.anything());
-      expect(capture).toHaveBeenCalledTimes(1);
+      match?.(captor);
+      expect(captor).toHaveBeenCalledWith('capture', 'out', 'dir', expect.anything());
+      expect(captor).toHaveBeenCalledTimes(1);
     });
     it('does not match multiple entries', () => {
       expect(routeMatch(urlRoute(new URL('http://localhost/dir/file')), pattern)).toBeNull();
@@ -56,10 +56,10 @@ describe('rcaptureAny', () => {
 
       const match = routeMatch(urlRoute(new URL('http://localhost/dir/file')), pattern);
 
-      match?.(capture);
-      expect(capture).toHaveBeenCalledWith('capture', 'out', 'dir', expect.anything());
-      expect(capture).toHaveBeenCalledWith('capture', 1, 'file', expect.anything());
-      expect(capture).toHaveBeenCalledTimes(2);
+      match?.(captor);
+      expect(captor).toHaveBeenCalledWith('capture', 'out', 'dir', expect.anything());
+      expect(captor).toHaveBeenCalledWith('capture', 1, 'file', expect.anything());
+      expect(captor).toHaveBeenCalledTimes(2);
     });
   });
 
@@ -75,10 +75,10 @@ describe('rcaptureAny', () => {
 
       const match = routeMatch(urlRoute(new URL('http://localhost/dir/file')), pattern);
 
-      match?.(capture);
-      expect(capture).toHaveBeenCalledWith('capture', 1, 'dir', expect.anything());
-      expect(capture).toHaveBeenCalledWith('capture', 'out', 'file', expect.anything());
-      expect(capture).toHaveBeenCalledTimes(2);
+      match?.(captor);
+      expect(captor).toHaveBeenCalledWith('capture', 1, 'dir', expect.anything());
+      expect(captor).toHaveBeenCalledWith('capture', 'out', 'file', expect.anything());
+      expect(captor).toHaveBeenCalledTimes(2);
     });
   });
 
@@ -94,9 +94,9 @@ describe('rcaptureAny', () => {
 
       const match = routeMatch(urlRoute(new URL('http://localhost/page-1')), pattern);
 
-      match?.(capture);
-      expect(capture).toHaveBeenCalledWith('capture', 'out', '1', expect.anything());
-      expect(capture).toHaveBeenCalledTimes(1);
+      match?.(captor);
+      expect(captor).toHaveBeenCalledWith('capture', 'out', '1', expect.anything());
+      expect(captor).toHaveBeenCalledTimes(1);
     });
     it('does not match file with wrong prefix', () => {
       expect(routeMatch(urlRoute(new URL('http://localhost/page1')), pattern)).toBeNull();
@@ -115,9 +115,9 @@ describe('rcaptureAny', () => {
 
       const match = routeMatch(urlRoute(new URL('http://localhost/index.html')), pattern);
 
-      match?.(capture);
-      expect(capture).toHaveBeenCalledWith('capture', 'out', 'index', expect.anything());
-      expect(capture).toHaveBeenCalledTimes(1);
+      match?.(captor);
+      expect(captor).toHaveBeenCalledWith('capture', 'out', 'index', expect.anything());
+      expect(captor).toHaveBeenCalledTimes(1);
     });
     it('does not match file with wrong suffix', () => {
       expect(routeMatch(urlRoute(new URL('http://localhost/index.htm')), pattern)).toBeNull();

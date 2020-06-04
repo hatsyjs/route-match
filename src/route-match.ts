@@ -3,13 +3,13 @@
  * @module @hatsy/route-match
  */
 import type { PathRoute } from './path';
-import type { RouteCapture } from './route-capture';
+import type { RouteCaptor } from './route-captor';
 import type { RouteMatcher } from './route-matcher';
 
 /**
  * A successful {@link routeMatch match of the route} against {@link RoutePattern pattern}.
  *
- * This is a function that reports registered partial matches via {@link RouteCapture route capture} callback.
+ * This is a function that reports registered partial matches via {@link RouteCaptor route capture receiver}.
  *
  * @typeparam TEntry  A type of matching route entries.
  * @typeparam TRoute  A type of matching route.
@@ -19,11 +19,11 @@ export type RouteMatch<
     TRoute extends PathRoute<TEntry> = PathRoute<TEntry>,
     > =
 /**
- * @param capture  A {@link RouteCapture route capture} instance to report partial matches to.
+ * @param capture  A {@link RouteCaptor route capture receiver} function to report partial matches to.
  */
     (
         this: void,
-        capture: RouteCapture<TEntry, TRoute>,
+        captor: RouteCaptor<TEntry, TRoute>,
     ) => void;
 
 /**
@@ -151,9 +151,9 @@ export function routeMatch<TEntry extends PathRoute.Entry, TRoute extends PathRo
 
       const prevMatch = successfulMatch;
 
-      successfulMatch = capture => {
-        prevMatch(capture);
-        callback(capture);
+      successfulMatch = captor => {
+        prevMatch(captor);
+        callback(captor);
       };
     }
 
@@ -186,15 +186,15 @@ export function routeMatch<TEntry extends PathRoute.Entry, TRoute extends PathRo
     ++matcherIndex;
   }
 
-  return capture => {
+  return captor => {
 
     let keySeq = 0;
 
-    successfulMatch((kind, ...args) => {
-      if (typeof args[0] === 'number') { // May be any number. E.g. when reporting nested matches
-        args[0] = ++keySeq;
+    successfulMatch((kind, key, ...capture) => {
+      if (typeof key === 'number') { // May be any number. E.g. when reporting nested matches
+        key = ++keySeq;
       }
-      capture(kind, ...args);
+      captor(kind, key, ...capture);
     });
   };
 }

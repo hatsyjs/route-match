@@ -4,10 +4,10 @@ import { rcaptureEntry } from './rcapture-entry';
 
 describe('rcaptureEntry', () => {
 
-  let capture: jest.Mock;
+  let captor: jest.Mock;
 
   beforeEach(() => {
-    capture = jest.fn();
+    captor = jest.fn();
   });
 
   describe('*', () => {
@@ -21,17 +21,17 @@ describe('rcaptureEntry', () => {
 
       const match = routeMatch(urlRoute(new URL('http://localhost/file')), pattern);
 
-      match?.(capture);
-      expect(capture).toHaveBeenCalledWith('capture', 'out', 'file', expect.anything());
-      expect(capture).toHaveBeenCalledTimes(1);
+      match?.(captor);
+      expect(captor).toHaveBeenCalledWith('capture', 'out', 'file', expect.anything());
+      expect(captor).toHaveBeenCalledTimes(1);
     });
     it('captures dir', () => {
 
       const match = routeMatch(urlRoute(new URL('http://localhost/dir/')), pattern);
 
-      match?.(capture);
-      expect(capture).toHaveBeenCalledWith('capture', 'out', 'dir', expect.anything());
-      expect(capture).toHaveBeenCalledTimes(1);
+      match?.(captor);
+      expect(captor).toHaveBeenCalledWith('capture', 'out', 'dir', expect.anything());
+      expect(captor).toHaveBeenCalledTimes(1);
     });
     it('does not match too long path', () => {
       expect(routeMatch(urlRoute(new URL('http://localhost/dir/file')), pattern)).toBeNull();

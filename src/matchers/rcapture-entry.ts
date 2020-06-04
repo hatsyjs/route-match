@@ -20,8 +20,8 @@ export function rcaptureEntry(name?: string): RouteMatcher {
 
   return {
     test: context => !context.nameOffset && {
-      callback(capture) {
-        capture('capture', key, context.entry.name, context);
+      callback(captor) {
+        captor('capture', key, context.entry.name, context);
       },
     },
   };

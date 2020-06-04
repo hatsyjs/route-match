@@ -11,7 +11,7 @@ import type { RouteMatcher } from '../route-matcher';
  *
  * Matches only at the {@link RouteMatcher.Context.nameOffset entry name beginning}.
  *
- * Reports the capture as {@link RouteCaptureSignatureMap.dirs `dirs`}.
+ * Reports the capture as {@link RouteCaptorSignatureMap.dirs `dirs`}.
  *
  * Never captures empty match.
  *
@@ -44,7 +44,7 @@ export function rcaptureDirs(name?: string): RouteMatcher {
         // Always match.
         return {
           full: true,
-          callback: capture => capture(
+          callback: captor => captor(
               'dirs',
               key,
               path.length,
@@ -66,14 +66,14 @@ export function rcaptureDirs(name?: string): RouteMatcher {
             entries: context.route.path.length,
             full: true,
             callback: fromEntry > entryIndex // There is something to capture
-                ? capture => {
-                  capture(
+                ? captor => {
+                  captor(
                       'dirs',
                       key,
                       fromEntry,
                       context,
                   );
-                  match(capture);
+                  match(captor);
                 }
                 : match,
           };

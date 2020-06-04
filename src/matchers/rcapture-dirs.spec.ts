@@ -6,10 +6,10 @@ import { rmatchName } from './rmatch-name';
 
 describe('rcaptureDirs', () => {
 
-  let capture: jest.Mock;
+  let captor: jest.Mock;
 
   beforeEach(() => {
-    capture = jest.fn();
+    captor = jest.fn();
   });
 
   describe('{capture:**}', () => {
@@ -21,18 +21,18 @@ describe('rcaptureDirs', () => {
       const match = routeMatch(urlRoute(new URL('http://localhost')), pattern);
 
       expect(match).toBeTruthy();
-      match?.(capture);
-      expect(capture).not.toHaveBeenCalled();
+      match?.(captor);
+      expect(captor).not.toHaveBeenCalled();
     });
     it('captures file', () => {
-      routeMatch(urlRoute(new URL('http://localhost/file.html')), pattern)?.(capture);
-      expect(capture).toHaveBeenCalledWith('dirs', 'out', 1, expect.anything());
-      expect(capture).toHaveBeenCalledTimes(1);
+      routeMatch(urlRoute(new URL('http://localhost/file.html')), pattern)?.(captor);
+      expect(captor).toHaveBeenCalledWith('dirs', 'out', 1, expect.anything());
+      expect(captor).toHaveBeenCalledTimes(1);
     });
     it('captures any route', () => {
-      routeMatch(urlRoute(new URL('http://localhost/path/to/file.html')), pattern)?.(capture);
-      expect(capture).toHaveBeenCalledWith('dirs', 'out', 3, expect.anything());
-      expect(capture).toHaveBeenCalledTimes(1);
+      routeMatch(urlRoute(new URL('http://localhost/path/to/file.html')), pattern)?.(captor);
+      expect(captor).toHaveBeenCalledWith('dirs', 'out', 3, expect.anything());
+      expect(captor).toHaveBeenCalledTimes(1);
     });
   });
 
@@ -45,26 +45,26 @@ describe('rcaptureDirs', () => {
       const match = routeMatch(urlRoute(new URL('http://localhost/test')), pattern);
 
       expect(match).toBeTruthy();
-      match?.(capture);
-      expect(capture).not.toHaveBeenCalled();
+      match?.(captor);
+      expect(captor).not.toHaveBeenCalled();
     });
     it('does not capture named dir', () => {
 
       const match = routeMatch(urlRoute(new URL('http://localhost/test/')), pattern);
 
       expect(match).toBeTruthy();
-      match?.(capture);
-      expect(capture).not.toHaveBeenCalled();
+      match?.(captor);
+      expect(captor).not.toHaveBeenCalled();
     });
     it('captures nested file', () => {
-      routeMatch(urlRoute(new URL('http://localhost/dir/test')), pattern)?.(capture);
-      expect(capture).toHaveBeenCalledWith('dirs', 'out', 1, expect.anything());
-      expect(capture).toHaveBeenCalledTimes(1);
+      routeMatch(urlRoute(new URL('http://localhost/dir/test')), pattern)?.(captor);
+      expect(captor).toHaveBeenCalledWith('dirs', 'out', 1, expect.anything());
+      expect(captor).toHaveBeenCalledTimes(1);
     });
     it('captures deeply nested dir', () => {
-      routeMatch(urlRoute(new URL('http://localhost/path/to/deep/test/')), pattern)?.(capture);
-      expect(capture).toHaveBeenCalledWith('dirs', 'out', 3, expect.anything());
-      expect(capture).toHaveBeenCalledTimes(1);
+      routeMatch(urlRoute(new URL('http://localhost/path/to/deep/test/')), pattern)?.(captor);
+      expect(captor).toHaveBeenCalledWith('dirs', 'out', 3, expect.anything());
+      expect(captor).toHaveBeenCalledTimes(1);
     });
   });
 
@@ -77,26 +77,26 @@ describe('rcaptureDirs', () => {
       const match = routeMatch(urlRoute(new URL('http://localhost/test')), pattern);
 
       expect(match).toBeTruthy();
-      match?.(capture);
-      expect(capture).not.toHaveBeenCalled();
+      match?.(captor);
+      expect(captor).not.toHaveBeenCalled();
     });
     it('does not capture named dir', () => {
 
       const match = routeMatch(urlRoute(new URL('http://localhost/test/')), pattern);
 
       expect(match).toBeTruthy();
-      match?.(capture);
-      expect(capture).not.toHaveBeenCalled();
+      match?.(captor);
+      expect(captor).not.toHaveBeenCalled();
     });
     it('captures nested file', () => {
-      routeMatch(urlRoute(new URL('http://localhost/dir/test')), pattern)?.(capture);
-      expect(capture).toHaveBeenCalledWith('dirs', 'out', 1, expect.anything());
-      expect(capture).toHaveBeenCalledTimes(1);
+      routeMatch(urlRoute(new URL('http://localhost/dir/test')), pattern)?.(captor);
+      expect(captor).toHaveBeenCalledWith('dirs', 'out', 1, expect.anything());
+      expect(captor).toHaveBeenCalledTimes(1);
     });
     it('captures deeply nested dir', () => {
-      routeMatch(urlRoute(new URL('http://localhost/path/to/deep/test/')), pattern)?.(capture);
-      expect(capture).toHaveBeenCalledWith('dirs', 'out', 3, expect.anything());
-      expect(capture).toHaveBeenCalledTimes(1);
+      routeMatch(urlRoute(new URL('http://localhost/path/to/deep/test/')), pattern)?.(captor);
+      expect(captor).toHaveBeenCalledWith('dirs', 'out', 3, expect.anything());
+      expect(captor).toHaveBeenCalledTimes(1);
     });
   });
 
@@ -109,18 +109,18 @@ describe('rcaptureDirs', () => {
       const match = routeMatch(urlRoute(new URL('http://localhost/test/')), pattern);
 
       expect(match).toBeTruthy();
-      match?.(capture);
-      expect(capture).not.toHaveBeenCalled();
+      match?.(captor);
+      expect(captor).not.toHaveBeenCalled();
     });
     it('captures nested file', () => {
-      routeMatch(urlRoute(new URL('http://localhost/test/file')), pattern)?.(capture);
-      expect(capture).toHaveBeenCalledWith('dirs', 'out', 2, expect.anything());
-      expect(capture).toHaveBeenCalledTimes(1);
+      routeMatch(urlRoute(new URL('http://localhost/test/file')), pattern)?.(captor);
+      expect(captor).toHaveBeenCalledWith('dirs', 'out', 2, expect.anything());
+      expect(captor).toHaveBeenCalledTimes(1);
     });
     it('captures nested dir', () => {
-      routeMatch(urlRoute(new URL('http://localhost/test/dir/')), pattern)?.(capture);
-      expect(capture).toHaveBeenCalledWith('dirs', 'out', 2, expect.anything());
-      expect(capture).toHaveBeenCalledTimes(1);
+      routeMatch(urlRoute(new URL('http://localhost/test/dir/')), pattern)?.(captor);
+      expect(captor).toHaveBeenCalledWith('dirs', 'out', 2, expect.anything());
+      expect(captor).toHaveBeenCalledTimes(1);
     });
   });
 });

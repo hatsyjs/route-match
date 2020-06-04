@@ -7,7 +7,7 @@ import type { RouteMatcher } from '../route-matcher';
 /**
  * Builds a route matcher that matches any part of entry name and optionally captures its name.
  *
- * Reports the capture as {@link RouteCaptureSignatureMap.capture `capture`}.
+ * Reports the capture as {@link RouteCaptorSignatureMap.capture `capture`}.
  *
  * @param name  The name of the capture or nothing to capture under match index.
  * @returns  New route matcher.
@@ -29,7 +29,7 @@ export function rcaptureAny(name?: string): RouteMatcher {
         // This is the last matcher in pattern.
         // Always match.
         return {
-          callback: capture => capture(
+          callback: captor => captor(
               'capture',
               key,
               context.entry.name.substring(context.nameOffset, context.entry.name.length),
@@ -51,14 +51,14 @@ export function rcaptureAny(name?: string): RouteMatcher {
         entries: context.route.path.length,
         full: true,
         callback: offset > nameOffset
-            ? capture => {
-              capture(
+            ? captor => {
+              captor(
                   'capture',
                   key,
                   context.entry.name.substring(nameOffset, offset),
                   context,
               );
-              match(capture);
+              match(captor);
             }
             : match,
       };

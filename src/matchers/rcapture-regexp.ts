@@ -2,7 +2,7 @@
  * @packageDocumentation
  * @module @hatsy/route-match
  */
-import type { RouteCapture } from '../route-capture';
+import type { RouteCaptor } from '../route-captor';
 import type { RouteMatch } from '../route-match';
 import { routeMatch } from '../route-match';
 import type { RouteMatcher } from '../route-matcher';
@@ -13,7 +13,7 @@ const removeGlobalAndStickyFlagsPattern = /[gy]/;
  * Builds a route matcher that matches a part of the name against expected regular expression, and optionally captures
  * the match.
  *
- * Reports the capture as {@link RouteCaptureSignatureMap.regexp `regexp`}.
+ * Reports the capture as {@link RouteCaptorSignatureMap.regexp `regexp`}.
  *
  * @param expected  The regular expression the name part expected to match.
  * @param name  The name of the capture or nothing to capture under match index.
@@ -49,10 +49,10 @@ export function rcaptureRegExp(expected: RegExp, name?: string): RouteMatcher {
 
         const prevCallback = resultCallback;
         const match = execResult;
-        const nextCallback = (capture: RouteCapture): void => capture('regexp', key, match, context);
+        const nextCallback = (captor: RouteCaptor): void => captor('regexp', key, match, context);
 
         resultCallback = prevCallback
-            ? capture => { prevCallback(capture); nextCallback(capture); }
+            ? captor => { prevCallback(captor); nextCallback(captor); }
             : nextCallback;
 
         if (!global) {

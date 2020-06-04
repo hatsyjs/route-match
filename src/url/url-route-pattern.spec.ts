@@ -3,10 +3,11 @@ import { urlRoute } from './url-route';
 import { urlRoutePattern } from './url-route-pattern';
 
 describe('urlRoutePattern', () => {
-  let capture: jest.Mock;
+
+  let captor: jest.Mock;
 
   beforeEach(() => {
-    capture = jest.fn();
+    captor = jest.fn();
   });
 
   it('is empty on empty string', () => {
@@ -31,8 +32,8 @@ describe('urlRoutePattern', () => {
       );
 
       expect(match).toBeTruthy();
-      match?.(capture);
-      expect(capture).toHaveBeenCalledWith('dirs', 'out', 3, expect.anything());
+      match?.(captor);
+      expect(captor).toHaveBeenCalledWith('dirs', 'out', 3, expect.anything());
     });
   });
 
@@ -45,9 +46,9 @@ describe('urlRoutePattern', () => {
       );
 
       expect(match).toBeTruthy();
-      match?.(capture);
-      expect(capture).toHaveBeenCalledWith('dirs', 1, 3, expect.anything());
-      expect(capture).toHaveBeenCalledTimes(1);
+      match?.(captor);
+      expect(captor).toHaveBeenCalledWith('dirs', 1, 3, expect.anything());
+      expect(captor).toHaveBeenCalledTimes(1);
     });
   });
 
@@ -87,8 +88,8 @@ describe('urlRoutePattern', () => {
       );
 
       expect(match).toBeTruthy();
-      match?.(capture);
-      expect(capture).toHaveBeenCalledWith('capture', 'out', 'dir', expect.anything());
+      match?.(captor);
+      expect(captor).toHaveBeenCalledWith('capture', 'out', 'dir', expect.anything());
     });
   });
 
@@ -101,8 +102,8 @@ describe('urlRoutePattern', () => {
       );
 
       expect(match).toBeTruthy();
-      match?.(capture);
-      expect(capture).toHaveBeenCalledWith('capture', 'out', 'dir', expect.anything());
+      match?.(captor);
+      expect(captor).toHaveBeenCalledWith('capture', 'out', 'dir', expect.anything());
     });
   });
 
@@ -114,9 +115,9 @@ describe('urlRoutePattern', () => {
           urlRoutePattern('{:wrong}/file'),
       );
 
-      match?.(capture);
-      expect(capture).toHaveBeenCalledWith('capture', 1, 'dir', expect.anything());
-      expect(capture).toHaveBeenCalledTimes(1);
+      match?.(captor);
+      expect(captor).toHaveBeenCalledWith('capture', 1, 'dir', expect.anything());
+      expect(captor).toHaveBeenCalledTimes(1);
     });
   });
 
@@ -128,9 +129,9 @@ describe('urlRoutePattern', () => {
           urlRoutePattern('{}'),
       );
 
-      match?.(capture);
-      expect(capture).toHaveBeenCalledWith('capture', 1, 'test', expect.anything());
-      expect(capture).toHaveBeenCalledTimes(1);
+      match?.(captor);
+      expect(captor).toHaveBeenCalledWith('capture', 1, 'test', expect.anything());
+      expect(captor).toHaveBeenCalledTimes(1);
     });
   });
 
@@ -143,9 +144,9 @@ describe('urlRoutePattern', () => {
       );
 
       expect(match).toBeTruthy();
-      match?.(capture);
-      expect(capture).toHaveBeenCalledWith('capture', 1, 'test', expect.anything());
-      expect(capture).toHaveBeenCalledTimes(1);
+      match?.(captor);
+      expect(captor).toHaveBeenCalledWith('capture', 1, 'test', expect.anything());
+      expect(captor).toHaveBeenCalledTimes(1);
     });
   });
 
@@ -158,8 +159,8 @@ describe('urlRoutePattern', () => {
       );
 
       expect(match).toBeTruthy();
-      match?.(capture);
-      expect(capture).toHaveBeenCalledWith('capture', 'out', 'file', expect.anything());
+      match?.(captor);
+      expect(captor).toHaveBeenCalledWith('capture', 'out', 'file', expect.anything());
     });
   });
 
@@ -172,8 +173,8 @@ describe('urlRoutePattern', () => {
       );
 
       expect(match).toBeTruthy();
-      match?.(capture);
-      expect(capture).toHaveBeenCalledWith('capture', 'out', 'html', expect.anything());
+      match?.(captor);
+      expect(captor).toHaveBeenCalledWith('capture', 'out', 'html', expect.anything());
     });
   });
 
@@ -185,10 +186,10 @@ describe('urlRoutePattern', () => {
           urlRoutePattern('{name}.{ext}'),
       );
 
-      match?.(capture);
-      expect(capture).toHaveBeenCalledWith('capture', 'name', 'file', expect.anything());
-      expect(capture).toHaveBeenCalledWith('capture', 'ext', 'html', expect.anything());
-      expect(capture).toHaveBeenCalledTimes(2);
+      match?.(captor);
+      expect(captor).toHaveBeenCalledWith('capture', 'name', 'file', expect.anything());
+      expect(captor).toHaveBeenCalledWith('capture', 'ext', 'html', expect.anything());
+      expect(captor).toHaveBeenCalledTimes(2);
     });
   });
 
@@ -200,10 +201,10 @@ describe('urlRoutePattern', () => {
           urlRoutePattern('dir/{(file)}'),
       );
 
-      match?.(capture);
-      expect(capture).toHaveBeenCalledWith('regexp', 1, expect.anything(), expect.anything());
-      expect([...capture.mock.calls[0][2]]).toEqual(['file']);
-      expect(capture).toHaveBeenCalledTimes(1);
+      match?.(captor);
+      expect(captor).toHaveBeenCalledWith('regexp', 1, expect.anything(), expect.anything());
+      expect([...captor.mock.calls[0][2]]).toEqual(['file']);
+      expect(captor).toHaveBeenCalledTimes(1);
     });
   });
 
@@ -216,9 +217,9 @@ describe('urlRoutePattern', () => {
       );
 
       expect(match).toBeTruthy();
-      match?.(capture);
-      expect(capture).toHaveBeenCalledWith('regexp', 'out', expect.any(Array), expect.anything());
-      expect([...capture.mock.calls[0][2]]).toEqual(['FILE', 'FI']);
+      match?.(captor);
+      expect(captor).toHaveBeenCalledWith('regexp', 'out', expect.any(Array), expect.anything());
+      expect([...captor.mock.calls[0][2]]).toEqual(['FILE', 'FI']);
     });
   });
 
@@ -231,8 +232,8 @@ describe('urlRoutePattern', () => {
       );
 
       expect(match).toBeTruthy();
-      match?.(capture);
-      expect(capture).toHaveBeenCalledWith('capture', ')(', 'test', expect.anything());
+      match?.(captor);
+      expect(captor).toHaveBeenCalledWith('capture', ')(', 'test', expect.anything());
     });
   });
 
@@ -257,8 +258,8 @@ describe('urlRoutePattern', () => {
       );
 
       expect(match).toBeTruthy();
-      match?.(capture);
-      expect(capture).not.toHaveBeenCalled();
+      match?.(captor);
+      expect(captor).not.toHaveBeenCalled();
     });
   });
 
