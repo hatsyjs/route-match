@@ -5,6 +5,7 @@
 import { rmatchDirSep, rmatchName } from '../matchers';
 import type { RoutePattern } from '../route-match';
 import type { RouteMatcher } from '../route-matcher';
+import { decodeURLComponent } from '../url/decode-url.impl';
 import { simpleRouteMatcher } from './simple-route-pattern.impl';
 
 /**
@@ -60,7 +61,7 @@ export function simpleRoutePattern(pattern: string): RoutePattern {
     if (partMatcher) {
       result.push(partMatcher);
     } else {
-      result.push(rmatchName(decodeURIComponent(part)));
+      result.push(rmatchName(decodeURLComponent(part)));
     }
   }
 

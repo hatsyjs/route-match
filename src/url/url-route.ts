@@ -3,6 +3,7 @@
  * @module @hatsy/route-match
  */
 import type { PathRoute } from '../path';
+import { decodeURLComponent } from './decode-url.impl';
 import { parseURLRoute } from './url-route.impl';
 
 /**
@@ -30,7 +31,7 @@ export interface URLRoute<TEntry extends PathRoute.Entry = PathRoute.Entry> exte
  * @internal
  */
 function urlRouteEntry(name: string): PathRoute.Entry {
-  return { name: decodeURIComponent(name) };
+  return { name: decodeURLComponent(name) };
 }
 
 /**

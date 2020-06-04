@@ -4,6 +4,7 @@
  */
 import type { PathRoute } from '../path';
 import type { URLRoute } from '../url';
+import { decodeURLComponent } from '../url/decode-url.impl';
 import { parseURLRoute } from '../url/url-route.impl';
 
 /**
@@ -41,10 +42,10 @@ function matrixRouteEntry(name: string): MatrixRoute.Entry {
 
     const [name, value = ''] = parts[i].split('=');
 
-    attrs.append(name, value);
+    attrs.append(decodeURLComponent(name), decodeURLComponent(value));
   }
 
-  return { name: decodeURIComponent(parts[0]), attrs };
+  return { name: decodeURLComponent(parts[0]), attrs };
 }
 
 /**

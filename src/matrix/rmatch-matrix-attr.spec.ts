@@ -21,16 +21,16 @@ describe('rmatchMatrixAttr', () => {
 
   describe('*;param=value', () => {
 
-    const pattern = [rmatchEntry, rmatchMatrixAttr('param', 'value')];
+    const pattern = [rmatchEntry, rmatchMatrixAttr('param', 'value 1')];
 
     it('does not match match entry with required attribute without value', () => {
       expect(routeMatch(matrixRoute(new URL('http://localhost/path;param')), pattern)).toBeNull();
     });
     it('matches entry with required attribute with required value', () => {
-      expect(routeMatch(matrixRoute(new URL('http://localhost/path;param=value')), pattern)).toBeTruthy();
+      expect(routeMatch(matrixRoute(new URL('http://localhost/path;param=value%201')), pattern)).toBeTruthy();
     });
     it('matches entry if one of required attribute values matches', () => {
-      expect(routeMatch(matrixRoute(new URL('http://localhost/path;param=wrong;param=value')), pattern)).toBeTruthy();
+      expect(routeMatch(matrixRoute(new URL('http://localhost/path;param=wrong;param=value+1')), pattern)).toBeTruthy();
     });
     it('does not match entry without required attribute', () => {
       expect(routeMatch(matrixRoute(new URL('http://localhost/path;other=value')), pattern)).toBeNull();

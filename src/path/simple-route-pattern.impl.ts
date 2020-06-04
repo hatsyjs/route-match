@@ -1,5 +1,6 @@
 import { rcaptureDirs, rcaptureEntry, rmatchDirs, rmatchEntry } from '../matchers';
 import type { RouteMatcher } from '../route-matcher';
+import { decodeURLComponent } from '../url/decode-url.impl';
 
 /**
  * @internal
@@ -33,11 +34,11 @@ export function simpleRouteWildcard(spec: string): RouteMatcher | undefined {
 
   if (colonIdx >= 0) {
 
-    const capture = decodeURIComponent(spec.substr(0, colonIdx).trim());
+    const capture = decodeURLComponent(spec.substr(0, colonIdx).trim());
     const arg = spec.substr(colonIdx + 1).trim();
 
     if (arg === '**') {
-      return capture ? rcaptureDirs(decodeURIComponent(capture)) : rmatchDirs;
+      return capture ? rcaptureDirs(decodeURLComponent(capture)) : rmatchDirs;
     }
 
     return capture ? rcaptureEntry(capture) : rmatchEntry;
@@ -53,5 +54,5 @@ function simpleRouteCapture(spec: string): RouteMatcher {
 
   spec = spec.trim();
 
-  return spec ? rcaptureEntry(decodeURIComponent(spec)) : rmatchEntry;
+  return spec ? rcaptureEntry(decodeURLComponent(spec)) : rmatchEntry;
 }

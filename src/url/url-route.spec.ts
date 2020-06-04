@@ -81,7 +81,7 @@ describe('urlRoute', () => {
           .toBe('some%20dir/');
     });
     it('appends query search parameters', () => {
-      expect(urlRoute(new URL('http://localhost/some%20dir/?param%201&param2=value1&param2=value%202')).toString())
+      expect(urlRoute(new URL('http://localhost/some%20dir/?param+1&param2=value1&param2=value%202')).toString())
           .toBe('some%20dir/?param+1=&param2=value1&param2=value+2');
     });
     it('has empty path for empty route', () => {

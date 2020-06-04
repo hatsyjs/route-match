@@ -1,5 +1,6 @@
 import { rcaptureAny, rcaptureRegExp, rmatchAny, rmatchName, rmatchString } from '../matchers';
 import type { RouteMatcher } from '../route-matcher';
+import { decodeURLComponent } from '../url/decode-url.impl';
 import { simpleRouteMatcher, simpleRouteWildcard } from './simple-route-pattern.impl';
 
 /**
@@ -57,7 +58,7 @@ export function pathRouteMatchers(
 
     if (patternOffset < i) {
       // String prefix before matcher.
-      result.push(rmatchString(decodeURIComponent(pattern.substring(patternOffset, i))));
+      result.push(rmatchString(decodeURLComponent(pattern.substring(patternOffset, i))));
     }
 
     result.push(matcher);
@@ -66,8 +67,8 @@ export function pathRouteMatchers(
 
   if (patternOffset < pattern.length) {
     result.push(patternOffset
-        ? rmatchString(decodeURIComponent(pattern.substr(patternOffset))) // Suffix after last matcher
-        : rmatchName(decodeURIComponent(pattern))); // No matcher recognized
+        ? rmatchString(decodeURLComponent(pattern.substr(patternOffset))) // Suffix after last matcher
+        : rmatchName(decodeURLComponent(pattern))); // No matcher recognized
   }
 }
 
@@ -88,12 +89,12 @@ export function pathRouteRegExp(spec: string): RouteMatcher | undefined {
     return;
   }
 
-  const pattern = decodeURIComponent(spec.substring(openParent + 1, closeParent));
+  const pattern = decodeURLComponent(spec.substring(openParent + 1, closeParent));
   const flags = spec.substring(closeParent + 1).trim();
   const re = new RegExp(pattern, flags);
   const capture = spec.substr(0, openParent).trim();
 
-  return rcaptureRegExp(re, capture ? decodeURIComponent(capture) : undefined);
+  return rcaptureRegExp(re, capture ? decodeURLComponent(capture) : undefined);
 }
 
 /**
@@ -101,5 +102,5 @@ export function pathRouteRegExp(spec: string): RouteMatcher | undefined {
  */
 function pathRouteCapture(spec: string): RouteMatcher {
   spec = spec.trim();
-  return spec ? rcaptureAny(decodeURIComponent(spec)) : rmatchAny;
+  return spec ? rcaptureAny(decodeURLComponent(spec)) : rmatchAny;
 }
