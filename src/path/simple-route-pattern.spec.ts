@@ -116,35 +116,6 @@ describe('simpleRoutePattern', () => {
     });
   });
 
-  describe('dir/{(file)}', () => {
-    it('matches file', () => {
-
-      const match = routeMatch(
-          urlRoute(new URL('http://localhost/dir/file')),
-          simpleRoutePattern('dir/{(file)}'),
-      );
-
-      expect(match).toBeTruthy();
-      match?.(capture);
-      expect(capture).not.toHaveBeenCalled();
-    });
-  });
-
-  describe('dir/{out(file)i}', () => {
-    it('captures file', () => {
-
-      const match = routeMatch(
-          urlRoute(new URL('http://localhost/dir/FILE')),
-          simpleRoutePattern('dir/{out((fi)le)i}'),
-      );
-
-      expect(match).toBeTruthy();
-      match?.(capture);
-      expect(capture).toHaveBeenCalledWith('regexp', 'out', expect.any(Array), expect.anything());
-      expect([...capture.mock.calls[0][2]]).toEqual(['FILE', 'FI']);
-    });
-  });
-
   describe('{)(}', () => {
     it('captures file', () => {
 

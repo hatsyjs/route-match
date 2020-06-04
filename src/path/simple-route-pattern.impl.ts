@@ -1,11 +1,13 @@
 import { rcaptureDirs, rcaptureEntry, rmatchDirs, rmatchEntry } from '../matchers';
 import type { RouteMatcher } from '../route-matcher';
-import { pathRouteRegExp } from './path-route-pattern.impl';
 
 /**
  * @internal
  */
-export function simpleRouteMatcher(pattern: string): RouteMatcher | undefined {
+export function simpleRouteMatcher(
+    pattern: string,
+    matcherBySpec: (spec: string) => RouteMatcher | undefined = simpleRouteWildcard,
+): RouteMatcher | undefined {
   switch (pattern) {
   case '*':
     return rmatchEntry;
@@ -16,9 +18,7 @@ export function simpleRouteMatcher(pattern: string): RouteMatcher | undefined {
 
       const spec = pattern.substr(1, pattern.length - 2);
 
-      return simpleRouteWildcard(spec)
-          || pathRouteRegExp(spec)
-          || simpleRouteCapture(spec);
+      return matcherBySpec(spec) || simpleRouteCapture(spec);
     }
     return;
   }
@@ -27,7 +27,7 @@ export function simpleRouteMatcher(pattern: string): RouteMatcher | undefined {
 /**
  * @internal
  */
-function simpleRouteWildcard(spec: string): RouteMatcher | undefined {
+export function simpleRouteWildcard(spec: string): RouteMatcher | undefined {
 
   const colonIdx = spec.indexOf(':');
 

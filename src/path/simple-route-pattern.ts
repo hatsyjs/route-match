@@ -31,12 +31,6 @@ import { simpleRouteMatcher } from './simple-route-pattern.impl';
  * - `/{capture:**}` captures any number of directories as `capture`.
  *   Corresponds to {@link rcaptureDirs}.
  *
- * - `/{(regexp)flags}` matches the entry name matching the given regular expression with optional flags.
- *   Corresponds to {@link rcaptureRegExp}.
- *
- * - `/{capture(regexp)flags}` captures the entry name matching the regular expression with optional flags.
- *   Corresponds to {@link rcaptureRegExp}.
- *
  * - Everything else matches verbatim and corresponds to {@link rmatchName}.
  *
  * The pattern parts are URL-decoded after parsing. So the pattern string may contain URL-encoded reserved and special

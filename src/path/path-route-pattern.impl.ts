@@ -1,6 +1,6 @@
 import { rcaptureAny, rcaptureRegExp, rmatchAny, rmatchName, rmatchString } from '../matchers';
 import type { RouteMatcher } from '../route-matcher';
-import { simpleRouteMatcher } from './simple-route-pattern.impl';
+import { simpleRouteMatcher, simpleRouteWildcard } from './simple-route-pattern.impl';
 
 /**
  * @internal
@@ -10,7 +10,10 @@ export function pathRouteMatchers(
     result: RouteMatcher[],
 ): void {
 
-  const simpleMatcher = simpleRouteMatcher(pattern);
+  const simpleMatcher = simpleRouteMatcher(
+      pattern,
+      spec => simpleRouteWildcard(spec) || pathRouteRegExp(spec),
+  );
 
   if (simpleMatcher) {
     result.push(simpleMatcher);
