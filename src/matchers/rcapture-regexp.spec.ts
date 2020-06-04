@@ -112,26 +112,32 @@ describe('rcaptureRegExp', () => {
   });
 
   describe('{(regexp)y}', () => {
-    it('matches entry name', () => {
+    it('captures entry name', () => {
 
       const route = urlRoute(new URL('http://localhost/the-test!'));
       const pattern = /.*test.*/y;
       const match = routeMatch(route, [rcaptureRegExp(pattern)]);
 
-      expect(match).toBeTruthy();
       expect(pattern.lastIndex).toBe(0);
+      match?.(capture);
+      expect(capture).toHaveBeenCalledWith('regexp', 1, expect.anything(), expect.anything());
+      expect([...capture.mock.calls[0][2]]).toEqual(['the-test!']);
+      expect(capture).toHaveBeenCalledTimes(1);
     });
   });
 
   describe('*{(regexp)y}', () => {
-    it('matches entry name', () => {
+    it('captures entry name', () => {
 
       const route = urlRoute(new URL('http://localhost/prefix-the-test!'));
       const pattern = /.*test.*/y;
       const match = routeMatch(route, [rmatchAny, rcaptureRegExp(pattern)]);
 
-      expect(match).toBeTruthy();
       expect(pattern.lastIndex).toBe(0);
+      match?.(capture);
+      expect(capture).toHaveBeenCalledWith('regexp', 1, expect.anything(), expect.anything());
+      expect([...capture.mock.calls[0][2]]).toEqual(['prefix-the-test!']);
+      expect(capture).toHaveBeenCalledTimes(1);
     });
   });
 });
