@@ -18,7 +18,7 @@ import type { RouteMatcher } from '../route-matcher';
  * @param name  The name of the capture or nothing to not capture.
  * @returns  New route matcher.
  *
- * @see Use {@link rmatchAnyDirs} if the capturing is not needed.
+ * @see Use {@link rmatchDirs} if the capturing is not needed.
  */
 export function rcaptureDirs(name?: string): RouteMatcher {
   return {
