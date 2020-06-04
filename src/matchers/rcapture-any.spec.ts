@@ -7,10 +7,10 @@ import { rmatchString } from './rmatch-string';
 
 describe('rcaptureAny', () => {
 
-  let cb: jest.Mock;
+  let capture: jest.Mock;
 
   beforeEach(() => {
-    cb = jest.fn();
+    capture = jest.fn();
   });
 
   describe('{capture}', () => {
@@ -28,15 +28,16 @@ describe('rcaptureAny', () => {
 
       const match = routeMatch(urlRoute(new URL('http://localhost/file')), pattern);
 
-      match?.(cb);
-      expect(cb).toHaveBeenCalledWith('capture', 'out', 'file', expect.anything());
+      match?.(capture);
+      expect(capture).toHaveBeenCalledWith('capture', 'out', 'file', expect.anything());
     });
-    it('matches directory', () => {
+    it('captures directory', () => {
 
       const match = routeMatch(urlRoute(new URL('http://localhost/dir/')), pattern);
 
-      match?.(cb);
-      expect(cb).toHaveBeenCalledWith('capture', 'out', 'dir', expect.anything());
+      match?.(capture);
+      expect(capture).toHaveBeenCalledWith('capture', 'out', 'dir', expect.anything());
+      expect(capture).toHaveBeenCalledTimes(1);
     });
     it('does not match multiple entries', () => {
       expect(routeMatch(urlRoute(new URL('http://localhost/dir/file')), pattern)).toBeNull();
@@ -51,12 +52,14 @@ describe('rcaptureAny', () => {
       pattern = [rcaptureAny('out'), rmatchDirSep, rmatchAny];
     });
 
-    it('matches two entries', () => {
+    it('captures two entries', () => {
 
       const match = routeMatch(urlRoute(new URL('http://localhost/dir/file')), pattern);
 
-      match?.(cb);
-      expect(cb).toHaveBeenCalledWith('capture', 'out', 'dir', expect.anything());
+      match?.(capture);
+      expect(capture).toHaveBeenCalledWith('capture', 'out', 'dir', expect.anything());
+      expect(capture).toHaveBeenCalledWith('capture', 1, 'file', expect.anything());
+      expect(capture).toHaveBeenCalledTimes(2);
     });
   });
 
@@ -68,12 +71,14 @@ describe('rcaptureAny', () => {
       pattern = [rmatchAny, rmatchDirSep, rcaptureAny('out')];
     });
 
-    it('matches two entries', () => {
+    it('captures two entries', () => {
 
       const match = routeMatch(urlRoute(new URL('http://localhost/dir/file')), pattern);
 
-      match?.(cb);
-      expect(cb).toHaveBeenCalledWith('capture', 'out', 'file', expect.anything());
+      match?.(capture);
+      expect(capture).toHaveBeenCalledWith('capture', 1, 'dir', expect.anything());
+      expect(capture).toHaveBeenCalledWith('capture', 'out', 'file', expect.anything());
+      expect(capture).toHaveBeenCalledTimes(2);
     });
   });
 
@@ -85,12 +90,13 @@ describe('rcaptureAny', () => {
       pattern = [rmatchString('page-'), rcaptureAny('out')];
     });
 
-    it('matches file', () => {
+    it('captures file', () => {
 
       const match = routeMatch(urlRoute(new URL('http://localhost/page-1')), pattern);
 
-      match?.(cb);
-      expect(cb).toHaveBeenCalledWith('capture', 'out', '1', expect.anything());
+      match?.(capture);
+      expect(capture).toHaveBeenCalledWith('capture', 'out', '1', expect.anything());
+      expect(capture).toHaveBeenCalledTimes(1);
     });
     it('does not match file with wrong prefix', () => {
       expect(routeMatch(urlRoute(new URL('http://localhost/page1')), pattern)).toBeNull();
@@ -105,12 +111,13 @@ describe('rcaptureAny', () => {
       pattern = [rcaptureAny('out'), rmatchString('.html')];
     });
 
-    it('matches file', () => {
+    it('captures file', () => {
 
       const match = routeMatch(urlRoute(new URL('http://localhost/index.html')), pattern);
 
-      match?.(cb);
-      expect(cb).toHaveBeenCalledWith('capture', 'out', 'index', expect.anything());
+      match?.(capture);
+      expect(capture).toHaveBeenCalledWith('capture', 'out', 'index', expect.anything());
+      expect(capture).toHaveBeenCalledTimes(1);
     });
     it('does not match file with wrong suffix', () => {
       expect(routeMatch(urlRoute(new URL('http://localhost/index.htm')), pattern)).toBeNull();

@@ -20,8 +20,8 @@ describe('rcaptureRegExp', () => {
 
       match?.(capture);
       expect(capture).toHaveBeenCalledWith('regexp', 'out', expect.anything(), expect.anything());
-      expect(capture).toHaveBeenCalledTimes(1);
       expect([...capture.mock.calls[0][2]]).toEqual(['the-test!']);
+      expect(capture).toHaveBeenCalledTimes(1);
     });
     it('does not match non-matching entry name', () => {
 
@@ -36,8 +36,9 @@ describe('rcaptureRegExp', () => {
 
       match?.(capture);
       expect(capture).toHaveBeenCalledWith('regexp', 'out', expect.anything(), expect.anything());
-      expect(capture).toHaveBeenCalledTimes(1);
       expect([...capture.mock.calls[0][2]]).toEqual(['test', 'test']);
+      expect(capture).toHaveBeenCalledWith('capture', 1, '-TEST', expect.anything());
+      expect(capture).toHaveBeenCalledTimes(2);
     });
   });
 
@@ -51,8 +52,8 @@ describe('rcaptureRegExp', () => {
       match?.(capture);
       expect(capture).toHaveBeenCalledWith('capture', 'prefix', 'the-', expect.anything());
       expect(capture).toHaveBeenCalledWith('regexp', 'out', expect.anything(), expect.anything());
-      expect(capture).toHaveBeenCalledTimes(2);
       expect([...capture.mock.calls[1][2]]).toEqual(['test!']);
+      expect(capture).toHaveBeenCalledTimes(2);
 
       // Test again with cached search pattern
       capture.mockClear();
@@ -60,8 +61,8 @@ describe('rcaptureRegExp', () => {
       match?.(capture);
       expect(capture).toHaveBeenCalledWith('capture', 'prefix', 'the-', expect.anything());
       expect(capture).toHaveBeenCalledWith('regexp', 'out', expect.anything(), expect.anything());
-      expect(capture).toHaveBeenCalledTimes(2);
       expect([...capture.mock.calls[1][2]]).toEqual(['test!']);
+      expect(capture).toHaveBeenCalledTimes(2);
     });
     it('captures only regexp when prefix is missing', () => {
 
@@ -70,8 +71,8 @@ describe('rcaptureRegExp', () => {
 
       match?.(capture);
       expect(capture).toHaveBeenCalledWith('regexp', 'out', expect.anything(), expect.anything());
-      expect(capture).toHaveBeenCalledTimes(1);
       expect([...capture.mock.calls[0][2]]).toEqual(['test!']);
+      expect(capture).toHaveBeenCalledTimes(1);
     });
     it('does not match non-matching entry name', () => {
 
@@ -89,9 +90,9 @@ describe('rcaptureRegExp', () => {
 
       match?.(capture);
       expect(capture).toHaveBeenCalledWith('regexp', 'out', expect.anything(), expect.anything());
-      expect(capture).toHaveBeenCalledTimes(2);
       expect([...capture.mock.calls[0][2]]).toEqual(['test-', 'test']);
       expect([...capture.mock.calls[1][2]]).toEqual(['TEST', 'TEST']);
+      expect(capture).toHaveBeenCalledTimes(2);
     });
   });
 
@@ -102,10 +103,11 @@ describe('rcaptureRegExp', () => {
       const match = routeMatch(route, [rmatchAny, rcaptureRegExp(/(test)-?/gi, 'out')]);
 
       match?.(capture);
+      expect(capture).toHaveBeenCalledWith('capture', 1, 'prefix-', expect.anything());
       expect(capture).toHaveBeenCalledWith('regexp', 'out', expect.anything(), expect.anything());
-      expect(capture).toHaveBeenCalledTimes(2);
-      expect([...capture.mock.calls[0][2]]).toEqual(['test-', 'test']);
-      expect([...capture.mock.calls[1][2]]).toEqual(['TEST', 'TEST']);
+      expect([...capture.mock.calls[1][2]]).toEqual(['test-', 'test']);
+      expect([...capture.mock.calls[2][2]]).toEqual(['TEST', 'TEST']);
+      expect(capture).toHaveBeenCalledTimes(3);
     });
   });
 

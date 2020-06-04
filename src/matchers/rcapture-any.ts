@@ -9,12 +9,15 @@ import type { RouteMatcher } from '../route-matcher';
  *
  * Reports the capture as {@link RouteCaptureSignatureMap.capture `capture`}.
  *
- * @param name  The name of the capture or nothing to not capture.
+ * @param name  The name of the capture or nothing to capture under match index.
  * @returns  New route matcher.
  *
  * @see Use {@link rmatchAny} if the capturing is not needed.
  */
 export function rcaptureAny(name?: string): RouteMatcher {
+
+  const key = name ?? 0;
+
   return {
 
     test(context): RouteMatcher.Match | undefined {
@@ -25,16 +28,14 @@ export function rcaptureAny(name?: string): RouteMatcher {
       if (!nextMatcher || !nextMatcher.find) {
         // This is the last matcher in pattern.
         // Always match.
-        return name != null
-            ? {
-              callback: capture => capture(
-                  'capture',
-                  name,
-                  context.entry.name.substring(context.nameOffset, context.entry.name.length),
-                  context,
-              ),
-            }
-            : {};
+        return {
+          callback: capture => capture(
+              'capture',
+              key,
+              context.entry.name.substring(context.nameOffset, context.entry.name.length),
+              context,
+          ),
+        };
       }
 
       const found = nextMatcher.find({ ...context, matcherIndex: matcherIndex + 1 });
@@ -49,11 +50,11 @@ export function rcaptureAny(name?: string): RouteMatcher {
       return {
         entries: context.route.path.length,
         full: true,
-        callback: name != null && offset > nameOffset
+        callback: offset > nameOffset
             ? capture => {
               capture(
                   'capture',
-                  name,
+                  key,
                   context.entry.name.substring(nameOffset, offset),
                   context,
               );

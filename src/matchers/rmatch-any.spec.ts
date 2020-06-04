@@ -4,6 +4,13 @@ import { rmatchAny } from './rmatch-any';
 import { rmatchDirSep } from './rmatch-dir-sep';
 
 describe('rmatchAny', () => {
+
+  let capture: jest.Mock;
+
+  beforeEach(() => {
+    capture = jest.fn();
+  });
+
   describe('*', () => {
 
     const pattern: RoutePattern = [rmatchAny];
@@ -11,11 +18,21 @@ describe('rmatchAny', () => {
     it('does not match empty route', () => {
       expect(routeMatch(urlRoute(new URL('http://localhost/')), pattern)).toBeNull();
     });
-    it('matches file', () => {
-      expect(routeMatch(urlRoute(new URL('http://localhost/file')), pattern)).toBeTruthy();
+    it('captures file', () => {
+
+      const match = routeMatch(urlRoute(new URL('http://localhost/file')), pattern);
+
+      match?.(capture);
+      expect(capture).toHaveBeenCalledWith('capture', 1, 'file', expect.anything());
+      expect(capture).toHaveBeenCalledTimes(1);
     });
-    it('matches directory', () => {
-      expect(routeMatch(urlRoute(new URL('http://localhost/dir/')), pattern)).toBeTruthy();
+    it('captures directory', () => {
+
+      const match = routeMatch(urlRoute(new URL('http://localhost/dir/')), pattern);
+
+      match?.(capture);
+      expect(capture).toHaveBeenCalledWith('capture', 1, 'dir', expect.anything());
+      expect(capture).toHaveBeenCalledTimes(1);
     });
     it('does not match multiple entries', () => {
       expect(routeMatch(urlRoute(new URL('http://localhost/dir/file')), pattern)).toBeNull();
@@ -32,8 +49,14 @@ describe('rmatchAny', () => {
     it('does not match single directory', () => {
       expect(routeMatch(urlRoute(new URL('http://localhost/dir/')), pattern)).toBeNull();
     });
-    it('matches two entries', () => {
-      expect(routeMatch(urlRoute(new URL('http://localhost/dir/file')), pattern)).toBeTruthy();
+    it('captures two entries', () => {
+
+      const match = routeMatch(urlRoute(new URL('http://localhost/dir/file')), pattern);
+
+      match?.(capture);
+      expect(capture).toHaveBeenCalledWith('capture', 1, 'dir', expect.anything());
+      expect(capture).toHaveBeenCalledWith('capture', 2, 'file', expect.anything());
+      expect(capture).toHaveBeenCalledTimes(2);
     });
   });
 });

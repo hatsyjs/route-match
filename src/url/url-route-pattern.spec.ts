@@ -134,7 +134,7 @@ describe('urlRoutePattern', () => {
   });
 
   describe('{}.html', () => {
-    it('does not capture file', () => {
+    it('captures file', () => {
 
       const match = routeMatch(
           urlRoute(new URL('http://localhost/test.html')),
@@ -143,7 +143,8 @@ describe('urlRoutePattern', () => {
 
       expect(match).toBeTruthy();
       match?.(capture);
-      expect(capture).not.toHaveBeenCalled();
+      expect(capture).toHaveBeenCalledWith('capture', 1, 'test', expect.anything());
+      expect(capture).toHaveBeenCalledTimes(1);
     });
   });
 
