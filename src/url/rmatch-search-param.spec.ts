@@ -29,7 +29,7 @@ describe('rmatchSearchParam', () => {
     it('matches URL with required parameter with required value', () => {
       expect(routeMatch(urlRoute(new URL('http://localhost/?param=value')), pattern)).toBeTruthy();
     });
-    it('matches URL with if one of required parameter values matches', () => {
+    it('matches URL if one of required parameter values matches', () => {
       expect(routeMatch(urlRoute(new URL('http://localhost/?param=wrong&param=value')), pattern)).toBeTruthy();
     });
     it('does not match URL without required parameter', () => {
@@ -44,13 +44,13 @@ describe('rmatchSearchParam', () => {
 
     const pattern = [rmatchName('path'), rmatchSearchParam('param', 'value')];
 
-    it('does not match matches URL with required parameter without value', () => {
+    it('does not match match URL with required parameter without value', () => {
       expect(routeMatch(urlRoute(new URL('http://localhost/path?param')), pattern)).toBeNull();
     });
     it('matches URL with required parameter with required value', () => {
       expect(routeMatch(urlRoute(new URL('http://localhost/path?param=value')), pattern)).toBeTruthy();
     });
-    it('does not match matches URL with wrong path', () => {
+    it('does not match match URL with wrong path', () => {
       expect(routeMatch(urlRoute(new URL('http://localhost/wrong?param=value')), pattern)).toBeNull();
     });
     it('matches URL with if one of required parameter values matches', () => {
