@@ -186,5 +186,15 @@ export function routeMatch<TEntry extends PathRoute.Entry, TRoute extends PathRo
     ++matcherIndex;
   }
 
-  return successfulMatch;
+  return capture => {
+
+    let keySeq = 0;
+
+    successfulMatch((kind, ...args) => {
+      if (typeof args[0] === 'number') {
+        args[0] = ++keySeq;
+      }
+      capture(kind, ...args);
+    });
+  };
 }

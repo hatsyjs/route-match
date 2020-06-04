@@ -49,37 +49,37 @@ export interface RouteCaptureSignatureMap<
   /**
    * Arbitrary route capture.
    *
-   * Captured by {@link rmatchCapture} and {@link rmatchEntry} matchers.
+   * Captured by {@link rmatchAny}, {@link rcaptureAny}, {@link rcaptureEntry} and {@link rmatchEntry} matchers.
    *
-   * @param name  The name of the capture.
+   * @param key  The key of the capture. Either named capture name, or anonymous match index.
    * @param value  The captured string value.
    * @param context  A context of the capturing matcher.
    */
-  capture(name: string, value: string, context: RouteMatcher.Context<TEntry, TRoute>): void;
+  capture(key: string | number, value: string, context: RouteMatcher.Context<TEntry, TRoute>): void;
 
   /**
    * Directories capture.
    *
-   * Captured by {@link rmatchDirs} matcher.
+   * Captured by {@link rmatchDirs} as {@link rcaptureDirs} matcher.
    *
-   * @param name  The name of the capture.
+   * @param key  The key of the capture. Either named capture name, or anonymous match index.
    * @param upto  An index of the route entry following the last captured one.
    * The first captured entry is in {@link RouteMatcher.Context.entryIndex `context`}.
    * @param context  A context of the capturing matcher.
    */
-  dirs(name: string, upto: number, context: RouteMatcher.Context<TEntry, TRoute>): void;
+  dirs(key: string | number, upto: number, context: RouteMatcher.Context<TEntry, TRoute>): void;
 
   /**
    * Regular expression capture.
    *
-   * Captured by {@link rmatchRegExp} matcher.
+   * Captured by {@link rcaptureRegExp} matcher.
    *
    * Such capture callback may be called multiple times per matcher if the matching regexp is global.
    *
-   * @param name  The name of the capture.
+   * @param key  The key of the capture. Either named capture name, or anonymous match index.
    * @param match  The regexp match array returned from `RegExp.prototype.exec()` method call.
    * @param context  A context of the capturing matcher.
    */
-  regexp(name: string, match: RegExpExecArray, context: RouteMatcher.Context<TEntry, TRoute>): void;
+  regexp(key: string | number, match: RegExpExecArray, context: RouteMatcher.Context<TEntry, TRoute>): void;
 
 }
