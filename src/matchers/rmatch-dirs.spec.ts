@@ -5,18 +5,40 @@ import { rmatchDirs } from './rmatch-dirs';
 import { rmatchName } from './rmatch-name';
 
 describe('rmatchDirs', () => {
+
+  let capture: jest.Mock;
+
+  beforeEach(() => {
+    capture = jest.fn();
+  });
+
   describe('**', () => {
 
     const pattern = [rmatchDirs];
 
-    it('matches empty route', () => {
-      expect(routeMatch(urlRoute(new URL('http://localhost')), pattern)).toBeTruthy();
+    it('does not capture empty route', () => {
+
+      const match = routeMatch(urlRoute(new URL('http://localhost')), pattern);
+
+      expect(match).toBeTruthy();
+      match?.(capture);
+      expect(capture).not.toHaveBeenCalled();
     });
-    it('matches file', () => {
-      expect(routeMatch(urlRoute(new URL('http://localhost/file.html')), pattern)).toBeTruthy();
+    it('captures file', () => {
+
+      const match = routeMatch(urlRoute(new URL('http://localhost/file.html')), pattern);
+
+      match?.(capture);
+      expect(capture).toHaveBeenCalledWith('dirs', 1, 1, expect.anything());
+      expect(capture).toHaveBeenCalledTimes(1);
     });
-    it('matches any route', () => {
-      expect(routeMatch(urlRoute(new URL('http://localhost/path/to/file.html')), pattern)).toBeTruthy();
+    it('captures any route', () => {
+
+      const match = routeMatch(urlRoute(new URL('http://localhost/path/to/file.html')), pattern);
+
+      match?.(capture);
+      expect(capture).toHaveBeenCalledWith('dirs', 1, 3, expect.anything());
+      expect(capture).toHaveBeenCalledTimes(1);
     });
     it('is not applicable inside entry', () => {
       expect(routeMatch(urlRoute(new URL('http://localhost/path')), pattern, { nameOffset: 1 })).toBeNull();
@@ -30,20 +52,40 @@ describe('rmatchDirs', () => {
     it('does not match empty route', () => {
       expect(routeMatch(urlRoute(new URL('http://localhost')), pattern)).toBeNull();
     });
-    it('matches named file', () => {
-      expect(routeMatch(urlRoute(new URL('http://localhost/test')), pattern)).toBeTruthy();
+    it('does not capture named file', () => {
+
+      const match = routeMatch(urlRoute(new URL('http://localhost/test')), pattern);
+
+      expect(match).toBeTruthy();
+      match?.(capture);
+      expect(capture).not.toHaveBeenCalled();
     });
-    it('matches named dir', () => {
-      expect(routeMatch(urlRoute(new URL('http://localhost/test/')), pattern)).toBeTruthy();
+    it('does not capture named dir', () => {
+
+      const match = routeMatch(urlRoute(new URL('http://localhost/test/')), pattern);
+
+      expect(match).toBeTruthy();
+      match?.(capture);
+      expect(capture).not.toHaveBeenCalled();
     });
     it('does not match dir with extra entries', () => {
       expect(routeMatch(urlRoute(new URL('http://localhost/test/extra.html')), pattern)).toBeNull();
     });
-    it('matches nested file', () => {
-      expect(routeMatch(urlRoute(new URL('http://localhost/dir/test')), pattern)).toBeTruthy();
+    it('captures nested file', () => {
+
+      const match = routeMatch(urlRoute(new URL('http://localhost/dir/test')), pattern);
+
+      match?.(capture);
+      expect(capture).toHaveBeenCalledWith('dirs', 1, 1, expect.anything());
+      expect(capture).toHaveBeenCalledTimes(1);
     });
-    it('matches deeply nested dir', () => {
-      expect(routeMatch(urlRoute(new URL('http://localhost/path/to/deep/test/')), pattern)).toBeTruthy();
+    it('captures deeply nested dir', () => {
+
+      const match = routeMatch(urlRoute(new URL('http://localhost/path/to/deep/test/')), pattern);
+
+      match?.(capture);
+      expect(capture).toHaveBeenCalledWith('dirs', 1, 3, expect.anything());
+      expect(capture).toHaveBeenCalledTimes(1);
     });
   });
 

@@ -15,12 +15,15 @@ import type { RouteMatcher } from '../route-matcher';
  *
  * Never captures empty match.
  *
- * @param name  The name of the capture or nothing to not capture.
+ * @param name  The name of the capture or nothing to capture under match index.
  * @returns  New route matcher.
  *
  * @see Use {@link rmatchDirs} if the capturing is not needed.
  */
 export function rcaptureDirs(name?: string): RouteMatcher {
+
+  const key = name ?? 0;
+
   return {
 
     test(context): RouteMatcher.Match | undefined {
@@ -39,17 +42,15 @@ export function rcaptureDirs(name?: string): RouteMatcher {
 
         // This is the last matcher in pattern.
         // Always match.
-        return name != null
-            ? {
-              full: true,
-              callback: capture => capture(
-                  'dirs',
-                  name,
-                  path.length,
-                  context,
-              ),
-            }
-            : { full: true };
+        return {
+          full: true,
+          callback: capture => capture(
+              'dirs',
+              key,
+              path.length,
+              context,
+          ),
+        };
       }
 
       const { entryIndex } = context;
@@ -64,11 +65,11 @@ export function rcaptureDirs(name?: string): RouteMatcher {
           return {
             entries: context.route.path.length,
             full: true,
-            callback: name != null && fromEntry > entryIndex // There is something to capture
+            callback: fromEntry > entryIndex // There is something to capture
                 ? capture => {
                   capture(
                       'dirs',
-                      name,
+                      key,
                       fromEntry,
                       context,
                   );

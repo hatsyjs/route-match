@@ -37,7 +37,7 @@ describe('urlRoutePattern', () => {
   });
 
   describe('name/{:**}', () => {
-    it('captures nothing', () => {
+    it('captures nested path', () => {
 
       const match = routeMatch(
           urlRoute(new URL('http://localhost/name/some/path')),
@@ -46,7 +46,8 @@ describe('urlRoutePattern', () => {
 
       expect(match).toBeTruthy();
       match?.(capture);
-      expect(capture).not.toHaveBeenCalled();
+      expect(capture).toHaveBeenCalledWith('dirs', 1, 3, expect.anything());
+      expect(capture).toHaveBeenCalledTimes(1);
     });
   });
 
