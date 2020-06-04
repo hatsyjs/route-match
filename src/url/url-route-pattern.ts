@@ -2,13 +2,11 @@
  * @packageDocumentation
  * @module @hatsy/route-match
  */
-import { rmatchDirSep } from '../matchers';
 import type { PathRoute } from '../path';
-import { pathRouteMatchers } from '../path/path-route-pattern.impl';
+import { addPathEntryMatchers } from '../path/path-route-pattern.impl';
 import type { RoutePattern } from '../route-match';
-import type { RouteMatcher } from '../route-matcher';
-import { rmatchSearchParam } from './rmatch-search-param';
 import type { URLRoute } from './url-route';
+import { parseURLRoutePattern } from './url-route-pattern.impl';
 
 /**
  * Parses URL route pattern.
@@ -53,28 +51,7 @@ import type { URLRoute } from './url-route';
  * @returns Simple route pattern.
  */
 export function urlRoutePattern(pattern: string): RoutePattern<PathRoute.Entry, URLRoute> {
-  if (!pattern) {
-    return [];
-  }
-
-  const result: RouteMatcher<PathRoute.Entry, URLRoute>[] = [];
-  const [pathPattern, queryPattern] = pattern.split('?');
-  const parts = pathPattern.split('/');
-
-  for (const part of parts) {
-    if (result.length) {
-      result.push(rmatchDirSep);
-    }
-    if (part) {
-      pathRouteMatchers(part, result);
-    }
-  }
-
-  new URLSearchParams(queryPattern).forEach((_value, param, params) => {
-    params.getAll(param).forEach(value => result.push(rmatchSearchParam(param, value || undefined)));
-  });
-
-  return result;
+  return parseURLRoutePattern(pattern, addPathEntryMatchers);
 }
 
 

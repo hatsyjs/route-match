@@ -6,10 +6,7 @@ import { simpleRouteMatcher, simpleRouteWildcard } from './simple-route-pattern.
 /**
  * @internal
  */
-export function pathRouteMatchers(
-    pattern: string,
-    result: RouteMatcher[],
-): void {
+export function addPathEntryMatchers(pattern: string, matchers: RouteMatcher[]): void {
 
   const simpleMatcher = simpleRouteMatcher(
       pattern,
@@ -17,7 +14,7 @@ export function pathRouteMatchers(
   );
 
   if (simpleMatcher) {
-    result.push(simpleMatcher);
+    matchers.push(simpleMatcher);
     return;
   }
 
@@ -58,15 +55,15 @@ export function pathRouteMatchers(
 
     if (patternOffset < i) {
       // String prefix before matcher.
-      result.push(rmatchString(decodeURLComponent(pattern.substring(patternOffset, i))));
+      matchers.push(rmatchString(decodeURLComponent(pattern.substring(patternOffset, i))));
     }
 
-    result.push(matcher);
+    matchers.push(matcher);
     i = patternOffset = nextOffset;
   }
 
   if (patternOffset < pattern.length) {
-    result.push(patternOffset
+    matchers.push(patternOffset
         ? rmatchString(decodeURLComponent(pattern.substr(patternOffset))) // Suffix after last matcher
         : rmatchName(decodeURLComponent(pattern))); // No matcher recognized
   }

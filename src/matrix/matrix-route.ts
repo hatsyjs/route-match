@@ -33,9 +33,9 @@ export namespace MatrixRoute {
 /**
  * @internal
  */
-function matrixRouteEntry(name: string): MatrixRoute.Entry {
+function matrixRouteEntry(string: string): MatrixRoute.Entry {
 
-  const parts = name.split(';');
+  const parts = string.split(';');
   const attrs = new URLSearchParams();
 
   for (let i = 1; i < parts.length; ++i) {
