@@ -67,28 +67,6 @@ describe('urlRoute', () => {
       toString: expect.any(Function),
     });
   });
-  it('has empty query when without search params', () => {
-
-    const url = new URL('http://localhost/some/file');
-
-    expect(urlRoute(url)).toEqual({
-      url,
-      path: [{ name: 'some' }, { name: 'file' }],
-      dir: false,
-      toString: expect.any(Function),
-    });
-  });
-  it('has query when search params present', () => {
-
-    const url = new URL('http://localhost/some/file?param1&param%202=value1&param 2=value%202');
-
-    expect(urlRoute(url)).toEqual({
-      url,
-      path: [{ name: 'some' }, { name: 'file' }],
-      dir: false,
-      toString: expect.any(Function),
-    });
-  });
 
   describe('toString', () => {
     it('is empty string for empty route', () => {

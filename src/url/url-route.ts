@@ -3,6 +3,7 @@
  * @module @hatsy/route-match
  */
 import type { PathRoute } from '../path';
+import { parseURLRoute } from './url-route.impl';
 
 /**
  * A route representing an URL.
@@ -28,13 +29,8 @@ export interface URLRoute<TEntry extends PathRoute.Entry = PathRoute.Entry> exte
 /**
  * @internal
  */
-function urlRouteToString(this: URLRoute): string {
-
-  const { pathname, searchParams } = this.url;
-  const query = searchParams.toString();
-  const path = pathname.substring(1); // no leading `/`
-
-  return query ? `${path}?${query}` : path;
+function urlRouteEntry(name: string): PathRoute.Entry {
+  return { name: decodeURIComponent(name) };
 }
 
 /**
@@ -45,31 +41,5 @@ function urlRouteToString(this: URLRoute): string {
  * @returns New URL route instance.
  */
 export function urlRoute(url: URL): URLRoute {
-
-  let { pathname } = url;
-
-  if (pathname.length <= 1) {
-    return {
-      url,
-      path: [],
-      dir: true,
-      toString: urlRouteToString,
-    };
-  }
-
-  let dir = false;
-
-  if (pathname.endsWith('/')) {
-    dir = true;
-    pathname = pathname.substr(1, pathname.length - 2); // Remove leading and trailing slashes
-  } else {
-    pathname = pathname.substr(1); // Remove leading slash
-  }
-
-  return {
-    url,
-    path: pathname.split('/').map(name => ({ name: decodeURIComponent(name) })),
-    dir,
-    toString: urlRouteToString,
-  };
+  return parseURLRoute(url, urlRouteEntry);
 }
