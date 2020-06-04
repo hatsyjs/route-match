@@ -23,13 +23,15 @@ describe('rcaptureEntry', () => {
 
       match?.(capture);
       expect(capture).toHaveBeenCalledWith('capture', 'out', 'file', expect.anything());
+      expect(capture).toHaveBeenCalledTimes(1);
     });
-    it('matches dir', () => {
+    it('captures dir', () => {
 
       const match = routeMatch(urlRoute(new URL('http://localhost/dir/')), pattern);
 
       match?.(capture);
       expect(capture).toHaveBeenCalledWith('capture', 'out', 'dir', expect.anything());
+      expect(capture).toHaveBeenCalledTimes(1);
     });
     it('does not match too long path', () => {
       expect(routeMatch(urlRoute(new URL('http://localhost/dir/file')), pattern)).toBeNull();

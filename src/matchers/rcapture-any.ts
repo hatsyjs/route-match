@@ -12,7 +12,7 @@ import type { RouteMatcher } from '../route-matcher';
  * @param name  The name of the capture or nothing to capture under match index.
  * @returns  New route matcher.
  *
- * @see Use {@link rmatchAny} if the capturing is not needed.
+ * @see Use {@link rmatchAny} for anonymous capture.
  */
 export function rcaptureAny(name?: string): RouteMatcher {
 

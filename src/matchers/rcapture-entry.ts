@@ -9,16 +9,19 @@ import type { RouteMatcher } from '../route-matcher';
  *
  * Matches only at the {@link RouteMatcher.Context.nameOffset entry name beginning}.
  *
- * @param name  The name of the entry to capture.
+ * @param name  The name of the capture or nothing to capture under match index.
  * @returns New route matcher.
  *
- * @see Use {@link rmatchEntry} if the capturing is not needed.
+ * @see Use {@link rmatchEntry} for anonymous capture.
  */
-export function rcaptureEntry(name: string): RouteMatcher {
+export function rcaptureEntry(name?: string): RouteMatcher {
+
+  const key = name ?? 0;
+
   return {
     test: context => !context.nameOffset && {
       callback(capture) {
-        capture('capture', name, context.entry.name, context);
+        capture('capture', key, context.entry.name, context);
       },
     },
   };

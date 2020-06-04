@@ -90,7 +90,7 @@ describe('simpleRoutePattern', () => {
   });
 
   describe('{:wrong}/file', () => {
-    it('does not capture dir', () => {
+    it('captures dir anonymously', () => {
 
       const match = routeMatch(
           urlRoute(new URL('http://localhost/dir/file')),
@@ -99,21 +99,22 @@ describe('simpleRoutePattern', () => {
 
       expect(match).toBeTruthy();
       match?.(capture);
-      expect(capture).not.toHaveBeenCalled();
+      expect(capture).toHaveBeenCalledWith('capture', 1, 'dir', expect.anything());
+      expect(capture).toHaveBeenCalledTimes(1);
     });
   });
 
   describe('{}', () => {
-    it('does not capture file', () => {
+    it('captures file', () => {
 
       const match = routeMatch(
           urlRoute(new URL('http://localhost/test')),
           simpleRoutePattern('{}'),
       );
 
-      expect(match).toBeTruthy();
       match?.(capture);
-      expect(capture).not.toHaveBeenCalled();
+      expect(capture).toHaveBeenCalledWith('capture', 1, 'test', expect.anything());
+      expect(capture).toHaveBeenCalledTimes(1);
     });
   });
 

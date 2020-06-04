@@ -191,7 +191,7 @@ export function routeMatch<TEntry extends PathRoute.Entry, TRoute extends PathRo
     let keySeq = 0;
 
     successfulMatch((kind, ...args) => {
-      if (typeof args[0] === 'number') {
+      if (typeof args[0] === 'number') { // May be any number. E.g. when reporting nested matches
         args[0] = ++keySeq;
       }
       capture(kind, ...args);

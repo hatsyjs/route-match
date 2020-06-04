@@ -2,12 +2,10 @@
  * @packageDocumentation
  * @module @hatsy/route-match
  */
-import { valueProvider } from '@proc7ts/primitives';
 import type { RouteMatcher } from '../route-matcher';
+import { rcaptureEntry } from './rcapture-entry';
 
 /**
  * Route matcher that matches any route entry.
  */
-export const rmatchEntry: RouteMatcher = {
-  test: (/*#__PURE__*/ valueProvider({})),
-};
+export const rmatchEntry: RouteMatcher = (/*#__PURE__*/ rcaptureEntry());
