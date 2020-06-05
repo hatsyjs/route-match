@@ -4,6 +4,8 @@
  */
 /**
  * A route representing a path to file or directory.
+ *
+ * @typeparam TEntry  A type of route entries.
  */
 export interface PathRoute<TEntry extends PathRoute.Entry = PathRoute.Entry> {
 
