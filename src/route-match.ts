@@ -11,19 +11,15 @@ import type { RouteMatcher } from './route-matcher';
  *
  * This is a function that reports registered partial matches via {@link RouteCaptor route capture receiver}.
  *
- * @typeparam TEntry  A type of matching route entries.
  * @typeparam TRoute  A type of matching route.
  */
-export type RouteMatch<
-    TEntry extends PathRoute.Entry = PathRoute.Entry,
-    TRoute extends PathRoute<TEntry> = PathRoute<TEntry>,
-    > =
+export type RouteMatch<TRoute extends PathRoute = PathRoute> =
 /**
  * @param capture  A {@link RouteCaptor route capture receiver} function to report partial matches to.
  */
     (
         this: void,
-        captor: RouteCaptor<TEntry, TRoute>,
+        captor: RouteCaptor<TRoute>,
     ) => void;
 
 /**
@@ -31,13 +27,9 @@ export type RouteMatch<
  *
  * This is an array of {@link RouteMatch matchers}.
  *
- * @typeparam TEntry  A type of supported route entries.
  * @typeparam TRoute  A type of supported route.
  */
-export type RoutePattern<
-    TEntry extends PathRoute.Entry = PathRoute.Entry,
-    TRoute extends PathRoute<TEntry> = PathRoute<TEntry>,
-    > = readonly RouteMatcher<TEntry, TRoute>[];
+export type RoutePattern<TRoute extends PathRoute = PathRoute> = readonly RouteMatcher<TRoute>[];
 
 export namespace RouteMatch {
 
@@ -77,21 +69,22 @@ export namespace RouteMatch {
  * Tries to match fragments of the given route by each of the pattern matchers, in order. If some matcher fails, the
  * match fails too. If all matchers succeed, the match result is constructed and returned.
  *
+ * @typeparam TRoute  A type of route to match against.
  * @param route  Target route to match against.
  * @param pattern  A pattern to match.
  * @param options  Route match options.
  *
  * @returns  Either successful route match object, or `null` if the route does not match the given pattern.
  */
-export function routeMatch<TEntry extends PathRoute.Entry, TRoute extends PathRoute<TEntry>>(
+export function routeMatch<TRoute extends PathRoute>(
     this: void,
     route: TRoute,
-    pattern: RoutePattern<TEntry, TRoute>,
+    pattern: RoutePattern<TRoute>,
     options: RouteMatch.Options = {},
-): RouteMatch<TEntry, TRoute> | null {
+): RouteMatch<TRoute> | null {
 
   const { path } = route;
-  let successfulMatch: RouteMatch<TEntry, TRoute> = () => {/* nothing captured */};
+  let successfulMatch: RouteMatch<TRoute> = () => {/* nothing captured */};
   let { fromEntry: entryIndex = 0, nameOffset = 0, fromMatcher: matcherIndex = 0 } = options;
 
   while (entryIndex < path.length) {

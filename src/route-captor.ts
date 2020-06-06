@@ -14,13 +14,9 @@ import type { RouteMatcher } from './route-matcher';
  * This function parameters depend on the kind of the capture reported by corresponding matcher.
  * The {@link RouteCaptorSignatureMap} maps capture kinds to their callback signatures.
  *
- * @typeparam TEntry  A type of matching route entries.
  * @typeparam TRoute  A type of matching route.
  */
-export type RouteCaptor<
-    TEntry extends PathRoute.Entry = PathRoute.Entry,
-    TRoute extends PathRoute<TEntry> = PathRoute<TEntry>,
-    > =
+export type RouteCaptor<TRoute extends PathRoute = PathRoute> =
 /**
  * @typeparam TKind  A type of the capture kind. Corresponds to method names of {@link RouteCaptorSignatureMap}.
  *
@@ -32,7 +28,7 @@ export type RouteCaptor<
         this: void,
         kind: TKind,
         key: string | number,
-        ...capture: Parameters<RouteCaptorSignatureMap<TEntry, TRoute>[TKind]>
+        ...capture: Parameters<RouteCaptorSignatureMap<TRoute>[TKind]>
     ) => void;
 
 /**
@@ -40,13 +36,9 @@ export type RouteCaptor<
  *
  * Each method name corresponds to capture kind, while its signature represents the capture itself.
  *
- * @typeparam TEntry  A type of matching route entries.
  * @typeparam TRoute  A type of matching route.
  */
-export interface RouteCaptorSignatureMap<
-    TEntry extends PathRoute.Entry = PathRoute.Entry,
-    TRoute extends PathRoute<TEntry> = PathRoute<TEntry>,
-    > {
+export interface RouteCaptorSignatureMap<TRoute extends PathRoute = PathRoute> {
 
   /**
    * Arbitrary route capture.
@@ -56,7 +48,7 @@ export interface RouteCaptorSignatureMap<
    * @param value  The captured string value.
    * @param context  A context of the capturing matcher.
    */
-  capture(value: string, context: RouteMatcher.Context<TEntry, TRoute>): void;
+  capture(value: string, context: RouteMatcher.Context<TRoute>): void;
 
   /**
    * Directories capture.
@@ -67,7 +59,7 @@ export interface RouteCaptorSignatureMap<
    * The first captured entry is in {@link RouteMatcher.Context.entryIndex `context`}.
    * @param context  A context of the capturing matcher.
    */
-  dirs(upto: number, context: RouteMatcher.Context<TEntry, TRoute>): void;
+  dirs(upto: number, context: RouteMatcher.Context<TRoute>): void;
 
   /**
    * Regular expression capture.
@@ -79,6 +71,6 @@ export interface RouteCaptorSignatureMap<
    * @param match  The regexp match array returned from `RegExp.prototype.exec()` method call.
    * @param context  A context of the capturing matcher.
    */
-  regexp(match: RegExpExecArray, context: RouteMatcher.Context<TEntry, TRoute>): void;
+  regexp(match: RegExpExecArray, context: RouteMatcher.Context<TRoute>): void;
 
 }

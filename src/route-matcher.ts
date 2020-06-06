@@ -8,13 +8,9 @@ import type { RouteMatch, RoutePattern } from './route-match';
 /**
  * Route fragment matcher.
  *
- * @typeparam TEntry  A type of supported route entries.
  * @typeparam TRoute  A type of supported route.
  */
-export interface RouteMatcher<
-    TEntry extends PathRoute.Entry = PathRoute.Entry,
-    TRoute extends PathRoute<TEntry> = PathRoute<TEntry>,
-    > {
+export interface RouteMatcher<TRoute extends PathRoute = PathRoute> {
 
   /**
    * Tests whether a fragment of the route satisfying this matcher's conditions.
@@ -25,8 +21,8 @@ export interface RouteMatcher<
    * or `false`/`null`/`undefined` otherwise.
    */
   test(
-      context: RouteMatcher.Context<TEntry, TRoute>,
-  ): RouteMatcher.Match<TEntry, TRoute> | false | null | undefined;
+      context: RouteMatcher.Context<TRoute>,
+  ): RouteMatcher.Match<TRoute> | false | null | undefined;
 
   /**
    * Searches for the fragment of the route satisfying this matcher's conditions.
@@ -43,7 +39,7 @@ export interface RouteMatcher<
    * not found.
    */
   find?(
-      context: RouteMatcher.Context<TEntry, TRoute>,
+      context: RouteMatcher.Context<TRoute>,
   ): readonly [RouteMatch, number] | false | null | undefined;
 
   /**
@@ -53,7 +49,7 @@ export interface RouteMatcher<
    *
    * @returns `true` if the route satisfies this matcher's condition, or `false` otherwise.
    */
-  tail?(context: RouteMatcher.TailContext<TEntry, TRoute>): boolean;
+  tail?(context: RouteMatcher.TailContext<TRoute>): boolean;
 
 }
 
@@ -64,10 +60,9 @@ export namespace RouteMatcher {
    *
    * May represent a position after the end of the route.
    *
-   * @typeparam TEntry  A type of tested route entries.
    * @typeparam TRoute  A type of tested route.
    */
-  export interface Position<TEntry extends PathRoute.Entry, TRoute extends PathRoute<TEntry>> {
+  export interface Position<TRoute extends PathRoute> {
 
     /**
      * Target route.
@@ -77,7 +72,7 @@ export namespace RouteMatcher {
     /**
      * The first entry of the match or `undefined` for the position after the route end.
      */
-    readonly entry?: TEntry;
+    readonly entry?: TRoute['path'][0];
 
     /**
      * The index of the {@link entry first entry} of the match.
@@ -94,7 +89,7 @@ export namespace RouteMatcher {
     /**
      * The route pattern the matcher belongs to.
      */
-    readonly pattern: RoutePattern<TEntry, TRoute>;
+    readonly pattern: RoutePattern<TRoute>;
 
     /**
      * The index of the matcher in the route pattern.
@@ -109,16 +104,14 @@ export namespace RouteMatcher {
    * This is passed to {@link RouteMatcher.test route matcher} to indicate the position inside the route the match
    * should be searched at.
    *
-   * @typeparam TEntry  A type of tested route entries.
    * @typeparam TRoute  A type of tested route.
    */
-  export interface Context<TEntry extends PathRoute.Entry, TRoute extends PathRoute<TEntry>>
-      extends Position<TEntry, TRoute> {
+  export interface Context<TRoute extends PathRoute> extends Position<TRoute> {
 
     /**
      * The first entry the matcher should match against.
      */
-    readonly entry: TEntry;
+    readonly entry: TRoute['path'][0];
 
     /**
      * The index of the {@link entry first entry} within the {@link route route path} the matcher should match against.
@@ -140,11 +133,9 @@ export namespace RouteMatcher {
    * This is passed to {@link RouteMatcher.tail tail route matcher} to indicate the position after the end of the route
    * the match should be applied to.
    *
-   * @typeparam TEntry  A type of tested route entries.
    * @typeparam TRoute  A type of tested route.
    */
-  export interface TailContext<TEntry extends PathRoute.Entry, TRoute extends PathRoute<TEntry>>
-      extends Position<TEntry, TRoute> {
+  export interface TailContext<TRoute extends PathRoute> extends Position<TRoute> {
 
     /**
      * `undefined` route entry indicating the position after the end of the route.
@@ -168,13 +159,9 @@ export namespace RouteMatcher {
    *
    * This is returned from {@link RouteMatch route matcher} and indicates the matching part of the route.
    *
-   * @typeparam TEntry  A type of matching route entries.
    * @typeparam TRoute  A type of matching route.
    */
-  export interface Match<
-      TEntry extends PathRoute.Entry = PathRoute.Entry,
-      TRoute extends PathRoute<TEntry> = PathRoute<TEntry>,
-      > {
+  export interface Match<TRoute extends PathRoute = PathRoute> {
 
     /**
      * The number of fully matching route entries.
@@ -210,7 +197,7 @@ export namespace RouteMatcher {
      *
      * It will be invoked by {@link RouteMatch successful route match} only.
      */
-    readonly callback?: RouteMatch<TEntry, TRoute>;
+    readonly callback?: RouteMatch<TRoute>;
 
   }
 

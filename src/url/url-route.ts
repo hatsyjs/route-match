@@ -9,7 +9,7 @@ import { parseURLRoute } from './url-route.impl';
 /**
  * A route representing an URL.
  */
-export interface URLRoute<TEntry extends PathRoute.Entry = PathRoute.Entry> extends PathRoute<TEntry> {
+export interface URLRoute extends PathRoute {
 
   /**
    * URL this route represents.

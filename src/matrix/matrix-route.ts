@@ -10,7 +10,14 @@ import { parseURLRoute } from '../url/url-route.impl';
 /**
  * A route representing [matrix URL](https://www.w3.org/DesignIssues/MatrixURIs.html).
  */
-export type MatrixRoute<TEntry extends MatrixRoute.Entry = MatrixRoute.Entry> = URLRoute<TEntry>;
+export interface MatrixRoute extends URLRoute {
+
+  /**
+   * A path split onto matrix entries.
+   */
+  readonly path: readonly MatrixRoute.Entry[];
+
+}
 
 export namespace MatrixRoute {
 
