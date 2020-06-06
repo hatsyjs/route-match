@@ -2,7 +2,7 @@
  * @packageDocumentation
  * @module @hatsy/route-match
  */
-import type { PathRoute } from '../path';
+import type { PathEntry } from '../path';
 import type { URLRoute } from '../url';
 import { decodeURLComponent } from '../url/decode-url.impl';
 import { parseURLRoute } from '../url/url-route.impl';
@@ -15,32 +15,28 @@ export interface MatrixRoute extends URLRoute {
   /**
    * A path split onto matrix entries.
    */
-  readonly path: readonly MatrixRoute.Entry[];
+  readonly path: readonly MatrixEntry[];
 
 }
 
-export namespace MatrixRoute {
+/**
+ * Matrix route entry.
+ *
+ * Extends file or directory with matrix attributes.
+ */
+export interface MatrixEntry extends PathEntry {
 
   /**
-   * Matrix route entry.
-   *
-   * Extends file or directory with matrix attributes.
+   * Matrix attributes represented by URL search parameters.
    */
-  export interface Entry extends PathRoute.Entry {
-
-    /**
-     * Matrix attributes represented by URL search parameters.
-     */
-    readonly attrs: URLSearchParams;
-
-  }
+  readonly attrs: URLSearchParams;
 
 }
 
 /**
  * @internal
  */
-function matrixRouteEntry(string: string): MatrixRoute.Entry {
+function matrixEntry(string: string): MatrixEntry {
 
   const parts = string.split(';');
   const attrs = new URLSearchParams();
@@ -63,5 +59,5 @@ function matrixRouteEntry(string: string): MatrixRoute.Entry {
  * @returns New matrix route instance.
  */
 export function matrixRoute(url: URL): MatrixRoute {
-  return parseURLRoute(url, matrixRouteEntry);
+  return parseURLRoute(url, matrixEntry);
 }

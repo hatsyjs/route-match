@@ -10,7 +10,7 @@ export interface PathRoute {
   /**
    * A path split onto file and directory entries.
    */
-  readonly path: readonly PathRoute.Entry[];
+  readonly path: readonly PathEntry[];
 
   /**
    * Whether this is a route to directory.
@@ -26,20 +26,16 @@ export interface PathRoute {
 
 }
 
-export namespace PathRoute {
+/**
+ * Path entry.
+ *
+ * Represents either file or directory.
+ */
+export interface PathEntry {
 
   /**
-   * Route entry.
-   *
-   * Represents either file or directory.
+   * Target file or directory name.
    */
-  export interface Entry {
-
-    /**
-     * Target file or directory name.
-     */
-    readonly name: string;
-
-  }
+  readonly name: string;
 
 }

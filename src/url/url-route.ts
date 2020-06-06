@@ -2,7 +2,7 @@
  * @packageDocumentation
  * @module @hatsy/route-match
  */
-import type { PathRoute } from '../path';
+import type { PathEntry, PathRoute } from '../path';
 import { decodeURLComponent } from './decode-url.impl';
 import { parseURLRoute } from './url-route.impl';
 
@@ -30,7 +30,7 @@ export interface URLRoute extends PathRoute {
 /**
  * @internal
  */
-function urlRouteEntry(name: string): PathRoute.Entry {
+function urlEntry(name: string): PathEntry {
   return { name: decodeURLComponent(name) };
 }
 
@@ -42,5 +42,5 @@ function urlRouteEntry(name: string): PathRoute.Entry {
  * @returns New URL route instance.
  */
 export function urlRoute(url: URL): URLRoute {
-  return parseURLRoute(url, urlRouteEntry);
+  return parseURLRoute(url, urlEntry);
 }
