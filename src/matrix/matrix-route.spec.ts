@@ -20,4 +20,22 @@ describe('matrixRoute', () => {
     expect(route.path[1].attrs.getAll('attr3')).toEqual(['value3']);
     expect(route.path[1].attrs.getAll('attr4')).toEqual(['']);
   });
+
+  describe('toString', () => {
+    it('is empty string for empty route', () => {
+      expect(matrixRoute(new URL('http://localhost')).toString()).toBe('');
+    });
+    it('URL-encodes file path', () => {
+      expect(matrixRoute(new URL('http://localhost/some dir/some%20file')).toString())
+          .toBe('some%20dir/some%20file');
+    });
+    it('terminates directory path with `/`', () => {
+      expect(matrixRoute(new URL('http://localhost/some%20dir/')).toString())
+          .toBe('some%20dir/');
+    });
+    it('URL-encodes matrix attributes', () => {
+      expect(matrixRoute(new URL('http://localhost/some%20dir/;param+1;param2=value+1;param2=value%202')).toString())
+          .toBe('some%20dir/;param%201=;param2=value%201;param2=value%202');
+    });
+  });
 });

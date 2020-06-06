@@ -28,8 +28,8 @@ export function parseURLRoutePattern<TRoute extends URLRoute>(
     }
   }
 
-  new URLSearchParams(queryPattern).forEach((_value, param, params) => {
-    params.getAll(param).forEach(value => matchers.push(rmatchSearchParam(param, value || undefined)));
+  new URLSearchParams(queryPattern).forEach((value, param) => {
+    matchers.push(rmatchSearchParam(param, value || undefined));
   });
 
   return matchers;

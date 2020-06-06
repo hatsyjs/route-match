@@ -12,9 +12,12 @@ import { parseURLRoute } from './url-route.impl';
 export interface URLRoute extends PathRoute {
 
   /**
-   * URL this route represents.
+   * URL this route represents, except for the pathname.
    *
-   * Do not modify it.
+   * The pathname of this URL is not necessarily the one this route represents. E.g. this route may represent a
+   * {@link routeTail tail} of that path.
+   *
+   * Intended to be immutable.
    */
   readonly url: URL;
 
@@ -30,8 +33,15 @@ export interface URLRoute extends PathRoute {
 /**
  * @internal
  */
-function urlEntry(name: string): PathEntry {
+function parsePathEntry(name: string): PathEntry {
   return { name: decodeURLComponent(name) };
+}
+
+/**
+ * @internal
+ */
+function pathEntryToString({ name }: PathEntry): string {
+  return encodeURIComponent(name);
 }
 
 /**
@@ -42,5 +52,5 @@ function urlEntry(name: string): PathEntry {
  * @returns New URL route instance.
  */
 export function urlRoute(url: URL): URLRoute {
-  return parseURLRoute(url, urlEntry);
+  return parseURLRoute(url, parsePathEntry, pathEntryToString);
 }

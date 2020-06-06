@@ -1,3 +1,4 @@
+import { itsReduction } from '@proc7ts/a-iterable';
 import type { PathEntry } from '../path';
 import type { URLRoute } from './url-route';
 
@@ -16,6 +17,7 @@ export interface ParsedURLRoute<TEntry extends PathEntry> extends URLRoute {
 export function parseURLRoute<TEntry extends PathEntry>(
     url: URL,
     parseEntry: (name: string) => TEntry,
+    entryToString: (entry: TEntry) => string,
 ): ParsedURLRoute<TEntry> {
 
   let { pathname } = url;
@@ -25,7 +27,7 @@ export function parseURLRoute<TEntry extends PathEntry>(
       url,
       path: [],
       dir: true,
-      toString: urlRouteToString,
+      toString: urlRouteToString(entryToString),
     };
   }
 
@@ -43,18 +45,30 @@ export function parseURLRoute<TEntry extends PathEntry>(
     url,
     path: pathname.split('/').map(parseEntry),
     dir,
-    toString: urlRouteToString,
+    toString: urlRouteToString(entryToString),
   };
 }
 
 /**
  * @internal
  */
-function urlRouteToString(this: URLRoute): string {
+function urlRouteToString<TEntry extends PathEntry>(
+    entryToString: (entry: TEntry) => string,
+): (this: ParsedURLRoute<TEntry>) => string {
+  return function (this: ParsedURLRoute<TEntry>): string {
 
-  const { pathname, searchParams } = this.url;
-  const query = searchParams.toString();
-  const path = pathname.substring(1); // no leading `/`
+    const { searchParams } = this.url;
+    const query = searchParams.toString();
+    let path = itsReduction(
+        this.path,
+        (prev, entry) => prev ? `${prev}/${entryToString(entry)}` : entryToString(entry),
+        '',
+    );
 
-  return query ? `${path}?${query}` : path;
+    if (path && this.dir) {
+      path += '/';
+    }
+
+    return query ? `${path}?${query}` : path;
+  };
 }

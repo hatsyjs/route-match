@@ -28,6 +28,8 @@ export interface MatrixEntry extends PathEntry {
 
   /**
    * Matrix attributes represented by URL search parameters.
+   *
+   * Intended to be immutable.
    */
   readonly attrs: URLSearchParams;
 
@@ -36,7 +38,7 @@ export interface MatrixEntry extends PathEntry {
 /**
  * @internal
  */
-function matrixEntry(string: string): MatrixEntry {
+function parseMatrixEntry(string: string): MatrixEntry {
 
   const parts = string.split(';');
   const attrs = new URLSearchParams();
@@ -52,6 +54,20 @@ function matrixEntry(string: string): MatrixEntry {
 }
 
 /**
+ * @internal
+ */
+function matrixEntryToString({ name, attrs }: MatrixEntry): string {
+
+  let result = encodeURIComponent(name);
+
+  attrs.forEach((value, name) => {
+    result += `;${(encodeURIComponent(name))}=${encodeURIComponent(value)}`;
+  });
+
+  return result;
+}
+
+/**
  * Constructs a matrix route by URL.
  *
  * @param url  Source URL.
@@ -59,5 +75,5 @@ function matrixEntry(string: string): MatrixEntry {
  * @returns New matrix route instance.
  */
 export function matrixRoute(url: URL): MatrixRoute {
-  return parseURLRoute(url, matrixEntry);
+  return parseURLRoute(url, parseMatrixEntry, matrixEntryToString);
 }
