@@ -13,7 +13,7 @@ import type { MatrixRoute } from './matrix-route';
  *
  * @returns New URL route matcher.
  */
-export function rmatchMatrixAttr(name: string, value?: string): RouteMatcher<MatrixRoute.Entry, MatrixRoute> {
+export function rmatchMatrixAttr(name: string, value?: string): RouteMatcher<MatrixRoute> {
 
   const condition: (attrs: URLSearchParams) => boolean = value == null
       ? attrs => attrs.has(name)

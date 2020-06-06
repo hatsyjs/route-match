@@ -2,7 +2,6 @@
  * @packageDocumentation
  * @module @hatsy/route-match
  */
-import type { PathRoute } from '../path';
 import { addPathEntryMatchers } from '../path/path-route-pattern.impl';
 import type { RoutePattern } from '../route-match';
 import type { URLRoute } from './url-route';
@@ -50,7 +49,7 @@ import { parseURLRoutePattern } from './url-route-pattern.impl';
  * @param pattern  Pattern string.
  * @returns Simple route pattern.
  */
-export function urlRoutePattern(pattern: string): RoutePattern<PathRoute.Entry, URLRoute> {
+export function urlRoutePattern(pattern: string): RoutePattern<URLRoute> {
   return parseURLRoutePattern(pattern, addPathEntryMatchers);
 }
 

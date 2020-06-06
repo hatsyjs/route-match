@@ -13,7 +13,7 @@ import { rmatchMatrixAttr } from './rmatch-matrix-attr';
 /**
  * @internal
  */
-function addMatrixEntryMatchers(pattern: string, matchers: RouteMatcher<MatrixRoute.Entry, MatrixRoute>[]): void {
+function addMatrixEntryMatchers(pattern: string, matchers: RouteMatcher<MatrixRoute>[]): void {
 
   const parts = pattern.split(';');
 
@@ -42,6 +42,6 @@ function addMatrixEntryMatchers(pattern: string, matchers: RouteMatcher<MatrixRo
  *
  * @param pattern
  */
-export function matrixRoutePattern(pattern: string): RoutePattern<MatrixRoute.Entry, MatrixRoute> {
+export function matrixRoutePattern(pattern: string): RoutePattern<MatrixRoute> {
   return parseURLRoutePattern(pattern, addMatrixEntryMatchers);
 }

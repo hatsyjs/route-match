@@ -1,13 +1,22 @@
-import type { PathRoute } from '../path';
+import type { PathEntry } from '../path';
 import type { URLRoute } from './url-route';
 
 /**
  * @internal
  */
-export function parseURLRoute<TEntry extends PathRoute.Entry>(
+export interface ParsedURLRoute<TEntry extends PathEntry> extends URLRoute {
+
+  readonly path: readonly TEntry[]
+
+}
+
+/**
+ * @internal
+ */
+export function parseURLRoute<TEntry extends PathEntry>(
     url: URL,
     parseEntry: (name: string) => TEntry,
-): URLRoute<TEntry> {
+): ParsedURLRoute<TEntry> {
 
   let { pathname } = url;
 

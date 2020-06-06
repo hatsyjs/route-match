@@ -2,7 +2,6 @@
  * @packageDocumentation
  * @module @hatsy/route-match
  */
-import type { PathRoute } from '../path';
 import type { RouteMatcher } from '../route-matcher';
 import type { URLRoute } from './url-route';
 
@@ -14,9 +13,9 @@ import type { URLRoute } from './url-route';
  *
  * @returns New URL route matcher.
  */
-export function rmatchSearchParam(name: string, value?: string): RouteMatcher<PathRoute.Entry, URLRoute> {
+export function rmatchSearchParam(name: string, value?: string): RouteMatcher<URLRoute> {
 
-  const condition: (position: RouteMatcher.Position<PathRoute.Entry, URLRoute>) => boolean = value == null
+  const condition: (position: RouteMatcher.Position<URLRoute>) => boolean = value == null
       ? ({ route: { url: { searchParams } } }) => searchParams.has(name)
       : ({ route: { url: { searchParams } } }) => searchParams.getAll(name).includes(value);
 
