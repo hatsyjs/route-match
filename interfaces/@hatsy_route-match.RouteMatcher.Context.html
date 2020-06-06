@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>TailContext | Route Match</title>
+	<title>Context | Route Match</title>
 	<meta name="description" content="Documentation for Route Match">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -54,19 +54,16 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/reflection-200.html"></a>
+					<a href="../modules/@hatsy_route-match.html">@hatsy/route-match</a>
 				</li>
 				<li>
-					<a href="../modules/reflection-200.reflection-201.html"></a>
+					<a href="../modules/@hatsy_route-match.RouteMatcher.html">RouteMatcher</a>
 				</li>
 				<li>
-					<a href="../modules/reflection-200.reflection-201.reflection-10.html"></a>
-				</li>
-				<li>
-					<a href="reflection-200.reflection-201.reflection-10.TailContext.html">TailContext</a>
+					<a href="@hatsy_route-match.RouteMatcher.Context.html">Context</a>
 				</li>
 			</ul>
-			<h1>Interface TailContext&lt;TRoute&gt;</h1>
+			<h1>Interface Context&lt;TRoute&gt;</h1>
 		</div>
 	</div>
 </header>
@@ -76,10 +73,10 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>Route tail match context.</p>
+						<p>Route match context.</p>
 					</div>
-					<p>This is passed to {@link RouteMatcher.tail tail route matcher} to indicate the position after the end of the route
-					the match should be applied to.</p>
+					<p>This is passed to <a href="../modules/@hatsy_route-match.RouteMatcher.html#test">route matcher</a> to indicate the position inside the route the match
+					should be searched at.</p>
 				</div>
 			</section>
 			<section class="tsd-panel tsd-type-parameters">
@@ -99,10 +96,10 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<a href="reflection-200.reflection-201.reflection-10.Position.html" class="tsd-signature-type">Position</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TRoute</span><span class="tsd-signature-symbol">&gt;</span>
+						<a href="@hatsy_route-match.RouteMatcher.Position.html" class="tsd-signature-type">Position</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TRoute</span><span class="tsd-signature-symbol">&gt;</span>
 						<ul class="tsd-hierarchy">
 							<li>
-								<span class="target">TailContext</span>
+								<span class="target">Context</span>
 							</li>
 						</ul>
 					</li>
@@ -115,12 +112,12 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite"><a href="reflection-200.reflection-201.reflection-10.TailContext.html#entry" class="tsd-kind-icon">entry</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite"><a href="reflection-200.reflection-201.reflection-10.TailContext.html#entryIndex" class="tsd-kind-icon">entry<wbr>Index</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="reflection-200.reflection-201.reflection-10.TailContext.html#matcherIndex" class="tsd-kind-icon">matcher<wbr>Index</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite"><a href="reflection-200.reflection-201.reflection-10.TailContext.html#nameOffset" class="tsd-kind-icon">name<wbr>Offset</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="reflection-200.reflection-201.reflection-10.TailContext.html#pattern" class="tsd-kind-icon">pattern</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="reflection-200.reflection-201.reflection-10.TailContext.html#route" class="tsd-kind-icon">route</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite"><a href="@hatsy_route-match.RouteMatcher.Context.html#entry" class="tsd-kind-icon">entry</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite"><a href="@hatsy_route-match.RouteMatcher.Context.html#entryIndex" class="tsd-kind-icon">entry<wbr>Index</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="@hatsy_route-match.RouteMatcher.Context.html#matcherIndex" class="tsd-kind-icon">matcher<wbr>Index</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite"><a href="@hatsy_route-match.RouteMatcher.Context.html#nameOffset" class="tsd-kind-icon">name<wbr>Offset</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="@hatsy_route-match.RouteMatcher.Context.html#pattern" class="tsd-kind-icon">pattern</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="@hatsy_route-match.RouteMatcher.Context.html#route" class="tsd-kind-icon">route</a></li>
 							</ul>
 						</section>
 					</div>
@@ -130,17 +127,17 @@
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite">
 					<a name="entry" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> <span class="tsd-flag ts-flagReadonly">Readonly</span> entry</h3>
-					<div class="tsd-signature tsd-kind-icon">entry<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span></div>
+					<h3><span class="tsd-flag ts-flagReadonly">Readonly</span> entry</h3>
+					<div class="tsd-signature tsd-kind-icon">entry<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">TRoute</span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">"path"</span><span class="tsd-signature-symbol">]</span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">0</span><span class="tsd-signature-symbol">]</span></div>
 					<aside class="tsd-sources">
-						<p>Overrides <a href="reflection-200.reflection-201.reflection-10.Position.html">Position</a>.<a href="reflection-200.reflection-201.reflection-10.Position.html#entry">entry</a></p>
+						<p>Overrides <a href="@hatsy_route-match.RouteMatcher.Position.html">Position</a>.<a href="@hatsy_route-match.RouteMatcher.Position.html#entry">entry</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/488fe56/src/route-matcher.ts#L143">hatsy/route-match/src/route-matcher.ts:143</a></li>
+							<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/10997bc/src/route-matcher.ts#L114">hatsy/route-match/src/route-matcher.ts:114</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p><code>undefined</code> route entry indicating the position after the end of the route.</p>
+							<p>The first entry the matcher should match against.</p>
 						</div>
 					</div>
 				</section>
@@ -149,15 +146,16 @@
 					<h3><span class="tsd-flag ts-flagReadonly">Readonly</span> entry<wbr>Index</h3>
 					<div class="tsd-signature tsd-kind-icon">entry<wbr>Index<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
-						<p>Overrides <a href="reflection-200.reflection-201.reflection-10.Position.html">Position</a>.<a href="reflection-200.reflection-201.reflection-10.Position.html#entryIndex">entryIndex</a></p>
+						<p>Overrides <a href="@hatsy_route-match.RouteMatcher.Position.html">Position</a>.<a href="@hatsy_route-match.RouteMatcher.Position.html#entryIndex">entryIndex</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/488fe56/src/route-matcher.ts#L148">hatsy/route-match/src/route-matcher.ts:148</a></li>
+							<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/10997bc/src/route-matcher.ts#L121">hatsy/route-match/src/route-matcher.ts:121</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>The length of the route path to indicate the position after the end of the route.</p>
+							<p>The index of the <a href="@hatsy_route-match.RouteMatcher.Context.html#entry">first entry</a> within the <a href="@hatsy_route-match.RouteMatcher.Context.html#route">route path</a> the matcher should match against.</p>
 						</div>
+						<p>Always less than path length.</p>
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
@@ -165,9 +163,9 @@
 					<h3><span class="tsd-flag ts-flagReadonly">Readonly</span> matcher<wbr>Index</h3>
 					<div class="tsd-signature tsd-kind-icon">matcher<wbr>Index<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from <a href="reflection-200.reflection-201.reflection-10.Position.html">Position</a>.<a href="reflection-200.reflection-201.reflection-10.Position.html#matcherIndex">matcherIndex</a></p>
+						<p>Inherited from <a href="@hatsy_route-match.RouteMatcher.Position.html">Position</a>.<a href="@hatsy_route-match.RouteMatcher.Position.html#matcherIndex">matcherIndex</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/488fe56/src/route-matcher.ts#L97">hatsy/route-match/src/route-matcher.ts:97</a></li>
+							<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/10997bc/src/route-matcher.ts#L97">hatsy/route-match/src/route-matcher.ts:97</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -179,16 +177,16 @@
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite">
 					<a name="nameOffset" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagReadonly">Readonly</span> name<wbr>Offset</h3>
-					<div class="tsd-signature tsd-kind-icon">name<wbr>Offset<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">0</span></div>
+					<div class="tsd-signature tsd-kind-icon">name<wbr>Offset<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
-						<p>Overrides <a href="reflection-200.reflection-201.reflection-10.Position.html">Position</a>.<a href="reflection-200.reflection-201.reflection-10.Position.html#nameOffset">nameOffset</a></p>
+						<p>Overrides <a href="@hatsy_route-match.RouteMatcher.Position.html">Position</a>.<a href="@hatsy_route-match.RouteMatcher.Position.html#nameOffset">nameOffset</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/488fe56/src/route-matcher.ts#L153">hatsy/route-match/src/route-matcher.ts:153</a></li>
+							<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/10997bc/src/route-matcher.ts#L126">hatsy/route-match/src/route-matcher.ts:126</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Always zero to indicate the position after the end of the route.</p>
+							<p>An offset of the first character within <a href="@hatsy_route-match.RouteMatcher.Context.html#entry">first entry</a> name the matcher should match against.</p>
 						</div>
 					</div>
 				</section>
@@ -197,9 +195,9 @@
 					<h3><span class="tsd-flag ts-flagReadonly">Readonly</span> pattern</h3>
 					<div class="tsd-signature tsd-kind-icon">pattern<span class="tsd-signature-symbol">:</span> <a href="../modules/@hatsy_route-match.html#RoutePattern" class="tsd-signature-type">RoutePattern</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TRoute</span><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from <a href="reflection-200.reflection-201.reflection-10.Position.html">Position</a>.<a href="reflection-200.reflection-201.reflection-10.Position.html#pattern">pattern</a></p>
+						<p>Inherited from <a href="@hatsy_route-match.RouteMatcher.Position.html">Position</a>.<a href="@hatsy_route-match.RouteMatcher.Position.html#pattern">pattern</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/488fe56/src/route-matcher.ts#L92">hatsy/route-match/src/route-matcher.ts:92</a></li>
+							<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/10997bc/src/route-matcher.ts#L92">hatsy/route-match/src/route-matcher.ts:92</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -213,9 +211,9 @@
 					<h3><span class="tsd-flag ts-flagReadonly">Readonly</span> route</h3>
 					<div class="tsd-signature tsd-kind-icon">route<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">TRoute</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from <a href="reflection-200.reflection-201.reflection-10.Position.html">Position</a>.<a href="reflection-200.reflection-201.reflection-10.Position.html#route">route</a></p>
+						<p>Inherited from <a href="@hatsy_route-match.RouteMatcher.Position.html">Position</a>.<a href="@hatsy_route-match.RouteMatcher.Position.html#route">route</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/488fe56/src/route-matcher.ts#L70">hatsy/route-match/src/route-matcher.ts:70</a></li>
+							<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/10997bc/src/route-matcher.ts#L70">hatsy/route-match/src/route-matcher.ts:70</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -236,53 +234,50 @@
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-interface tsd-parent-kind-namespace tsd-has-type-parameter">
-						<a href="reflection-200.reflection-201.reflection-10.Context.html" class="tsd-kind-icon">Context</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-namespace tsd-has-type-parameter">
-						<a href="reflection-200.reflection-201.reflection-10.Match.html" class="tsd-kind-icon">Match</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-namespace">
-						<a href="reflection-200.reflection-201.reflection-10.Options.html" class="tsd-kind-icon">Options</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-namespace tsd-has-type-parameter">
-						<a href="reflection-200.reflection-201.reflection-10.Position.html" class="tsd-kind-icon">Position</a>
-					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface tsd-parent-kind-namespace tsd-has-type-parameter">
-						<a href="reflection-200.reflection-201.reflection-10.TailContext.html" class="tsd-kind-icon">Tail<wbr>Context</a>
+						<a href="@hatsy_route-match.RouteMatcher.Context.html" class="tsd-kind-icon">Context</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite">
-								<a href="reflection-200.reflection-201.reflection-10.TailContext.html#entry" class="tsd-kind-icon">entry</a>
+								<a href="@hatsy_route-match.RouteMatcher.Context.html#entry" class="tsd-kind-icon">entry</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite">
-								<a href="reflection-200.reflection-201.reflection-10.TailContext.html#entryIndex" class="tsd-kind-icon">entry<wbr>Index</a>
+								<a href="@hatsy_route-match.RouteMatcher.Context.html#entryIndex" class="tsd-kind-icon">entry<wbr>Index</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-								<a href="reflection-200.reflection-201.reflection-10.TailContext.html#matcherIndex" class="tsd-kind-icon">matcher<wbr>Index</a>
+								<a href="@hatsy_route-match.RouteMatcher.Context.html#matcherIndex" class="tsd-kind-icon">matcher<wbr>Index</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite">
-								<a href="reflection-200.reflection-201.reflection-10.TailContext.html#nameOffset" class="tsd-kind-icon">name<wbr>Offset</a>
+								<a href="@hatsy_route-match.RouteMatcher.Context.html#nameOffset" class="tsd-kind-icon">name<wbr>Offset</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-								<a href="reflection-200.reflection-201.reflection-10.TailContext.html#pattern" class="tsd-kind-icon">pattern</a>
+								<a href="@hatsy_route-match.RouteMatcher.Context.html#pattern" class="tsd-kind-icon">pattern</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-								<a href="reflection-200.reflection-201.reflection-10.TailContext.html#route" class="tsd-kind-icon">route</a>
+								<a href="@hatsy_route-match.RouteMatcher.Context.html#route" class="tsd-kind-icon">route</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
-					<li class=" tsd-kind-method tsd-parent-kind-namespace">
-						<a href="../modules/reflection-200.reflection-201.reflection-10.html#find" class="tsd-kind-icon">find</a>
+					<li class=" tsd-kind-interface tsd-parent-kind-namespace tsd-has-type-parameter">
+						<a href="@hatsy_route-match.RouteMatcher.Match.html" class="tsd-kind-icon">Match</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-namespace tsd-has-type-parameter">
+						<a href="@hatsy_route-match.RouteMatcher.Position.html" class="tsd-kind-icon">Position</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-namespace tsd-has-type-parameter">
+						<a href="@hatsy_route-match.RouteMatcher.TailContext.html" class="tsd-kind-icon">Tail<wbr>Context</a>
 					</li>
 					<li class=" tsd-kind-method tsd-parent-kind-namespace">
-						<a href="../modules/reflection-200.reflection-201.reflection-10.html#tail" class="tsd-kind-icon">tail</a>
+						<a href="../modules/@hatsy_route-match.RouteMatcher.html#find" class="tsd-kind-icon">find</a>
 					</li>
 					<li class=" tsd-kind-method tsd-parent-kind-namespace">
-						<a href="../modules/reflection-200.reflection-201.reflection-10.html#test" class="tsd-kind-icon">test</a>
+						<a href="../modules/@hatsy_route-match.RouteMatcher.html#tail" class="tsd-kind-icon">tail</a>
+					</li>
+					<li class=" tsd-kind-method tsd-parent-kind-namespace">
+						<a href="../modules/@hatsy_route-match.RouteMatcher.html#test" class="tsd-kind-icon">test</a>
 					</li>
 				</ul>
 			</nav>

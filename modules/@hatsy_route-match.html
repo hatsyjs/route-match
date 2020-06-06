@@ -69,6 +69,13 @@
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
 						<section class="tsd-index-section ">
+							<h3>Namespaces</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-namespace tsd-parent-kind-module tsd-has-type-parameter"><a href="@hatsy_route-match.RouteMatch.html" class="tsd-kind-icon">Route<wbr>Match</a></li>
+								<li class="tsd-kind-namespace tsd-parent-kind-module tsd-has-type-parameter"><a href="@hatsy_route-match.RouteMatcher.html" class="tsd-kind-icon">Route<wbr>Matcher</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
 							<h3>Interfaces</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-interface tsd-parent-kind-module"><a href="../interfaces/@hatsy_route-match.MatrixEntry.html" class="tsd-kind-icon">Matrix<wbr>Entry</a></li>
@@ -131,14 +138,14 @@
 					<div class="tsd-signature tsd-kind-icon">Route<wbr>Captor&lt;TRoute&gt;<span class="tsd-signature-symbol">:</span> &lt;TKind&gt;<span class="tsd-signature-symbol">(</span>this<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span>, kind<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TKind</span>, key<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span>, <span class="tsd-signature-symbol">...</span>capture<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Parameters</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">RouteCaptorSignatureMap</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TRoute</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">TKind</span><span class="tsd-signature-symbol">]</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/488fe56/src/route-captor.ts#L19">hatsy/route-match/src/route-captor.ts:19</a></li>
+							<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/10997bc/src/route-captor.ts#L19">hatsy/route-match/src/route-captor.ts:19</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
 							<p>Route capture receiver signature.</p>
 						</div>
-						<p>This is a function that can be passed to {@link RouteMatch route match} in order to receive partial route matches.
+						<p>This is a function that can be passed to <a href="@hatsy_route-match.RouteMatch.html">route match</a> in order to receive partial route matches.
 						I.e. matching fragments of the route captured by different matchers.</p>
 						<p>This function parameters depend on the kind of the capture reported by corresponding matcher.
 						The <a href="../interfaces/@hatsy_route-match.RouteCaptorSignatureMap.html">RouteCaptorSignatureMap</a> maps capture kinds to their callback signatures.</p>
@@ -209,17 +216,17 @@
 				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module tsd-has-type-parameter">
 					<a name="RoutePattern" class="tsd-anchor"></a>
 					<h3>Route<wbr>Pattern</h3>
-					<div class="tsd-signature tsd-kind-icon">Route<wbr>Pattern&lt;TRoute&gt;<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">keyof </span><a href="reflection-200.reflection-201.reflection-10.html" class="tsd-signature-type"></a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TRoute</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span></div>
+					<div class="tsd-signature tsd-kind-icon">Route<wbr>Pattern&lt;TRoute&gt;<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">keyof </span><a href="@hatsy_route-match.RouteMatcher.html" class="tsd-signature-type">RouteMatcher</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TRoute</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/488fe56/src/route-match.ts#L32">hatsy/route-match/src/route-match.ts:32</a></li>
+							<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/10997bc/src/route-match.ts#L32">hatsy/route-match/src/route-match.ts:32</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
 							<p>A pattern to <a href="@hatsy_route-match.html#routeMatch">match the route</a> against.</p>
 						</div>
-						<p>This is an array of {@link RouteMatch matchers}.</p>
+						<p>This is an array of <a href="@hatsy_route-match.RouteMatch.html">matchers</a>.</p>
 					</div>
 					<h4 class="tsd-type-parameters-title">Type parameters</h4>
 					<ul class="tsd-type-parameters">
@@ -239,10 +246,10 @@
 				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-module">
 					<a name="rmatchAny" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagConst">Const</span> rmatch<wbr>Any</h3>
-					<div class="tsd-signature tsd-kind-icon">rmatch<wbr>Any<span class="tsd-signature-symbol">:</span> <a href="reflection-200.reflection-201.reflection-10.html" class="tsd-signature-type"></a><span class="tsd-signature-symbol"> = (/*#__PURE__*/ rcaptureAny())</span></div>
+					<div class="tsd-signature tsd-kind-icon">rmatch<wbr>Any<span class="tsd-signature-symbol">:</span> <a href="@hatsy_route-match.RouteMatcher.html" class="tsd-signature-type">RouteMatcher</a><span class="tsd-signature-symbol"> = (/*#__PURE__*/ rcaptureAny())</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/488fe56/src/matchers/rmatch-any.ts#L11">hatsy/route-match/src/matchers/rmatch-any.ts:11</a></li>
+							<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/10997bc/src/matchers/rmatch-any.ts#L11">hatsy/route-match/src/matchers/rmatch-any.ts:11</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -254,26 +261,26 @@
 				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-module">
 					<a name="rmatchDirs" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagConst">Const</span> rmatch<wbr>Dirs</h3>
-					<div class="tsd-signature tsd-kind-icon">rmatch<wbr>Dirs<span class="tsd-signature-symbol">:</span> <a href="reflection-200.reflection-201.reflection-10.html" class="tsd-signature-type"></a><span class="tsd-signature-symbol"> = (/*#__PURE__*/ rcaptureDirs())</span></div>
+					<div class="tsd-signature tsd-kind-icon">rmatch<wbr>Dirs<span class="tsd-signature-symbol">:</span> <a href="@hatsy_route-match.RouteMatcher.html" class="tsd-signature-type">RouteMatcher</a><span class="tsd-signature-symbol"> = (/*#__PURE__*/ rcaptureDirs())</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/488fe56/src/matchers/rmatch-dirs.ts#L13">hatsy/route-match/src/matchers/rmatch-dirs.ts:13</a></li>
+							<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/10997bc/src/matchers/rmatch-dirs.ts#L13">hatsy/route-match/src/matchers/rmatch-dirs.ts:13</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
 							<p>Route matcher that matches any number of directories, including none.</p>
 						</div>
-						<p>Matches only at the {@link RouteMatcher.Context.nameOffset entry name beginning}.</p>
+						<p>Matches only at the <a href="../interfaces/@hatsy_route-match.RouteMatcher.Context.html#nameOffset">entry name beginning</a>.</p>
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-module">
 					<a name="rmatchEntry" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagConst">Const</span> rmatch<wbr>Entry</h3>
-					<div class="tsd-signature tsd-kind-icon">rmatch<wbr>Entry<span class="tsd-signature-symbol">:</span> <a href="reflection-200.reflection-201.reflection-10.html" class="tsd-signature-type"></a><span class="tsd-signature-symbol"> = (/*#__PURE__*/ rcaptureEntry())</span></div>
+					<div class="tsd-signature tsd-kind-icon">rmatch<wbr>Entry<span class="tsd-signature-symbol">:</span> <a href="@hatsy_route-match.RouteMatcher.html" class="tsd-signature-type">RouteMatcher</a><span class="tsd-signature-symbol"> = (/*#__PURE__*/ rcaptureEntry())</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/488fe56/src/matchers/rmatch-entry.ts#L11">hatsy/route-match/src/matchers/rmatch-entry.ts:11</a></li>
+							<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/10997bc/src/matchers/rmatch-entry.ts#L11">hatsy/route-match/src/matchers/rmatch-entry.ts:11</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -295,7 +302,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/488fe56/src/matrix/matrix-route.ts#L77">hatsy/route-match/src/matrix/matrix-route.ts:77</a></li>
+									<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/10997bc/src/matrix/matrix-route.ts#L77">hatsy/route-match/src/matrix/matrix-route.ts:77</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -327,7 +334,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/488fe56/src/matrix/matrix-route-pattern.ts#L45">hatsy/route-match/src/matrix/matrix-route-pattern.ts:45</a></li>
+									<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/10997bc/src/matrix/matrix-route-pattern.ts#L45">hatsy/route-match/src/matrix/matrix-route-pattern.ts:45</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -360,13 +367,13 @@
 					<a name="rcaptureAny" class="tsd-anchor"></a>
 					<h3>rcapture<wbr>Any</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
-						<li class="tsd-signature tsd-kind-icon">rcapture<wbr>Any<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="reflection-200.reflection-201.reflection-10.html" class="tsd-signature-type"></a></li>
+						<li class="tsd-signature tsd-kind-icon">rcapture<wbr>Any<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="@hatsy_route-match.RouteMatcher.html" class="tsd-signature-type">RouteMatcher</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/488fe56/src/matchers/rcapture-any.ts#L17">hatsy/route-match/src/matchers/rcapture-any.ts:17</a></li>
+									<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/10997bc/src/matchers/rcapture-any.ts#L17">hatsy/route-match/src/matchers/rcapture-any.ts:17</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -389,7 +396,7 @@
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="reflection-200.reflection-201.reflection-10.html" class="tsd-signature-type"></a></h4>
+							<h4 class="tsd-returns-title">Returns <a href="@hatsy_route-match.RouteMatcher.html" class="tsd-signature-type">RouteMatcher</a></h4>
 							<p>New route matcher.</p>
 						</li>
 					</ul>
@@ -398,20 +405,20 @@
 					<a name="rcaptureDirs" class="tsd-anchor"></a>
 					<h3>rcapture<wbr>Dirs</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
-						<li class="tsd-signature tsd-kind-icon">rcapture<wbr>Dirs<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="reflection-200.reflection-201.reflection-10.html" class="tsd-signature-type"></a></li>
+						<li class="tsd-signature tsd-kind-icon">rcapture<wbr>Dirs<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="@hatsy_route-match.RouteMatcher.html" class="tsd-signature-type">RouteMatcher</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/488fe56/src/matchers/rcapture-dirs.ts#L23">hatsy/route-match/src/matchers/rcapture-dirs.ts:23</a></li>
+									<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/10997bc/src/matchers/rcapture-dirs.ts#L23">hatsy/route-match/src/matchers/rcapture-dirs.ts:23</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>Builds a route matcher that matches any number of directories, and captures them.</p>
 								</div>
-								<p>Matches only at the {@link RouteMatcher.Context.nameOffset entry name beginning}.</p>
+								<p>Matches only at the <a href="../interfaces/@hatsy_route-match.RouteMatcher.Context.html#nameOffset">entry name beginning</a>.</p>
 								<p>Reports the capture as <a href="../interfaces/@hatsy_route-match.RouteCaptorSignatureMap.html#dirs"><code>dirs</code></a>.</p>
 								<p>Never captures empty match.</p>
 								<dl class="tsd-comment-tags">
@@ -429,7 +436,7 @@
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="reflection-200.reflection-201.reflection-10.html" class="tsd-signature-type"></a></h4>
+							<h4 class="tsd-returns-title">Returns <a href="@hatsy_route-match.RouteMatcher.html" class="tsd-signature-type">RouteMatcher</a></h4>
 							<p>New route matcher.</p>
 						</li>
 					</ul>
@@ -438,20 +445,20 @@
 					<a name="rcaptureEntry" class="tsd-anchor"></a>
 					<h3>rcapture<wbr>Entry</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
-						<li class="tsd-signature tsd-kind-icon">rcapture<wbr>Entry<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="reflection-200.reflection-201.reflection-10.html" class="tsd-signature-type"></a></li>
+						<li class="tsd-signature tsd-kind-icon">rcapture<wbr>Entry<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="@hatsy_route-match.RouteMatcher.html" class="tsd-signature-type">RouteMatcher</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/488fe56/src/matchers/rcapture-entry.ts#L17">hatsy/route-match/src/matchers/rcapture-entry.ts:17</a></li>
+									<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/10997bc/src/matchers/rcapture-entry.ts#L17">hatsy/route-match/src/matchers/rcapture-entry.ts:17</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>Builds a route matcher that matches any entry and captures its name.</p>
 								</div>
-								<p>Matches only at the {@link RouteMatcher.Context.nameOffset entry name beginning}.</p>
+								<p>Matches only at the <a href="../interfaces/@hatsy_route-match.RouteMatcher.Context.html#nameOffset">entry name beginning</a>.</p>
 								<dl class="tsd-comment-tags">
 									<dt>see</dt>
 									<dd><p>Use <a href="@hatsy_route-match.html#rmatchEntry">rmatchEntry</a> for anonymous capture.</p>
@@ -467,7 +474,7 @@
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="reflection-200.reflection-201.reflection-10.html" class="tsd-signature-type"></a></h4>
+							<h4 class="tsd-returns-title">Returns <a href="@hatsy_route-match.RouteMatcher.html" class="tsd-signature-type">RouteMatcher</a></h4>
 							<p>New route matcher.</p>
 						</li>
 					</ul>
@@ -476,13 +483,13 @@
 					<a name="rcaptureRegExp" class="tsd-anchor"></a>
 					<h3>rcapture<wbr>Reg<wbr>Exp</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
-						<li class="tsd-signature tsd-kind-icon">rcapture<wbr>Reg<wbr>Exp<span class="tsd-signature-symbol">(</span>expected<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">RegExp</span>, name<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="reflection-200.reflection-201.reflection-10.html" class="tsd-signature-type"></a></li>
+						<li class="tsd-signature tsd-kind-icon">rcapture<wbr>Reg<wbr>Exp<span class="tsd-signature-symbol">(</span>expected<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">RegExp</span>, name<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="@hatsy_route-match.RouteMatcher.html" class="tsd-signature-type">RouteMatcher</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/488fe56/src/matchers/rcapture-regexp.ts#L23">hatsy/route-match/src/matchers/rcapture-regexp.ts:23</a></li>
+									<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/10997bc/src/matchers/rcapture-regexp.ts#L23">hatsy/route-match/src/matchers/rcapture-regexp.ts:23</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -507,7 +514,7 @@
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="reflection-200.reflection-201.reflection-10.html" class="tsd-signature-type"></a></h4>
+							<h4 class="tsd-returns-title">Returns <a href="@hatsy_route-match.RouteMatcher.html" class="tsd-signature-type">RouteMatcher</a></h4>
 							<p>New route matcher.</p>
 						</li>
 					</ul>
@@ -516,13 +523,13 @@
 					<a name="rmatchMatrixAttr" class="tsd-anchor"></a>
 					<h3>rmatch<wbr>Matrix<wbr>Attr</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
-						<li class="tsd-signature tsd-kind-icon">rmatch<wbr>Matrix<wbr>Attr<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, value<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="reflection-200.reflection-201.reflection-10.html" class="tsd-signature-type"></a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/@hatsy_route-match.MatrixRoute.html" class="tsd-signature-type">MatrixRoute</a><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">rmatch<wbr>Matrix<wbr>Attr<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, value<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="@hatsy_route-match.RouteMatcher.html" class="tsd-signature-type">RouteMatcher</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/@hatsy_route-match.MatrixRoute.html" class="tsd-signature-type">MatrixRoute</a><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/488fe56/src/matrix/rmatch-matrix-attr.ts#L16">hatsy/route-match/src/matrix/rmatch-matrix-attr.ts:16</a></li>
+									<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/10997bc/src/matrix/rmatch-matrix-attr.ts#L16">hatsy/route-match/src/matrix/rmatch-matrix-attr.ts:16</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -545,7 +552,7 @@
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="reflection-200.reflection-201.reflection-10.html" class="tsd-signature-type"></a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/@hatsy_route-match.MatrixRoute.html" class="tsd-signature-type">MatrixRoute</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <a href="@hatsy_route-match.RouteMatcher.html" class="tsd-signature-type">RouteMatcher</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/@hatsy_route-match.MatrixRoute.html" class="tsd-signature-type">MatrixRoute</a><span class="tsd-signature-symbol">&gt;</span></h4>
 							<p>New URL route matcher.</p>
 						</li>
 					</ul>
@@ -554,20 +561,20 @@
 					<a name="rmatchName" class="tsd-anchor"></a>
 					<h3>rmatch<wbr>Name</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
-						<li class="tsd-signature tsd-kind-icon">rmatch<wbr>Name<span class="tsd-signature-symbol">(</span>expected<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="reflection-200.reflection-201.reflection-10.html" class="tsd-signature-type"></a></li>
+						<li class="tsd-signature tsd-kind-icon">rmatch<wbr>Name<span class="tsd-signature-symbol">(</span>expected<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="@hatsy_route-match.RouteMatcher.html" class="tsd-signature-type">RouteMatcher</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/488fe56/src/matchers/rmatch-name.ts#L15">hatsy/route-match/src/matchers/rmatch-name.ts:15</a></li>
+									<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/10997bc/src/matchers/rmatch-name.ts#L15">hatsy/route-match/src/matchers/rmatch-name.ts:15</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>Builds a route matcher that matches the entry with the given name.</p>
 								</div>
-								<p>Matches only at the {@link RouteMatcher.Context.nameOffset entry name beginning}.</p>
+								<p>Matches only at the <a href="../interfaces/@hatsy_route-match.RouteMatcher.Context.html#nameOffset">entry name beginning</a>.</p>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -578,7 +585,7 @@
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="reflection-200.reflection-201.reflection-10.html" class="tsd-signature-type"></a></h4>
+							<h4 class="tsd-returns-title">Returns <a href="@hatsy_route-match.RouteMatcher.html" class="tsd-signature-type">RouteMatcher</a></h4>
 							<p>New route matcher.</p>
 						</li>
 					</ul>
@@ -587,13 +594,13 @@
 					<a name="rmatchSearchParam" class="tsd-anchor"></a>
 					<h3>rmatch<wbr>Search<wbr>Param</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
-						<li class="tsd-signature tsd-kind-icon">rmatch<wbr>Search<wbr>Param<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, value<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="reflection-200.reflection-201.reflection-10.html" class="tsd-signature-type"></a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/@hatsy_route-match.URLRoute.html" class="tsd-signature-type">URLRoute</a><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">rmatch<wbr>Search<wbr>Param<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, value<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="@hatsy_route-match.RouteMatcher.html" class="tsd-signature-type">RouteMatcher</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/@hatsy_route-match.URLRoute.html" class="tsd-signature-type">URLRoute</a><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/488fe56/src/url/rmatch-search-param.ts#L16">hatsy/route-match/src/url/rmatch-search-param.ts:16</a></li>
+									<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/10997bc/src/url/rmatch-search-param.ts#L16">hatsy/route-match/src/url/rmatch-search-param.ts:16</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -616,7 +623,7 @@
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="reflection-200.reflection-201.reflection-10.html" class="tsd-signature-type"></a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/@hatsy_route-match.URLRoute.html" class="tsd-signature-type">URLRoute</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <a href="@hatsy_route-match.RouteMatcher.html" class="tsd-signature-type">RouteMatcher</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/@hatsy_route-match.URLRoute.html" class="tsd-signature-type">URLRoute</a><span class="tsd-signature-symbol">&gt;</span></h4>
 							<p>New URL route matcher.</p>
 						</li>
 					</ul>
@@ -625,13 +632,13 @@
 					<a name="rmatchString" class="tsd-anchor"></a>
 					<h3>rmatch<wbr>String</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
-						<li class="tsd-signature tsd-kind-icon">rmatch<wbr>String<span class="tsd-signature-symbol">(</span>expected<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="reflection-200.reflection-201.reflection-10.html" class="tsd-signature-type"></a></li>
+						<li class="tsd-signature tsd-kind-icon">rmatch<wbr>String<span class="tsd-signature-symbol">(</span>expected<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="@hatsy_route-match.RouteMatcher.html" class="tsd-signature-type">RouteMatcher</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/488fe56/src/matchers/rmatch-string.ts#L16">hatsy/route-match/src/matchers/rmatch-string.ts:16</a></li>
+									<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/10997bc/src/matchers/rmatch-string.ts#L16">hatsy/route-match/src/matchers/rmatch-string.ts:16</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -648,7 +655,7 @@
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="reflection-200.reflection-201.reflection-10.html" class="tsd-signature-type"></a></h4>
+							<h4 class="tsd-returns-title">Returns <a href="@hatsy_route-match.RouteMatcher.html" class="tsd-signature-type">RouteMatcher</a></h4>
 							<p>New route matcher.</p>
 						</li>
 					</ul>
@@ -657,13 +664,13 @@
 					<a name="routeMatch" class="tsd-anchor"></a>
 					<h3>route<wbr>Match</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter">
-						<li class="tsd-signature tsd-kind-icon">route<wbr>Match&lt;TRoute&gt;<span class="tsd-signature-symbol">(</span>this<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span>, route<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TRoute</span>, pattern<span class="tsd-signature-symbol">: </span><a href="@hatsy_route-match.html#RoutePattern" class="tsd-signature-type">RoutePattern</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TRoute</span><span class="tsd-signature-symbol">&gt;</span>, options<span class="tsd-signature-symbol">?: </span><a href="../interfaces/reflection-200.reflection-201.reflection-10.Options.html" class="tsd-signature-type">Options</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">RouteMatch</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TRoute</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></li>
+						<li class="tsd-signature tsd-kind-icon">route<wbr>Match&lt;TRoute&gt;<span class="tsd-signature-symbol">(</span>this<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span>, route<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TRoute</span>, pattern<span class="tsd-signature-symbol">: </span><a href="@hatsy_route-match.html#RoutePattern" class="tsd-signature-type">RoutePattern</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TRoute</span><span class="tsd-signature-symbol">&gt;</span>, options<span class="tsd-signature-symbol">?: </span><a href="../interfaces/@hatsy_route-match.RouteMatch.Options.html" class="tsd-signature-type">Options</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="@hatsy_route-match.RouteMatch.html" class="tsd-signature-type">RouteMatch</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TRoute</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/488fe56/src/route-match.ts#L79">hatsy/route-match/src/route-match.ts:79</a></li>
+									<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/10997bc/src/route-match.ts#L79">hatsy/route-match/src/route-match.ts:79</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -700,13 +707,13 @@
 									</div>
 								</li>
 								<li>
-									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> options: <a href="../interfaces/reflection-200.reflection-201.reflection-10.Options.html" class="tsd-signature-type">Options</a><span class="tsd-signature-symbol"> = {}</span></h5>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> options: <a href="../interfaces/@hatsy_route-match.RouteMatch.Options.html" class="tsd-signature-type">Options</a><span class="tsd-signature-symbol"> = {}</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>Route match options.</p>
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">RouteMatch</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TRoute</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></h4>
+							<h4 class="tsd-returns-title">Returns <a href="@hatsy_route-match.RouteMatch.html" class="tsd-signature-type">RouteMatch</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TRoute</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></h4>
 							<p>Either successful route match object, or <code>null</code> if the route does not match the given pattern.</p>
 						</li>
 					</ul>
@@ -721,7 +728,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/488fe56/src/route-tail.ts#L20">hatsy/route-match/src/route-tail.ts:20</a></li>
+									<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/10997bc/src/route-tail.ts#L20">hatsy/route-match/src/route-tail.ts:20</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -770,7 +777,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/488fe56/src/path/simple-route-pattern.ts#L43">hatsy/route-match/src/path/simple-route-pattern.ts:43</a></li>
+									<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/10997bc/src/path/simple-route-pattern.ts#L43">hatsy/route-match/src/path/simple-route-pattern.ts:43</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -827,7 +834,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/488fe56/src/url/url-route.ts#L54">hatsy/route-match/src/url/url-route.ts:54</a></li>
+									<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/10997bc/src/url/url-route.ts#L54">hatsy/route-match/src/url/url-route.ts:54</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -859,7 +866,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/488fe56/src/url/url-route-pattern.ts#L52">hatsy/route-match/src/url/url-route-pattern.ts:52</a></li>
+									<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/10997bc/src/url/url-route-pattern.ts#L52">hatsy/route-match/src/url/url-route-pattern.ts:52</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -926,7 +933,7 @@
 					<div class="tsd-signature tsd-kind-icon">rmatch<wbr>Dir<wbr>Sep<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/488fe56/src/matchers/rmatch-dir-sep.ts#L18">hatsy/route-match/src/matchers/rmatch-dir-sep.ts:18</a></li>
+							<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/10997bc/src/matchers/rmatch-dir-sep.ts#L18">hatsy/route-match/src/matchers/rmatch-dir-sep.ts:18</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -943,7 +950,7 @@
 						<div class="tsd-signature tsd-kind-icon">tail<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>this<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol"> = valueProvider(true)</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/488fe56/src/matchers/rmatch-dir-sep.ts#L68">hatsy/route-match/src/matchers/rmatch-dir-sep.ts:68</a></li>
+								<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/10997bc/src/matchers/rmatch-dir-sep.ts#L68">hatsy/route-match/src/matchers/rmatch-dir-sep.ts:68</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-type-declaration">
@@ -972,19 +979,19 @@
 						<a name="rmatchDirSep.find" class="tsd-anchor"></a>
 						<h3>find</h3>
 						<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-object-literal">
-							<li class="tsd-signature tsd-kind-icon">find<span class="tsd-signature-symbol">(</span>context<span class="tsd-signature-symbol">: </span><a href="../interfaces/reflection-200.reflection-201.reflection-10.Context.html" class="tsd-signature-type">Context</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/@hatsy_route-match.PathRoute.html" class="tsd-signature-type">PathRoute</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-symbol">(</span>this<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span>, captor<span class="tsd-signature-symbol">: </span><a href="@hatsy_route-match.html#RouteCaptor" class="tsd-signature-type">RouteCaptor</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TRoute</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">]</span></li>
+							<li class="tsd-signature tsd-kind-icon">find<span class="tsd-signature-symbol">(</span>context<span class="tsd-signature-symbol">: </span><a href="../interfaces/@hatsy_route-match.RouteMatcher.Context.html" class="tsd-signature-type">Context</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/@hatsy_route-match.PathRoute.html" class="tsd-signature-type">PathRoute</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-symbol">(</span>this<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span>, captor<span class="tsd-signature-symbol">: </span><a href="@hatsy_route-match.html#RouteCaptor" class="tsd-signature-type">RouteCaptor</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TRoute</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">]</span></li>
 						</ul>
 						<ul class="tsd-descriptions">
 							<li class="tsd-description">
 								<aside class="tsd-sources">
 									<ul>
-										<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/488fe56/src/matchers/rmatch-dir-sep.ts#L43">hatsy/route-match/src/matchers/rmatch-dir-sep.ts:43</a></li>
+										<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/10997bc/src/matchers/rmatch-dir-sep.ts#L43">hatsy/route-match/src/matchers/rmatch-dir-sep.ts:43</a></li>
 									</ul>
 								</aside>
 								<h4 class="tsd-parameters-title">Parameters</h4>
 								<ul class="tsd-parameters">
 									<li>
-										<h5>context: <a href="../interfaces/reflection-200.reflection-201.reflection-10.Context.html" class="tsd-signature-type">Context</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/@hatsy_route-match.PathRoute.html" class="tsd-signature-type">PathRoute</a><span class="tsd-signature-symbol">&gt;</span></h5>
+										<h5>context: <a href="../interfaces/@hatsy_route-match.RouteMatcher.Context.html" class="tsd-signature-type">Context</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/@hatsy_route-match.PathRoute.html" class="tsd-signature-type">PathRoute</a><span class="tsd-signature-symbol">&gt;</span></h5>
 									</li>
 								</ul>
 								<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-symbol">(</span>this<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span>, captor<span class="tsd-signature-symbol">: </span><a href="@hatsy_route-match.html#RouteCaptor" class="tsd-signature-type">RouteCaptor</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TRoute</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">]</span></h4>
@@ -995,13 +1002,13 @@
 						<a name="rmatchDirSep.test" class="tsd-anchor"></a>
 						<h3>test</h3>
 						<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-object-literal">
-							<li class="tsd-signature tsd-kind-icon">test<span class="tsd-signature-symbol">(</span>__namedParameters<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>entry<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">; </span>entryIndex<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">; </span>nameOffset<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">; </span>route<span class="tsd-signature-symbol">: </span><a href="../interfaces/@hatsy_route-match.PathRoute.html" class="tsd-signature-type">PathRoute</a><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/reflection-200.reflection-201.reflection-10.Match.html" class="tsd-signature-type">Match</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></li>
+							<li class="tsd-signature tsd-kind-icon">test<span class="tsd-signature-symbol">(</span>__namedParameters<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>entry<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">; </span>entryIndex<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">; </span>nameOffset<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">; </span>route<span class="tsd-signature-symbol">: </span><a href="../interfaces/@hatsy_route-match.PathRoute.html" class="tsd-signature-type">PathRoute</a><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/@hatsy_route-match.RouteMatcher.Match.html" class="tsd-signature-type">Match</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></li>
 						</ul>
 						<ul class="tsd-descriptions">
 							<li class="tsd-description">
 								<aside class="tsd-sources">
 									<ul>
-										<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/488fe56/src/matchers/rmatch-dir-sep.ts#L20">hatsy/route-match/src/matchers/rmatch-dir-sep.ts:20</a></li>
+										<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/10997bc/src/matchers/rmatch-dir-sep.ts#L20">hatsy/route-match/src/matchers/rmatch-dir-sep.ts:20</a></li>
 									</ul>
 								</aside>
 								<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1029,7 +1036,7 @@
 										</ul>
 									</li>
 								</ul>
-								<h4 class="tsd-returns-title">Returns <a href="../interfaces/reflection-200.reflection-201.reflection-10.Match.html" class="tsd-signature-type">Match</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></h4>
+								<h4 class="tsd-returns-title">Returns <a href="../interfaces/@hatsy_route-match.RouteMatcher.Match.html" class="tsd-signature-type">Match</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></h4>
 							</li>
 						</ul>
 					</section>
@@ -1041,9 +1048,6 @@
 				<ul>
 					<li class="globals  ">
 						<a href="../globals.html"><em>Globals</em></a>
-					</li>
-					<li class=" tsd-kind-module tsd-is-not-exported">
-						<a href="reflection-200.html">&lt;em&gt;<wbr>Module&lt;/em&gt;</a>
 					</li>
 					<li class="current tsd-kind-module">
 						<a href="@hatsy_route-match.html">@hatsy/route-<wbr>match</a>
