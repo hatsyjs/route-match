@@ -16,6 +16,7 @@ export interface ParsedURLRoute<TEntry extends PathEntry> extends URLRoute {
 export function parseURLRoute<TEntry extends PathEntry>(
     url: URL,
     parseEntry: (name: string) => TEntry,
+    entryToString: (entry: TEntry) => string,
 ): ParsedURLRoute<TEntry> {
 
   let { pathname } = url;
@@ -25,35 +26,50 @@ export function parseURLRoute<TEntry extends PathEntry>(
       url,
       path: [],
       dir: true,
-      toString: urlRouteToString,
+      toString: urlRouteToString(entryToString),
     };
   }
 
   let dir = false;
+  const from = (pathname.length > 1 && pathname.startsWith('/')) ? 1 : 0;
 
   if (pathname.endsWith('/')) {
     dir = true;
-    pathname = pathname.substr(1, pathname.length - 2); // Remove leading and trailing slashes
+    pathname = pathname.substring(from, pathname.length - 1); // Remove leading and trailing slashes
   } else {
-    pathname = pathname.substr(1); // Remove leading slash
+    pathname = pathname.substr(from); // Remove leading slash
   }
 
   return {
     url,
     path: pathname.split('/').map(parseEntry),
     dir,
-    toString: urlRouteToString,
+    toString: urlRouteToString(entryToString),
   };
 }
 
 /**
  * @internal
  */
-function urlRouteToString(this: URLRoute): string {
+function urlRouteToString<TEntry extends PathEntry>(
+    entryToString: (entry: TEntry) => string,
+): (this: ParsedURLRoute<TEntry>) => string {
+  return function (this: ParsedURLRoute<TEntry>): string {
 
-  const { pathname, searchParams } = this.url;
-  const query = searchParams.toString();
-  const path = pathname.substring(1); // no leading `/`
+    const { searchParams } = this.url;
+    const query = searchParams.toString();
+    let path = '';
 
-  return query ? `${path}?${query}` : path;
+    for (const entry of this.path) {
+      if (path) {
+        path += '/';
+      }
+      path += entryToString(entry);
+    }
+    if (path && this.dir) {
+      path += '/';
+    }
+
+    return query ? `${path}?${query}` : path;
+  };
 }
