@@ -54,13 +54,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/@hatsy_route-match.html">@hatsy/route-match</a>
+					<a href="../modules/RouteMatcher.html">RouteMatcher</a>
 				</li>
 				<li>
-					<a href="../modules/@hatsy_route-match.RouteMatcher.html">RouteMatcher</a>
-				</li>
-				<li>
-					<a href="@hatsy_route-match.RouteMatcher.Match.html">Match</a>
+					<a href="RouteMatcher.Match.html">Match</a>
 				</li>
 			</ul>
 			<h1>Interface Match&lt;TRoute&gt;</h1>
@@ -75,14 +72,14 @@
 					<div class="lead">
 						<p>Route match.</p>
 					</div>
-					<p>This is returned from <a href="../modules/@hatsy_route-match.RouteMatch.html">route matcher</a> and indicates the matching part of the route.</p>
+					<p>This is returned from <a href="../modules/RouteMatch.html">route matcher</a> and indicates the matching part of the route.</p>
 				</div>
 			</section>
 			<section class="tsd-panel tsd-type-parameters">
 				<h3>Type parameters</h3>
 				<ul class="tsd-type-parameters">
 					<li>
-						<h4>TRoute<span class="tsd-signature-symbol">: </span><a href="@hatsy_route-match.PathRoute.html" class="tsd-signature-type">PathRoute</a></h4>
+						<h4>TRoute<span class="tsd-signature-symbol">: </span><a href="PathRoute.html" class="tsd-signature-type">PathRoute</a></h4>
 						<div class="tsd-comment tsd-typography">
 							<div class="lead">
 								<p>A type of matching route.</p>
@@ -106,10 +103,10 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="@hatsy_route-match.RouteMatcher.Match.html#callback" class="tsd-kind-icon">callback</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="@hatsy_route-match.RouteMatcher.Match.html#entries" class="tsd-kind-icon">entries</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="@hatsy_route-match.RouteMatcher.Match.html#full" class="tsd-kind-icon">full</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="@hatsy_route-match.RouteMatcher.Match.html#nameChars" class="tsd-kind-icon">name<wbr>Chars</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="RouteMatcher.Match.html#callback" class="tsd-kind-icon">callback</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="RouteMatcher.Match.html#entries" class="tsd-kind-icon">entries</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="RouteMatcher.Match.html#full" class="tsd-kind-icon">full</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="RouteMatcher.Match.html#nameChars" class="tsd-kind-icon">name<wbr>Chars</a></li>
 							</ul>
 						</section>
 					</div>
@@ -120,7 +117,7 @@
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="callback" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> <span class="tsd-flag ts-flagReadonly">Readonly</span> callback</h3>
-					<div class="tsd-signature tsd-kind-icon">callback<span class="tsd-signature-symbol">:</span> <a href="../modules/@hatsy_route-match.RouteMatch.html" class="tsd-signature-type">RouteMatch</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TRoute</span><span class="tsd-signature-symbol">&gt;</span></div>
+					<div class="tsd-signature tsd-kind-icon">callback<span class="tsd-signature-symbol">:</span> <a href="../modules/RouteMatch.html" class="tsd-signature-type">RouteMatch</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TRoute</span><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
 							<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/10997bc/src/route-matcher.ts#L200">hatsy/route-match/src/route-matcher.ts:200</a></li>
@@ -130,7 +127,7 @@
 						<div class="lead">
 							<p>A callback function reporting a capture of this match, if any.</p>
 						</div>
-						<p>It will be invoked by <a href="../modules/@hatsy_route-match.RouteMatch.html">successful route match</a> only.</p>
+						<p>It will be invoked by <a href="../modules/RouteMatch.html">successful route match</a> only.</p>
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
@@ -146,14 +143,14 @@
 						<div class="lead">
 							<p>The number of fully matching route entries.</p>
 						</div>
-						<p>When set, this value increases the index of the <a href="@hatsy_route-match.RouteMatcher.Context.html#entryIndex">route entry</a> to apply subsequent
+						<p>When set, this value increases the index of the <a href="RouteMatcher.Context.html#entryIndex">route entry</a> to apply subsequent
 						matchers to.</p>
 						<dl class="tsd-comment-tags">
 							<dt>default</dt>
-							<dd><p><code>0</code>, which means the subsequent matcher will be applied to <a href="@hatsy_route-match.RouteMatcher.Context.html#entry">current entry</a>.</p>
+							<dd><p><code>0</code>, which means the subsequent matcher will be applied to <a href="RouteMatcher.Context.html#entry">current entry</a>.</p>
 							</dd>
 							<dt>see</dt>
-							<dd><p><a href="@hatsy_route-match.RouteMatcher.Match.html#nameChars">nameChars</a></p>
+							<dd><p><a href="RouteMatcher.Match.html#nameChars">nameChars</a></p>
 							</dd>
 						</dl>
 					</div>
@@ -186,13 +183,13 @@
 						<div class="lead">
 							<p>The number of matching characters in the name of current route entry.</p>
 						</div>
-						<p>This value increases the <a href="@hatsy_route-match.RouteMatcher.Context.html#nameOffset">offset in the name</a> of the route entry to apply subsequent
+						<p>This value increases the <a href="RouteMatcher.Context.html#nameOffset">offset in the name</a> of the route entry to apply subsequent
 							matchers to. If the resulting offset is equal or greater than the length of the name, then the next matcher will
 							be applied to the same route entry. If that fails, the next entry will be used, while the offset will be set to
 						zero.</p>
 						<dl class="tsd-comment-tags">
 							<dt>default</dt>
-							<dd><p>The length of current entry name, unless <a href="@hatsy_route-match.RouteMatcher.Match.html#entries">entries</a> set to non-zero value, in which case it defaults
+							<dd><p>The length of current entry name, unless <a href="RouteMatcher.Match.html#entries">entries</a> set to non-zero value, in which case it defaults
 								to zero.</p>
 							</dd>
 						</dl>
@@ -206,48 +203,54 @@
 					<li class="globals  ">
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
+					<li class=" tsd-kind-namespace tsd-has-type-parameter">
+						<a href="../modules/RouteMatch.html">Route<wbr>Match</a>
+					</li>
+					<li class="current tsd-kind-namespace tsd-has-type-parameter">
+						<a href="../modules/RouteMatcher.html">Route<wbr>Matcher</a>
+					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
 					<li class=" tsd-kind-interface tsd-parent-kind-namespace tsd-has-type-parameter">
-						<a href="@hatsy_route-match.RouteMatcher.Context.html" class="tsd-kind-icon">Context</a>
+						<a href="RouteMatcher.Context.html" class="tsd-kind-icon">Context</a>
 					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface tsd-parent-kind-namespace tsd-has-type-parameter">
-						<a href="@hatsy_route-match.RouteMatcher.Match.html" class="tsd-kind-icon">Match</a>
+						<a href="RouteMatcher.Match.html" class="tsd-kind-icon">Match</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="@hatsy_route-match.RouteMatcher.Match.html#callback" class="tsd-kind-icon">callback</a>
+								<a href="RouteMatcher.Match.html#callback" class="tsd-kind-icon">callback</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="@hatsy_route-match.RouteMatcher.Match.html#entries" class="tsd-kind-icon">entries</a>
+								<a href="RouteMatcher.Match.html#entries" class="tsd-kind-icon">entries</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="@hatsy_route-match.RouteMatcher.Match.html#full" class="tsd-kind-icon">full</a>
+								<a href="RouteMatcher.Match.html#full" class="tsd-kind-icon">full</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="@hatsy_route-match.RouteMatcher.Match.html#nameChars" class="tsd-kind-icon">name<wbr>Chars</a>
+								<a href="RouteMatcher.Match.html#nameChars" class="tsd-kind-icon">name<wbr>Chars</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
 					<li class=" tsd-kind-interface tsd-parent-kind-namespace tsd-has-type-parameter">
-						<a href="@hatsy_route-match.RouteMatcher.Position.html" class="tsd-kind-icon">Position</a>
+						<a href="RouteMatcher.Position.html" class="tsd-kind-icon">Position</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-namespace tsd-has-type-parameter">
-						<a href="@hatsy_route-match.RouteMatcher.TailContext.html" class="tsd-kind-icon">Tail<wbr>Context</a>
+						<a href="RouteMatcher.TailContext.html" class="tsd-kind-icon">Tail<wbr>Context</a>
 					</li>
 					<li class=" tsd-kind-method tsd-parent-kind-namespace">
-						<a href="../modules/@hatsy_route-match.RouteMatcher.html#find" class="tsd-kind-icon">find</a>
+						<a href="../modules/RouteMatcher.html#find" class="tsd-kind-icon">find</a>
 					</li>
 					<li class=" tsd-kind-method tsd-parent-kind-namespace">
-						<a href="../modules/@hatsy_route-match.RouteMatcher.html#tail" class="tsd-kind-icon">tail</a>
+						<a href="../modules/RouteMatcher.html#tail" class="tsd-kind-icon">tail</a>
 					</li>
 					<li class=" tsd-kind-method tsd-parent-kind-namespace">
-						<a href="../modules/@hatsy_route-match.RouteMatcher.html#test" class="tsd-kind-icon">test</a>
+						<a href="../modules/RouteMatcher.html#test" class="tsd-kind-icon">test</a>
 					</li>
 				</ul>
 			</nav>
@@ -259,16 +262,8 @@
 		<h2>Legend</h2>
 		<div class="tsd-legend-group">
 			<ul class="tsd-legend">
-				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
-				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
-				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
-				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
-				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
-				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
 				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li>
 			</ul>
 		</div>
 	</div>
