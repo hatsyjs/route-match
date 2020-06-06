@@ -20,7 +20,7 @@
   "main": "dist/route-match.js",
   "module": "dist/route-match.mjs",
   "dependencies": {
-    "@proc7ts/primitives": "^1.0.2"
+    "@proc7ts/primitives": "^1.0.3"
   },
   "devDependencies": {
     "@proc7ts/eslint-config": "^2.0.0",
