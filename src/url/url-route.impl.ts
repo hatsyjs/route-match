@@ -30,12 +30,13 @@ export function parseURLRoute<TEntry extends PathEntry>(
   }
 
   let dir = false;
+  const from = (pathname.length > 1 && pathname.startsWith('/')) ? 1 : 0;
 
   if (pathname.endsWith('/')) {
     dir = true;
-    pathname = pathname.substr(1, pathname.length - 2); // Remove leading and trailing slashes
+    pathname = pathname.substring(from, pathname.length - 1); // Remove leading and trailing slashes
   } else {
-    pathname = pathname.substr(1); // Remove leading slash
+    pathname = pathname.substr(from); // Remove leading slash
   }
 
   return {

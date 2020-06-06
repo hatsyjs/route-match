@@ -1,7 +1,7 @@
 import { urlRoute } from './url-route';
 
 describe('urlRoute', () => {
-  it('is empty for `/`', () => {
+  it('is empty for HTTP `/` path', () => {
 
     const url = new URL('http://localhost');
 
@@ -12,9 +12,42 @@ describe('urlRoute', () => {
       toString: expect.any(Function),
     });
   });
-  it('has one empty entry for `//`', () => {
+  it('is empty for custom `/` path', () => {
+
+    const url = new URL('custom:/');
+
+    expect(urlRoute(url)).toEqual({
+      url,
+      path: [],
+      dir: true,
+      toString: expect.any(Function),
+    });
+  });
+  it('is empty for empty path', () => {
+
+    const url = new URL('custom:');
+
+    expect(urlRoute(url)).toEqual({
+      url,
+      path: [],
+      dir: true,
+      toString: expect.any(Function),
+    });
+  });
+  it('has one empty entry for HTTP `//` path', () => {
 
     const url = new URL('http://localhost//');
+
+    expect(urlRoute(url)).toEqual({
+      url,
+      path: [{ name: '' }],
+      dir: true,
+      toString: expect.any(Function),
+    });
+  });
+  it('has one empty entry for custom `//` path', () => {
+
+    const url = new URL('custom:////');
 
     expect(urlRoute(url)).toEqual({
       url,
@@ -34,7 +67,7 @@ describe('urlRoute', () => {
       toString: expect.any(Function),
     });
   });
-  it('is directory when ends with `/`', () => {
+  it('is directory when HTTP path ends with `/`', () => {
 
     const url = new URL('http://localhost/some/dir/');
 
@@ -45,9 +78,31 @@ describe('urlRoute', () => {
       toString: expect.any(Function),
     });
   });
-  it('is file when does not end with `/`', () => {
+  it('is directory when custom path ends with `/`', () => {
+
+    const url = new URL('custom:some/dir/');
+
+    expect(urlRoute(url)).toEqual({
+      url,
+      path: [{ name: 'some' }, { name: 'dir' }],
+      dir: true,
+      toString: expect.any(Function),
+    });
+  });
+  it('is file when HTTP path does not end with `/`', () => {
 
     const url = new URL('http://localhost/some/file');
+
+    expect(urlRoute(url)).toEqual({
+      url,
+      path: [{ name: 'some' }, { name: 'file' }],
+      dir: false,
+      toString: expect.any(Function),
+    });
+  });
+  it('is file when custom path does not end with `/`', () => {
+
+    const url = new URL('custom:some/file');
 
     expect(urlRoute(url)).toEqual({
       url,
