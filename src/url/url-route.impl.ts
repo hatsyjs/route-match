@@ -1,4 +1,3 @@
-import { itsReduction } from '@proc7ts/a-iterable';
 import type { PathEntry } from '../path';
 import type { URLRoute } from './url-route';
 
@@ -59,12 +58,14 @@ function urlRouteToString<TEntry extends PathEntry>(
 
     const { searchParams } = this.url;
     const query = searchParams.toString();
-    let path = itsReduction(
-        this.path,
-        (prev, entry) => prev ? `${prev}/${entryToString(entry)}` : entryToString(entry),
-        '',
-    );
+    let path = '';
 
+    for (const entry of this.path) {
+      if (path) {
+        path += '/';
+      }
+      path += entryToString(entry);
+    }
     if (path && this.dir) {
       path += '/';
     }
