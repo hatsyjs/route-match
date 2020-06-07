@@ -79,6 +79,21 @@ describe('urlRoutePattern', () => {
     });
   });
 
+  describe('**/*.html', () => {
+
+    const pattern = urlRoutePattern('**/*.html');
+
+    it('matches top-level file', () => {
+      expect(routeMatch(urlRoute(new URL('route:test.html')), pattern)).toBeTruthy();
+    });
+    it('matches file inside directory', () => {
+      expect(routeMatch(urlRoute(new URL('route:dir/test.html')), pattern)).toBeTruthy();
+    });
+    it('matches file deeply inside directory', () => {
+      expect(routeMatch(urlRoute(new URL('route:deeply/nested/dir/test.html')), pattern)).toBeTruthy();
+    });
+  });
+
   describe('{out}/file', () => {
     it('captures dir', () => {
 
