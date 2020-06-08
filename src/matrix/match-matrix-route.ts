@@ -36,3 +36,8 @@ export function matchMatrixRoute(
 
   return match && routeCapture(match);
 }
+
+/**
+ * An alias of {@link matchMatrixRoute} function.
+ */
+export { matchMatrixRoute as matchRoute };
