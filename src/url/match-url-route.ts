@@ -2,11 +2,10 @@
  * @packageDocumentation
  * @module @hatsy/route-match
  */
-import type { PathRoute } from '../path';
 import { routeCapture } from '../route-capture';
 import type { RoutePattern } from '../route-match';
 import { routeMatch } from '../route-match';
-import { urlRoute } from './url-route';
+import { URLRoute, urlRoute } from './url-route';
 import { urlRoutePattern } from './url-route-pattern';
 import { isURL } from './url.impl';
 
@@ -23,8 +22,8 @@ import { isURL } from './url.impl';
  * @see routeCapture  For route capture mapping rules.
  */
 export function matchURLRoute(
-    route: PathRoute | URL | string,
-    pattern: RoutePattern | string,
+    route: URLRoute | URL | string,
+    pattern: RoutePattern<URLRoute> | string,
 ): Record<string, string> | null {
   if (typeof route === 'string' || isURL(route)) {
     route = urlRoute(route);

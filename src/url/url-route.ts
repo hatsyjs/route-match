@@ -14,9 +14,6 @@ export interface URLRoute extends PathRoute {
   /**
    * URL this route represents, except for the pathname.
    *
-   * The pathname of this URL is not necessarily the one this route represents. E.g. this route may represent a
-   * {@link routeTail tail} of that path.
-   *
    * Intended to be immutable.
    */
   readonly url: URL;
