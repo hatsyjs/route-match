@@ -2,6 +2,7 @@
  * @packageDocumentation
  * @module @hatsy/route-match
  */
+import { lazyValue } from '@proc7ts/primitives';
 import type { PathEntry } from '../path';
 import type { URLRoute } from '../url';
 import { decodeURLComponent } from '../url/decode-url.impl';
@@ -41,16 +42,26 @@ export interface MatrixEntry extends PathEntry {
 function parseMatrixEntry(string: string): MatrixEntry {
 
   const parts = string.split(';');
-  const attrs = new URLSearchParams();
+  const getAttrs = lazyValue(() => {
 
-  for (let i = 1; i < parts.length; ++i) {
+    const attrs = new URLSearchParams();
 
-    const [name, value = ''] = parts[i].split('=');
+    for (let i = 1; i < parts.length; ++i) {
 
-    attrs.append(decodeURLComponent(name), decodeURLComponent(value));
-  }
+      const [name, value = ''] = parts[i].split('=');
 
-  return { name: decodeURLComponent(parts[0]), attrs };
+      attrs.append(decodeURLComponent(name), decodeURLComponent(value));
+    }
+
+    return attrs;
+  });
+
+  return {
+    name: decodeURLComponent(parts[0]),
+    get attrs() {
+      return getAttrs();
+    },
+  };
 }
 
 /**
