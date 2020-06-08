@@ -4,7 +4,6 @@
  */
 import { classifyRouteCapture } from './classify-route-capture';
 import type { RouteMatch } from './route-match';
-import { routeTail } from './route-tail';
 
 /**
  * Extracts captured fragments from the route match.
@@ -46,8 +45,8 @@ export function routeCapture(match: RouteMatch): Record<string, string> {
             }
           }
         },
-        dirs(key, _upto: number, { route, entryIndex }) {
-          put(key, String(routeTail(route, entryIndex)));
+        dirs(key, upto: number, { route, entryIndex }) {
+          put(key, String(route.segment(entryIndex, upto)));
         },
       },
       (_kind, key, value, _position) => put(key, String(value)),

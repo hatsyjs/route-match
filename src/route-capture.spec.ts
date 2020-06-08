@@ -42,7 +42,7 @@ describe('routeCapture', () => {
         [rmatchName('path'), rmatchDirSep, rcaptureDirs('tail')],
     )!)).toEqual({ tail: 'to/file.txt?param=value' });
   });
-  it.skip('extracts matching dirs', () => {
+  it('extracts matching dirs', () => {
     expect(routeCapture(routeMatch(
         urlRoute('path/to/file.txt?param=value'),
         [rmatchDirs, rmatchName('file.txt')],

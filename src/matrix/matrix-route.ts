@@ -18,6 +18,8 @@ export interface MatrixRoute extends URLRoute {
    */
   readonly path: readonly MatrixEntry[];
 
+  segment(from: number, to?: number): MatrixRoute;
+
 }
 
 /**

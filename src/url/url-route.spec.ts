@@ -36,6 +36,7 @@ describe('urlRoute', () => {
       url,
       path: [],
       dir: true,
+      segment: expect.any(Function),
       toString: expect.any(Function),
     });
   });
@@ -47,6 +48,7 @@ describe('urlRoute', () => {
       url,
       path: [],
       dir: true,
+      segment: expect.any(Function),
       toString: expect.any(Function),
     });
   });
@@ -58,6 +60,7 @@ describe('urlRoute', () => {
       url,
       path: [],
       dir: true,
+      segment: expect.any(Function),
       toString: expect.any(Function),
     });
   });
@@ -69,6 +72,7 @@ describe('urlRoute', () => {
       url,
       path: [{ name: '' }],
       dir: true,
+      segment: expect.any(Function),
       toString: expect.any(Function),
     });
   });
@@ -80,6 +84,7 @@ describe('urlRoute', () => {
       url,
       path: [{ name: '' }],
       dir: true,
+      segment: expect.any(Function),
       toString: expect.any(Function),
     });
   });
@@ -91,6 +96,7 @@ describe('urlRoute', () => {
       url,
       path: [{ name: '' }, { name: '' }],
       dir: true,
+      segment: expect.any(Function),
       toString: expect.any(Function),
     });
   });
@@ -102,6 +108,7 @@ describe('urlRoute', () => {
       url,
       path: [{ name: 'some' }, { name: 'dir' }],
       dir: true,
+      segment: expect.any(Function),
       toString: expect.any(Function),
     });
   });
@@ -113,6 +120,7 @@ describe('urlRoute', () => {
       url,
       path: [{ name: 'some' }, { name: 'dir' }],
       dir: true,
+      segment: expect.any(Function),
       toString: expect.any(Function),
     });
   });
@@ -124,6 +132,7 @@ describe('urlRoute', () => {
       url,
       path: [{ name: 'some' }, { name: 'file' }],
       dir: false,
+      segment: expect.any(Function),
       toString: expect.any(Function),
     });
   });
@@ -135,6 +144,7 @@ describe('urlRoute', () => {
       url,
       path: [{ name: 'some' }, { name: 'file' }],
       dir: false,
+      segment: expect.any(Function),
       toString: expect.any(Function),
     });
   });
@@ -146,7 +156,65 @@ describe('urlRoute', () => {
       url,
       path: [{ name: 'some dir' }],
       dir: true,
+      segment: expect.any(Function),
       toString: expect.any(Function),
+    });
+  });
+
+  describe('segment', () => {
+
+    const route = urlRoute('http://localhost/path/to/file?param=value');
+
+    it('returns itself as full segment', () => {
+      expect(route.segment(-1)).toBe(route);
+    });
+    it('retains host and loses search params when segment starts from the first entry', () => {
+
+      const segment = route.segment(0, 1);
+
+      expect(segment.url.href).toBe('http://localhost/path/');
+      expect(segment.path).toEqual([{ name: 'path' }]);
+      expect(segment.dir).toBe(true);
+    });
+    it('becomes relative to `route:/` loses search parameter when slices path in the middle', () => {
+
+      const segment = route.segment(1, 2);
+
+      expect(segment.url.href).toBe('route:/to/');
+      expect(segment.path).toEqual([{ name: 'to' }]);
+      expect(segment.dir).toBe(true);
+    });
+    it('becomes relative to `route:/` and retains search params slices to the end', () => {
+
+      const segment = route.segment(1);
+
+      expect(segment.url.href).toBe('route:/to/file?param=value');
+      expect(segment.path).toEqual([{ name: 'to' }, { name: 'file' }]);
+      expect(segment.dir).toBe(false);
+    });
+    it('returns empty route when `to > from && from > 0`', () => {
+
+      const segment = route.segment(1, 0);
+
+      expect(segment.url.href).toBe('route:/');
+      expect(segment.path).toEqual([]);
+      expect(segment.dir).toBe(true);
+    });
+    it('returns empty route when `to === from && from === 0`', () => {
+
+      const segment = route.segment(0, 0);
+
+      expect(segment.url.href).toBe('http://localhost/');
+      expect(segment.path).toEqual([]);
+      expect(segment.dir).toBe(true);
+    });
+    it('returns empty route when `to === from && to === path.length`', () => {
+
+      const segment = route.segment(3, 3);
+
+      expect(segment.url.href).toBe('route:/?param=value');
+      expect(segment.path).toEqual([]);
+      expect(segment.dir).toBe(true);
     });
   });
 
