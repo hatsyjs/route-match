@@ -1,3 +1,4 @@
+export * from './classify-route-capture';
 export * from './matchers';
 export * from './matrix';
 export * from './path';

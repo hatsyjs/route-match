@@ -1,5 +1,5 @@
+import { classifyRouteCapture } from './classify-route-capture';
 import { rcaptureEntry } from './matchers';
-import { classifyRouteCapture } from './route-captor';
 import { routeMatch } from './route-match';
 import { urlRoute } from './url';
 
