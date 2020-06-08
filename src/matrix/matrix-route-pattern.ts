@@ -5,8 +5,8 @@
 import { addPathEntryMatchers } from '../path/path-route-pattern.impl';
 import type { RoutePattern } from '../route-match';
 import type { RouteMatcher } from '../route-matcher';
-import { decodeURLComponent } from '../url/decode-url.impl';
 import { parseURLRoutePattern } from '../url/url-route-pattern.impl';
+import { decodeURLComponent } from '../url/url.impl';
 import type { MatrixRoute } from './matrix-route';
 import { rmatchMatrixAttr } from './rmatch-matrix-attr';
 

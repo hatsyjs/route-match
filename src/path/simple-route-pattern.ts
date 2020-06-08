@@ -5,7 +5,7 @@
 import { rmatchDirSep, rmatchName } from '../matchers';
 import type { RoutePattern } from '../route-match';
 import type { RouteMatcher } from '../route-matcher';
-import { decodeURLComponent } from '../url/decode-url.impl';
+import { decodeURLComponent } from '../url/url.impl';
 import { simpleRouteMatcher } from './simple-route-pattern.impl';
 
 /**
