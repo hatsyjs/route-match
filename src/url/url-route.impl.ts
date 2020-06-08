@@ -8,8 +8,6 @@ export interface ParsedURLRoute<TEntry extends PathEntry> extends URLRoute {
 
   readonly path: readonly TEntry[];
 
-  segment(from: number, to?: number): ParsedURLRoute<TEntry>;
-
 }
 
 /**
@@ -31,7 +29,7 @@ export function parseURLRoute<TEntry extends PathEntry>(
       url,
       path: [],
       dir: true,
-      segment: urlRouteSegment(entryToString),
+      section: urlRouteSection(entryToString),
       toString: urlRouteToString(entryToString),
     };
   }
@@ -50,7 +48,7 @@ export function parseURLRoute<TEntry extends PathEntry>(
     url,
     path: pathname.split('/').map(parseEntry),
     dir,
-    segment: urlRouteSegment(entryToString),
+    section: urlRouteSection(entryToString),
     toString: urlRouteToString(entryToString),
   };
 }
@@ -58,9 +56,9 @@ export function parseURLRoute<TEntry extends PathEntry>(
 /**
  * @internal
  */
-export function urlRouteSegment<TEntry extends PathEntry, TRoute extends ParsedURLRoute<TEntry>>(
+export function urlRouteSection<TEntry extends PathEntry, TRoute extends ParsedURLRoute<TEntry>>(
     entryToString: (entry: TEntry) => string,
-): (this: TRoute, from: number, to?: number) => TRoute {
+): TRoute['section'] {
   return function (
       this: TRoute,
       from: number,
@@ -84,7 +82,7 @@ export function urlRouteSegment<TEntry extends PathEntry, TRoute extends ParsedU
     }
 
     const path = this.path.slice(from, to);
-    const pathname = urlRouteSegmentToString(this, entryToString, from, to);
+    const pathname = urlRouteSectionToString(this, entryToString, from, to);
     let url: URL;
 
     if (from) {
@@ -108,19 +106,19 @@ export function urlRouteSegment<TEntry extends PathEntry, TRoute extends ParsedU
 /**
  * @internal
  */
-function urlRouteSegmentToString<TRoute extends URLRoute>(
+function urlRouteSectionToString<TRoute extends URLRoute>(
     { path, dir }: TRoute,
     entryToString: (entry: TRoute['path'][0]) => string,
-    from: number,
-    to: number,
+    fromEntry: number,
+    toEntry: number,
 ): string {
-  if (from >= to) {
+  if (fromEntry >= toEntry) {
     return '';
   }
 
   let out = '';
 
-  for (let i = from; i < to; ++i) {
+  for (let i = fromEntry; i < toEntry; ++i) {
 
     const entry = path[i];
 
@@ -129,7 +127,7 @@ function urlRouteSegmentToString<TRoute extends URLRoute>(
     }
     out += entryToString(entry);
   }
-  if (out && dir || to < path.length) {
+  if (out && dir || toEntry < path.length) {
     out += '/';
   }
 
@@ -146,7 +144,7 @@ function urlRouteToString<TEntry extends PathEntry>(
 
     const { searchParams } = this.url;
     const query = searchParams.toString();
-    const path = urlRouteSegmentToString(this, entryToString, 0, this.path.length);
+    const path = urlRouteSectionToString(this, entryToString, 0, this.path.length);
 
     return query ? `${path}?${query}` : path;
   };

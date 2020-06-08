@@ -46,7 +46,7 @@ export function routeCapture(match: RouteMatch): Record<string, string> {
           }
         },
         dirs(key, upto: number, { route, entryIndex }) {
-          put(key, String(route.segment(entryIndex, upto)));
+          put(key, String(route.section(entryIndex, upto)));
         },
       },
       (_kind, key, value, _position) => put(key, String(value)),
