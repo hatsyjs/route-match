@@ -98,6 +98,7 @@
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="PathRoute.html#segment" class="tsd-kind-icon">segment</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="PathRoute.html#toString" class="tsd-kind-icon">to<wbr>String</a></li>
 							</ul>
 						</section>
@@ -112,7 +113,7 @@
 					<div class="tsd-signature tsd-kind-icon">dir<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/3590f5a/src/path/path-route.ts#L18">hatsy/route-match/src/path/path-route.ts:18</a></li>
+							<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/212544e/src/path/path-route.ts#L18">hatsy/route-match/src/path/path-route.ts:18</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -127,7 +128,7 @@
 					<div class="tsd-signature tsd-kind-icon">path<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">keyof </span><a href="PathEntry.html" class="tsd-signature-type">PathEntry</a><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/3590f5a/src/path/path-route.ts#L13">hatsy/route-match/src/path/path-route.ts:13</a></li>
+							<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/212544e/src/path/path-route.ts#L13">hatsy/route-match/src/path/path-route.ts:13</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -140,6 +141,45 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
+					<a name="segment" class="tsd-anchor"></a>
+					<h3>segment</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
+						<li class="tsd-signature tsd-kind-icon">segment<span class="tsd-signature-symbol">(</span>from<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, to<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="PathRoute.html" class="tsd-signature-type">PathRoute</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/212544e/src/path/path-route.ts#L29">hatsy/route-match/src/path/path-route.ts:29</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Extracts a segment of this route between the given entry indices.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>from: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Zero-based index at which to start extraction. A negative index is treated as zero.</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> to: <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Zero-based index before which to end extraction. A value greater than the path length is treated as
+										equal to path length. If this value is less than <code>from</code>, an empty route is returned.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="PathRoute.html" class="tsd-signature-type">PathRoute</a></h4>
+							<p>Either new route, or this one if slicing returned to the route of the same path length.</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
 					<a name="toString" class="tsd-anchor"></a>
 					<h3>to<wbr>String</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
@@ -149,7 +189,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/3590f5a/src/path/path-route.ts#L25">hatsy/route-match/src/path/path-route.ts:25</a></li>
+									<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/212544e/src/path/path-route.ts#L36">hatsy/route-match/src/path/path-route.ts:36</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -195,6 +235,9 @@
 								<a href="PathRoute.html#path" class="tsd-kind-icon">path</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-interface">
+								<a href="PathRoute.html#segment" class="tsd-kind-icon">segment</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-interface">
 								<a href="PathRoute.html#toString" class="tsd-kind-icon">to<wbr>String</a>
 							</li>
 						</ul>
@@ -211,6 +254,9 @@
 						<a href="../globals.html#RouteCaptor" class="tsd-kind-icon">Route<wbr>Captor</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
+						<a href="../globals.html#RouteCaptureClassifier" class="tsd-kind-icon">Route<wbr>Capture<wbr>Classifier</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
 						<a href="../globals.html#RoutePattern" class="tsd-kind-icon">Route<wbr>Pattern</a>
 					</li>
 					<li class=" tsd-kind-variable">
@@ -224,6 +270,18 @@
 					</li>
 					<li class=" tsd-kind-variable">
 						<a href="../globals.html#rmatchEntry" class="tsd-kind-icon">rmatch<wbr>Entry</a>
+					</li>
+					<li class=" tsd-kind-function tsd-has-type-parameter">
+						<a href="../globals.html#classifyRouteCapture" class="tsd-kind-icon">classify<wbr>Route<wbr>Capture</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="../globals.html#matchMatrixRoute" class="tsd-kind-icon">match<wbr>Matrix<wbr>Route</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="../globals.html#matchSimpleRoute" class="tsd-kind-icon">match<wbr>Simple<wbr>Route</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="../globals.html#matchURLRoute" class="tsd-kind-icon">matchURLRoute</a>
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="../globals.html#matrixRoute" class="tsd-kind-icon">matrix<wbr>Route</a>
@@ -255,11 +313,11 @@
 					<li class=" tsd-kind-function">
 						<a href="../globals.html#rmatchString" class="tsd-kind-icon">rmatch<wbr>String</a>
 					</li>
-					<li class=" tsd-kind-function tsd-has-type-parameter">
-						<a href="../globals.html#routeMatch" class="tsd-kind-icon">route<wbr>Match</a>
+					<li class=" tsd-kind-function">
+						<a href="../globals.html#routeCapture" class="tsd-kind-icon">route<wbr>Capture</a>
 					</li>
 					<li class=" tsd-kind-function tsd-has-type-parameter">
-						<a href="../globals.html#routeTail" class="tsd-kind-icon">route<wbr>Tail</a>
+						<a href="../globals.html#routeMatch" class="tsd-kind-icon">route<wbr>Match</a>
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="../globals.html#simpleRoutePattern" class="tsd-kind-icon">simple<wbr>Route<wbr>Pattern</a>
