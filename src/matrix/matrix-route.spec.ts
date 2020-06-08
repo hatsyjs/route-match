@@ -13,6 +13,7 @@ describe('matrixRoute', () => {
         expect.objectContaining({ name: 'file' }),
       ],
       dir: false,
+      segment: expect.any(Function),
       toString: expect.any(Function),
     });
 

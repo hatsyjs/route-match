@@ -5,8 +5,8 @@
 import { lazyValue } from '@proc7ts/primitives';
 import type { PathEntry } from '../path';
 import type { URLRoute } from '../url';
-import { decodeURLComponent } from '../url/decode-url.impl';
 import { parseURLRoute } from '../url/url-route.impl';
+import { decodeURLComponent } from '../url/url.impl';
 
 /**
  * A route representing [matrix URL](https://www.w3.org/DesignIssues/MatrixURIs.html).
@@ -17,6 +17,8 @@ export interface MatrixRoute extends URLRoute {
    * A path split onto matrix entries.
    */
   readonly path: readonly MatrixEntry[];
+
+  segment(from: number, to?: number): MatrixRoute;
 
 }
 

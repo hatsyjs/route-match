@@ -14,11 +14,10 @@
     "importsNotUsedAsValues": "error",
     "noEmitHelpers": true,
     "lib": [
-      "dom",
-      "es2018"
+      "DOM",
+      "ES2018"
     ],
     "types": [
-      "node",
       "jest"
     ],
     "outDir": "target/js",
