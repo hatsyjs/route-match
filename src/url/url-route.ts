@@ -47,10 +47,10 @@ function pathEntryToString({ name }: PathEntry): string {
 /**
  * Constructs a route by URL.
  *
- * @param url  Source URL.
+ * @param url  Source URL. If string given, then URL will be constructed relatively to `route:/` base.
  *
  * @returns New URL route instance.
  */
-export function urlRoute(url: URL): URLRoute {
+export function urlRoute(url: URL | string): URLRoute {
   return parseURLRoute(url, parsePathEntry, pathEntryToString);
 }

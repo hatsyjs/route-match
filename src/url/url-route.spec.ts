@@ -1,6 +1,33 @@
 import { urlRoute } from './url-route';
 
 describe('urlRoute', () => {
+  it('constructs URL relative to `route:` base', () => {
+
+    const route = urlRoute('custom/path');
+
+    expect(route.url.href).toBe('route:/custom/path');
+    expect(route.url.protocol).toBe('route:');
+    expect(route.url.hostname).toBe('');
+    expect(route.path).toEqual([{ name: 'custom' }, { name: 'path' }]);
+  });
+  it('constructs absolute URL relative to `route:` base', () => {
+
+    const route = urlRoute('/custom/path');
+
+    expect(route.url.href).toBe('route:/custom/path');
+    expect(route.url.protocol).toBe('route:');
+    expect(route.url.hostname).toBe('');
+    expect(route.path).toEqual([{ name: 'custom' }, { name: 'path' }]);
+  });
+  it('constructs http URL by string', () => {
+
+    const route = urlRoute('http://localhost/custom/path');
+
+    expect(route.url.href).toBe('http://localhost/custom/path');
+    expect(route.url.protocol).toBe('http:');
+    expect(route.url.hostname).toBe('localhost');
+    expect(route.path).toEqual([{ name: 'custom' }, { name: 'path' }]);
+  });
   it('is empty for HTTP `/` path', () => {
 
     const url = new URL('http://localhost');

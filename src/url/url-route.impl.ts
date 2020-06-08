@@ -14,10 +14,13 @@ export interface ParsedURLRoute<TEntry extends PathEntry> extends URLRoute {
  * @internal
  */
 export function parseURLRoute<TEntry extends PathEntry>(
-    url: URL,
+    url: URL | string,
     parseEntry: (name: string) => TEntry,
     entryToString: (entry: TEntry) => string,
 ): ParsedURLRoute<TEntry> {
+  if (typeof url === 'string') {
+    url = new URL(url, 'route:/');
+  }
 
   let { pathname } = url;
 

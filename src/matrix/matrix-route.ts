@@ -70,10 +70,10 @@ function matrixEntryToString({ name, attrs }: MatrixEntry): string {
 /**
  * Constructs a matrix route by URL.
  *
- * @param url  Source URL.
+ * @param url  Source URL. If string given, then URL will be constructed relatively to `route:/` base.
  *
  * @returns New matrix route instance.
  */
-export function matrixRoute(url: URL): MatrixRoute {
+export function matrixRoute(url: URL | string): MatrixRoute {
   return parseURLRoute(url, parseMatrixEntry, matrixEntryToString);
 }
