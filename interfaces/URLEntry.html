@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>PathEntry | Route Match</title>
+	<title>URLEntry | Route Match</title>
 	<meta name="description" content="Documentation for Route Match">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -54,10 +54,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="PathEntry.html">PathEntry</a>
+					<a href="URLEntry.html">URLEntry</a>
 				</li>
 			</ul>
-			<h1>Interface PathEntry</h1>
+			<h1>Interface URLEntry</h1>
 		</div>
 	</div>
 </header>
@@ -67,19 +67,23 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>Path entry.</p>
+						<p>URL route entry.</p>
 					</div>
-					<p>Represents either file or directory.</p>
 				</div>
 			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">PathEntry</span>
+						<a href="PathEntry.html" class="tsd-signature-type">PathEntry</a>
 						<ul class="tsd-hierarchy">
 							<li>
-								<a href="URLEntry.html" class="tsd-signature-type">URLEntry</a>
+								<span class="target">URLEntry</span>
+								<ul class="tsd-hierarchy">
+									<li>
+										<a href="MatrixEntry.html" class="tsd-signature-type">MatrixEntry</a>
+									</li>
+								</ul>
 							</li>
 						</ul>
 					</li>
@@ -92,7 +96,8 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="PathEntry.html#name" class="tsd-kind-icon">name</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite"><a href="URLEntry.html#name" class="tsd-kind-icon">name</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="URLEntry.html#raw" class="tsd-kind-icon">raw</a></li>
 							</ul>
 						</section>
 					</div>
@@ -100,19 +105,36 @@
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite">
 					<a name="name" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagReadonly">Readonly</span> name</h3>
 					<div class="tsd-signature tsd-kind-icon">name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
+						<p>Overrides <a href="PathEntry.html">PathEntry</a>.<a href="PathEntry.html#name">name</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/5e3de9e/src/path/path-route.ts#L50">hatsy/route-match/src/path/path-route.ts:50</a></li>
+							<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/5e3de9e/src/url/url-route.ts#L67">hatsy/route-match/src/url/url-route.ts:67</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>File or directory name.</p>
+							<p>File or directory name, URL-decoded.</p>
 						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="raw" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagReadonly">Readonly</span> raw</h3>
+					<div class="tsd-signature tsd-kind-icon">raw<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/5e3de9e/src/url/url-route.ts#L62">hatsy/route-match/src/url/url-route.ts:62</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Raw entry representation, not URL-decoded.</p>
+						</div>
+						<p>This is used in string representation of route.</p>
 					</div>
 				</section>
 			</section>
@@ -133,27 +155,30 @@
 					<li class=" tsd-kind-interface">
 						<a href="MatrixRoute.html" class="tsd-kind-icon">Matrix<wbr>Route</a>
 					</li>
-				</ul>
-				<ul class="current">
-					<li class="current tsd-kind-interface">
+					<li class=" tsd-kind-interface">
 						<a href="PathEntry.html" class="tsd-kind-icon">Path<wbr>Entry</a>
-						<ul>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="PathEntry.html#name" class="tsd-kind-icon">name</a>
-							</li>
-						</ul>
 					</li>
-				</ul>
-				<ul class="after-current">
 					<li class=" tsd-kind-interface">
 						<a href="PathRoute.html" class="tsd-kind-icon">Path<wbr>Route</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-has-type-parameter">
 						<a href="RouteCaptorSignatureMap.html" class="tsd-kind-icon">Route<wbr>Captor<wbr>Signature<wbr>Map</a>
 					</li>
-					<li class=" tsd-kind-interface">
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-interface">
 						<a href="URLEntry.html" class="tsd-kind-icon">URLEntry</a>
+						<ul>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite">
+								<a href="URLEntry.html#name" class="tsd-kind-icon">name</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="URLEntry.html#raw" class="tsd-kind-icon">raw</a>
+							</li>
+						</ul>
 					</li>
+				</ul>
+				<ul class="after-current">
 					<li class=" tsd-kind-interface">
 						<a href="URLRoute.html" class="tsd-kind-icon">URLRoute</a>
 					</li>
