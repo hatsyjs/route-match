@@ -8,7 +8,7 @@ describe('urlRoute', () => {
     expect(route.url.href).toBe('route:/custom/path');
     expect(route.url.protocol).toBe('route:');
     expect(route.url.hostname).toBe('');
-    expect(route.path).toEqual([{ name: 'custom' }, { name: 'path' }]);
+    expect(route.path).toEqual([{ raw: 'custom', name: 'custom' }, { raw: 'path', name: 'path' }]);
   });
   it('constructs absolute URL relative to `route:` base', () => {
 
@@ -17,7 +17,7 @@ describe('urlRoute', () => {
     expect(route.url.href).toBe('route:/custom/path');
     expect(route.url.protocol).toBe('route:');
     expect(route.url.hostname).toBe('');
-    expect(route.path).toEqual([{ name: 'custom' }, { name: 'path' }]);
+    expect(route.path).toEqual([{ raw: 'custom', name: 'custom' }, { raw: 'path', name: 'path' }]);
   });
   it('constructs http URL by string', () => {
 
@@ -26,7 +26,7 @@ describe('urlRoute', () => {
     expect(route.url.href).toBe('http://localhost/custom/path');
     expect(route.url.protocol).toBe('http:');
     expect(route.url.hostname).toBe('localhost');
-    expect(route.path).toEqual([{ name: 'custom' }, { name: 'path' }]);
+    expect(route.path).toEqual([{ raw: 'custom', name: 'custom' }, { raw: 'path', name: 'path' }]);
   });
   it('is empty for HTTP `/` path', () => {
 
@@ -70,7 +70,7 @@ describe('urlRoute', () => {
 
     expect(urlRoute(url)).toEqual({
       url,
-      path: [{ name: '' }],
+      path: [{ raw: '', name: '' }],
       dir: true,
       section: expect.any(Function),
       toString: expect.any(Function),
@@ -82,7 +82,7 @@ describe('urlRoute', () => {
 
     expect(urlRoute(url)).toEqual({
       url,
-      path: [{ name: '' }],
+      path: [{ raw: '', name: '' }],
       dir: true,
       section: expect.any(Function),
       toString: expect.any(Function),
@@ -94,7 +94,7 @@ describe('urlRoute', () => {
 
     expect(urlRoute(url)).toEqual({
       url,
-      path: [{ name: '' }, { name: '' }],
+      path: [{ raw: '', name: '' }, { raw: '', name: '' }],
       dir: true,
       section: expect.any(Function),
       toString: expect.any(Function),
@@ -106,7 +106,7 @@ describe('urlRoute', () => {
 
     expect(urlRoute(url)).toEqual({
       url,
-      path: [{ name: 'some' }, { name: 'dir' }],
+      path: [{ raw: 'some', name: 'some' }, { raw: 'dir', name: 'dir' }],
       dir: true,
       section: expect.any(Function),
       toString: expect.any(Function),
@@ -118,7 +118,7 @@ describe('urlRoute', () => {
 
     expect(urlRoute(url)).toEqual({
       url,
-      path: [{ name: 'some' }, { name: 'dir' }],
+      path: [{ raw: 'some', name: 'some' }, { raw: 'dir', name: 'dir' }],
       dir: true,
       section: expect.any(Function),
       toString: expect.any(Function),
@@ -130,7 +130,7 @@ describe('urlRoute', () => {
 
     expect(urlRoute(url)).toEqual({
       url,
-      path: [{ name: 'some' }, { name: 'file' }],
+      path: [{ raw: 'some', name: 'some' }, { raw: 'file', name: 'file' }],
       dir: false,
       section: expect.any(Function),
       toString: expect.any(Function),
@@ -142,7 +142,7 @@ describe('urlRoute', () => {
 
     expect(urlRoute(url)).toEqual({
       url,
-      path: [{ name: 'some' }, { name: 'file' }],
+      path: [{ raw: 'some', name: 'some' }, { raw: 'file', name: 'file' }],
       dir: false,
       section: expect.any(Function),
       toString: expect.any(Function),
@@ -150,11 +150,11 @@ describe('urlRoute', () => {
   });
   it('contains entries with URL-decoded names', () => {
 
-    const url = new URL('http://localhost/some%20dir/');
+    const url = new URL('http://localhost/some+dir/');
 
     expect(urlRoute(url)).toEqual({
       url,
-      path: [{ name: 'some dir' }],
+      path: [{ raw: 'some+dir', name: 'some dir' }],
       dir: true,
       section: expect.any(Function),
       toString: expect.any(Function),
@@ -173,7 +173,7 @@ describe('urlRoute', () => {
       const section = route.section(0, 1);
 
       expect(section.url.href).toBe('http://localhost/path/');
-      expect(section.path).toEqual([{ name: 'path' }]);
+      expect(section.path).toEqual([{ raw: 'path', name: 'path' }]);
       expect(section.dir).toBe(true);
     });
     it('becomes relative to `route:/` loses search parameter when slices path in the middle', () => {
@@ -181,7 +181,7 @@ describe('urlRoute', () => {
       const section = route.section(1, 2);
 
       expect(section.url.href).toBe('route:/to/');
-      expect(section.path).toEqual([{ name: 'to' }]);
+      expect(section.path).toEqual([{ raw: 'to', name: 'to' }]);
       expect(section.dir).toBe(true);
     });
     it('becomes relative to `route:/` and retains search params slices to the end', () => {
@@ -189,7 +189,7 @@ describe('urlRoute', () => {
       const section = route.section(1);
 
       expect(section.url.href).toBe('route:/to/file?param=value');
-      expect(section.path).toEqual([{ name: 'to' }, { name: 'file' }]);
+      expect(section.path).toEqual([{ raw: 'to', name: 'to' }, { raw: 'file', name: 'file' }]);
       expect(section.dir).toBe(false);
     });
     it('returns empty route when `to > from && from > 0`', () => {

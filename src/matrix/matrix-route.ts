@@ -3,8 +3,7 @@
  * @module @hatsy/route-match
  */
 import { lazyValue } from '@proc7ts/primitives';
-import type { PathEntry } from '../path';
-import type { URLRoute } from '../url';
+import type { URLEntry, URLRoute } from '../url';
 import { parseURLRoute } from '../url/url-route.impl';
 import { decodeURLComponent } from '../url/url.impl';
 
@@ -25,7 +24,7 @@ export interface MatrixRoute extends URLRoute {
  *
  * Extends file or directory with matrix attributes.
  */
-export interface MatrixEntry extends PathEntry {
+export interface MatrixEntry extends URLEntry {
 
   /**
    * Matrix attributes represented by URL search parameters.
@@ -39,9 +38,9 @@ export interface MatrixEntry extends PathEntry {
 /**
  * @internal
  */
-function parseMatrixEntry(string: string): MatrixEntry {
+function parseMatrixEntry(raw: string): MatrixEntry {
 
-  const parts = string.split(';');
+  const parts = raw.split(';');
   const getAttrs = lazyValue(() => {
 
     const attrs = new URLSearchParams();
@@ -58,24 +57,11 @@ function parseMatrixEntry(string: string): MatrixEntry {
 
   return {
     name: decodeURLComponent(parts[0]),
+    raw: raw,
     get attrs() {
       return getAttrs();
     },
   };
-}
-
-/**
- * @internal
- */
-function matrixEntryToString({ name, attrs }: MatrixEntry): string {
-
-  let result = encodeURIComponent(name);
-
-  attrs.forEach((value, name) => {
-    result += `;${(encodeURIComponent(name))}=${encodeURIComponent(value)}`;
-  });
-
-  return result;
 }
 
 /**
@@ -86,5 +72,5 @@ function matrixEntryToString({ name, attrs }: MatrixEntry): string {
  * @returns New matrix route instance.
  */
 export function matrixRoute(url: URL | string): MatrixRoute {
-  return parseURLRoute(url, parseMatrixEntry, matrixEntryToString);
+  return parseURLRoute(url, parseMatrixEntry);
 }

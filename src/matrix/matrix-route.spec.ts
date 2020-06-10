@@ -34,9 +34,9 @@ describe('matrixRoute', () => {
       expect(matrixRoute(new URL('http://localhost/some%20dir/')).toString())
           .toBe('some%20dir/');
     });
-    it('URL-encodes matrix attributes', () => {
+    it('does no alter matrix attributes', () => {
       expect(matrixRoute(new URL('http://localhost/some%20dir/;param+1;param2=value+1;param2=value%202')).toString())
-          .toBe('some%20dir/;param%201=;param2=value%201;param2=value%202');
+          .toBe('some%20dir/;param+1;param2=value+1;param2=value%202');
     });
   });
 });

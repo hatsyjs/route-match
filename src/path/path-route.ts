@@ -45,7 +45,7 @@ export interface PathRoute {
 export interface PathEntry {
 
   /**
-   * Target file or directory name.
+   * File or directory name.
    */
   readonly name: string;
 

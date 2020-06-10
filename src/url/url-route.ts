@@ -19,6 +19,11 @@ export interface URLRoute extends PathRoute {
   readonly url: URL;
 
   /**
+   * A path split onto URL entries.
+   */
+  readonly path: readonly URLEntry[];
+
+  /**
    * Extracts a section of this route between the given entry indices.
    *
    * When segment starts from the beginning of the route (i.e. `from === 0`), its URL retains protocol, host, port,
@@ -38,24 +43,36 @@ export interface URLRoute extends PathRoute {
   /**
    * Builds a string representation of this route.
    *
-   * @returns URL-encoded pathname without leading `/` with URL search parameters if present.
+   * @returns Raw URL pathname without leading `/` with URL search parameters if present.
    */
   toString(): string;
 
 }
 
 /**
- * @internal
+ * URL route entry.
  */
-function parsePathEntry(name: string): PathEntry {
-  return { name: decodeURLComponent(name) };
+export interface URLEntry extends PathEntry {
+
+  /**
+   * Raw entry representation, not URL-decoded.
+   *
+   * This is used in string representation of route.
+   */
+  readonly raw: string;
+
+  /**
+   * File or directory name, URL-decoded.
+   */
+  readonly name: string;
+
 }
 
 /**
  * @internal
  */
-function pathEntryToString({ name }: PathEntry): string {
-  return encodeURIComponent(name);
+function parseURLEntry(raw: string): URLEntry {
+  return { raw, name: decodeURLComponent(raw) };
 }
 
 /**
@@ -66,5 +83,5 @@ function pathEntryToString({ name }: PathEntry): string {
  * @returns New URL route instance.
  */
 export function urlRoute(url: URL | string): URLRoute {
-  return parseURLRoute(url, parsePathEntry, pathEntryToString);
+  return parseURLRoute(url, parseURLEntry);
 }
