@@ -100,6 +100,7 @@
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-overwrite tsd-is-inherited"><a href="MatrixRoute.html#section" class="tsd-kind-icon">section</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-inherited"><a href="MatrixRoute.html#toPathString" class="tsd-kind-icon">to<wbr>Path<wbr>String</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-overwrite tsd-is-inherited"><a href="MatrixRoute.html#toString" class="tsd-kind-icon">to<wbr>String</a></li>
 							</ul>
 						</section>
@@ -115,7 +116,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="PathRoute.html">PathRoute</a>.<a href="PathRoute.html#dir">dir</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/5e3de9e/src/path/path-route.ts#L18">hatsy/route-match/src/path/path-route.ts:18</a></li>
+							<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/22987f4/src/path/path-route.ts#L18">hatsy/route-match/src/path/path-route.ts:18</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -131,7 +132,7 @@
 					<aside class="tsd-sources">
 						<p>Overrides <a href="URLRoute.html">URLRoute</a>.<a href="URLRoute.html#path">path</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/5e3de9e/src/matrix/matrix-route.ts#L18">hatsy/route-match/src/matrix/matrix-route.ts:18</a></li>
+							<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/22987f4/src/matrix/matrix-route.ts#L18">hatsy/route-match/src/matrix/matrix-route.ts:18</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -147,7 +148,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="URLRoute.html">URLRoute</a>.<a href="URLRoute.html#url">url</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/5e3de9e/src/url/url-route.ts#L19">hatsy/route-match/src/url/url-route.ts:19</a></li>
+							<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/22987f4/src/url/url-route.ts#L19">hatsy/route-match/src/url/url-route.ts:19</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -172,7 +173,7 @@
 								<p>Inherited from <a href="URLRoute.html">URLRoute</a>.<a href="URLRoute.html#section">section</a></p>
 								<p>Overrides <a href="PathRoute.html">PathRoute</a>.<a href="PathRoute.html#section">section</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/5e3de9e/src/url/url-route.ts#L41">hatsy/route-match/src/url/url-route.ts:41</a></li>
+									<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/22987f4/src/url/url-route.ts#L41">hatsy/route-match/src/url/url-route.ts:41</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -205,6 +206,30 @@
 						</li>
 					</ul>
 				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
+					<a name="toPathString" class="tsd-anchor"></a>
+					<h3>to<wbr>Path<wbr>String</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon">to<wbr>Path<wbr>String<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="PathRoute.html">PathRoute</a>.<a href="PathRoute.html#toPathString">toPathString</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/22987f4/src/path/path-route.ts#L43">hatsy/route-match/src/path/path-route.ts:43</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Builds a string representation of the route path.</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+							<p>URL-encoded pathname without leading <code>/</code> and extra parts. E.g. without search parameters.</p>
+						</li>
+					</ul>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-overwrite tsd-is-inherited">
 					<a name="toString" class="tsd-anchor"></a>
 					<h3>to<wbr>String</h3>
@@ -217,7 +242,7 @@
 								<p>Inherited from <a href="URLRoute.html">URLRoute</a>.<a href="URLRoute.html#toString">toString</a></p>
 								<p>Overrides <a href="PathRoute.html">PathRoute</a>.<a href="PathRoute.html#toString">toString</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/5e3de9e/src/url/url-route.ts#L48">hatsy/route-match/src/url/url-route.ts:48</a></li>
+									<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/22987f4/src/url/url-route.ts#L48">hatsy/route-match/src/url/url-route.ts:48</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -261,6 +286,9 @@
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-overwrite tsd-is-inherited">
 								<a href="MatrixRoute.html#section" class="tsd-kind-icon">section</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
+								<a href="MatrixRoute.html#toPathString" class="tsd-kind-icon">to<wbr>Path<wbr>String</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-overwrite tsd-is-inherited">
 								<a href="MatrixRoute.html#toString" class="tsd-kind-icon">to<wbr>String</a>
