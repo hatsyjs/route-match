@@ -55,6 +55,11 @@ export interface URLRoute extends PathRoute {
 export interface URLEntry extends PathEntry {
 
   /**
+   * File or directory name, URL-decoded.
+   */
+  readonly name: string;
+
+  /**
    * Raw entry representation, not URL-decoded.
    *
    * This is used in string representation of route.
@@ -62,9 +67,11 @@ export interface URLEntry extends PathEntry {
   readonly raw: string;
 
   /**
-   * File or directory name, URL-decoded.
+   * Raw entry name representation, not URL-decoded.
+   *
+   * This is used in a {@link PathRoute.toPathString string representation of the route path}.
    */
-  readonly name: string;
+  readonly rawName: string;
 
 }
 
@@ -72,7 +79,7 @@ export interface URLEntry extends PathEntry {
  * @internal
  */
 function parseURLEntry(raw: string): URLEntry {
-  return { raw, name: decodeURLComponent(raw) };
+  return { name: decodeURLComponent(raw), raw, rawName: raw };
 }
 
 /**

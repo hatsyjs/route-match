@@ -35,6 +35,13 @@ export interface PathRoute {
    */
   toString(): string;
 
+  /**
+   * Builds a string representation of the route path.
+   *
+   * @returns URL-encoded pathname without leading `/` and extra parts. E.g. without search parameters.
+   */
+  toPathString(): string;
+
 }
 
 /**

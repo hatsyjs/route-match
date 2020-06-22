@@ -15,6 +15,7 @@ describe('matrixRoute', () => {
       dir: false,
       section: expect.any(Function),
       toString: expect.any(Function),
+      toPathString: expect.any(Function),
     });
 
     expect(route.path[0].attrs.getAll('attr1')).toEqual(['value1', 'value2']);
@@ -37,6 +38,16 @@ describe('matrixRoute', () => {
     it('does no alter matrix attributes', () => {
       expect(matrixRoute(new URL('http://localhost/some%20dir/;param+1;param2=value+1;param2=value%202')).toString())
           .toBe('some%20dir/;param+1;param2=value+1;param2=value%202');
+    });
+  });
+
+  describe('toPathString', () => {
+    it('excludes matrix attributes', () => {
+      expect(matrixRoute('http://localhost/some%20dir/;param+1;param2=value+1;param2=value%202').toPathString())
+          .toBe('some%20dir/');
+    });
+    it('excludes search parameters attributes', () => {
+      expect(matrixRoute('http://localhost/some.html?param=value').toPathString()).toBe('some.html');
     });
   });
 });

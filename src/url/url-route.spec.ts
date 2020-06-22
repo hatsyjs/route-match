@@ -8,7 +8,10 @@ describe('urlRoute', () => {
     expect(route.url.href).toBe('route:/custom/path');
     expect(route.url.protocol).toBe('route:');
     expect(route.url.hostname).toBe('');
-    expect(route.path).toEqual([{ raw: 'custom', name: 'custom' }, { raw: 'path', name: 'path' }]);
+    expect(route.path).toEqual([
+      { name: 'custom', raw: 'custom', rawName: 'custom' },
+      { name: 'path', raw: 'path', rawName: 'path' },
+    ]);
   });
   it('constructs absolute URL relative to `route:` base', () => {
 
@@ -17,7 +20,10 @@ describe('urlRoute', () => {
     expect(route.url.href).toBe('route:/custom/path');
     expect(route.url.protocol).toBe('route:');
     expect(route.url.hostname).toBe('');
-    expect(route.path).toEqual([{ raw: 'custom', name: 'custom' }, { raw: 'path', name: 'path' }]);
+    expect(route.path).toEqual([
+      { name: 'custom', raw: 'custom', rawName: 'custom' },
+      { name: 'path', raw: 'path', rawName: 'path' },
+    ]);
   });
   it('constructs http URL by string', () => {
 
@@ -26,7 +32,10 @@ describe('urlRoute', () => {
     expect(route.url.href).toBe('http://localhost/custom/path');
     expect(route.url.protocol).toBe('http:');
     expect(route.url.hostname).toBe('localhost');
-    expect(route.path).toEqual([{ raw: 'custom', name: 'custom' }, { raw: 'path', name: 'path' }]);
+    expect(route.path).toEqual([
+      { name: 'custom', raw: 'custom', rawName: 'custom' },
+      { name: 'path', raw: 'path', rawName: 'path' },
+    ]);
   });
   it('is empty for HTTP `/` path', () => {
 
@@ -38,6 +47,7 @@ describe('urlRoute', () => {
       dir: true,
       section: expect.any(Function),
       toString: expect.any(Function),
+      toPathString: expect.any(Function),
     });
   });
   it('is empty for custom `/` path', () => {
@@ -50,6 +60,7 @@ describe('urlRoute', () => {
       dir: true,
       section: expect.any(Function),
       toString: expect.any(Function),
+      toPathString: expect.any(Function),
     });
   });
   it('is empty for empty path', () => {
@@ -62,6 +73,7 @@ describe('urlRoute', () => {
       dir: true,
       section: expect.any(Function),
       toString: expect.any(Function),
+      toPathString: expect.any(Function),
     });
   });
   it('has one empty entry for HTTP `//` path', () => {
@@ -70,10 +82,11 @@ describe('urlRoute', () => {
 
     expect(urlRoute(url)).toEqual({
       url,
-      path: [{ raw: '', name: '' }],
+      path: [{ name: '', raw: '', rawName: '' }],
       dir: true,
       section: expect.any(Function),
       toString: expect.any(Function),
+      toPathString: expect.any(Function),
     });
   });
   it('has one empty entry for custom `//` path', () => {
@@ -82,10 +95,11 @@ describe('urlRoute', () => {
 
     expect(urlRoute(url)).toEqual({
       url,
-      path: [{ raw: '', name: '' }],
+      path: [{ name: '', raw: '', rawName: '' }],
       dir: true,
       section: expect.any(Function),
       toString: expect.any(Function),
+      toPathString: expect.any(Function),
     });
   });
   it('has two empty entries for `///', () => {
@@ -94,10 +108,11 @@ describe('urlRoute', () => {
 
     expect(urlRoute(url)).toEqual({
       url,
-      path: [{ raw: '', name: '' }, { raw: '', name: '' }],
+      path: [{ name: '', raw: '', rawName: '' }, { name: '', raw: '', rawName: '' }],
       dir: true,
       section: expect.any(Function),
       toString: expect.any(Function),
+      toPathString: expect.any(Function),
     });
   });
   it('is directory when HTTP path ends with `/`', () => {
@@ -106,10 +121,14 @@ describe('urlRoute', () => {
 
     expect(urlRoute(url)).toEqual({
       url,
-      path: [{ raw: 'some', name: 'some' }, { raw: 'dir', name: 'dir' }],
+      path: [
+        { name: 'some', raw: 'some', rawName: 'some' },
+        { name: 'dir', raw: 'dir', rawName: 'dir' },
+      ],
       dir: true,
       section: expect.any(Function),
       toString: expect.any(Function),
+      toPathString: expect.any(Function),
     });
   });
   it('is directory when custom path ends with `/`', () => {
@@ -118,10 +137,14 @@ describe('urlRoute', () => {
 
     expect(urlRoute(url)).toEqual({
       url,
-      path: [{ raw: 'some', name: 'some' }, { raw: 'dir', name: 'dir' }],
+      path: [
+        { name: 'some', raw: 'some', rawName: 'some' },
+        { name: 'dir', raw: 'dir', rawName: 'dir' },
+      ],
       dir: true,
       section: expect.any(Function),
       toString: expect.any(Function),
+      toPathString: expect.any(Function),
     });
   });
   it('is file when HTTP path does not end with `/`', () => {
@@ -130,10 +153,14 @@ describe('urlRoute', () => {
 
     expect(urlRoute(url)).toEqual({
       url,
-      path: [{ raw: 'some', name: 'some' }, { raw: 'file', name: 'file' }],
+      path: [
+        { name: 'some', raw: 'some', rawName: 'some' },
+        { name: 'file', raw: 'file', rawName: 'file' },
+      ],
       dir: false,
       section: expect.any(Function),
       toString: expect.any(Function),
+      toPathString: expect.any(Function),
     });
   });
   it('is file when custom path does not end with `/`', () => {
@@ -142,10 +169,14 @@ describe('urlRoute', () => {
 
     expect(urlRoute(url)).toEqual({
       url,
-      path: [{ raw: 'some', name: 'some' }, { raw: 'file', name: 'file' }],
+      path: [
+        { name: 'some', raw: 'some', rawName: 'some' },
+        { name: 'file', raw: 'file', rawName: 'file' },
+      ],
       dir: false,
       section: expect.any(Function),
       toString: expect.any(Function),
+      toPathString: expect.any(Function),
     });
   });
   it('contains entries with URL-decoded names', () => {
@@ -154,10 +185,11 @@ describe('urlRoute', () => {
 
     expect(urlRoute(url)).toEqual({
       url,
-      path: [{ raw: 'some+dir', name: 'some dir' }],
+      path: [{ name: 'some dir', raw: 'some+dir', rawName: 'some+dir' }],
       dir: true,
       section: expect.any(Function),
       toString: expect.any(Function),
+      toPathString: expect.any(Function),
     });
   });
 
@@ -173,7 +205,7 @@ describe('urlRoute', () => {
       const section = route.section(0, 1);
 
       expect(section.url.href).toBe('http://localhost/path/');
-      expect(section.path).toEqual([{ raw: 'path', name: 'path' }]);
+      expect(section.path).toEqual([{ name: 'path', raw: 'path', rawName: 'path' }]);
       expect(section.dir).toBe(true);
     });
     it('becomes relative to `route:/` loses search parameter when slices path in the middle', () => {
@@ -181,7 +213,7 @@ describe('urlRoute', () => {
       const section = route.section(1, 2);
 
       expect(section.url.href).toBe('route:/to/');
-      expect(section.path).toEqual([{ raw: 'to', name: 'to' }]);
+      expect(section.path).toEqual([{ name: 'to', raw: 'to', rawName: 'to' }]);
       expect(section.dir).toBe(true);
     });
     it('becomes relative to `route:/` and retains search params slices to the end', () => {
@@ -189,7 +221,10 @@ describe('urlRoute', () => {
       const section = route.section(1);
 
       expect(section.url.href).toBe('route:/to/file?param=value');
-      expect(section.path).toEqual([{ raw: 'to', name: 'to' }, { raw: 'file', name: 'file' }]);
+      expect(section.path).toEqual([
+        { name: 'to', raw: 'to', rawName: 'to' },
+        { name: 'file', raw: 'file', rawName: 'file' },
+      ]);
       expect(section.dir).toBe(false);
     });
     it('returns empty route when `to > from && from > 0`', () => {
@@ -232,10 +267,16 @@ describe('urlRoute', () => {
     });
     it('appends query search parameters', () => {
       expect(urlRoute(new URL('http://localhost/some%20dir/?param+1&param2=value1&param2=value%202')).toString())
-          .toBe('some%20dir/?param+1=&param2=value1&param2=value+2');
+          .toBe('some%20dir/?param+1&param2=value1&param2=value%202');
     });
     it('has empty path for empty route', () => {
-      expect(urlRoute(new URL('http://localhost?param')).toString()).toBe('?param=');
+      expect(urlRoute(new URL('http://localhost?param')).toString()).toBe('?param');
+    });
+  });
+
+  describe('toPathString', () => {
+    it('excludes query parameters', () => {
+      expect(urlRoute('http://localhost/test.html?param').toPathString()).toBe('test.html');
     });
   });
 });

@@ -58,6 +58,7 @@ function parseMatrixEntry(raw: string): MatrixEntry {
   return {
     name: decodeURLComponent(parts[0]),
     raw: raw,
+    rawName: parts[0],
     get attrs() {
       return getAttrs();
     },

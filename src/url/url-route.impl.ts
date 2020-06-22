@@ -29,6 +29,7 @@ export function parseURLRoute<TEntry extends URLEntry>(
       dir: true,
       section: urlRouteSection,
       toString: urlRouteToString,
+      toPathString: urlRoutePathToString,
     };
   }
 
@@ -48,6 +49,7 @@ export function parseURLRoute<TEntry extends URLEntry>(
     dir,
     section: urlRouteSection,
     toString: urlRouteToString,
+    toPathString: urlRoutePathToString,
   };
 }
 
@@ -104,6 +106,7 @@ function urlRouteSectionToString<TRoute extends URLRoute>(
     { path, dir }: TRoute,
     fromEntry: number,
     toEntry: number,
+    entryToString: (entry: URLEntry) => string = urlRouteEntryToRawString,
 ): string {
   if (fromEntry >= toEntry) {
     return '';
@@ -118,7 +121,7 @@ function urlRouteSectionToString<TRoute extends URLRoute>(
     if (out) {
       out += '/';
     }
-    out += entry.raw;
+    out += entryToString(entry);
   }
   if (out && dir || toEntry < path.length) {
     out += '/';
@@ -131,10 +134,26 @@ function urlRouteSectionToString<TRoute extends URLRoute>(
  * @internal
  */
 function urlRouteToString<TEntry extends URLEntry>(this: ParsedURLRoute<TEntry>): string {
+  return urlRouteSectionToString(this, 0, this.path.length) + this.url.search;
+}
 
-  const { searchParams } = this.url;
-  const query = searchParams.toString();
-  const path = urlRouteSectionToString(this, 0, this.path.length);
+/**
+ * @internal
+ */
+function urlRouteEntryToNameString(entry: URLEntry): string {
+  return entry.rawName;
+}
 
-  return query ? `${path}?${query}` : path;
+/**
+ * @internal
+ */
+function urlRouteEntryToRawString(entry: URLEntry): string {
+  return entry.raw;
+}
+
+/**
+ * @internal
+ */
+function urlRoutePathToString<TEntry extends URLEntry>(this: ParsedURLRoute<TEntry>): string {
+  return urlRouteSectionToString(this, 0, this.path.length, urlRouteEntryToNameString);
 }
