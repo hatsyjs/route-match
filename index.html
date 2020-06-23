@@ -62,6 +62,111 @@
 	<div class="row">
 		<div class="col-8 col-content">
 			<div class="tsd-panel tsd-typography">
+				<a href="#route-matching-library" id="route-matching-library" style="color: inherit; text-decoration: none;">
+					<h1>Route Matching Library</h1>
+				</a>
+				<p><a href="https://www.npmjs.com/package/@hatsy/route-match"><img src="https://img.shields.io/npm/v/@hatsy/route-match.svg?logo=npm" alt="NPM"></a>
+					<a href="https://github.com/hatsyjs/route-match/actions?query=workflow:Build"><img src="https://github.com/hatsyjs/route-match/workflows/Build/badge.svg" alt="Build Status"></a>
+					<a href="https://codecov.io/gh/hatsyjs/route-match"><img src="https://codecov.io/gh/hatsyjs/route-match/branch/master/graph/badge.svg" alt="codecov"></a>
+					<a href="https://github.com/hatsyjs/route-match"><img src="https://img.shields.io/static/v1?logo=github&label=GitHub&message=project&color=informational" alt="GitHub Project"></a>
+				<a href="https://hatsyjs.github.io/route-match/"><img src="https://img.shields.io/static/v1?logo=typescript&label=API&message=docs&color=informational" alt="API Documentation"></a></p>
+				<a href="#simple-pattern" id="simple-pattern" style="color: inherit; text-decoration: none;">
+					<h2>Simple Pattern</h2>
+				</a>
+				<pre><code class="language-typescript"><span class="hljs-keyword">import</span> { matchSimpleRoute } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@hatsy/route-match&#x27;</span>;
+
+<span class="hljs-keyword">const</span> match = matchSimpleRoute(<span class="hljs-string">&#x27;some/long/path/to/file.txt&#x27;</span>, <span class="hljs-string">&#x27;some/**/{file}&#x27;</span>);
+<span class="hljs-comment">/*
+match = {
+  $1: &quot;long/path/to/&quot;,
+  file: &quot;file.txt&quot;,
+}
+*/</span> </code></pre>
+				<p>Simple pattern can only match against whole entries (files or directories). Pattern format:</p>
+				<ul>
+					<li>Empty string corresponds to empty pattern.</li>
+					<li><code>/</code> matches directory separator.</li>
+					<li><code>/*</code> matches any route entry.</li>
+					<li><code>/{capture}</code> captures any route entry as <code>capture</code>.</li>
+					<li><code>/**</code> matches any number of directories.</li>
+					<li><code>/{capture:**}</code> captures any number of directories as <code>capture</code>.</li>
+					<li>Everything else matches verbatim.</li>
+				</ul>
+				<p>The path can be specified as a string, as URL, or as a <a href="https://hatsyjs.github.io/route-match/interfaces/PathRoute.html">PathRoute</a> instance. The latter can be constructed by
+				<a href="https://hatsyjs.github.io/route-match/globals.html#urlRoute">urlRoute()</a> function.</p>
+				<p>The pattern can be specified as a string, or as a <a href="https://hatsyjs.github.io/route-match/globals.html#RoutePattern">RoutePattern</a> instance. The latter can be constructed by
+				<a href="https://hatsyjs.github.io/route-match/globals.html#simpleRoutePattern">simpleRoutePattern()</a> function.</p>
+				<a href="#url-route" id="url-route" style="color: inherit; text-decoration: none;">
+					<h2>URL Route</h2>
+				</a>
+				<pre><code class="language-typescript"><span class="hljs-keyword">import</span> { matchURLRoute } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@hatsy/route-match&#x27;</span>;
+
+<span class="hljs-keyword">const</span> match = matchURLRoute(<span class="hljs-string">&#x27;some-dir/long/path/to/file.html?param=value&#x27;</span>, <span class="hljs-string">&#x27;{root([^-]*)}-dir/**/{name}.{ext}?param&#x27;</span>);
+<span class="hljs-comment">/*
+match = {
+  root: &quot;some&quot;,
+  $1: &quot;long/path/to/&quot;,
+  name: &quot;file&quot;,
+  ext: &quot;txt&quot;,
+}
+*/</span> </code></pre>
+				<p>URL pattern can match against any part of the entry name. Additionally, it can match against URL search parameters.</p>
+				<p>Pattern format:</p>
+				<ul>
+					<li>Empty string corresponds to empty pattern.</li>
+					<li><code>/</code> matches directory separator.</li>
+					<li><code>*</code> matches a part of route entry name.</li>
+					<li><code>{capture}</code> captures a part of entry name as <code>capture</code>.</li>
+					<li><code>/**</code> matches any number of directories.</li>
+					<li><code>/{capture:**}</code> captures any number of directories as <code>capture</code>.</li>
+					<li><code>{(regexp)flags}</code> matches a part of entry name matching the given regular expression with optional flags.</li>
+					<li><code>{capture(regexp)flags}</code> captures a part of entry name matching the regular expression with optional flags.</li>
+					<li><code>?name</code> requires URL search parameter to present.</li>
+					<li><code>?name=value</code> requires URL search parameter to have the given value.</li>
+					<li>Everything else matches verbatim. </li>
+				</ul>
+				<p>The path can be specified as a string, as URL, or as an <a href="https://hatsyjs.github.io/route-match/interfaces/URLRoute.html">URLRoute</a> instance. The latter can be constructed by
+				<a href="https://hatsyjs.github.io/route-match/globals.html#urlRoute">urlRoute()</a> function.</p>
+				<p>The pattern can be specified as a string, or as a <a href="https://hatsyjs.github.io/route-match/globals.html#RoutePattern">RoutePattern</a> instance. The latter can be constructed by
+				<a href="https://hatsyjs.github.io/route-match/globals.html#urlRoutePattern">urlRoutePattern()</a> function.</p>
+				<a href="#matrix-route" id="matrix-route" style="color: inherit; text-decoration: none;">
+					<h2>Matrix Route</h2>
+				</a>
+				<pre><code class="language-typescript"><span class="hljs-keyword">import</span> { matchMatrixRoute } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@hatsy/route-match&#x27;</span>;
+
+<span class="hljs-keyword">const</span> match = matchMatrixRoute(<span class="hljs-string">&#x27;root;length=5/long/path/to;dir=1/file.html;dir=0&#x27;</span>, <span class="hljs-string">&#x27;root;length/**/*&#x27;</span>);
+<span class="hljs-comment">/*
+match = {
+  $1: &quot;long/path/to;dir=1/&quot;,
+  name: &quot;file&quot;,
+  ext: &quot;html&quot;,
+}
+*/</span> </code></pre>
+				<p>Matrix pattern recognizes <a href="https://www.w3.org/DesignIssues/MatrixURIs.html">matrix URL</a>s.</p>
+				<p>Pattern format is the same as for <a href="#url-route">URL Route</a> with addition of attribute matchers:</p>
+				<ul>
+					<li><code>;name</code> requires matrix attribute to present.</li>
+					<li><code>;name=value</code> requires matrix attribute to have the given value.</li>
+				</ul>
+				<p>The path can be specified as a string, as URL, or as a <a href="https://hatsyjs.github.io/route-match/interfaces/MatrixRoute.html">MatrixRoute</a> instance. The latter can be constructed by
+				<a href="https://hatsyjs.github.io/route-match/globals.html#matrixRoute">matrixRoute()</a> function.</p>
+				<p>The pattern can be specified as a string, or as a <a href="https://hatsyjs.github.io/route-match/globals.html#RoutePattern">RoutePattern</a> instance. The latter can be constructed by
+				<a href="https://hatsyjs.github.io/route-match/globals.html#matrixRoutePattern">matrixRoutePattern()</a> function.</p>
+				<a href="#advanced-usage" id="advanced-usage" style="color: inherit; text-decoration: none;">
+					<h2>Advanced Usage</h2>
+				</a>
+				<p>The library supports different route formats mentioned above. Each format represents the route as an array of entries
+				plus additional info. The route can be constructed either manually or parsed by corresponding function.</p>
+				<p>All routes extend <a href="https://hatsyjs.github.io/route-match/interfaces/PathRoute.html">PathRoute</a> interface with the following methods:</p>
+				<ul>
+					<li><code>section(fromEntry[, toEntry])</code> returns a section of the route.</li>
+					<li><code>toString()</code> converts a route to original string, including search parameters and matrix attributes.</li>
+					<li><code>toPathString()</code> converts a route to path string, excluding search parameters and matrix attributes. </li>
+				</ul>
+				<p>A route pattern is an array of <a href="https://hatsyjs.github.io/route-match/modules/RouteMatcher.html">RouteMatcher</a>s compatible with corresponding route format. Route pattern can be
+				constructed out of <code>rmatch...</code> and <code>rcapture...</code> matchers, or parsed by corresponding function.</p>
+				<p>The <a href="https://hatsyjs.github.io/route-match/globals.html#routeMatch">routeMatch()</a> function does the actual matching. It returns either <code>null</code> if the given path does not match
+				the pattern, or a <a href="https://hatsyjs.github.io/route-match/modules/RouteMatch.html">RouteMatch</a> instance. The latter is a function that reports captured matches when called. </p>
 			</div>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
