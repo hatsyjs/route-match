@@ -45,15 +45,15 @@ Simple pattern can only match against whole entries (files or directories). Patt
 - Everything else matches verbatim.
 
 The path can be specified as a string, as URL, or as a [PathRoute] instance. The latter can be constructed by
-[urlRoute] function.
+[urlRoute()] function.
 
 The pattern can be specified as a string, or as a [RoutePattern] instance. The latter can be constructed by
-[simpleRoutePatter] function.
+[simpleRoutePattern()] function.
 
 [PathRoute]: https://hatsyjs.github.io/route-match/interfaces/PathRoute.html
-[urlRoute]: https://hatsyjs.github.io/route-match/globals.html#urlRoute
+[urlRoute()]: https://hatsyjs.github.io/route-match/globals.html#urlRoute
 [RoutePattern]: https://hatsyjs.github.io/route-match/globals.html#RoutePattern
-[simpleRoutePattern]: https://hatsyjs.github.io/route-match/globals.html#simpleRoutePattern
+[simpleRoutePattern()]: https://hatsyjs.github.io/route-match/globals.html#simpleRoutePattern
 
 
 URL Route
@@ -75,7 +75,7 @@ match = {
 */ 
 ```
 
-URL pattern can match against any part of the entry name. Additionally, it can match against query search parameters.
+URL pattern can match against any part of the entry name. Additionally, it can match against URL search parameters.
 
 Pattern format:
 
@@ -92,13 +92,13 @@ Pattern format:
 - Everything else matches verbatim. 
 
 The path can be specified as a string, as URL, or as an [URLRoute] instance. The latter can be constructed by
-[urlRoute] function.
+[urlRoute()] function.
 
 The pattern can be specified as a string, or as a [RoutePattern] instance. The latter can be constructed by
-[urlRoutePattern] function.
+[urlRoutePattern()] function.
 
 [URLRoute]: https://hatsyjs.github.io/route-match/interfaces/URLRoute.html
-[urlRoutePattern]: https://hatsyjs.github.io/route-match/globals.html#urlRoutePattern
+[urlRoutePattern()]: https://hatsyjs.github.io/route-match/globals.html#urlRoutePattern
 
 
 Matrix Route
@@ -125,14 +125,14 @@ Pattern format is the same as for [URL Route] with addition of attribute matcher
 - `;name=value` requires matrix attribute to have the given value.
 
 The path can be specified as a string, as URL, or as a [MatrixRoute] instance. The latter can be constructed by
-[matrixRoute] function.
+[matrixRoute()] function.
 
 The pattern can be specified as a string, or as a [RoutePattern] instance. The latter can be constructed by
-[matrixRoutePattern] function.
+[matrixRoutePattern()] function.
 
 [MatrixRoute]: https://hatsyjs.github.io/route-match/interfaces/MatrixRoute.html
-[matrixRoute]: https://hatsyjs.github.io/route-match/globals.html#matrixRoute
-[matrixRoutePattern]: https://hatsyjs.github.io/route-match/globals.html#matrixRoutePattern
+[matrixRoute()]: https://hatsyjs.github.io/route-match/globals.html#matrixRoute
+[matrixRoutePattern()]: https://hatsyjs.github.io/route-match/globals.html#matrixRoutePattern
 [matrix URL]: https://www.w3.org/DesignIssues/MatrixURIs.html
 
 
@@ -144,16 +144,16 @@ plus additional info. The route can be constructed either manually or parsed by 
 
 All routes extend [PathRoute] interface with the following methods:
 
-- `section(from[, to])` returns a section of the route.
+- `section(fromEntry[, toEntry])` returns a section of the route.
 - `toString()` converts a route to original string, including search parameters and matrix attributes.
 - `toPathString()` converts a route to path string, excluding search parameters and matrix attributes. 
 
-A route pattern is an array of [RouteMatcher]s compatible with corresponding route type. Route pattern can be
+A route pattern is an array of [RouteMatcher]s compatible with corresponding route format. Route pattern can be
 constructed out of `rmatch...` and `rcapture...` matchers, or parsed by corresponding function.
 
-The [routeMatch] function does the actual route matching job. It returns either `null` if the given path didn't match
-the pattern, or a [RouteMatch] function. The latter reports captured matches when called. 
+The [routeMatch()] function does the actual matching. It returns either `null` if the given path does not match
+the pattern, or a [RouteMatch] instance. The latter is a function that reports captured matches when called. 
 
 [RouteMatcher]: https://hatsyjs.github.io/route-match/modules/RouteMatcher.html  
-[routeMatch]: https://hatsyjs.github.io/route-match/globals.html#routeMatch
+[routeMatch()]: https://hatsyjs.github.io/route-match/globals.html#routeMatch
 [RouteMatch]: https://hatsyjs.github.io/route-match/modules/RouteMatch.html
