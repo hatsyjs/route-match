@@ -223,12 +223,26 @@ describe('urlRoutePattern', () => {
     });
   });
 
-  describe('dir/{out(file)i}', () => {
+  describe('dir/{out(regexp)i}.txt', () => {
     it('captures file', () => {
 
       const match = routeMatch(
-          urlRoute(new URL('http://localhost/dir/FILE')),
-          urlRoutePattern('dir/{out((fi)le)i}'),
+          urlRoute(new URL('http://localhost/dir/FILE.txt')),
+          urlRoutePattern('dir/{out(\\w+)i}.txt'),
+      );
+
+      expect(match).toBeTruthy();
+      match?.(captor);
+      expect(captor).toHaveBeenCalledWith('regexp', 'out', expect.any(Array), expect.anything());
+      expect([...captor.mock.calls[0][2]]).toEqual(['FILE']);
+    });
+  });
+  describe('dir/{out(regexp(group))i}.txt', () => {
+    it('captures file', () => {
+
+      const match = routeMatch(
+          urlRoute(new URL('http://localhost/dir/FILE.txt')),
+          urlRoutePattern('dir/{out((fi)le)i}.txt'),
       );
 
       expect(match).toBeTruthy();

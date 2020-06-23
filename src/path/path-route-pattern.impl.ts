@@ -86,7 +86,7 @@ export function pathRouteRegExp(spec: string): RouteMatcher | undefined {
     return;
   }
 
-  const pattern = decodeURLComponent(spec.substring(openParent + 1, closeParent));
+  const pattern = decodeURI(spec.substring(openParent + 1, closeParent));
   const flags = spec.substring(closeParent + 1).trim();
   const re = new RegExp(pattern, flags);
   const capture = spec.substr(0, openParent).trim();
