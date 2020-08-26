@@ -19,8 +19,14 @@
   },
   "main": "dist/route-match.js",
   "module": "dist/route-match.mjs",
+  "exports": {
+    ".": {
+      "import": "./dist/route-match.mjs",
+      "require": "./dist/route-match.js"
+    }
+  },
   "dependencies": {
-    "@proc7ts/primitives": "^1.1.0"
+    "@proc7ts/primitives": "^1.2.0"
   },
   "devDependencies": {
     "@proc7ts/eslint-config": "^2.0.4",
