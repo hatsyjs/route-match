@@ -13,7 +13,7 @@ import type { RouteCaptor, RouteCaptorSignatureMap } from './route-captor';
  *
  * Can be used to {@link classifyRouteCapture classify route capture}.
  *
- * @typeparam  A type of matching route.
+ * @typeParam  A type of matching route.
  */
 export type RouteCaptureClassifier<TRoute extends PathRoute = PathRoute> = {
 

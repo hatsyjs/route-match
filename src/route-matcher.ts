@@ -8,7 +8,7 @@ import type { RouteMatch, RoutePattern } from './route-match';
 /**
  * Route fragment matcher.
  *
- * @typeparam TRoute  A type of supported route.
+ * @typeParam TRoute  A type of supported route.
  */
 export interface RouteMatcher<TRoute extends PathRoute = PathRoute> {
 
@@ -60,7 +60,7 @@ export namespace RouteMatcher {
    *
    * May represent a position after the end of the route.
    *
-   * @typeparam TRoute  A type of tested route.
+   * @typeParam TRoute  A type of tested route.
    */
   export interface Position<TRoute extends PathRoute> {
 
@@ -104,7 +104,7 @@ export namespace RouteMatcher {
    * This is passed to {@link RouteMatcher.test route matcher} to indicate the position inside the route the match
    * should be searched at.
    *
-   * @typeparam TRoute  A type of tested route.
+   * @typeParam TRoute  A type of tested route.
    */
   export interface Context<TRoute extends PathRoute> extends Position<TRoute> {
 
@@ -133,7 +133,7 @@ export namespace RouteMatcher {
    * This is passed to {@link RouteMatcher.tail tail route matcher} to indicate the position after the end of the route
    * the match should be applied to.
    *
-   * @typeparam TRoute  A type of tested route.
+   * @typeParam TRoute  A type of tested route.
    */
   export interface TailContext<TRoute extends PathRoute> extends Position<TRoute> {
 
@@ -159,7 +159,7 @@ export namespace RouteMatcher {
    *
    * This is returned from {@link RouteMatch route matcher} and indicates the matching part of the route.
    *
-   * @typeparam TRoute  A type of matching route.
+   * @typeParam TRoute  A type of matching route.
    */
   export interface Match<TRoute extends PathRoute = PathRoute> {
 
