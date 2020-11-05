@@ -1,6 +1,6 @@
+import { decodeURLComponent } from '@hatsy/hten';
 import { rcaptureDirs, rcaptureEntry, rmatchDirs, rmatchEntry } from '../matchers';
 import type { RouteMatcher } from '../route-matcher';
-import { decodeURLComponent } from '../url/url.impl';
 
 /**
  * @internal

@@ -1,6 +1,6 @@
+import { decodeURLComponent } from '@hatsy/hten';
 import { rcaptureAny, rcaptureRegExp, rmatchAny, rmatchName, rmatchString } from '../matchers';
 import type { RouteMatcher } from '../route-matcher';
-import { decodeURLComponent } from '../url/url.impl';
 import { simpleRouteMatcher, simpleRouteWildcard } from './simple-route-pattern.impl';
 
 /**

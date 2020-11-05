@@ -2,9 +2,9 @@
  * @packageDocumentation
  * @module @hatsy/route-match
  */
+import { decodeURLComponent } from '@hatsy/hten';
 import type { PathEntry, PathRoute } from '../path';
 import { parseURLRoute } from './url-route.impl';
-import { decodeURLComponent } from './url.impl';
 
 /**
  * A route representing an URL.
