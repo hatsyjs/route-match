@@ -17,16 +17,17 @@
   "bugs": {
     "url": "https://github.com/hatsyjs/route-match/issues"
   },
-  "main": "dist/route-match.js",
-  "module": "dist/route-match.mjs",
+  "type": "module",
+  "main": "dist/route-match.cjs",
+  "module": "dist/route-match.js",
   "exports": {
     ".": {
-      "import": "./dist/route-match.mjs",
-      "require": "./dist/route-match.js"
+      "import": "./dist/route-match.js",
+      "require": "./dist/route-match.cjs"
     }
   },
   "dependencies": {
-    "@hatsy/hten": "^1.0.0",
+    "@hatsy/hten": "^1.1.0",
     "@proc7ts/primitives": "^1.3.2"
   },
   "devDependencies": {
@@ -56,7 +57,7 @@
   },
   "scripts": {
     "all": "run-z build,lint,test",
-    "build": "run-z +z --then rollup --config ./rollup.config.js",
+    "build": "run-z +z --then rollup --config rollup.config.js",
     "ci:all": "run-z all +test/--ci/--runInBand",
     "clean": "run-z +z --then shx rm -rf d.ts dist target",
     "doc": "run-z +z --then typedoc",
