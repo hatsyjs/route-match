@@ -27,7 +27,7 @@
     }
   },
   "dependencies": {
-    "@hatsy/hten": "^1.1.0",
+    "@hatsy/hten": "^1.1.1",
     "@proc7ts/primitives": "^1.4.0"
   },
   "devDependencies": {
