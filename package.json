@@ -1,6 +1,6 @@
 {
   "name": "@hatsy/route-match",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Route matching library",
   "keywords": [
     "route",
