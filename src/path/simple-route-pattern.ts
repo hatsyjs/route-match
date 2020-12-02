@@ -2,7 +2,7 @@
  * @packageDocumentation
  * @module @hatsy/route-match
  */
-import { decodeURLComponent } from '@hatsy/hten';
+import { decodeURLComponent } from '@frontmeans/httongue';
 import { rmatchDirSep, rmatchName } from '../matchers';
 import type { RoutePattern } from '../route-match';
 import type { RouteMatcher } from '../route-matcher';

@@ -1,4 +1,4 @@
-import { decodeURLComponent } from '@hatsy/hten';
+import { decodeURLComponent } from '@frontmeans/httongue';
 import { rcaptureDirs, rcaptureEntry, rmatchDirs, rmatchEntry } from '../matchers';
 import type { RouteMatcher } from '../route-matcher';
 
