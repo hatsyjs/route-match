@@ -26,7 +26,7 @@
     "require": "./dist/route-match.cjs"
   },
   "dependencies": {
-    "@frontmeans/httongue": "^2.1.0",
+    "@frontmeans/httongue": "^2.2.0",
     "@proc7ts/primitives": "^1.5.1"
   },
   "devDependencies": {
