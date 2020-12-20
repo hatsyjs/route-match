@@ -8,7 +8,7 @@ import type { RouteMatch, RoutePattern } from './route-match';
 /**
  * Route fragment matcher.
  *
- * @typeParam TRoute  A type of supported route.
+ * @typeParam TRoute - A type of supported route.
  */
 export interface RouteMatcher<TRoute extends PathRoute = PathRoute> {
 
@@ -27,7 +27,7 @@ export interface RouteMatcher<TRoute extends PathRoute = PathRoute> {
   /**
    * Searches for the fragment of the route satisfying this matcher's conditions.
    *
-   * In contrast to the [[test]] method this one attempts to find the matching fragment starting at some offset from
+   * In contrast to the {@link test} method this one attempts to find the matching fragment starting at some offset from
    * current position specified by `context`, and then tries to match the remaining path against the remaining pattern.
    *
    * The matching route fragment always starts within current route entry.
@@ -60,7 +60,7 @@ export namespace RouteMatcher {
    *
    * May represent a position after the end of the route.
    *
-   * @typeParam TRoute  A type of tested route.
+   * @typeParam TRoute - A type of tested route.
    */
   export interface Position<TRoute extends PathRoute> {
 
@@ -104,7 +104,7 @@ export namespace RouteMatcher {
    * This is passed to {@link RouteMatcher.test route matcher} to indicate the position inside the route the match
    * should be searched at.
    *
-   * @typeParam TRoute  A type of tested route.
+   * @typeParam TRoute - A type of tested route.
    */
   export interface Context<TRoute extends PathRoute> extends Position<TRoute> {
 
@@ -133,7 +133,7 @@ export namespace RouteMatcher {
    * This is passed to {@link RouteMatcher.tail tail route matcher} to indicate the position after the end of the route
    * the match should be applied to.
    *
-   * @typeParam TRoute  A type of tested route.
+   * @typeParam TRoute - A type of tested route.
    */
   export interface TailContext<TRoute extends PathRoute> extends Position<TRoute> {
 
@@ -159,7 +159,7 @@ export namespace RouteMatcher {
    *
    * This is returned from {@link RouteMatch route matcher} and indicates the matching part of the route.
    *
-   * @typeParam TRoute  A type of matching route.
+   * @typeParam TRoute - A type of matching route.
    */
   export interface Match<TRoute extends PathRoute = PathRoute> {
 
@@ -170,7 +170,7 @@ export namespace RouteMatcher {
      * matchers to.
      *
      * @default `0`, which means the subsequent matcher will be applied to {@link Context.entry current entry}.
-     * @see [[nameChars]]
+     * @see {@link nameChars}
      */
     readonly entries?: number;
 
@@ -182,8 +182,8 @@ export namespace RouteMatcher {
      * be applied to the same route entry. If that fails, the next entry will be used, while the offset will be set to
      * zero.
      *
-     * @default The length of current entry name, unless [[entries]] set to non-zero value, in which case it defaults
-     * to zero.
+     * @default The length of current entry name, unless {@link entries} set to non-zero value, in which case
+     * it defaults to zero.
      */
     readonly nameChars?: number;
 

@@ -14,11 +14,11 @@ import type { RouteMatcher } from './route-matcher';
  * This function parameters depend on the kind of the capture reported by corresponding matcher.
  * The {@link RouteCaptorSignatureMap} maps capture kinds to their callback signatures.
  *
- * @typeParam TRoute  A type of matching route.
+ * @typeParam TRoute - A type of matching route.
  */
 export type RouteCaptor<TRoute extends PathRoute = PathRoute> =
 /**
- * @typeParam TKind  A type of the capture kind. Corresponds to method names of {@link RouteCaptorSignatureMap}.
+ * @typeParam TKind - A type of the capture kind. Corresponds to method names of {@link RouteCaptorSignatureMap}.
  *
  * @param type - A kind of the capture.
  * @param key - The key of the capture. Either named capture name, or anonymous match index.
@@ -36,7 +36,7 @@ export type RouteCaptor<TRoute extends PathRoute = PathRoute> =
  *
  * Each method name corresponds to capture kind, while its signature represents the capture itself.
  *
- * @typeParam TRoute  A type of matching route.
+ * @typeParam TRoute - A type of matching route.
  */
 export interface RouteCaptorSignatureMap<TRoute extends PathRoute> {
 

@@ -11,7 +11,7 @@ import type { RouteMatcher } from './route-matcher';
  *
  * This is a function that reports registered partial matches via {@link RouteCaptor route capture receiver}.
  *
- * @typeParam TRoute  A type of matching route.
+ * @typeParam TRoute - A type of matching route.
  */
 export type RouteMatch<TRoute extends PathRoute = PathRoute> =
 /**
@@ -27,7 +27,7 @@ export type RouteMatch<TRoute extends PathRoute = PathRoute> =
  *
  * This is an array of {@link RouteMatch matchers}.
  *
- * @typeParam TRoute  A type of supported route.
+ * @typeParam TRoute - A type of supported route.
  */
 export type RoutePattern<TRoute extends PathRoute = PathRoute> = readonly RouteMatcher<TRoute>[];
 
@@ -69,7 +69,7 @@ export namespace RouteMatch {
  * Tries to match fragments of the given route by each of the pattern matchers, in order. If some matcher fails, the
  * match fails too. If all matchers succeed, the match result is constructed and returned.
  *
- * @typeParam TRoute  A type of route to match against.
+ * @typeParam TRoute - A type of route to match against.
  * @param route - Target route to match against.
  * @param pattern - A pattern to match.
  * @param options - Route match options.
