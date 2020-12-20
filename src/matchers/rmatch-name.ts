@@ -9,7 +9,7 @@ import type { RouteMatcher } from '../route-matcher';
  *
  * Matches only at the {@link RouteMatcher.Context.nameOffset entry name beginning}.
  *
- * @param expected  Expected entry name.
+ * @param expected - Expected entry name.
  * @returns New route matcher.
  */
 export function rmatchName(expected: string): RouteMatcher {

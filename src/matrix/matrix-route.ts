@@ -68,7 +68,7 @@ function parseMatrixEntry(raw: string): MatrixEntry {
 /**
  * Constructs a matrix route by URL.
  *
- * @param url  Source URL. If string given, then URL will be constructed relatively to `route:/` base.
+ * @param url - Source URL. If string given, then URL will be constructed relatively to `route:/` base.
  *
  * @returns New matrix route instance.
  */

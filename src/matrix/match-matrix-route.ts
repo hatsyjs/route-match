@@ -12,8 +12,8 @@ import { matrixRoutePattern } from './matrix-route-pattern';
 /**
  * Checks whether the given {@link MatrixRoute matrix route} matches {@link matrixRoutePattern matrix route pattern}.
  *
- * @param route  Target route. Can be a string or URL. Uses {@link matrixRoute} to parse it then.
- * @param pattern  Simple pattern to match the route against. Can be as string. Uses {@link matrixRoutePattern}
+ * @param route - Target route. Can be a string or URL. Uses {@link matrixRoute} to parse it then.
+ * @param pattern - Simple pattern to match the route against. Can be as string. Uses {@link matrixRoutePattern}
  * to parse it then.
  *
  * @returns A map of string values of named and anonymous captures, or `null` is the `route` does not match the

@@ -20,9 +20,9 @@ export interface PathRoute {
   /**
    * Extracts a section of this route between the given entry indices.
    *
-   * @param fromEntry  Zero-based index at which to start extraction. A negative index is treated as zero.
-   * @param toEntry  Zero-based index before which to end extraction. A value greater than the path length is treated as
-   * equal to path length. If this value is less than `from`, an empty route is returned.
+   * @param fromEntry - Zero-based index at which to start extraction. A negative index is treated as zero.
+   * @param toEntry - Zero-based index before which to end extraction. A value greater than the path length is treated
+   * as equal to path length. If this value is less than `from`, an empty route is returned.
    *
    * @returns Either a route section, or this route if section has the same length.
    */

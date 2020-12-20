@@ -15,7 +15,7 @@ import type { RouteMatcher } from './route-matcher';
  */
 export type RouteMatch<TRoute extends PathRoute = PathRoute> =
 /**
- * @param capture  A {@link RouteCaptor route capture receiver} function to report partial matches to.
+ * @param capture - A {@link RouteCaptor route capture receiver} function to report partial matches to.
  */
     (
         this: void,
@@ -70,9 +70,9 @@ export namespace RouteMatch {
  * match fails too. If all matchers succeed, the match result is constructed and returned.
  *
  * @typeParam TRoute  A type of route to match against.
- * @param route  Target route to match against.
- * @param pattern  A pattern to match.
- * @param options  Route match options.
+ * @param route - Target route to match against.
+ * @param pattern - A pattern to match.
+ * @param options - Route match options.
  *
  * @returns  Either successful route match object, or `null` if the route does not match the given pattern.
  */

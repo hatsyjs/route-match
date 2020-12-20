@@ -16,7 +16,7 @@ import type { RouteMatch } from './route-match';
  *   anonymous capture.
  * - Extracts named {@link RouteCaptorSignatureMap.regexp regexp} match groups under their names as keys.
  *
- * @param match  A route match to extract capture from, or `null`/`undefined` if there is no match.
+ * @param match - A route match to extract capture from, or `null`/`undefined` if there is no match.
  *
  * @returns A map of string values of named and anonymous captures.
  */

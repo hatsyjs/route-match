@@ -46,7 +46,7 @@ import { parseURLRoutePattern } from './url-route-pattern.impl';
  * The pattern parts are URL-decoded after parsing. So the pattern string may contain URL-encoded reserved and special
  * characters.
  *
- * @param pattern  Pattern string.
+ * @param pattern - Pattern string.
  * @returns Simple route pattern.
  */
 export function urlRoutePattern(pattern: string): RoutePattern<URLRoute> {

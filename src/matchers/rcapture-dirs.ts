@@ -15,7 +15,7 @@ import type { RouteMatcher } from '../route-matcher';
  *
  * Never captures empty match.
  *
- * @param name  The name of the capture or nothing to capture under match index.
+ * @param name - The name of the capture or nothing to capture under match index.
  * @returns  New route matcher.
  *
  * @see Use {@link rmatchDirs} for anonymous capture.

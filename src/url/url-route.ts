@@ -32,9 +32,9 @@ export interface URLRoute extends PathRoute {
    * When segment ends at the last path entry (i.e. `to` is absent or equal to path length), its URL retains search
    * parameters. Otherwise they are removed.
    *
-   * @param fromEntry  Zero-based index at which to start extraction. A negative index is treated as zero.
-   * @param toEntry  Zero-based index before which to end extraction. An absent value or the value greater than the path
-   * length is treated as equal to path length. If this value is less than `from`, an empty route is returned.
+   * @param fromEntry - Zero-based index at which to start extraction. A negative index is treated as zero.
+   * @param toEntry - Zero-based index before which to end extraction. An absent value or the value greater than the
+   * path length is treated as equal to path length. If this value is less than `from`, an empty route is returned.
    *
    * @returns Either a route section, or this route if section has the same length.
    */
@@ -85,7 +85,7 @@ function parseURLEntry(raw: string): URLEntry {
 /**
  * Constructs a route by URL.
  *
- * @param url  Source URL. If string given, then URL will be constructed relatively to `route:/` base.
+ * @param url - Source URL. If string given, then URL will be constructed relatively to `route:/` base.
  *
  * @returns New URL route instance.
  */

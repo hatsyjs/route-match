@@ -9,7 +9,7 @@ import type { RouteMatcher } from '../route-matcher';
  *
  * Reports the capture as {@link RouteCaptorSignatureMap.capture `capture`}.
  *
- * @param name  The name of the capture or nothing to capture under match index.
+ * @param name - The name of the capture or nothing to capture under match index.
  * @returns  New route matcher.
  *
  * @see Use {@link rmatchAny} for anonymous capture.

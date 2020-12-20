@@ -20,9 +20,9 @@ export type RouteCaptor<TRoute extends PathRoute = PathRoute> =
 /**
  * @typeParam TKind  A type of the capture kind. Corresponds to method names of {@link RouteCaptorSignatureMap}.
  *
- * @param type  A kind of the capture.
- * @param key  The key of the capture. Either named capture name, or anonymous match index.
- * @param capture  The capture to report.
+ * @param type - A kind of the capture.
+ * @param key - The key of the capture. Either named capture name, or anonymous match index.
+ * @param capture - The capture to report.
  */
     <TKind extends keyof RouteCaptorSignatureMap<TRoute>>(
         this: void,
@@ -45,8 +45,8 @@ export interface RouteCaptorSignatureMap<TRoute extends PathRoute> {
    *
    * Captured by {@link rmatchAny}, {@link rcaptureAny}, {@link rcaptureEntry} and {@link rmatchEntry} matchers.
    *
-   * @param value  The captured string value.
-   * @param context  A context of the capturing matcher.
+   * @param value - The captured string value.
+   * @param context - A context of the capturing matcher.
    */
   capture(value: string, context: RouteMatcher.Context<TRoute>): void;
 
@@ -55,9 +55,9 @@ export interface RouteCaptorSignatureMap<TRoute extends PathRoute> {
    *
    * Captured by {@link rmatchDirs} as {@link rcaptureDirs} matcher.
    *
-   * @param upto  An index of the route entry following the last captured one.
+   * @param upto - An index of the route entry following the last captured one.
    * The first captured entry is in {@link RouteMatcher.Context.entryIndex `context`}.
-   * @param context  A context of the capturing matcher.
+   * @param context - A context of the capturing matcher.
    */
   dirs(upto: number, context: RouteMatcher.Context<TRoute>): void;
 
@@ -68,8 +68,8 @@ export interface RouteCaptorSignatureMap<TRoute extends PathRoute> {
    *
    * Such capture may be reported multiple times per matcher if the matching regexp is global.
    *
-   * @param match  The regexp match array returned from `RegExp.prototype.exec()` method call.
-   * @param context  A context of the capturing matcher.
+   * @param match - The regexp match array returned from `RegExp.prototype.exec()` method call.
+   * @param context - A context of the capturing matcher.
    */
   regexp(match: RegExpExecArray, context: RouteMatcher.Context<TRoute>): void;
 

@@ -15,7 +15,7 @@ export interface RouteMatcher<TRoute extends PathRoute = PathRoute> {
   /**
    * Tests whether a fragment of the route satisfying this matcher's conditions.
    *
-   * @param context  Route match context.
+   * @param context - Route match context.
    *
    * @returns {@link RouteMatcher.Match Route match} instance specifying a matching route fragment,
    * or `false`/`null`/`undefined` otherwise.
@@ -32,7 +32,7 @@ export interface RouteMatcher<TRoute extends PathRoute = PathRoute> {
    *
    * The matching route fragment always starts within current route entry.
    *
-   * @param context  Route match context.
+   * @param context - Route match context.
    *
    * @returns A tuple containing a {@link RouteMatch match} of the remaining path against the remaining pattern and
    * an offset within current entry name the matching route fragment starts at, or `false`/`null`/`undefined` if match
@@ -45,7 +45,7 @@ export interface RouteMatcher<TRoute extends PathRoute = PathRoute> {
   /**
    * Detects whether this matcher still matches after the end of the route.
    *
-   * @param context  Route tail match context.
+   * @param context - Route tail match context.
    *
    * @returns `true` if the route satisfies this matcher's condition, or `false` otherwise.
    */

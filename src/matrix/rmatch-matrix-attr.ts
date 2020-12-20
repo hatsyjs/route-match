@@ -8,8 +8,8 @@ import type { MatrixRoute } from './matrix-route';
 /**
  * Builds matrix route matcher that matches a matrix attribute.
  *
- * @param name  Required matrix attribute.
- * @param value  A value the attribute should have. Or nothing to just require the attribute to present.
+ * @param name - Required matrix attribute.
+ * @param value - A value the attribute should have. Or nothing to just require the attribute to present.
  *
  * @returns New URL route matcher.
  */

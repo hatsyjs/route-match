@@ -15,8 +15,8 @@ const removeGlobalAndStickyFlagsPattern = /[gy]/;
  *
  * Reports the capture as {@link RouteCaptorSignatureMap.regexp `regexp`}.
  *
- * @param expected  The regular expression the name part expected to match.
- * @param name  The name of the capture or nothing to capture under match index.
+ * @param expected - The regular expression the name part expected to match.
+ * @param name - The name of the capture or nothing to capture under match index.
  *
  * @returns New route matcher.
  */

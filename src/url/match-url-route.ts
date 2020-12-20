@@ -12,8 +12,8 @@ import { isURL } from './url.impl';
 /**
  * Checks whether the given route matches {@link urlRoutePattern URL pattern}.
  *
- * @param route  Target route. Can be a string or URL. Uses {@link urlRoute} to parse it then.
- * @param pattern  Simple pattern to match the route against. Can be as string. Uses {@link urlRoutePattern}
+ * @param route - Target route. Can be a string or URL. Uses {@link urlRoute} to parse it then.
+ * @param pattern - Simple pattern to match the route against. Can be as string. Uses {@link urlRoutePattern}
  * to parse it then.
  *
  * @returns A map of string values of named and anonymous captures, or `null` is the `route` does not match the
