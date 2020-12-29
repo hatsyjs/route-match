@@ -1,14 +1,5 @@
 {
-  "disableAutoModuleName": true,
-  "exclude": [
-    "**/index.ts",
-    "**/cli/**/*.ts",
-    "**/*.impl.ts",
-    "**/spec/**/*.ts",
-    "**/*.spec.ts"
-  ],
-  "excludeNotExported": true,
-  "mode": "file",
+  "entryPoints": ["src/index.ts"],
   "name": "Route Match",
   "out": "./target/typedoc",
   "tsconfig": "tsconfig.main.json"

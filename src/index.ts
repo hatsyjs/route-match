@@ -1,3 +1,7 @@
+/**
+ * @packageDocumentation
+ * @module @hatsy/route-match
+ */
 export * from './classify-route-capture';
 export * from './matchers';
 export * from './matrix';
