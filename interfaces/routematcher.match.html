@@ -7,6 +7,7 @@
 	<meta name="description" content="Documentation for Route Match">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
+	<script async src="../assets/js/search.js" id="search-script"></script>
 </head>
 <body>
 <header>
@@ -51,13 +52,13 @@
 		<div class="container">
 			<ul class="tsd-breadcrumb">
 				<li>
-					<a href="../globals.html">Globals</a>
+					<a href="../modules.html">Route Match</a>
 				</li>
 				<li>
-					<a href="../modules/RouteMatcher.html">RouteMatcher</a>
+					<a href="../modules/routematcher.html">RouteMatcher</a>
 				</li>
 				<li>
-					<a href="RouteMatcher.Match.html">Match</a>
+					<a href="routematcher.match.html">Match</a>
 				</li>
 			</ul>
 			<h1>Interface Match&lt;TRoute&gt;</h1>
@@ -72,14 +73,14 @@
 					<div class="lead">
 						<p>Route match.</p>
 					</div>
-					<p>This is returned from <a href="../modules/RouteMatch.html">route matcher</a> and indicates the matching part of the route.</p>
+					<p>This is returned from <a href="../modules/routematch.html">route matcher</a> and indicates the matching part of the route.</p>
 				</div>
 			</section>
 			<section class="tsd-panel tsd-type-parameters">
 				<h3>Type parameters</h3>
 				<ul class="tsd-type-parameters">
 					<li>
-						<h4>TRoute<span class="tsd-signature-symbol">: </span><a href="PathRoute.html" class="tsd-signature-type">PathRoute</a> = <span class="tsd-signature-type">PathRoute</span></h4>
+						<h4>TRoute<span class="tsd-signature-symbol">: </span><a href="pathroute.html" class="tsd-signature-type" data-tsd-kind="Interface">PathRoute</a> = <a href="pathroute.html" class="tsd-signature-type" data-tsd-kind="Interface">PathRoute</a></h4>
 						<div class="tsd-comment tsd-typography">
 							<div class="lead">
 								<p>A type of matching route.</p>
@@ -103,10 +104,10 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="RouteMatcher.Match.html#callback" class="tsd-kind-icon">callback</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="RouteMatcher.Match.html#entries" class="tsd-kind-icon">entries</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="RouteMatcher.Match.html#full" class="tsd-kind-icon">full</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="RouteMatcher.Match.html#nameChars" class="tsd-kind-icon">name<wbr>Chars</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="routematcher.match.html#callback" class="tsd-kind-icon">callback</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="routematcher.match.html#entries" class="tsd-kind-icon">entries</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="routematcher.match.html#full" class="tsd-kind-icon">full</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="routematcher.match.html#namechars" class="tsd-kind-icon">name<wbr>Chars</a></li>
 							</ul>
 						</section>
 					</div>
@@ -117,40 +118,40 @@
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="callback" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> <span class="tsd-flag ts-flagReadonly">Readonly</span> callback</h3>
-					<div class="tsd-signature tsd-kind-icon">callback<span class="tsd-signature-symbol">:</span> <a href="../modules/RouteMatch.html" class="tsd-signature-type">RouteMatch</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TRoute</span><span class="tsd-signature-symbol">&gt;</span></div>
+					<div class="tsd-signature tsd-kind-icon">callback<span class="tsd-signature-symbol">:</span> <a href="../modules/routematch.html" class="tsd-signature-type" data-tsd-kind="Namespace">RouteMatch</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TRoute</span><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/5466d72/src/route-matcher.ts#L200">hatsy/route-match/src/route-matcher.ts:200</a></li>
+							<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/f38e35e/src/route-matcher.ts#L200">route-matcher.ts:200</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
 							<p>A callback function reporting a capture of this match, if any.</p>
 						</div>
-						<p>It will be invoked by <a href="../modules/RouteMatch.html">successful route match</a> only.</p>
+						<p>It will be invoked by <a href="../modules/routematch.html">successful route match</a> only.</p>
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="entries" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> <span class="tsd-flag ts-flagReadonly">Readonly</span> entries</h3>
-					<div class="tsd-signature tsd-kind-icon">entries<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></div>
+					<div class="tsd-signature tsd-kind-icon">entries<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/5466d72/src/route-matcher.ts#L175">hatsy/route-match/src/route-matcher.ts:175</a></li>
+							<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/f38e35e/src/route-matcher.ts#L175">route-matcher.ts:175</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
 							<p>The number of fully matching route entries.</p>
 						</div>
-						<p>When set, this value increases the index of the <a href="RouteMatcher.Context.html#entryIndex">route entry</a> to apply subsequent
+						<p>When set, this value increases the index of the <a href="routematcher.context.html#entryindex">route entry</a> to apply subsequent
 						matchers to.</p>
 						<dl class="tsd-comment-tags">
 							<dt>default</dt>
-							<dd><p><code>0</code>, which means the subsequent matcher will be applied to <a href="RouteMatcher.Context.html#entry">current entry</a>.</p>
+							<dd><p><code>0</code>, which means the subsequent matcher will be applied to <a href="routematcher.context.html#entry">current entry</a>.</p>
 							</dd>
 							<dt>see</dt>
-							<dd><p><a href="RouteMatcher.Match.html#nameChars">nameChars</a></p>
+							<dd><p><a href="routematcher.match.html#namechars">nameChars</a></p>
 							</dd>
 						</dl>
 					</div>
@@ -158,10 +159,10 @@
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="full" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> <span class="tsd-flag ts-flagReadonly">Readonly</span> full</h3>
-					<div class="tsd-signature tsd-kind-icon">full<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span></div>
+					<div class="tsd-signature tsd-kind-icon">full<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/5466d72/src/route-matcher.ts#L193">hatsy/route-match/src/route-matcher.ts:193</a></li>
+							<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/f38e35e/src/route-matcher.ts#L193">route-matcher.ts:193</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -171,26 +172,26 @@
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="nameChars" class="tsd-anchor"></a>
+					<a name="namechars" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> <span class="tsd-flag ts-flagReadonly">Readonly</span> name<wbr>Chars</h3>
-					<div class="tsd-signature tsd-kind-icon">name<wbr>Chars<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></div>
+					<div class="tsd-signature tsd-kind-icon">name<wbr>Chars<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/5466d72/src/route-matcher.ts#L188">hatsy/route-match/src/route-matcher.ts:188</a></li>
+							<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/f38e35e/src/route-matcher.ts#L188">route-matcher.ts:188</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
 							<p>The number of matching characters in the name of current route entry.</p>
 						</div>
-						<p>This value increases the <a href="RouteMatcher.Context.html#nameOffset">offset in the name</a> of the route entry to apply subsequent
+						<p>This value increases the <a href="routematcher.context.html#nameoffset">offset in the name</a> of the route entry to apply subsequent
 							matchers to. If the resulting offset is equal or greater than the length of the name, then the next matcher will
 							be applied to the same route entry. If that fails, the next entry will be used, while the offset will be set to
 						zero.</p>
 						<dl class="tsd-comment-tags">
 							<dt>default</dt>
-							<dd><p>The length of current entry name, unless <a href="RouteMatcher.Match.html#entries">entries</a> set to non-zero value, in which case it defaults
-								to zero.</p>
+							<dd><p>The length of current entry name, unless <a href="routematcher.match.html#entries">entries</a> set to non-zero value, in which case
+								it defaults to zero.</p>
 							</dd>
 						</dl>
 					</div>
@@ -200,57 +201,48 @@
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
 			<nav class="tsd-navigation primary">
 				<ul>
-					<li class="globals  ">
-						<a href="../globals.html"><em>Globals</em></a>
+					<li class=" ">
+						<a href="../modules.html">Exports</a>
 					</li>
-					<li class=" tsd-kind-namespace tsd-has-type-parameter">
-						<a href="../modules/RouteMatch.html">Route<wbr>Match</a>
+					<li class=" tsd-kind-namespace">
+						<a href="../modules/routematch.html">Route<wbr>Match</a>
 					</li>
-					<li class="current tsd-kind-namespace tsd-has-type-parameter">
-						<a href="../modules/RouteMatcher.html">Route<wbr>Matcher</a>
+					<li class="current tsd-kind-namespace">
+						<a href="../modules/routematcher.html">Route<wbr>Matcher</a>
 					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
 					<li class=" tsd-kind-interface tsd-parent-kind-namespace tsd-has-type-parameter">
-						<a href="RouteMatcher.Context.html" class="tsd-kind-icon">Context</a>
+						<a href="routematcher.context.html" class="tsd-kind-icon">Context</a>
 					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface tsd-parent-kind-namespace tsd-has-type-parameter">
-						<a href="RouteMatcher.Match.html" class="tsd-kind-icon">Match</a>
+						<a href="routematcher.match.html" class="tsd-kind-icon">Match</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="RouteMatcher.Match.html#callback" class="tsd-kind-icon">callback</a>
+								<a href="routematcher.match.html#callback" class="tsd-kind-icon">callback</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="RouteMatcher.Match.html#entries" class="tsd-kind-icon">entries</a>
+								<a href="routematcher.match.html#entries" class="tsd-kind-icon">entries</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="RouteMatcher.Match.html#full" class="tsd-kind-icon">full</a>
+								<a href="routematcher.match.html#full" class="tsd-kind-icon">full</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="RouteMatcher.Match.html#nameChars" class="tsd-kind-icon">name<wbr>Chars</a>
+								<a href="routematcher.match.html#namechars" class="tsd-kind-icon">name<wbr>Chars</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
 					<li class=" tsd-kind-interface tsd-parent-kind-namespace tsd-has-type-parameter">
-						<a href="RouteMatcher.Position.html" class="tsd-kind-icon">Position</a>
+						<a href="routematcher.position.html" class="tsd-kind-icon">Position</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-namespace tsd-has-type-parameter">
-						<a href="RouteMatcher.TailContext.html" class="tsd-kind-icon">Tail<wbr>Context</a>
-					</li>
-					<li class=" tsd-kind-method tsd-parent-kind-namespace">
-						<a href="../modules/RouteMatcher.html#find" class="tsd-kind-icon">find</a>
-					</li>
-					<li class=" tsd-kind-method tsd-parent-kind-namespace">
-						<a href="../modules/RouteMatcher.html#tail" class="tsd-kind-icon">tail</a>
-					</li>
-					<li class=" tsd-kind-method tsd-parent-kind-namespace">
-						<a href="../modules/RouteMatcher.html#test" class="tsd-kind-icon">test</a>
+						<a href="routematcher.tailcontext.html" class="tsd-kind-icon">Tail<wbr>Context</a>
 					</li>
 				</ul>
 			</nav>

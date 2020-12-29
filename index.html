@@ -7,6 +7,7 @@
 	<meta name="description" content="Documentation for Route Match">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="assets/css/main.css">
+	<script async src="assets/js/search.js" id="search-script"></script>
 </head>
 <body>
 <header>
@@ -49,12 +50,7 @@
 	</div>
 	<div class="tsd-page-title">
 		<div class="container">
-			<ul class="tsd-breadcrumb">
-				<li>
-					<a href="globals.html">Globals</a>
-				</li>
-			</ul>
-			<h1>Route Match</h1>
+			<h1>Project Route Match</h1>
 		</div>
 	</div>
 </header>
@@ -73,15 +69,16 @@
 				<a href="#simple-pattern" id="simple-pattern" style="color: inherit; text-decoration: none;">
 					<h2>Simple Pattern</h2>
 				</a>
-				<pre><code class="language-typescript"><span class="hljs-keyword">import</span> { matchSimpleRoute } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@hatsy/route-match&#x27;</span>;
+				<pre><code class="language-typescript"><span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">matchSimpleRoute</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;@hatsy/route-match&#039;</span><span style="color: #000000">;</span>
 
-<span class="hljs-keyword">const</span> match = matchSimpleRoute(<span class="hljs-string">&#x27;some/long/path/to/file.txt&#x27;</span>, <span class="hljs-string">&#x27;some/**/{file}&#x27;</span>);
-<span class="hljs-comment">/*
-match = {
-  $1: &quot;long/path/to/&quot;,
-  file: &quot;file.txt&quot;,
-}
-*/</span> </code></pre>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">match</span><span style="color: #000000"> = </span><span style="color: #795E26">matchSimpleRoute</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;some/long/path/to/file.txt&#039;</span><span style="color: #000000">, </span><span style="color: #A31515">&#039;some/**/{file}&#039;</span><span style="color: #000000">);</span>
+<span style="color: #008000">/*</span>
+<span style="color: #008000">match = {</span>
+<span style="color: #008000">  $1: &quot;long/path/to/&quot;,</span>
+<span style="color: #008000">  file: &quot;file.txt&quot;,</span>
+<span style="color: #008000">}</span>
+<span style="color: #008000">*/</span><span style="color: #000000"> </span>
+</code></pre>
 				<p>Simple pattern can only match against whole entries (files or directories). Pattern format:</p>
 				<ul>
 					<li>Empty string corresponds to empty pattern.</li>
@@ -99,17 +96,18 @@ match = {
 				<a href="#url-route" id="url-route" style="color: inherit; text-decoration: none;">
 					<h2>URL Route</h2>
 				</a>
-				<pre><code class="language-typescript"><span class="hljs-keyword">import</span> { matchURLRoute } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@hatsy/route-match&#x27;</span>;
+				<pre><code class="language-typescript"><span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">matchURLRoute</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;@hatsy/route-match&#039;</span><span style="color: #000000">;</span>
 
-<span class="hljs-keyword">const</span> match = matchURLRoute(<span class="hljs-string">&#x27;some-dir/long/path/to/file.html?param=value&#x27;</span>, <span class="hljs-string">&#x27;{root([^-]*)}-dir/**/{name}.{ext}?param&#x27;</span>);
-<span class="hljs-comment">/*
-match = {
-  root: &quot;some&quot;,
-  $1: &quot;long/path/to/&quot;,
-  name: &quot;file&quot;,
-  ext: &quot;txt&quot;,
-}
-*/</span> </code></pre>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">match</span><span style="color: #000000"> = </span><span style="color: #795E26">matchURLRoute</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;some-dir/long/path/to/file.html?param=value&#039;</span><span style="color: #000000">, </span><span style="color: #A31515">&#039;{root([^-]*)}-dir/**/{name}.{ext}?param&#039;</span><span style="color: #000000">);</span>
+<span style="color: #008000">/*</span>
+<span style="color: #008000">match = {</span>
+<span style="color: #008000">  root: &quot;some&quot;,</span>
+<span style="color: #008000">  $1: &quot;long/path/to/&quot;,</span>
+<span style="color: #008000">  name: &quot;file&quot;,</span>
+<span style="color: #008000">  ext: &quot;txt&quot;,</span>
+<span style="color: #008000">}</span>
+<span style="color: #008000">*/</span><span style="color: #000000"> </span>
+</code></pre>
 				<p>URL pattern can match against any part of the entry name. Additionally, it can match against URL search parameters.</p>
 				<p>Pattern format:</p>
 				<ul>
@@ -132,16 +130,17 @@ match = {
 				<a href="#matrix-route" id="matrix-route" style="color: inherit; text-decoration: none;">
 					<h2>Matrix Route</h2>
 				</a>
-				<pre><code class="language-typescript"><span class="hljs-keyword">import</span> { matchMatrixRoute } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@hatsy/route-match&#x27;</span>;
+				<pre><code class="language-typescript"><span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">matchMatrixRoute</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;@hatsy/route-match&#039;</span><span style="color: #000000">;</span>
 
-<span class="hljs-keyword">const</span> match = matchMatrixRoute(<span class="hljs-string">&#x27;root;length=5/long/path/to;dir=1/file.html;dir=0&#x27;</span>, <span class="hljs-string">&#x27;root;length/**/*&#x27;</span>);
-<span class="hljs-comment">/*
-match = {
-  $1: &quot;long/path/to;dir=1/&quot;,
-  name: &quot;file&quot;,
-  ext: &quot;html&quot;,
-}
-*/</span> </code></pre>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">match</span><span style="color: #000000"> = </span><span style="color: #795E26">matchMatrixRoute</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;root;length=5/long/path/to;dir=1/file.html;dir=0&#039;</span><span style="color: #000000">, </span><span style="color: #A31515">&#039;root;length/**/*&#039;</span><span style="color: #000000">);</span>
+<span style="color: #008000">/*</span>
+<span style="color: #008000">match = {</span>
+<span style="color: #008000">  $1: &quot;long/path/to;dir=1/&quot;,</span>
+<span style="color: #008000">  name: &quot;file&quot;,</span>
+<span style="color: #008000">  ext: &quot;html&quot;,</span>
+<span style="color: #008000">}</span>
+<span style="color: #008000">*/</span><span style="color: #000000"> </span>
+</code></pre>
 				<p>Matrix pattern recognizes <a href="https://www.w3.org/DesignIssues/MatrixURIs.html">matrix URL</a>s.</p>
 				<p>Pattern format is the same as for <a href="#url-route">URL Route</a> with addition of attribute matchers:</p>
 				<ul>
@@ -172,129 +171,126 @@ match = {
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
 			<nav class="tsd-navigation primary">
 				<ul>
-					<li class="globals  ">
-						<a href="globals.html"><em>Globals</em></a>
+					<li class=" ">
+						<a href="modules.html">Exports</a>
 					</li>
-					<li class=" tsd-kind-namespace tsd-has-type-parameter">
-						<a href="modules/RouteMatch.html">Route<wbr>Match</a>
+					<li class=" tsd-kind-namespace">
+						<a href="modules/routematch.html">Route<wbr>Match</a>
 					</li>
-					<li class=" tsd-kind-namespace tsd-has-type-parameter">
-						<a href="modules/RouteMatcher.html">Route<wbr>Matcher</a>
+					<li class=" tsd-kind-namespace">
+						<a href="modules/routematcher.html">Route<wbr>Matcher</a>
 					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/MatrixEntry.html" class="tsd-kind-icon">Matrix<wbr>Entry</a>
+					<li class=" tsd-kind-reference">
+						<a href="modules.html#matchroute" class="tsd-kind-icon">match<wbr>Route</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="interfaces/MatrixRoute.html" class="tsd-kind-icon">Matrix<wbr>Route</a>
+						<a href="interfaces/matrixentry.html" class="tsd-kind-icon">Matrix<wbr>Entry</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="interfaces/PathEntry.html" class="tsd-kind-icon">Path<wbr>Entry</a>
+						<a href="interfaces/matrixroute.html" class="tsd-kind-icon">Matrix<wbr>Route</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="interfaces/PathRoute.html" class="tsd-kind-icon">Path<wbr>Route</a>
+						<a href="interfaces/pathentry.html" class="tsd-kind-icon">Path<wbr>Entry</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/pathroute.html" class="tsd-kind-icon">Path<wbr>Route</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-has-type-parameter">
-						<a href="interfaces/RouteCaptorSignatureMap.html" class="tsd-kind-icon">Route<wbr>Captor<wbr>Signature<wbr>Map</a>
+						<a href="interfaces/routecaptorsignaturemap.html" class="tsd-kind-icon">Route<wbr>Captor<wbr>Signature<wbr>Map</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-has-type-parameter">
+						<a href="interfaces/routematcher.html" class="tsd-kind-icon">Route<wbr>Matcher</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="interfaces/URLEntry.html" class="tsd-kind-icon">URLEntry</a>
+						<a href="interfaces/urlentry.html" class="tsd-kind-icon">URLEntry</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="interfaces/URLRoute.html" class="tsd-kind-icon">URLRoute</a>
+						<a href="interfaces/urlroute.html" class="tsd-kind-icon">URLRoute</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
-						<a href="globals.html#RouteCaptor" class="tsd-kind-icon">Route<wbr>Captor</a>
+						<a href="modules.html#routecaptor" class="tsd-kind-icon">Route<wbr>Captor</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
-						<a href="globals.html#RouteCaptureClassifier" class="tsd-kind-icon">Route<wbr>Capture<wbr>Classifier</a>
+						<a href="modules.html#routecaptureclassifier" class="tsd-kind-icon">Route<wbr>Capture<wbr>Classifier</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
-						<a href="globals.html#RoutePattern" class="tsd-kind-icon">Route<wbr>Pattern</a>
+						<a href="modules.html#routematch" class="tsd-kind-icon">Route<wbr>Match</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
+						<a href="modules.html#routepattern" class="tsd-kind-icon">Route<wbr>Pattern</a>
 					</li>
 					<li class=" tsd-kind-variable">
-						<a href="globals.html#removeGlobalAndStickyFlagsPattern" class="tsd-kind-icon">remove<wbr>Global<wbr>And<wbr>Sticky<wbr>Flags<wbr>Pattern</a>
+						<a href="modules.html#rmatchany" class="tsd-kind-icon">rmatch<wbr>Any</a>
 					</li>
 					<li class=" tsd-kind-variable">
-						<a href="globals.html#rmatchAny" class="tsd-kind-icon">rmatch<wbr>Any</a>
+						<a href="modules.html#rmatchdirsep" class="tsd-kind-icon">rmatch<wbr>Dir<wbr>Sep</a>
 					</li>
 					<li class=" tsd-kind-variable">
-						<a href="globals.html#rmatchDirs" class="tsd-kind-icon">rmatch<wbr>Dirs</a>
+						<a href="modules.html#rmatchdirs" class="tsd-kind-icon">rmatch<wbr>Dirs</a>
 					</li>
 					<li class=" tsd-kind-variable">
-						<a href="globals.html#rmatchEntry" class="tsd-kind-icon">rmatch<wbr>Entry</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="globals.html#addMatrixEntryMatchers" class="tsd-kind-icon">add<wbr>Matrix<wbr>Entry<wbr>Matchers</a>
+						<a href="modules.html#rmatchentry" class="tsd-kind-icon">rmatch<wbr>Entry</a>
 					</li>
 					<li class=" tsd-kind-function tsd-has-type-parameter">
-						<a href="globals.html#classifyRouteCapture" class="tsd-kind-icon">classify<wbr>Route<wbr>Capture</a>
+						<a href="modules.html#classifyroutecapture" class="tsd-kind-icon">classify<wbr>Route<wbr>Capture</a>
 					</li>
 					<li class=" tsd-kind-function">
-						<a href="globals.html#matchMatrixRoute" class="tsd-kind-icon">match<wbr>Matrix<wbr>Route</a>
+						<a href="modules.html#matchmatrixroute" class="tsd-kind-icon">match<wbr>Matrix<wbr>Route</a>
 					</li>
 					<li class=" tsd-kind-function">
-						<a href="globals.html#matchSimpleRoute" class="tsd-kind-icon">match<wbr>Simple<wbr>Route</a>
+						<a href="modules.html#matchsimpleroute" class="tsd-kind-icon">match<wbr>Simple<wbr>Route</a>
 					</li>
 					<li class=" tsd-kind-function">
-						<a href="globals.html#matchURLRoute" class="tsd-kind-icon">matchURLRoute</a>
+						<a href="modules.html#matchurlroute" class="tsd-kind-icon">matchURLRoute</a>
 					</li>
 					<li class=" tsd-kind-function">
-						<a href="globals.html#matrixRoute" class="tsd-kind-icon">matrix<wbr>Route</a>
+						<a href="modules.html#matrixroute" class="tsd-kind-icon">matrix<wbr>Route</a>
 					</li>
 					<li class=" tsd-kind-function">
-						<a href="globals.html#matrixRoutePattern" class="tsd-kind-icon">matrix<wbr>Route<wbr>Pattern</a>
+						<a href="modules.html#matrixroutepattern" class="tsd-kind-icon">matrix<wbr>Route<wbr>Pattern</a>
 					</li>
 					<li class=" tsd-kind-function">
-						<a href="globals.html#parseMatrixEntry" class="tsd-kind-icon">parse<wbr>Matrix<wbr>Entry</a>
+						<a href="modules.html#rcaptureany" class="tsd-kind-icon">rcapture<wbr>Any</a>
 					</li>
 					<li class=" tsd-kind-function">
-						<a href="globals.html#parseURLEntry" class="tsd-kind-icon">parseURLEntry</a>
+						<a href="modules.html#rcapturedirs" class="tsd-kind-icon">rcapture<wbr>Dirs</a>
 					</li>
 					<li class=" tsd-kind-function">
-						<a href="globals.html#rcaptureAny" class="tsd-kind-icon">rcapture<wbr>Any</a>
+						<a href="modules.html#rcaptureentry" class="tsd-kind-icon">rcapture<wbr>Entry</a>
 					</li>
 					<li class=" tsd-kind-function">
-						<a href="globals.html#rcaptureDirs" class="tsd-kind-icon">rcapture<wbr>Dirs</a>
+						<a href="modules.html#rcaptureregexp" class="tsd-kind-icon">rcapture<wbr>Reg<wbr>Exp</a>
 					</li>
 					<li class=" tsd-kind-function">
-						<a href="globals.html#rcaptureEntry" class="tsd-kind-icon">rcapture<wbr>Entry</a>
+						<a href="modules.html#rmatchmatrixattr" class="tsd-kind-icon">rmatch<wbr>Matrix<wbr>Attr</a>
 					</li>
 					<li class=" tsd-kind-function">
-						<a href="globals.html#rcaptureRegExp" class="tsd-kind-icon">rcapture<wbr>Reg<wbr>Exp</a>
+						<a href="modules.html#rmatchname" class="tsd-kind-icon">rmatch<wbr>Name</a>
 					</li>
 					<li class=" tsd-kind-function">
-						<a href="globals.html#rmatchMatrixAttr" class="tsd-kind-icon">rmatch<wbr>Matrix<wbr>Attr</a>
+						<a href="modules.html#rmatchsearchparam" class="tsd-kind-icon">rmatch<wbr>Search<wbr>Param</a>
 					</li>
 					<li class=" tsd-kind-function">
-						<a href="globals.html#rmatchName" class="tsd-kind-icon">rmatch<wbr>Name</a>
+						<a href="modules.html#rmatchstring" class="tsd-kind-icon">rmatch<wbr>String</a>
 					</li>
 					<li class=" tsd-kind-function">
-						<a href="globals.html#rmatchSearchParam" class="tsd-kind-icon">rmatch<wbr>Search<wbr>Param</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="globals.html#rmatchString" class="tsd-kind-icon">rmatch<wbr>String</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="globals.html#routeCapture" class="tsd-kind-icon">route<wbr>Capture</a>
+						<a href="modules.html#routecapture" class="tsd-kind-icon">route<wbr>Capture</a>
 					</li>
 					<li class=" tsd-kind-function tsd-has-type-parameter">
-						<a href="globals.html#routeMatch" class="tsd-kind-icon">route<wbr>Match</a>
+						<a href="modules.html#routematch" class="tsd-kind-icon">route<wbr>Match</a>
 					</li>
 					<li class=" tsd-kind-function">
-						<a href="globals.html#simpleRoutePattern" class="tsd-kind-icon">simple<wbr>Route<wbr>Pattern</a>
+						<a href="modules.html#simpleroutepattern" class="tsd-kind-icon">simple<wbr>Route<wbr>Pattern</a>
 					</li>
 					<li class=" tsd-kind-function">
-						<a href="globals.html#urlRoute" class="tsd-kind-icon">url<wbr>Route</a>
+						<a href="modules.html#urlroute" class="tsd-kind-icon">url<wbr>Route</a>
 					</li>
 					<li class=" tsd-kind-function">
-						<a href="globals.html#urlRoutePattern" class="tsd-kind-icon">url<wbr>Route<wbr>Pattern</a>
-					</li>
-					<li class=" tsd-kind-object-literal">
-						<a href="globals.html#rmatchDirSep" class="tsd-kind-icon">rmatch<wbr>Dir<wbr>Sep</a>
+						<a href="modules.html#urlroutepattern" class="tsd-kind-icon">url<wbr>Route<wbr>Pattern</a>
 					</li>
 				</ul>
 			</nav>
