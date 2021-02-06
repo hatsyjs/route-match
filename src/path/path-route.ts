@@ -1,8 +1,4 @@
 /**
- * @packageDocumentation
- * @module @hatsy/route-match
- */
-/**
  * A route representing a path to file or directory.
  */
 export interface PathRoute {

@@ -1,7 +1,3 @@
-/**
- * @packageDocumentation
- * @module @hatsy/route-match
- */
 import { addPathEntryMatchers } from '../path/path-route-pattern.impl';
 import type { RoutePattern } from '../route-match';
 import type { URLRoute } from './url-route';

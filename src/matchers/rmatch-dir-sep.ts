@@ -1,7 +1,3 @@
-/**
- * @packageDocumentation
- * @module @hatsy/route-match
- */
 import { valueProvider } from '@proc7ts/primitives';
 import { routeMatch } from '../route-match';
 import type { RouteMatcher } from '../route-matcher';

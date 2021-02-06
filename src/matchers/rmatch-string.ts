@@ -1,7 +1,3 @@
-/**
- * @packageDocumentation
- * @module @hatsy/route-match
- */
 import type { RouteMatch } from '../route-match';
 import { routeMatch } from '../route-match';
 import type { RouteMatcher } from '../route-matcher';

@@ -1,7 +1,3 @@
-/**
- * @packageDocumentation
- * @module @hatsy/route-match
- */
 import { decodeURLComponent } from '@frontmeans/httongue';
 import type { PathEntry, PathRoute } from '../path';
 import { parseURLRoute } from './url-route.impl';

@@ -1,7 +1,3 @@
-/**
- * @packageDocumentation
- * @module @hatsy/route-match
- */
 import { classifyRouteCapture } from './classify-route-capture';
 import type { RouteMatch } from './route-match';
 

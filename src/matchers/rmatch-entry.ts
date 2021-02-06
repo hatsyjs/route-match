@@ -1,7 +1,3 @@
-/**
- * @packageDocumentation
- * @module @hatsy/route-match
- */
 import type { RouteMatcher } from '../route-matcher';
 import { rcaptureEntry } from './rcapture-entry';
 

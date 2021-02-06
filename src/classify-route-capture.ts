@@ -1,7 +1,3 @@
-/**
- * @packageDocumentation
- * @module @hatsy/route-match
- */
 import { noop } from '@proc7ts/primitives';
 import type { PathRoute } from './path';
 import type { RouteCaptor, RouteCaptorSignatureMap } from './route-captor';

@@ -1,7 +1,3 @@
-/**
- * @packageDocumentation
- * @module @hatsy/route-match
- */
 import { decodeURLComponent } from '@frontmeans/httongue';
 import { rmatchDirSep, rmatchName } from '../matchers';
 import type { RoutePattern } from '../route-match';

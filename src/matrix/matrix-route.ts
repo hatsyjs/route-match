@@ -1,7 +1,3 @@
-/**
- * @packageDocumentation
- * @module @hatsy/route-match
- */
 import { decodeURLComponent } from '@frontmeans/httongue';
 import { lazyValue } from '@proc7ts/primitives';
 import type { URLEntry, URLRoute } from '../url';
