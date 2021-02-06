@@ -113,16 +113,71 @@
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
 					<a name="find" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> find</h3>
-					<div class="tsd-signature tsd-kind-icon">find<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
+						<li class="tsd-signature tsd-kind-icon">find<span class="tsd-signature-symbol">(</span>context<span class="tsd-signature-symbol">: </span><a href="routematcher.context.html" class="tsd-signature-type" data-tsd-kind="Interface">Context</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TRoute</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">readonly </span><a href="../modules/routematch.html" class="tsd-signature-type" data-tsd-kind="Namespace">RouteMatch</a><span class="tsd-signature-symbol">&lt;</span><a href="pathroute.html" class="tsd-signature-type" data-tsd-kind="Interface">PathRoute</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/c2e4480/src/route-matcher.ts#L37">route-matcher.ts:37</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Searches for the fragment of the route satisfying this matcher&#39;s conditions.</p>
+								</div>
+								<p>In contrast to the <a href="routematcher.html#test">test</a> method this one attempts to find the matching fragment starting at some offset from
+								current position specified by <code>context</code>, and then tries to match the remaining path against the remaining pattern.</p>
+								<p>The matching route fragment always starts within current route entry.</p>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>context: <a href="routematcher.context.html" class="tsd-signature-type" data-tsd-kind="Interface">Context</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TRoute</span><span class="tsd-signature-symbol">&gt;</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Route match context.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">readonly </span><a href="../modules/routematch.html" class="tsd-signature-type" data-tsd-kind="Namespace">RouteMatch</a><span class="tsd-signature-symbol">&lt;</span><a href="pathroute.html" class="tsd-signature-type" data-tsd-kind="Interface">PathRoute</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span></h4>
+							<p>A tuple containing a <a href="../modules/routematch.html">match</a> of the remaining path against the remaining pattern and
+								an offset within current entry name the matching route fragment starts at, or <code>false</code>/<code>null</code>/<code>undefined</code> if match
+							not found.</p>
+						</li>
+					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
 					<a name="tail" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> tail</h3>
-					<div class="tsd-signature tsd-kind-icon">tail<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
+						<li class="tsd-signature tsd-kind-icon">tail<span class="tsd-signature-symbol">(</span>context<span class="tsd-signature-symbol">: </span><a href="routematcher.tailcontext.html" class="tsd-signature-type" data-tsd-kind="Interface">TailContext</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TRoute</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/c2e4480/src/route-matcher.ts#L48">route-matcher.ts:48</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Detects whether this matcher still matches after the end of the route.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>context: <a href="routematcher.tailcontext.html" class="tsd-signature-type" data-tsd-kind="Interface">TailContext</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TRoute</span><span class="tsd-signature-symbol">&gt;</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Route tail match context.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+							<p><code>true</code> if the route satisfies this matcher&#39;s condition, or <code>false</code> otherwise.</p>
+						</li>
+					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
 					<a name="test" class="tsd-anchor"></a>
@@ -134,7 +189,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/f38e35e/src/route-matcher.ts#L23">route-matcher.ts:23</a></li>
+									<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/c2e4480/src/route-matcher.ts#L19">route-matcher.ts:19</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">

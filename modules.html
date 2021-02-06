@@ -50,13 +50,22 @@
 	</div>
 	<div class="tsd-page-title">
 		<div class="container">
-			<h1>Project Route Match</h1>
+			<h1>Route Match</h1>
 		</div>
 	</div>
 </header>
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<dl class="tsd-comment-tags">
+						<dt>module</dt>
+						<dd><p>Module @hatsy/route-match</p>
+						</dd>
+					</dl>
+				</div>
+			</section>
 			<section class="tsd-panel-group tsd-index-group">
 				<h2>Index</h2>
 				<section class="tsd-panel tsd-index-panel">
@@ -148,7 +157,7 @@
 					<div class="tsd-signature tsd-kind-icon">Route<wbr>Captor&lt;TRoute&gt;<span class="tsd-signature-symbol">:</span> &lt;TKind&gt;<span class="tsd-signature-symbol">(</span>this<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span>, kind<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TKind</span>, key<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span>, <span class="tsd-signature-symbol">...</span>capture<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Parameters</span><span class="tsd-signature-symbol">&lt;</span><a href="interfaces/routecaptorsignaturemap.html" class="tsd-signature-type" data-tsd-kind="Interface">RouteCaptorSignatureMap</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TRoute</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">TKind</span><span class="tsd-signature-symbol">]</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/f38e35e/src/route-captor.ts#L19">route-captor.ts:19</a></li>
+							<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/c2e4480/src/route-captor.ts#L15">route-captor.ts:15</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -175,7 +184,7 @@
 						<h4>Type declaration</h4>
 						<ul class="tsd-parameters">
 							<li class="tsd-parameter-signature">
-								<ul class="tsd-signatures tsd-kind-type-literal tsd-has-type-parameter">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-type-alias tsd-has-type-parameter">
 									<li class="tsd-signature tsd-kind-icon">&lt;TKind&gt;<span class="tsd-signature-symbol">(</span>this<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span>, kind<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TKind</span>, key<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span>, <span class="tsd-signature-symbol">...</span>capture<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Parameters</span><span class="tsd-signature-symbol">&lt;</span><a href="interfaces/routecaptorsignaturemap.html" class="tsd-signature-type" data-tsd-kind="Interface">RouteCaptorSignatureMap</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TRoute</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">TKind</span><span class="tsd-signature-symbol">]</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 								</ul>
 								<ul class="tsd-descriptions">
@@ -185,9 +194,7 @@
 											<li>
 												<h4>TKind<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">keyof </span><a href="interfaces/routecaptorsignaturemap.html" class="tsd-signature-type" data-tsd-kind="Interface">RouteCaptorSignatureMap</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TRoute</span><span class="tsd-signature-symbol">&gt;</span></h4>
 												<div class="tsd-comment tsd-typography">
-													<div class="lead">
-														<p>A type of the capture kind. Corresponds to method names of <a href="interfaces/routecaptorsignaturemap.html">RouteCaptorSignatureMap</a>.</p>
-													</div>
+													<p>A type of the capture kind. Corresponds to method names of <a href="interfaces/routecaptorsignaturemap.html">RouteCaptorSignatureMap</a>.</p>
 												</div>
 											</li>
 										</ul>
@@ -225,7 +232,7 @@
 					<div class="tsd-signature tsd-kind-icon">Route<wbr>Capture<wbr>Classifier&lt;TRoute&gt;<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{</span><span class="tsd-signature-symbol">readonly </span><span class="tsd-signature-symbol">[ </span><span class="tsd-signature-type">TKind</span><span class="tsd-signature-symbol"> in </span><span class="tsd-signature-symbol">keyof </span><a href="interfaces/routecaptorsignaturemap.html" class="tsd-signature-type" data-tsd-kind="Interface">RouteCaptorSignatureMap</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TRoute</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">]</span><span class="tsd-signature-symbol">?: </span><span class="tsd-signature-symbol">(</span>this<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span>, key<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span>, <span class="tsd-signature-symbol">...</span>capture<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Parameters</span><span class="tsd-signature-symbol">&lt;</span><a href="interfaces/routecaptorsignaturemap.html" class="tsd-signature-type" data-tsd-kind="Interface">RouteCaptorSignatureMap</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TRoute</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">TKind</span><span class="tsd-signature-symbol">]</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol"> }</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/f38e35e/src/classify-route-capture.ts#L18">classify-route-capture.ts:18</a></li>
+							<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/c2e4480/src/classify-route-capture.ts#L14">classify-route-capture.ts:14</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -253,7 +260,7 @@
 					<div class="tsd-signature tsd-kind-icon">Route<wbr>Match&lt;TRoute&gt;<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>this<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span>, captor<span class="tsd-signature-symbol">: </span><a href="modules.html#routecaptor" class="tsd-signature-type" data-tsd-kind="Type alias">RouteCaptor</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TRoute</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/f38e35e/src/route-match.ts#L16">route-match.ts:16</a></li>
+							<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/c2e4480/src/route-match.ts#L12">route-match.ts:12</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -277,7 +284,7 @@
 						<h4>Type declaration</h4>
 						<ul class="tsd-parameters">
 							<li class="tsd-parameter-signature">
-								<ul class="tsd-signatures tsd-kind-type-literal">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-type-alias">
 									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>this<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span>, captor<span class="tsd-signature-symbol">: </span><a href="modules.html#routecaptor" class="tsd-signature-type" data-tsd-kind="Type alias">RouteCaptor</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TRoute</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 								</ul>
 								<ul class="tsd-descriptions">
@@ -304,7 +311,7 @@
 					<div class="tsd-signature tsd-kind-icon">Route<wbr>Pattern&lt;TRoute&gt;<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">readonly </span><a href="interfaces/routematcher.html" class="tsd-signature-type" data-tsd-kind="Interface">RouteMatcher</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TRoute</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/f38e35e/src/route-match.ts#L32">route-match.ts:32</a></li>
+							<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/c2e4480/src/route-match.ts#L28">route-match.ts:28</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -334,7 +341,7 @@
 					<div class="tsd-signature tsd-kind-icon">rmatch<wbr>Any<span class="tsd-signature-symbol">:</span> <a href="interfaces/routematcher.html" class="tsd-signature-type" data-tsd-kind="Interface">RouteMatcher</a><span class="tsd-signature-symbol"> = ...</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/f38e35e/src/matchers/rmatch-any.ts#L11">matchers/rmatch-any.ts:11</a></li>
+							<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/c2e4480/src/matchers/rmatch-any.ts#L7">matchers/rmatch-any.ts:7</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -349,7 +356,7 @@
 					<div class="tsd-signature tsd-kind-icon">rmatch<wbr>Dir<wbr>Sep<span class="tsd-signature-symbol">:</span> <a href="interfaces/routematcher.html" class="tsd-signature-type" data-tsd-kind="Interface">RouteMatcher</a><span class="tsd-signature-symbol"> = ...</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/f38e35e/src/matchers/rmatch-dir-sep.ts#L18">matchers/rmatch-dir-sep.ts:18</a></li>
+							<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/c2e4480/src/matchers/rmatch-dir-sep.ts#L14">matchers/rmatch-dir-sep.ts:14</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -367,7 +374,7 @@
 					<div class="tsd-signature tsd-kind-icon">rmatch<wbr>Dirs<span class="tsd-signature-symbol">:</span> <a href="interfaces/routematcher.html" class="tsd-signature-type" data-tsd-kind="Interface">RouteMatcher</a><span class="tsd-signature-symbol"> = ...</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/f38e35e/src/matchers/rmatch-dirs.ts#L13">matchers/rmatch-dirs.ts:13</a></li>
+							<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/c2e4480/src/matchers/rmatch-dirs.ts#L9">matchers/rmatch-dirs.ts:9</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -383,7 +390,7 @@
 					<div class="tsd-signature tsd-kind-icon">rmatch<wbr>Entry<span class="tsd-signature-symbol">:</span> <a href="interfaces/routematcher.html" class="tsd-signature-type" data-tsd-kind="Interface">RouteMatcher</a><span class="tsd-signature-symbol"> = ...</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/f38e35e/src/matchers/rmatch-entry.ts#L11">matchers/rmatch-entry.ts:11</a></li>
+							<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/c2e4480/src/matchers/rmatch-entry.ts#L7">matchers/rmatch-entry.ts:7</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -405,7 +412,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/f38e35e/src/classify-route-capture.ts#L37">classify-route-capture.ts:37</a></li>
+									<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/c2e4480/src/classify-route-capture.ts#L33">classify-route-capture.ts:33</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -444,13 +451,13 @@
 					<a name="matchmatrixroute" class="tsd-anchor"></a>
 					<h3>match<wbr>Matrix<wbr>Route</h3>
 					<ul class="tsd-signatures tsd-kind-function">
-						<li class="tsd-signature tsd-kind-icon">match<wbr>Matrix<wbr>Route<span class="tsd-signature-symbol">(</span>route<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><a href="interfaces/matrixroute.html" class="tsd-signature-type" data-tsd-kind="Interface">MatrixRoute</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">URL</span>, pattern<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><a href="modules.html#routepattern" class="tsd-signature-type" data-tsd-kind="Type alias">RoutePattern</a><span class="tsd-signature-symbol">&lt;</span><a href="interfaces/matrixroute.html" class="tsd-signature-type" data-tsd-kind="Interface">MatrixRoute</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Record</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">match<wbr>Matrix<wbr>Route<span class="tsd-signature-symbol">(</span>route<span class="tsd-signature-symbol">: </span><a href="interfaces/matrixroute.html" class="tsd-signature-type" data-tsd-kind="Interface">MatrixRoute</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">URL</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span>, pattern<span class="tsd-signature-symbol">: </span><a href="modules.html#routepattern" class="tsd-signature-type" data-tsd-kind="Type alias">RoutePattern</a><span class="tsd-signature-symbol">&lt;</span><a href="interfaces/matrixroute.html" class="tsd-signature-type" data-tsd-kind="Interface">MatrixRoute</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Record</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/f38e35e/src/matrix/match-matrix-route.ts#L24">matrix/match-matrix-route.ts:24</a></li>
+									<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/c2e4480/src/matrix/match-matrix-route.ts#L20">matrix/match-matrix-route.ts:20</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -466,20 +473,20 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>route: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><a href="interfaces/matrixroute.html" class="tsd-signature-type" data-tsd-kind="Interface">MatrixRoute</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">URL</span></h5>
+									<h5>route: <a href="interfaces/matrixroute.html" class="tsd-signature-type" data-tsd-kind="Interface">MatrixRoute</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">URL</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>Target route. Can be a string or URL. Uses <a href="modules.html#matrixroute">matrixRoute</a> to parse it then.</p>
 									</div>
 								</li>
 								<li>
-									<h5>pattern: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><a href="modules.html#routepattern" class="tsd-signature-type" data-tsd-kind="Type alias">RoutePattern</a><span class="tsd-signature-symbol">&lt;</span><a href="interfaces/matrixroute.html" class="tsd-signature-type" data-tsd-kind="Interface">MatrixRoute</a><span class="tsd-signature-symbol">&gt;</span></h5>
+									<h5>pattern: <a href="modules.html#routepattern" class="tsd-signature-type" data-tsd-kind="Type alias">RoutePattern</a><span class="tsd-signature-symbol">&lt;</span><a href="interfaces/matrixroute.html" class="tsd-signature-type" data-tsd-kind="Interface">MatrixRoute</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>Simple pattern to match the route against. Can be as string. Uses <a href="modules.html#matrixroutepattern">matrixRoutePattern</a>
 										to parse it then.</p>
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Record</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Record</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></h4>
 							<p>A map of string values of named and anonymous captures, or <code>null</code> is the <code>route</code> does not match the
 							<code>pattern</code>.</p>
 						</li>
@@ -489,13 +496,13 @@
 					<a name="matchsimpleroute" class="tsd-anchor"></a>
 					<h3>match<wbr>Simple<wbr>Route</h3>
 					<ul class="tsd-signatures tsd-kind-function">
-						<li class="tsd-signature tsd-kind-icon">match<wbr>Simple<wbr>Route<span class="tsd-signature-symbol">(</span>route<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><a href="interfaces/pathroute.html" class="tsd-signature-type" data-tsd-kind="Interface">PathRoute</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">URL</span>, pattern<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><a href="modules.html#routepattern" class="tsd-signature-type" data-tsd-kind="Type alias">RoutePattern</a><span class="tsd-signature-symbol">&lt;</span><a href="interfaces/pathroute.html" class="tsd-signature-type" data-tsd-kind="Interface">PathRoute</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Record</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">match<wbr>Simple<wbr>Route<span class="tsd-signature-symbol">(</span>route<span class="tsd-signature-symbol">: </span><a href="interfaces/pathroute.html" class="tsd-signature-type" data-tsd-kind="Interface">PathRoute</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">URL</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span>, pattern<span class="tsd-signature-symbol">: </span><a href="modules.html#routepattern" class="tsd-signature-type" data-tsd-kind="Type alias">RoutePattern</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Record</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/f38e35e/src/url/match-simple-route.ts#L25">url/match-simple-route.ts:25</a></li>
+									<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/c2e4480/src/url/match-simple-route.ts#L21">url/match-simple-route.ts:21</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -511,20 +518,20 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>route: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><a href="interfaces/pathroute.html" class="tsd-signature-type" data-tsd-kind="Interface">PathRoute</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">URL</span></h5>
+									<h5>route: <a href="interfaces/pathroute.html" class="tsd-signature-type" data-tsd-kind="Interface">PathRoute</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">URL</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>Target route. Can be a string or URL. Uses <a href="modules.html#urlroute">urlRoute</a> to parse it then.</p>
 									</div>
 								</li>
 								<li>
-									<h5>pattern: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><a href="modules.html#routepattern" class="tsd-signature-type" data-tsd-kind="Type alias">RoutePattern</a><span class="tsd-signature-symbol">&lt;</span><a href="interfaces/pathroute.html" class="tsd-signature-type" data-tsd-kind="Interface">PathRoute</a><span class="tsd-signature-symbol">&gt;</span></h5>
+									<h5>pattern: <a href="modules.html#routepattern" class="tsd-signature-type" data-tsd-kind="Type alias">RoutePattern</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>Simple pattern to match the route against. Can be as string. Uses <a href="modules.html#simpleroutepattern">simpleRoutePattern</a>
 										to parse it then.</p>
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Record</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Record</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></h4>
 							<p>A map of string values of named and anonymous captures, or <code>null</code> is the <code>route</code> does not match the
 							<code>pattern</code>.</p>
 						</li>
@@ -534,13 +541,13 @@
 					<a name="matchurlroute" class="tsd-anchor"></a>
 					<h3>matchURLRoute</h3>
 					<ul class="tsd-signatures tsd-kind-function">
-						<li class="tsd-signature tsd-kind-icon">matchURLRoute<span class="tsd-signature-symbol">(</span>route<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><a href="interfaces/urlroute.html" class="tsd-signature-type" data-tsd-kind="Interface">URLRoute</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">URL</span>, pattern<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><a href="modules.html#routepattern" class="tsd-signature-type" data-tsd-kind="Type alias">RoutePattern</a><span class="tsd-signature-symbol">&lt;</span><a href="interfaces/urlroute.html" class="tsd-signature-type" data-tsd-kind="Interface">URLRoute</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Record</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">matchURLRoute<span class="tsd-signature-symbol">(</span>route<span class="tsd-signature-symbol">: </span><a href="interfaces/urlroute.html" class="tsd-signature-type" data-tsd-kind="Interface">URLRoute</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">URL</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span>, pattern<span class="tsd-signature-symbol">: </span><a href="modules.html#routepattern" class="tsd-signature-type" data-tsd-kind="Type alias">RoutePattern</a><span class="tsd-signature-symbol">&lt;</span><a href="interfaces/urlroute.html" class="tsd-signature-type" data-tsd-kind="Interface">URLRoute</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Record</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/f38e35e/src/url/match-url-route.ts#L24">url/match-url-route.ts:24</a></li>
+									<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/c2e4480/src/url/match-url-route.ts#L20">url/match-url-route.ts:20</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -556,20 +563,20 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>route: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><a href="interfaces/urlroute.html" class="tsd-signature-type" data-tsd-kind="Interface">URLRoute</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">URL</span></h5>
+									<h5>route: <a href="interfaces/urlroute.html" class="tsd-signature-type" data-tsd-kind="Interface">URLRoute</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">URL</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>Target route. Can be a string or URL. Uses <a href="modules.html#urlroute">urlRoute</a> to parse it then.</p>
 									</div>
 								</li>
 								<li>
-									<h5>pattern: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><a href="modules.html#routepattern" class="tsd-signature-type" data-tsd-kind="Type alias">RoutePattern</a><span class="tsd-signature-symbol">&lt;</span><a href="interfaces/urlroute.html" class="tsd-signature-type" data-tsd-kind="Interface">URLRoute</a><span class="tsd-signature-symbol">&gt;</span></h5>
+									<h5>pattern: <a href="modules.html#routepattern" class="tsd-signature-type" data-tsd-kind="Type alias">RoutePattern</a><span class="tsd-signature-symbol">&lt;</span><a href="interfaces/urlroute.html" class="tsd-signature-type" data-tsd-kind="Interface">URLRoute</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>Simple pattern to match the route against. Can be as string. Uses <a href="modules.html#urlroutepattern">urlRoutePattern</a>
 										to parse it then.</p>
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Record</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Record</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></h4>
 							<p>A map of string values of named and anonymous captures, or <code>null</code> is the <code>route</code> does not match the
 							<code>pattern</code>.</p>
 						</li>
@@ -579,13 +586,13 @@
 					<a name="matrixroute" class="tsd-anchor"></a>
 					<h3>matrix<wbr>Route</h3>
 					<ul class="tsd-signatures tsd-kind-function">
-						<li class="tsd-signature tsd-kind-icon">matrix<wbr>Route<span class="tsd-signature-symbol">(</span>url<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">URL</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="interfaces/matrixroute.html" class="tsd-signature-type" data-tsd-kind="Interface">MatrixRoute</a></li>
+						<li class="tsd-signature tsd-kind-icon">matrix<wbr>Route<span class="tsd-signature-symbol">(</span>url<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">URL</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="interfaces/matrixroute.html" class="tsd-signature-type" data-tsd-kind="Interface">MatrixRoute</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/f38e35e/src/matrix/matrix-route.ts#L75">matrix/matrix-route.ts:75</a></li>
+									<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/c2e4480/src/matrix/matrix-route.ts#L71">matrix/matrix-route.ts:71</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -596,7 +603,7 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>url: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">URL</span></h5>
+									<h5>url: <span class="tsd-signature-type">URL</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>Source URL. If string given, then URL will be constructed relatively to <code>route:/</code> base.</p>
 									</div>
@@ -617,7 +624,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/f38e35e/src/matrix/matrix-route-pattern.ts#L45">matrix/matrix-route-pattern.ts:45</a></li>
+									<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/c2e4480/src/matrix/matrix-route-pattern.ts#L41">matrix/matrix-route-pattern.ts:41</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -650,13 +657,13 @@
 					<a name="rcaptureany" class="tsd-anchor"></a>
 					<h3>rcapture<wbr>Any</h3>
 					<ul class="tsd-signatures tsd-kind-function">
-						<li class="tsd-signature tsd-kind-icon">rcapture<wbr>Any<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="interfaces/routematcher.html" class="tsd-signature-type" data-tsd-kind="Interface">RouteMatcher</a><span class="tsd-signature-symbol">&lt;</span><a href="interfaces/pathroute.html" class="tsd-signature-type" data-tsd-kind="Interface">PathRoute</a><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">rcapture<wbr>Any<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="interfaces/routematcher.html" class="tsd-signature-type" data-tsd-kind="Interface">RouteMatcher</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/f38e35e/src/matchers/rcapture-any.ts#L17">matchers/rcapture-any.ts:17</a></li>
+									<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/c2e4480/src/matchers/rcapture-any.ts#L13">matchers/rcapture-any.ts:13</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -679,7 +686,7 @@
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="interfaces/routematcher.html" class="tsd-signature-type" data-tsd-kind="Interface">RouteMatcher</a><span class="tsd-signature-symbol">&lt;</span><a href="interfaces/pathroute.html" class="tsd-signature-type" data-tsd-kind="Interface">PathRoute</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <a href="interfaces/routematcher.html" class="tsd-signature-type" data-tsd-kind="Interface">RouteMatcher</a></h4>
 							<p>New route matcher.</p>
 						</li>
 					</ul>
@@ -688,13 +695,13 @@
 					<a name="rcapturedirs" class="tsd-anchor"></a>
 					<h3>rcapture<wbr>Dirs</h3>
 					<ul class="tsd-signatures tsd-kind-function">
-						<li class="tsd-signature tsd-kind-icon">rcapture<wbr>Dirs<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="interfaces/routematcher.html" class="tsd-signature-type" data-tsd-kind="Interface">RouteMatcher</a><span class="tsd-signature-symbol">&lt;</span><a href="interfaces/pathroute.html" class="tsd-signature-type" data-tsd-kind="Interface">PathRoute</a><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">rcapture<wbr>Dirs<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="interfaces/routematcher.html" class="tsd-signature-type" data-tsd-kind="Interface">RouteMatcher</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/f38e35e/src/matchers/rcapture-dirs.ts#L23">matchers/rcapture-dirs.ts:23</a></li>
+									<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/c2e4480/src/matchers/rcapture-dirs.ts#L19">matchers/rcapture-dirs.ts:19</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -719,7 +726,7 @@
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="interfaces/routematcher.html" class="tsd-signature-type" data-tsd-kind="Interface">RouteMatcher</a><span class="tsd-signature-symbol">&lt;</span><a href="interfaces/pathroute.html" class="tsd-signature-type" data-tsd-kind="Interface">PathRoute</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <a href="interfaces/routematcher.html" class="tsd-signature-type" data-tsd-kind="Interface">RouteMatcher</a></h4>
 							<p>New route matcher.</p>
 						</li>
 					</ul>
@@ -728,13 +735,13 @@
 					<a name="rcaptureentry" class="tsd-anchor"></a>
 					<h3>rcapture<wbr>Entry</h3>
 					<ul class="tsd-signatures tsd-kind-function">
-						<li class="tsd-signature tsd-kind-icon">rcapture<wbr>Entry<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="interfaces/routematcher.html" class="tsd-signature-type" data-tsd-kind="Interface">RouteMatcher</a><span class="tsd-signature-symbol">&lt;</span><a href="interfaces/pathroute.html" class="tsd-signature-type" data-tsd-kind="Interface">PathRoute</a><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">rcapture<wbr>Entry<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="interfaces/routematcher.html" class="tsd-signature-type" data-tsd-kind="Interface">RouteMatcher</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/f38e35e/src/matchers/rcapture-entry.ts#L17">matchers/rcapture-entry.ts:17</a></li>
+									<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/c2e4480/src/matchers/rcapture-entry.ts#L13">matchers/rcapture-entry.ts:13</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -757,7 +764,7 @@
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="interfaces/routematcher.html" class="tsd-signature-type" data-tsd-kind="Interface">RouteMatcher</a><span class="tsd-signature-symbol">&lt;</span><a href="interfaces/pathroute.html" class="tsd-signature-type" data-tsd-kind="Interface">PathRoute</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <a href="interfaces/routematcher.html" class="tsd-signature-type" data-tsd-kind="Interface">RouteMatcher</a></h4>
 							<p>New route matcher.</p>
 						</li>
 					</ul>
@@ -766,13 +773,13 @@
 					<a name="rcaptureregexp" class="tsd-anchor"></a>
 					<h3>rcapture<wbr>Reg<wbr>Exp</h3>
 					<ul class="tsd-signatures tsd-kind-function">
-						<li class="tsd-signature tsd-kind-icon">rcapture<wbr>Reg<wbr>Exp<span class="tsd-signature-symbol">(</span>expected<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">RegExp</span>, name<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="interfaces/routematcher.html" class="tsd-signature-type" data-tsd-kind="Interface">RouteMatcher</a><span class="tsd-signature-symbol">&lt;</span><a href="interfaces/pathroute.html" class="tsd-signature-type" data-tsd-kind="Interface">PathRoute</a><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">rcapture<wbr>Reg<wbr>Exp<span class="tsd-signature-symbol">(</span>expected<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">RegExp</span>, name<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="interfaces/routematcher.html" class="tsd-signature-type" data-tsd-kind="Interface">RouteMatcher</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/f38e35e/src/matchers/rcapture-regexp.ts#L23">matchers/rcapture-regexp.ts:23</a></li>
+									<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/c2e4480/src/matchers/rcapture-regexp.ts#L19">matchers/rcapture-regexp.ts:19</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -797,7 +804,7 @@
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="interfaces/routematcher.html" class="tsd-signature-type" data-tsd-kind="Interface">RouteMatcher</a><span class="tsd-signature-symbol">&lt;</span><a href="interfaces/pathroute.html" class="tsd-signature-type" data-tsd-kind="Interface">PathRoute</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <a href="interfaces/routematcher.html" class="tsd-signature-type" data-tsd-kind="Interface">RouteMatcher</a></h4>
 							<p>New route matcher.</p>
 						</li>
 					</ul>
@@ -812,7 +819,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/f38e35e/src/matrix/rmatch-matrix-attr.ts#L16">matrix/rmatch-matrix-attr.ts:16</a></li>
+									<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/c2e4480/src/matrix/rmatch-matrix-attr.ts#L12">matrix/rmatch-matrix-attr.ts:12</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -844,13 +851,13 @@
 					<a name="rmatchname" class="tsd-anchor"></a>
 					<h3>rmatch<wbr>Name</h3>
 					<ul class="tsd-signatures tsd-kind-function">
-						<li class="tsd-signature tsd-kind-icon">rmatch<wbr>Name<span class="tsd-signature-symbol">(</span>expected<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="interfaces/routematcher.html" class="tsd-signature-type" data-tsd-kind="Interface">RouteMatcher</a><span class="tsd-signature-symbol">&lt;</span><a href="interfaces/pathroute.html" class="tsd-signature-type" data-tsd-kind="Interface">PathRoute</a><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">rmatch<wbr>Name<span class="tsd-signature-symbol">(</span>expected<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="interfaces/routematcher.html" class="tsd-signature-type" data-tsd-kind="Interface">RouteMatcher</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/f38e35e/src/matchers/rmatch-name.ts#L15">matchers/rmatch-name.ts:15</a></li>
+									<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/c2e4480/src/matchers/rmatch-name.ts#L11">matchers/rmatch-name.ts:11</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -868,7 +875,7 @@
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="interfaces/routematcher.html" class="tsd-signature-type" data-tsd-kind="Interface">RouteMatcher</a><span class="tsd-signature-symbol">&lt;</span><a href="interfaces/pathroute.html" class="tsd-signature-type" data-tsd-kind="Interface">PathRoute</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <a href="interfaces/routematcher.html" class="tsd-signature-type" data-tsd-kind="Interface">RouteMatcher</a></h4>
 							<p>New route matcher.</p>
 						</li>
 					</ul>
@@ -883,7 +890,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/f38e35e/src/url/rmatch-search-param.ts#L16">url/rmatch-search-param.ts:16</a></li>
+									<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/c2e4480/src/url/rmatch-search-param.ts#L12">url/rmatch-search-param.ts:12</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -915,13 +922,13 @@
 					<a name="rmatchstring" class="tsd-anchor"></a>
 					<h3>rmatch<wbr>String</h3>
 					<ul class="tsd-signatures tsd-kind-function">
-						<li class="tsd-signature tsd-kind-icon">rmatch<wbr>String<span class="tsd-signature-symbol">(</span>expected<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="interfaces/routematcher.html" class="tsd-signature-type" data-tsd-kind="Interface">RouteMatcher</a><span class="tsd-signature-symbol">&lt;</span><a href="interfaces/pathroute.html" class="tsd-signature-type" data-tsd-kind="Interface">PathRoute</a><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">rmatch<wbr>String<span class="tsd-signature-symbol">(</span>expected<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="interfaces/routematcher.html" class="tsd-signature-type" data-tsd-kind="Interface">RouteMatcher</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/f38e35e/src/matchers/rmatch-string.ts#L16">matchers/rmatch-string.ts:16</a></li>
+									<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/c2e4480/src/matchers/rmatch-string.ts#L12">matchers/rmatch-string.ts:12</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -938,7 +945,7 @@
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="interfaces/routematcher.html" class="tsd-signature-type" data-tsd-kind="Interface">RouteMatcher</a><span class="tsd-signature-symbol">&lt;</span><a href="interfaces/pathroute.html" class="tsd-signature-type" data-tsd-kind="Interface">PathRoute</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <a href="interfaces/routematcher.html" class="tsd-signature-type" data-tsd-kind="Interface">RouteMatcher</a></h4>
 							<p>New route matcher.</p>
 						</li>
 					</ul>
@@ -947,13 +954,13 @@
 					<a name="routecapture" class="tsd-anchor"></a>
 					<h3>route<wbr>Capture</h3>
 					<ul class="tsd-signatures tsd-kind-function">
-						<li class="tsd-signature tsd-kind-icon">route<wbr>Capture<span class="tsd-signature-symbol">(</span>match<span class="tsd-signature-symbol">: </span><a href="modules/routematch.html" class="tsd-signature-type" data-tsd-kind="Namespace">RouteMatch</a><span class="tsd-signature-symbol">&lt;</span><a href="interfaces/pathroute.html" class="tsd-signature-type" data-tsd-kind="Interface">PathRoute</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Record</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">route<wbr>Capture<span class="tsd-signature-symbol">(</span>match<span class="tsd-signature-symbol">: </span><a href="modules/routematch.html" class="tsd-signature-type" data-tsd-kind="Namespace">RouteMatch</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Record</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/f38e35e/src/route-capture.ts#L23">route-capture.ts:23</a></li>
+									<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/c2e4480/src/route-capture.ts#L19">route-capture.ts:19</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -973,7 +980,7 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>match: <a href="modules/routematch.html" class="tsd-signature-type" data-tsd-kind="Namespace">RouteMatch</a><span class="tsd-signature-symbol">&lt;</span><a href="interfaces/pathroute.html" class="tsd-signature-type" data-tsd-kind="Interface">PathRoute</a><span class="tsd-signature-symbol">&gt;</span></h5>
+									<h5>match: <a href="modules/routematch.html" class="tsd-signature-type" data-tsd-kind="Namespace">RouteMatch</a></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>A route match to extract capture from, or <code>null</code>/<code>undefined</code> if there is no match.</p>
 									</div>
@@ -988,13 +995,13 @@
 					<a name="routematch" class="tsd-anchor"></a>
 					<h3>route<wbr>Match</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-has-type-parameter">
-						<li class="tsd-signature tsd-kind-icon">route<wbr>Match&lt;TRoute&gt;<span class="tsd-signature-symbol">(</span>route<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TRoute</span>, pattern<span class="tsd-signature-symbol">: </span><a href="modules.html#routepattern" class="tsd-signature-type" data-tsd-kind="Type alias">RoutePattern</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TRoute</span><span class="tsd-signature-symbol">&gt;</span>, options<span class="tsd-signature-symbol">: </span><a href="interfaces/routematch.options.html" class="tsd-signature-type" data-tsd-kind="Interface">Options</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> | </span><a href="modules/routematch.html" class="tsd-signature-type" data-tsd-kind="Namespace">RouteMatch</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TRoute</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">route<wbr>Match&lt;TRoute&gt;<span class="tsd-signature-symbol">(</span>route<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TRoute</span>, pattern<span class="tsd-signature-symbol">: </span><a href="modules.html#routepattern" class="tsd-signature-type" data-tsd-kind="Type alias">RoutePattern</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TRoute</span><span class="tsd-signature-symbol">&gt;</span>, options<span class="tsd-signature-symbol">: </span><a href="interfaces/routematch.options.html" class="tsd-signature-type" data-tsd-kind="Interface">Options</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="modules/routematch.html" class="tsd-signature-type" data-tsd-kind="Namespace">RouteMatch</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TRoute</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/f38e35e/src/route-match.ts#L79">route-match.ts:79</a></li>
+									<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/c2e4480/src/route-match.ts#L75">route-match.ts:75</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1034,7 +1041,7 @@
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> | </span><a href="modules/routematch.html" class="tsd-signature-type" data-tsd-kind="Namespace">RouteMatch</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TRoute</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <a href="modules/routematch.html" class="tsd-signature-type" data-tsd-kind="Namespace">RouteMatch</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TRoute</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></h4>
 							<p>Either successful route match object, or <code>null</code> if the route does not match the given pattern.</p>
 						</li>
 					</ul>
@@ -1043,13 +1050,13 @@
 					<a name="simpleroutepattern" class="tsd-anchor"></a>
 					<h3>simple<wbr>Route<wbr>Pattern</h3>
 					<ul class="tsd-signatures tsd-kind-function">
-						<li class="tsd-signature tsd-kind-icon">simple<wbr>Route<wbr>Pattern<span class="tsd-signature-symbol">(</span>pattern<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="modules.html#routepattern" class="tsd-signature-type" data-tsd-kind="Type alias">RoutePattern</a><span class="tsd-signature-symbol">&lt;</span><a href="interfaces/pathroute.html" class="tsd-signature-type" data-tsd-kind="Interface">PathRoute</a><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">simple<wbr>Route<wbr>Pattern<span class="tsd-signature-symbol">(</span>pattern<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="modules.html#routepattern" class="tsd-signature-type" data-tsd-kind="Type alias">RoutePattern</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/f38e35e/src/path/simple-route-pattern.ts#L43">path/simple-route-pattern.ts:43</a></li>
+									<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/c2e4480/src/path/simple-route-pattern.ts#L39">path/simple-route-pattern.ts:39</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1091,7 +1098,7 @@
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="modules.html#routepattern" class="tsd-signature-type" data-tsd-kind="Type alias">RoutePattern</a><span class="tsd-signature-symbol">&lt;</span><a href="interfaces/pathroute.html" class="tsd-signature-type" data-tsd-kind="Interface">PathRoute</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <a href="modules.html#routepattern" class="tsd-signature-type" data-tsd-kind="Type alias">RoutePattern</a></h4>
 							<p>Simple route pattern.</p>
 						</li>
 					</ul>
@@ -1100,13 +1107,13 @@
 					<a name="urlroute" class="tsd-anchor"></a>
 					<h3>url<wbr>Route</h3>
 					<ul class="tsd-signatures tsd-kind-function">
-						<li class="tsd-signature tsd-kind-icon">url<wbr>Route<span class="tsd-signature-symbol">(</span>url<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">URL</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="interfaces/urlroute.html" class="tsd-signature-type" data-tsd-kind="Interface">URLRoute</a></li>
+						<li class="tsd-signature tsd-kind-icon">url<wbr>Route<span class="tsd-signature-symbol">(</span>url<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">URL</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="interfaces/urlroute.html" class="tsd-signature-type" data-tsd-kind="Interface">URLRoute</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/f38e35e/src/url/url-route.ts#L92">url/url-route.ts:92</a></li>
+									<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/c2e4480/src/url/url-route.ts#L88">url/url-route.ts:88</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1117,7 +1124,7 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>url: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">URL</span></h5>
+									<h5>url: <span class="tsd-signature-type">URL</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>Source URL. If string given, then URL will be constructed relatively to <code>route:/</code> base.</p>
 									</div>
@@ -1138,7 +1145,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/f38e35e/src/url/url-route-pattern.ts#L52">url/url-route-pattern.ts:52</a></li>
+									<li>Defined in <a href="https://github.com/hatsyjs/route-match/blob/c2e4480/src/url/url-route-pattern.ts#L48">url/url-route-pattern.ts:48</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
