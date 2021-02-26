@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "@frontmeans/httongue": "^2.2.0",
-    "@proc7ts/primitives": "^1.8.0"
+    "@proc7ts/primitives": "^1.8.1"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^17.1.0",
