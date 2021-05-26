@@ -1,3 +1,4 @@
+import { describe, expect, it } from '@jest/globals';
 import { rmatchDirSep, rmatchEntry, rmatchName } from '../matchers';
 import { routeMatch } from '../route-match';
 import { matrixRoute } from './matrix-route';
