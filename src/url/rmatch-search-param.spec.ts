@@ -1,3 +1,4 @@
+import { describe, expect, it } from '@jest/globals';
 import { rmatchName } from '../matchers';
 import { routeMatch } from '../route-match';
 import { rmatchSearchParam } from './rmatch-search-param';

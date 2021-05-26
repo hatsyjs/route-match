@@ -1,3 +1,5 @@
+import { beforeEach, describe, expect, it, jest } from '@jest/globals';
+import type { Mock } from 'jest-mock';
 import { routeMatch, RoutePattern } from '../route-match';
 import { urlRoute } from '../url';
 import { rcaptureAny } from './rcapture-any';
@@ -7,7 +9,7 @@ import { rmatchString } from './rmatch-string';
 
 describe('rcaptureAny', () => {
 
-  let captor: jest.Mock;
+  let captor: Mock<void, any[]>;
 
   beforeEach(() => {
     captor = jest.fn();
