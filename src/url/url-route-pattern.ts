@@ -48,5 +48,3 @@ import { parseURLRoutePattern } from './url-route-pattern.impl';
 export function urlRoutePattern(pattern: string): RoutePattern<URLRoute> {
   return parseURLRoutePattern(pattern, addPathEntryMatchers);
 }
-
-
