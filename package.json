@@ -3,9 +3,9 @@
   "version": "1.4.0",
   "description": "Route matching library",
   "keywords": [
+    "path-matcher",
     "route",
-    "route-match",
-    "typescript"
+    "route-match"
   ],
   "homepage": "https://github.com/hatsyjs/route-match",
   "repository": {
