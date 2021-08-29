@@ -39,21 +39,21 @@ export namespace RouteMatch {
      *
      * @default `0`
      */
-    readonly fromEntry?: number;
+    readonly fromEntry?: number | undefined;
 
     /**
      * An offset of the first character within {@link fromEntry first entry} name to match.
      *
      * @default `0`
      */
-    readonly nameOffset?: number;
+    readonly nameOffset?: number | undefined;
 
     /**
      * The index of the first matcher in the route pattern to match against.
      *
      * @default `0`
      */
-    readonly fromMatcher?: number;
+    readonly fromMatcher?: number | undefined;
 
   }
 

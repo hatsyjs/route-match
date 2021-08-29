@@ -68,7 +68,7 @@ export namespace RouteMatcher {
     /**
      * The first entry of the match or `undefined` for the position after the route end.
      */
-    readonly entry?: TRoute['path'][0];
+    readonly entry?: TRoute['path'][0] | undefined;
 
     /**
      * The index of the {@link entry first entry} of the match.
@@ -168,7 +168,7 @@ export namespace RouteMatcher {
      * @default `0`, which means the subsequent matcher will be applied to {@link Context.entry current entry}.
      * @see {@link nameChars}
      */
-    readonly entries?: number;
+    readonly entries?: number | undefined;
 
     /**
      * The number of matching characters in the name of current route entry.
@@ -181,19 +181,19 @@ export namespace RouteMatcher {
      * @default The length of current entry name, unless {@link entries} set to non-zero value, in which case
      * it defaults to zero.
      */
-    readonly nameChars?: number;
+    readonly nameChars?: number | undefined;
 
     /**
      * Whether this is a full match of the route against the pattern.
      */
-    readonly full?: boolean;
+    readonly full?: boolean | undefined;
 
     /**
      * A callback function reporting a capture of this match, if any.
      *
      * It will be invoked by {@link RouteMatch successful route match} only.
      */
-    readonly callback?: RouteMatch<TRoute>;
+    readonly callback?: RouteMatch<TRoute> | undefined;
 
   }
 
