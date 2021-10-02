@@ -26,12 +26,14 @@ export const rmatchDirSep: RouteMatcher = {
         // Unless current entry is the last one and it is not a directory
         return;
       }
+
       return { entries: 1 };
     }
     if (!nameOffset) {
       // The entry name start.
       return { nameChars: 0 };
     }
+
     // In the middle of the entry name.
     return;
   },

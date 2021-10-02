@@ -150,6 +150,7 @@ export function routeMatch<TRoute extends PathRoute>(
       // Full match.
       // Further match is not needed.
       matcherIndex = pattern.length;
+
       break;
     }
 

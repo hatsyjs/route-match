@@ -21,6 +21,7 @@ export function simpleRouteMatcher(
 
       return matcherBySpec(spec) || simpleRouteCapture(spec);
     }
+
     return;
   }
 }

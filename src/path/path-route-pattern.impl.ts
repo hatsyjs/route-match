@@ -15,6 +15,7 @@ export function addPathEntryMatchers(pattern: string, matchers: RouteMatcher[]):
 
   if (simpleMatcher) {
     matchers.push(simpleMatcher);
+
     return;
   }
 
@@ -30,6 +31,7 @@ export function addPathEntryMatchers(pattern: string, matchers: RouteMatcher[]):
     case '*':
       matcher = rmatchAny;
       nextOffset = i + 1;
+
       break;
     case '{': {
 
@@ -38,6 +40,7 @@ export function addPathEntryMatchers(pattern: string, matchers: RouteMatcher[]):
 
       if (specEnd < 0) {
         ++i;
+
         continue;
       }
 
@@ -46,10 +49,12 @@ export function addPathEntryMatchers(pattern: string, matchers: RouteMatcher[]):
       const spec = pattern.substring(specStart, specEnd);
 
       matcher = pathRouteRegExp(spec) || pathRouteCapture(spec);
+
       break;
     }
     default:
       ++i;
+
       continue;
     }
 
@@ -99,5 +104,6 @@ export function pathRouteRegExp(spec: string): RouteMatcher | undefined {
  */
 function pathRouteCapture(spec: string): RouteMatcher {
   spec = spec.trim();
+
   return spec ? rcaptureAny(decodeURLComponent(spec)) : rmatchAny;
 }
