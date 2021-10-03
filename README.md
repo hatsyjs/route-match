@@ -54,9 +54,9 @@ The pattern can be specified as a string, or as a [RoutePattern] instance. The l
 [simpleRoutePattern()] function.
 
 [PathRoute]: https://hatsyjs.github.io/route-match/interfaces/PathRoute.html
-[urlRoute()]: https://hatsyjs.github.io/route-match/globals.html#urlRoute
-[RoutePattern]: https://hatsyjs.github.io/route-match/globals.html#RoutePattern
-[simpleRoutePattern()]: https://hatsyjs.github.io/route-match/globals.html#simpleRoutePattern
+[urlRoute()]: https://hatsyjs.github.io/route-match/modules.html#urlRoute
+[RoutePattern]: https://hatsyjs.github.io/route-match/modules.html#RoutePattern
+[simpleRoutePattern()]: https://hatsyjs.github.io/route-match/modules.html#simpleRoutePattern
 
 
 URL Route
@@ -101,7 +101,7 @@ The pattern can be specified as a string, or as a [RoutePattern] instance. The l
 [urlRoutePattern()] function.
 
 [URLRoute]: https://hatsyjs.github.io/route-match/interfaces/URLRoute.html
-[urlRoutePattern()]: https://hatsyjs.github.io/route-match/globals.html#urlRoutePattern
+[urlRoutePattern()]: https://hatsyjs.github.io/route-match/modules.html#urlRoutePattern
 
 
 Matrix Route
@@ -134,8 +134,8 @@ The pattern can be specified as a string, or as a [RoutePattern] instance. The l
 [matrixRoutePattern()] function.
 
 [MatrixRoute]: https://hatsyjs.github.io/route-match/interfaces/MatrixRoute.html
-[matrixRoute()]: https://hatsyjs.github.io/route-match/globals.html#matrixRoute
-[matrixRoutePattern()]: https://hatsyjs.github.io/route-match/globals.html#matrixRoutePattern
+[matrixRoute()]: https://hatsyjs.github.io/route-match/modules.html#matrixRoute
+[matrixRoutePattern()]: https://hatsyjs.github.io/route-match/modules.html#matrixRoutePattern
 [matrix URL]: https://www.w3.org/DesignIssues/MatrixURIs.html
 
 
@@ -157,6 +157,6 @@ constructed out of `rmatch...` and `rcapture...` matchers, or parsed by correspo
 The [routeMatch()] function does the actual matching. It returns either `null` if the given path does not match
 the pattern, or a [RouteMatch] instance. The latter is a function that reports captured matches when called. 
 
-[RouteMatcher]: https://hatsyjs.github.io/route-match/modules/RouteMatcher.html  
-[routeMatch()]: https://hatsyjs.github.io/route-match/globals.html#routeMatch
-[RouteMatch]: https://hatsyjs.github.io/route-match/modules/RouteMatch.html
+[RouteMatcher]: https://hatsyjs.github.io/route-match/interfaces/RouteMatcher.html  
+[routeMatch()]: https://hatsyjs.github.io/route-match/modules.html#routeMatch
+[RouteMatch]: https://hatsyjs.github.io/route-match/interfaces/RouteMatch.html
