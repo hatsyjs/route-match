@@ -1,318 +1,88 @@
-<!doctype html>
-<html class="default no-js">
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Route Match</title>
-	<meta name="description" content="Documentation for Route Match">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="assets/css/main.css">
-	<script async src="assets/js/search.js" id="search-script"></script>
-</head>
-<body>
-<header>
-	<div class="tsd-page-toolbar">
-		<div class="container">
-			<div class="table-wrap">
-				<div class="table-cell" id="tsd-search" data-index="assets/js/search.json" data-base=".">
-					<div class="field">
-						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
-						<input id="tsd-search-field" type="text" />
-					</div>
-					<ul class="results">
-						<li class="state loading">Preparing search index...</li>
-						<li class="state failure">The search index is not available</li>
-					</ul>
-					<a href="index.html" class="title">Route Match</a>
-				</div>
-				<div class="table-cell" id="tsd-widgets">
-					<div id="tsd-filter">
-						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
-						<div class="tsd-filter-group">
-							<div class="tsd-select" id="tsd-filter-visibility">
-								<span class="tsd-select-label">All</span>
-								<ul class="tsd-select-list">
-									<li data-value="public">Public</li>
-									<li data-value="protected">Public/Protected</li>
-									<li data-value="private" class="selected">All</li>
-								</ul>
-							</div>
-							<input type="checkbox" id="tsd-filter-inherited" checked />
-							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
-							<input type="checkbox" id="tsd-filter-externals" checked />
-							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
-						</div>
-					</div>
-					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="tsd-page-title">
-		<div class="container">
-			<h1>Route Match</h1>
-		</div>
-	</div>
-</header>
-<div class="container container-main">
-	<div class="row">
-		<div class="col-8 col-content">
-			<div class="tsd-panel tsd-typography">
-				<a href="#route-matching-library" id="route-matching-library" style="color: inherit; text-decoration: none;">
-					<h1>Route Matching Library</h1>
-				</a>
-				<p><a href="https://www.npmjs.com/package/@hatsy/route-match"><img src="https://img.shields.io/npm/v/@hatsy/route-match.svg?logo=npm" alt="NPM"></a>
-					<a href="https://github.com/hatsyjs/route-match/actions?query=workflow:Build"><img src="https://github.com/hatsyjs/route-match/workflows/Build/badge.svg" alt="Build Status"></a>
-					<a href="https://www.codacy.com/gh/hatsyjs/route-match/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=hatsyjs/route-match&amp;utm_campaign=Badge_Grade"><img src="https://app.codacy.com/project/badge/Grade/92a111914d734952aef56d14e2690940" alt="Code Quality"></a>
-					<a href="https://www.codacy.com/gh/hatsyjs/route-match/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=hatsyjs/route-match&amp;utm_campaign=Badge_Coverage"><img src="https://app.codacy.com/project/badge/Coverage/92a111914d734952aef56d14e2690940" alt="Coverage"></a>
-					<a href="https://github.com/hatsyjs/route-match"><img src="https://img.shields.io/static/v1?logo=github&label=GitHub&message=project&color=informational" alt="GitHub Project"></a>
-				<a href="https://hatsyjs.github.io/route-match/"><img src="https://img.shields.io/static/v1?logo=typescript&label=API&message=docs&color=informational" alt="API Documentation"></a></p>
-				<a href="#simple-pattern" id="simple-pattern" style="color: inherit; text-decoration: none;">
-					<h2>Simple Pattern</h2>
-				</a>
-				<pre><code class="language-typescript"><span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">matchSimpleRoute</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;@hatsy/route-match&#039;</span><span style="color: #000000">;</span>
+<!DOCTYPE html><html class="default no-js"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Route Match</title><meta name="description" content="Documentation for Route Match"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="assets/style.css"/><link rel="stylesheet" href="assets/highlight.css"/><script async src="assets/search.js" id="search-script"></script></head><body><header><div class="tsd-page-toolbar"><div class="container"><div class="table-wrap"><div class="table-cell" id="tsd-search" data-base="."><div class="field"><label for="tsd-search-field" class="tsd-widget search no-caption">Search</label><input type="text" id="tsd-search-field"/></div><ul class="results"><li class="state loading">Preparing search index...</li><li class="state failure">The search index is not available</li></ul><a href="index.html" class="title">Route Match</a></div><div class="table-cell" id="tsd-widgets"><div id="tsd-filter"><a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a><div class="tsd-filter-group"><div class="tsd-select" id="tsd-filter-visibility"><span class="tsd-select-label">All</span><ul class="tsd-select-list"><li data-value="public">Public</li><li data-value="protected">Public/Protected</li><li data-value="private" class="selected">All</li></ul></div> <input type="checkbox" id="tsd-filter-inherited" checked/><label class="tsd-widget" for="tsd-filter-inherited">Inherited</label><input type="checkbox" id="tsd-filter-externals" checked/><label class="tsd-widget" for="tsd-filter-externals">Externals</label></div></div><a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a></div></div></div></div><div class="tsd-page-title"><div class="container"><h1>Route Match</h1></div></div></header><div class="container container-main"><div class="row"><div class="col-8 col-content"><div class="tsd-panel tsd-typography">
+<a href="#route-matching-library" id="route-matching-library" style="color: inherit; text-decoration: none;">
+  <h1>Route Matching Library</h1>
+</a>
+<p><a href="https://www.npmjs.com/package/@hatsy/route-match"><img src="https://img.shields.io/npm/v/@hatsy/route-match.svg?logo=npm" alt="NPM"></a>
+<a href="https://github.com/hatsyjs/route-match/actions?query=workflow:Build"><img src="https://github.com/hatsyjs/route-match/workflows/Build/badge.svg" alt="Build Status"></a>
+<a href="https://www.codacy.com/gh/hatsyjs/route-match/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=hatsyjs/route-match&amp;utm_campaign=Badge_Grade"><img src="https://app.codacy.com/project/badge/Grade/92a111914d734952aef56d14e2690940" alt="Code Quality"></a>
+<a href="https://www.codacy.com/gh/hatsyjs/route-match/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=hatsyjs/route-match&amp;utm_campaign=Badge_Coverage"><img src="https://app.codacy.com/project/badge/Coverage/92a111914d734952aef56d14e2690940" alt="Coverage"></a>
+<a href="https://github.com/hatsyjs/route-match"><img src="https://img.shields.io/static/v1?logo=github&label=GitHub&message=project&color=informational" alt="GitHub Project"></a>
+<a href="https://hatsyjs.github.io/route-match/"><img src="https://img.shields.io/static/v1?logo=typescript&label=API&message=docs&color=informational" alt="API Documentation"></a></p>
 
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">match</span><span style="color: #000000"> = </span><span style="color: #795E26">matchSimpleRoute</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;some/long/path/to/file.txt&#039;</span><span style="color: #000000">, </span><span style="color: #A31515">&#039;some/**/{file}&#039;</span><span style="color: #000000">);</span>
-<span style="color: #008000">/*</span>
-<span style="color: #008000">match = {</span>
-<span style="color: #008000">  $1: &quot;long/path/to/&quot;,</span>
-<span style="color: #008000">  file: &quot;file.txt&quot;,</span>
-<span style="color: #008000">}</span>
-<span style="color: #008000">*/</span><span style="color: #000000"> </span>
+<a href="#simple-pattern" id="simple-pattern" style="color: inherit; text-decoration: none;">
+  <h2>Simple Pattern</h2>
+</a>
+<pre><code class="language-typescript"><span class="hl-0">import</span><span class="hl-1"> { </span><span class="hl-2">matchSimpleRoute</span><span class="hl-1"> } </span><span class="hl-0">from</span><span class="hl-1"> </span><span class="hl-3">&#39;@hatsy/route-match&#39;</span><span class="hl-1">;</span><br/><br/><span class="hl-4">const</span><span class="hl-1"> </span><span class="hl-5">match</span><span class="hl-1"> = </span><span class="hl-6">matchSimpleRoute</span><span class="hl-1">(</span><span class="hl-3">&#39;some/long/path/to/file.txt&#39;</span><span class="hl-1">, </span><span class="hl-3">&#39;some/**/{file}&#39;</span><span class="hl-1">);</span><br/><span class="hl-7">/*</span><br/><span class="hl-7">match = {</span><br/><span class="hl-7">  $1: &quot;long/path/to/&quot;,</span><br/><span class="hl-7">  file: &quot;file.txt&quot;,</span><br/><span class="hl-7">}</span><br/><span class="hl-7">*/</span><span class="hl-1"> </span>
 </code></pre>
-				<p>Simple pattern can only match against whole entries (files or directories). Pattern format:</p>
-				<ul>
-					<li>Empty string corresponds to empty pattern.</li>
-					<li><code>/</code> matches directory separator.</li>
-					<li><code>/*</code> matches any route entry.</li>
-					<li><code>/{capture}</code> captures any route entry as <code>capture</code>.</li>
-					<li><code>/**</code> matches any number of directories.</li>
-					<li><code>/{capture:**}</code> captures any number of directories as <code>capture</code>.</li>
-					<li>Everything else matches verbatim.</li>
-				</ul>
-				<p>The path can be specified as a string, as URL, or as a <a href="https://hatsyjs.github.io/route-match/interfaces/PathRoute.html">PathRoute</a> instance. The latter can be constructed by
-				<a href="https://hatsyjs.github.io/route-match/globals.html#urlRoute">urlRoute()</a> function.</p>
-				<p>The pattern can be specified as a string, or as a <a href="https://hatsyjs.github.io/route-match/globals.html#RoutePattern">RoutePattern</a> instance. The latter can be constructed by
-				<a href="https://hatsyjs.github.io/route-match/globals.html#simpleRoutePattern">simpleRoutePattern()</a> function.</p>
-				<a href="#url-route" id="url-route" style="color: inherit; text-decoration: none;">
-					<h2>URL Route</h2>
-				</a>
-				<pre><code class="language-typescript"><span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">matchURLRoute</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;@hatsy/route-match&#039;</span><span style="color: #000000">;</span>
+<p>Simple pattern can only match against whole entries (files or directories). Pattern format:</p>
+<ul>
+<li>Empty string corresponds to empty pattern.</li>
+<li><code>/</code> matches directory separator.</li>
+<li><code>/*</code> matches any route entry.</li>
+<li><code>/{capture}</code> captures any route entry as <code>capture</code>.</li>
+<li><code>/**</code> matches any number of directories.</li>
+<li><code>/{capture:**}</code> captures any number of directories as <code>capture</code>.</li>
+<li>Everything else matches verbatim.</li>
+</ul>
+<p>The path can be specified as a string, as URL, or as a <a href="https://hatsyjs.github.io/route-match/interfaces/PathRoute.html">PathRoute</a> instance. The latter can be constructed by
+<a href="https://hatsyjs.github.io/route-match/modules.html#urlRoute">urlRoute()</a> function.</p>
+<p>The pattern can be specified as a string, or as a <a href="https://hatsyjs.github.io/route-match/modules.html#RoutePattern">RoutePattern</a> instance. The latter can be constructed by
+<a href="https://hatsyjs.github.io/route-match/modules.html#simpleRoutePattern">simpleRoutePattern()</a> function.</p>
 
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">match</span><span style="color: #000000"> = </span><span style="color: #795E26">matchURLRoute</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;some-dir/long/path/to/file.html?param=value&#039;</span><span style="color: #000000">, </span><span style="color: #A31515">&#039;{root([^-]*)}-dir/**/{name}.{ext}?param&#039;</span><span style="color: #000000">);</span>
-<span style="color: #008000">/*</span>
-<span style="color: #008000">match = {</span>
-<span style="color: #008000">  root: &quot;some&quot;,</span>
-<span style="color: #008000">  $1: &quot;long/path/to/&quot;,</span>
-<span style="color: #008000">  name: &quot;file&quot;,</span>
-<span style="color: #008000">  ext: &quot;txt&quot;,</span>
-<span style="color: #008000">}</span>
-<span style="color: #008000">*/</span><span style="color: #000000"> </span>
+<a href="#url-route" id="url-route" style="color: inherit; text-decoration: none;">
+  <h2>URL Route</h2>
+</a>
+<pre><code class="language-typescript"><span class="hl-0">import</span><span class="hl-1"> { </span><span class="hl-2">matchURLRoute</span><span class="hl-1"> } </span><span class="hl-0">from</span><span class="hl-1"> </span><span class="hl-3">&#39;@hatsy/route-match&#39;</span><span class="hl-1">;</span><br/><br/><span class="hl-4">const</span><span class="hl-1"> </span><span class="hl-5">match</span><span class="hl-1"> = </span><span class="hl-6">matchURLRoute</span><span class="hl-1">(</span><span class="hl-3">&#39;some-dir/long/path/to/file.html?param=value&#39;</span><span class="hl-1">, </span><span class="hl-3">&#39;{root([^-]*)}-dir/**/{name}.{ext}?param&#39;</span><span class="hl-1">);</span><br/><span class="hl-7">/*</span><br/><span class="hl-7">match = {</span><br/><span class="hl-7">  root: &quot;some&quot;,</span><br/><span class="hl-7">  $1: &quot;long/path/to/&quot;,</span><br/><span class="hl-7">  name: &quot;file&quot;,</span><br/><span class="hl-7">  ext: &quot;txt&quot;,</span><br/><span class="hl-7">}</span><br/><span class="hl-7">*/</span><span class="hl-1"> </span>
 </code></pre>
-				<p>URL pattern can match against any part of the entry name. Additionally, it can match against URL search parameters.</p>
-				<p>Pattern format:</p>
-				<ul>
-					<li>Empty string corresponds to empty pattern.</li>
-					<li><code>/</code> matches directory separator.</li>
-					<li><code>*</code> matches a part of route entry name.</li>
-					<li><code>{capture}</code> captures a part of entry name as <code>capture</code>.</li>
-					<li><code>/**</code> matches any number of directories.</li>
-					<li><code>/{capture:**}</code> captures any number of directories as <code>capture</code>.</li>
-					<li><code>{(regexp)flags}</code> matches a part of entry name matching the given regular expression with optional flags.</li>
-					<li><code>{capture(regexp)flags}</code> captures a part of entry name matching the regular expression with optional flags.</li>
-					<li><code>?name</code> requires URL search parameter to present.</li>
-					<li><code>?name=value</code> requires URL search parameter to have the given value.</li>
-					<li>Everything else matches verbatim. </li>
-				</ul>
-				<p>The path can be specified as a string, as URL, or as an <a href="https://hatsyjs.github.io/route-match/interfaces/URLRoute.html">URLRoute</a> instance. The latter can be constructed by
-				<a href="https://hatsyjs.github.io/route-match/globals.html#urlRoute">urlRoute()</a> function.</p>
-				<p>The pattern can be specified as a string, or as a <a href="https://hatsyjs.github.io/route-match/globals.html#RoutePattern">RoutePattern</a> instance. The latter can be constructed by
-				<a href="https://hatsyjs.github.io/route-match/globals.html#urlRoutePattern">urlRoutePattern()</a> function.</p>
-				<a href="#matrix-route" id="matrix-route" style="color: inherit; text-decoration: none;">
-					<h2>Matrix Route</h2>
-				</a>
-				<pre><code class="language-typescript"><span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">matchMatrixRoute</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;@hatsy/route-match&#039;</span><span style="color: #000000">;</span>
+<p>URL pattern can match against any part of the entry name. Additionally, it can match against URL search parameters.</p>
+<p>Pattern format:</p>
+<ul>
+<li>Empty string corresponds to empty pattern.</li>
+<li><code>/</code> matches directory separator.</li>
+<li><code>*</code> matches a part of route entry name.</li>
+<li><code>{capture}</code> captures a part of entry name as <code>capture</code>.</li>
+<li><code>/**</code> matches any number of directories.</li>
+<li><code>/{capture:**}</code> captures any number of directories as <code>capture</code>.</li>
+<li><code>{(regexp)flags}</code> matches a part of entry name matching the given regular expression with optional flags.</li>
+<li><code>{capture(regexp)flags}</code> captures a part of entry name matching the regular expression with optional flags.</li>
+<li><code>?name</code> requires URL search parameter to present.</li>
+<li><code>?name=value</code> requires URL search parameter to have the given value.</li>
+<li>Everything else matches verbatim.</li>
+</ul>
+<p>The path can be specified as a string, as URL, or as an <a href="https://hatsyjs.github.io/route-match/interfaces/URLRoute.html">URLRoute</a> instance. The latter can be constructed by
+<a href="https://hatsyjs.github.io/route-match/modules.html#urlRoute">urlRoute()</a> function.</p>
+<p>The pattern can be specified as a string, or as a <a href="https://hatsyjs.github.io/route-match/modules.html#RoutePattern">RoutePattern</a> instance. The latter can be constructed by
+<a href="https://hatsyjs.github.io/route-match/modules.html#urlRoutePattern">urlRoutePattern()</a> function.</p>
 
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">match</span><span style="color: #000000"> = </span><span style="color: #795E26">matchMatrixRoute</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;root;length=5/long/path/to;dir=1/file.html;dir=0&#039;</span><span style="color: #000000">, </span><span style="color: #A31515">&#039;root;length/**/*&#039;</span><span style="color: #000000">);</span>
-<span style="color: #008000">/*</span>
-<span style="color: #008000">match = {</span>
-<span style="color: #008000">  $1: &quot;long/path/to;dir=1/&quot;,</span>
-<span style="color: #008000">  name: &quot;file&quot;,</span>
-<span style="color: #008000">  ext: &quot;html&quot;,</span>
-<span style="color: #008000">}</span>
-<span style="color: #008000">*/</span><span style="color: #000000"> </span>
+<a href="#matrix-route" id="matrix-route" style="color: inherit; text-decoration: none;">
+  <h2>Matrix Route</h2>
+</a>
+<pre><code class="language-typescript"><span class="hl-0">import</span><span class="hl-1"> { </span><span class="hl-2">matchMatrixRoute</span><span class="hl-1"> } </span><span class="hl-0">from</span><span class="hl-1"> </span><span class="hl-3">&#39;@hatsy/route-match&#39;</span><span class="hl-1">;</span><br/><br/><span class="hl-4">const</span><span class="hl-1"> </span><span class="hl-5">match</span><span class="hl-1"> = </span><span class="hl-6">matchMatrixRoute</span><span class="hl-1">(</span><span class="hl-3">&#39;root;length=5/long/path/to;dir=1/file.html;dir=0&#39;</span><span class="hl-1">, </span><span class="hl-3">&#39;root;length/**/*&#39;</span><span class="hl-1">);</span><br/><span class="hl-7">/*</span><br/><span class="hl-7">match = {</span><br/><span class="hl-7">  $1: &quot;long/path/to;dir=1/&quot;,</span><br/><span class="hl-7">  name: &quot;file&quot;,</span><br/><span class="hl-7">  ext: &quot;html&quot;,</span><br/><span class="hl-7">}</span><br/><span class="hl-7">*/</span><span class="hl-1"> </span>
 </code></pre>
-				<p>Matrix pattern recognizes <a href="https://www.w3.org/DesignIssues/MatrixURIs.html">matrix URL</a>s.</p>
-				<p>Pattern format is the same as for <a href="#url-route">URL Route</a> with addition of attribute matchers:</p>
-				<ul>
-					<li><code>;name</code> requires matrix attribute to present.</li>
-					<li><code>;name=value</code> requires matrix attribute to have the given value.</li>
-				</ul>
-				<p>The path can be specified as a string, as URL, or as a <a href="https://hatsyjs.github.io/route-match/interfaces/MatrixRoute.html">MatrixRoute</a> instance. The latter can be constructed by
-				<a href="https://hatsyjs.github.io/route-match/globals.html#matrixRoute">matrixRoute()</a> function.</p>
-				<p>The pattern can be specified as a string, or as a <a href="https://hatsyjs.github.io/route-match/globals.html#RoutePattern">RoutePattern</a> instance. The latter can be constructed by
-				<a href="https://hatsyjs.github.io/route-match/globals.html#matrixRoutePattern">matrixRoutePattern()</a> function.</p>
-				<a href="#advanced-usage" id="advanced-usage" style="color: inherit; text-decoration: none;">
-					<h2>Advanced Usage</h2>
-				</a>
-				<p>The library supports different route formats mentioned above. Each format represents the route as an array of entries
-				plus additional info. The route can be constructed either manually or parsed by corresponding function.</p>
-				<p>All routes extend <a href="https://hatsyjs.github.io/route-match/interfaces/PathRoute.html">PathRoute</a> interface with the following methods:</p>
-				<ul>
-					<li><code>section(fromEntry[, toEntry])</code> returns a section of the route.</li>
-					<li><code>toString()</code> converts a route to original string, including search parameters and matrix attributes.</li>
-					<li><code>toPathString()</code> converts a route to path string, excluding search parameters and matrix attributes. </li>
-				</ul>
-				<p>A route pattern is an array of <a href="https://hatsyjs.github.io/route-match/modules/RouteMatcher.html">RouteMatcher</a>s compatible with corresponding route format. Route pattern can be
-				constructed out of <code>rmatch...</code> and <code>rcapture...</code> matchers, or parsed by corresponding function.</p>
-				<p>The <a href="https://hatsyjs.github.io/route-match/globals.html#routeMatch">routeMatch()</a> function does the actual matching. It returns either <code>null</code> if the given path does not match
-				the pattern, or a <a href="https://hatsyjs.github.io/route-match/modules/RouteMatch.html">RouteMatch</a> instance. The latter is a function that reports captured matches when called. </p>
-			</div>
-		</div>
-		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
-			<nav class="tsd-navigation primary">
-				<ul>
-					<li class=" ">
-						<a href="modules.html">Exports</a>
-					</li>
-					<li class=" tsd-kind-namespace">
-						<a href="modules/routematch.html">Route<wbr>Match</a>
-					</li>
-					<li class=" tsd-kind-namespace">
-						<a href="modules/routematcher.html">Route<wbr>Matcher</a>
-					</li>
-				</ul>
-			</nav>
-			<nav class="tsd-navigation secondary menu-sticky">
-				<ul class="before-current">
-					<li class=" tsd-kind-reference">
-						<a href="modules.html#matchroute" class="tsd-kind-icon">match<wbr>Route</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/matrixentry.html" class="tsd-kind-icon">Matrix<wbr>Entry</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/matrixroute.html" class="tsd-kind-icon">Matrix<wbr>Route</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/pathentry.html" class="tsd-kind-icon">Path<wbr>Entry</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/pathroute.html" class="tsd-kind-icon">Path<wbr>Route</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-has-type-parameter">
-						<a href="interfaces/routecaptorsignaturemap.html" class="tsd-kind-icon">Route<wbr>Captor<wbr>Signature<wbr>Map</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-has-type-parameter">
-						<a href="interfaces/routematcher.html" class="tsd-kind-icon">Route<wbr>Matcher</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/urlentry.html" class="tsd-kind-icon">URLEntry</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/urlroute.html" class="tsd-kind-icon">URLRoute</a>
-					</li>
-					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
-						<a href="modules.html#routecaptor" class="tsd-kind-icon">Route<wbr>Captor</a>
-					</li>
-					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
-						<a href="modules.html#routecaptureclassifier" class="tsd-kind-icon">Route<wbr>Capture<wbr>Classifier</a>
-					</li>
-					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
-						<a href="modules.html#routematch" class="tsd-kind-icon">Route<wbr>Match</a>
-					</li>
-					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
-						<a href="modules.html#routepattern" class="tsd-kind-icon">Route<wbr>Pattern</a>
-					</li>
-					<li class=" tsd-kind-variable">
-						<a href="modules.html#rmatchany" class="tsd-kind-icon">rmatch<wbr>Any</a>
-					</li>
-					<li class=" tsd-kind-variable">
-						<a href="modules.html#rmatchdirsep" class="tsd-kind-icon">rmatch<wbr>Dir<wbr>Sep</a>
-					</li>
-					<li class=" tsd-kind-variable">
-						<a href="modules.html#rmatchdirs" class="tsd-kind-icon">rmatch<wbr>Dirs</a>
-					</li>
-					<li class=" tsd-kind-variable">
-						<a href="modules.html#rmatchentry" class="tsd-kind-icon">rmatch<wbr>Entry</a>
-					</li>
-					<li class=" tsd-kind-function tsd-has-type-parameter">
-						<a href="modules.html#classifyroutecapture" class="tsd-kind-icon">classify<wbr>Route<wbr>Capture</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="modules.html#matchmatrixroute" class="tsd-kind-icon">match<wbr>Matrix<wbr>Route</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="modules.html#matchsimpleroute" class="tsd-kind-icon">match<wbr>Simple<wbr>Route</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="modules.html#matchurlroute" class="tsd-kind-icon">matchURLRoute</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="modules.html#matrixroute" class="tsd-kind-icon">matrix<wbr>Route</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="modules.html#matrixroutepattern" class="tsd-kind-icon">matrix<wbr>Route<wbr>Pattern</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="modules.html#rcaptureany" class="tsd-kind-icon">rcapture<wbr>Any</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="modules.html#rcapturedirs" class="tsd-kind-icon">rcapture<wbr>Dirs</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="modules.html#rcaptureentry" class="tsd-kind-icon">rcapture<wbr>Entry</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="modules.html#rcaptureregexp" class="tsd-kind-icon">rcapture<wbr>Reg<wbr>Exp</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="modules.html#rmatchmatrixattr" class="tsd-kind-icon">rmatch<wbr>Matrix<wbr>Attr</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="modules.html#rmatchname" class="tsd-kind-icon">rmatch<wbr>Name</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="modules.html#rmatchsearchparam" class="tsd-kind-icon">rmatch<wbr>Search<wbr>Param</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="modules.html#rmatchstring" class="tsd-kind-icon">rmatch<wbr>String</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="modules.html#routecapture" class="tsd-kind-icon">route<wbr>Capture</a>
-					</li>
-					<li class=" tsd-kind-function tsd-has-type-parameter">
-						<a href="modules.html#routematch" class="tsd-kind-icon">route<wbr>Match</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="modules.html#simpleroutepattern" class="tsd-kind-icon">simple<wbr>Route<wbr>Pattern</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="modules.html#urlroute" class="tsd-kind-icon">url<wbr>Route</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="modules.html#urlroutepattern" class="tsd-kind-icon">url<wbr>Route<wbr>Pattern</a>
-					</li>
-				</ul>
-			</nav>
-		</div>
-	</div>
-</div>
-<footer class="with-border-bottom">
-	<div class="container">
-		<h2>Legend</h2>
-		<div class="tsd-legend-group">
-			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li>
-			</ul>
-		</div>
-	</div>
-</footer>
-<div class="container tsd-generator">
-	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
-</div>
-<div class="overlay"></div>
-<script src="assets/js/main.js"></script>
-</body>
-</html>
+<p>Matrix pattern recognizes <a href="https://www.w3.org/DesignIssues/MatrixURIs.html">matrix URL</a>s.</p>
+<p>Pattern format is the same as for <a href="#url-route">URL Route</a> with addition of attribute matchers:</p>
+<ul>
+<li><code>;name</code> requires matrix attribute to present.</li>
+<li><code>;name=value</code> requires matrix attribute to have the given value.</li>
+</ul>
+<p>The path can be specified as a string, as URL, or as a <a href="https://hatsyjs.github.io/route-match/interfaces/MatrixRoute.html">MatrixRoute</a> instance. The latter can be constructed by
+<a href="https://hatsyjs.github.io/route-match/modules.html#matrixRoute">matrixRoute()</a> function.</p>
+<p>The pattern can be specified as a string, or as a <a href="https://hatsyjs.github.io/route-match/modules.html#RoutePattern">RoutePattern</a> instance. The latter can be constructed by
+<a href="https://hatsyjs.github.io/route-match/modules.html#matrixRoutePattern">matrixRoutePattern()</a> function.</p>
+
+<a href="#advanced-usage" id="advanced-usage" style="color: inherit; text-decoration: none;">
+  <h2>Advanced Usage</h2>
+</a>
+<p>The library supports different route formats mentioned above. Each format represents the route as an array of entries
+plus additional info. The route can be constructed either manually or parsed by corresponding function.</p>
+<p>All routes extend <a href="https://hatsyjs.github.io/route-match/interfaces/PathRoute.html">PathRoute</a> interface with the following methods:</p>
+<ul>
+<li><code>section(fromEntry[, toEntry])</code> returns a section of the route.</li>
+<li><code>toString()</code> converts a route to original string, including search parameters and matrix attributes.</li>
+<li><code>toPathString()</code> converts a route to path string, excluding search parameters and matrix attributes.</li>
+</ul>
+<p>A route pattern is an array of <a href="https://hatsyjs.github.io/route-match/interfaces/RouteMatcher.html">RouteMatcher</a>s compatible with corresponding route format. Route pattern can be
+constructed out of <code>rmatch...</code> and <code>rcapture...</code> matchers, or parsed by corresponding function.</p>
+<p>The <a href="https://hatsyjs.github.io/route-match/modules.html#routeMatch">routeMatch()</a> function does the actual matching. It returns either <code>null</code> if the given path does not match
+the pattern, or a <a href="https://hatsyjs.github.io/route-match/interfaces/RouteMatch.html">RouteMatch</a> instance. The latter is a function that reports captured matches when called. </p>
+</div></div><div class="col-4 col-menu menu-sticky-wrap menu-highlight"><nav class="tsd-navigation primary"><ul><li class="current"><a href="modules.html">Exports</a></li><li class=" tsd-kind-namespace"><a href="modules/RouteMatch.html">Route<wbr/>Match</a></li><li class=" tsd-kind-namespace"><a href="modules/RouteMatcher.html">Route<wbr/>Matcher</a></li></ul></nav><nav class="tsd-navigation secondary menu-sticky"><ul><li class="tsd-kind-reference"><a href="modules.html#matchRoute" class="tsd-kind-icon">match<wbr/>Route</a></li><li class="tsd-kind-interface"><a href="interfaces/MatrixEntry.html" class="tsd-kind-icon">Matrix<wbr/>Entry</a></li><li class="tsd-kind-interface"><a href="interfaces/MatrixRoute.html" class="tsd-kind-icon">Matrix<wbr/>Route</a></li><li class="tsd-kind-interface"><a href="interfaces/PathEntry.html" class="tsd-kind-icon">Path<wbr/>Entry</a></li><li class="tsd-kind-interface"><a href="interfaces/PathRoute.html" class="tsd-kind-icon">Path<wbr/>Route</a></li><li class="tsd-kind-interface tsd-has-type-parameter"><a href="interfaces/RouteCaptorSignatureMap.html" class="tsd-kind-icon">Route<wbr/>Captor<wbr/>Signature<wbr/>Map</a></li><li class="tsd-kind-interface tsd-has-type-parameter"><a href="interfaces/RouteMatcher.html" class="tsd-kind-icon">Route<wbr/>Matcher</a></li><li class="tsd-kind-interface"><a href="interfaces/URLEntry.html" class="tsd-kind-icon">URLEntry</a></li><li class="tsd-kind-interface"><a href="interfaces/URLRoute.html" class="tsd-kind-icon">URLRoute</a></li><li class="tsd-kind-type-alias tsd-has-type-parameter"><a href="modules.html#RouteCaptor" class="tsd-kind-icon">Route<wbr/>Captor</a></li><li class="tsd-kind-type-alias tsd-has-type-parameter"><a href="modules.html#RouteCaptureClassifier" class="tsd-kind-icon">Route<wbr/>Capture<wbr/>Classifier</a></li><li class="tsd-kind-type-alias tsd-has-type-parameter"><a href="modules.html#RouteMatch" class="tsd-kind-icon">Route<wbr/>Match</a></li><li class="tsd-kind-type-alias tsd-has-type-parameter"><a href="modules.html#RoutePattern" class="tsd-kind-icon">Route<wbr/>Pattern</a></li><li class="tsd-kind-variable"><a href="modules.html#rmatchAny" class="tsd-kind-icon">rmatch<wbr/>Any</a></li><li class="tsd-kind-variable"><a href="modules.html#rmatchDirSep" class="tsd-kind-icon">rmatch<wbr/>Dir<wbr/>Sep</a></li><li class="tsd-kind-variable"><a href="modules.html#rmatchDirs" class="tsd-kind-icon">rmatch<wbr/>Dirs</a></li><li class="tsd-kind-variable"><a href="modules.html#rmatchEntry" class="tsd-kind-icon">rmatch<wbr/>Entry</a></li><li class="tsd-kind-function tsd-has-type-parameter"><a href="modules.html#classifyRouteCapture" class="tsd-kind-icon">classify<wbr/>Route<wbr/>Capture</a></li><li class="tsd-kind-function"><a href="modules.html#matchMatrixRoute" class="tsd-kind-icon">match<wbr/>Matrix<wbr/>Route</a></li><li class="tsd-kind-function"><a href="modules.html#matchSimpleRoute" class="tsd-kind-icon">match<wbr/>Simple<wbr/>Route</a></li><li class="tsd-kind-function"><a href="modules.html#matchURLRoute" class="tsd-kind-icon">matchURLRoute</a></li><li class="tsd-kind-function"><a href="modules.html#matrixRoute" class="tsd-kind-icon">matrix<wbr/>Route</a></li><li class="tsd-kind-function"><a href="modules.html#matrixRoutePattern" class="tsd-kind-icon">matrix<wbr/>Route<wbr/>Pattern</a></li><li class="tsd-kind-function"><a href="modules.html#rcaptureAny" class="tsd-kind-icon">rcapture<wbr/>Any</a></li><li class="tsd-kind-function"><a href="modules.html#rcaptureDirs" class="tsd-kind-icon">rcapture<wbr/>Dirs</a></li><li class="tsd-kind-function"><a href="modules.html#rcaptureEntry" class="tsd-kind-icon">rcapture<wbr/>Entry</a></li><li class="tsd-kind-function"><a href="modules.html#rcaptureRegExp" class="tsd-kind-icon">rcapture<wbr/>Reg<wbr/>Exp</a></li><li class="tsd-kind-function"><a href="modules.html#rmatchMatrixAttr" class="tsd-kind-icon">rmatch<wbr/>Matrix<wbr/>Attr</a></li><li class="tsd-kind-function"><a href="modules.html#rmatchName" class="tsd-kind-icon">rmatch<wbr/>Name</a></li><li class="tsd-kind-function"><a href="modules.html#rmatchSearchParam" class="tsd-kind-icon">rmatch<wbr/>Search<wbr/>Param</a></li><li class="tsd-kind-function"><a href="modules.html#rmatchString" class="tsd-kind-icon">rmatch<wbr/>String</a></li><li class="tsd-kind-function"><a href="modules.html#routeCapture" class="tsd-kind-icon">route<wbr/>Capture</a></li><li class="tsd-kind-function tsd-has-type-parameter"><a href="modules.html#routeMatch" class="tsd-kind-icon">route<wbr/>Match</a></li><li class="tsd-kind-function"><a href="modules.html#simpleRoutePattern" class="tsd-kind-icon">simple<wbr/>Route<wbr/>Pattern</a></li><li class="tsd-kind-function"><a href="modules.html#urlRoute" class="tsd-kind-icon">url<wbr/>Route</a></li><li class="tsd-kind-function"><a href="modules.html#urlRoutePattern" class="tsd-kind-icon">url<wbr/>Route<wbr/>Pattern</a></li></ul></nav></div></div></div><footer class="with-border-bottom"><div class="container"><h2>Legend</h2><div class="tsd-legend-group"><ul class="tsd-legend"><li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li><li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li></ul></div><h2>Settings</h2><p>Theme <select id="theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></p></div></footer><div class="container tsd-generator"><p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p></div><div class="overlay"></div><script src="assets/main.js"></script></body></html>
