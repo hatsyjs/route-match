@@ -8,7 +8,7 @@ import { rmatchAny } from './rmatch-any';
 
 describe('rcaptureRegExp', () => {
 
-  let captor: Mock<void, any[]>;
+  let captor: Mock<(kind: any, key: string | number, ...capture: any[]) => void>;
 
   beforeEach(() => {
     captor = jest.fn();

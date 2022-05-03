@@ -10,7 +10,6 @@
     "noUnusedParameters": true,
     "forceConsistentCasingInFileNames": true,
     "importHelpers": true,
-    "importsNotUsedAsValues": "error",
     "noEmitHelpers": true,
     "lib": ["DOM", "ES2019"],
     "types": [],
