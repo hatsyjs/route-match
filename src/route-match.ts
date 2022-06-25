@@ -8,15 +8,12 @@ import type { RouteMatcher } from './route-matcher';
  * This is a function that reports registered partial matches via {@link RouteCaptor route capture receiver}.
  *
  * @typeParam TRoute - A type of matching route.
- */
-export type RouteMatch<TRoute extends PathRoute = PathRoute> =
-/**
  * @param capture - A {@link RouteCaptor route capture receiver} function to report partial matches to.
  */
-    (
-        this: void,
-        captor: RouteCaptor<TRoute>,
-    ) => void;
+export type RouteMatch<TRoute extends PathRoute = PathRoute> = (
+    this: void,
+    captor: RouteCaptor<TRoute>,
+) => void;
 
 /**
  * A pattern to {@link routeMatch match the route} against.
