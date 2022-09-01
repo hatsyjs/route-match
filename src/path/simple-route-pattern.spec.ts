@@ -5,7 +5,6 @@ import { URLRoute, urlRoute } from '../url';
 import { simpleRoutePattern } from './simple-route-pattern';
 
 describe('simpleRoutePattern', () => {
-
   let captor: RouteCaptor<URLRoute>;
 
   beforeEach(() => {
@@ -18,19 +17,20 @@ describe('simpleRoutePattern', () => {
 
   describe('name/**', () => {
     it('matches any dirs', () => {
-      expect(routeMatch(
+      expect(
+        routeMatch(
           urlRoute(new URL('http://localhost/name/some/path')),
           simpleRoutePattern('name/**'),
-      )).toBeTruthy();
+        ),
+      ).toBeTruthy();
     });
   });
 
   describe('name/{out:**}', () => {
     it('captures path', () => {
-
       const match = routeMatch(
-          urlRoute(new URL('http://localhost/name/some/path')),
-          simpleRoutePattern('name/{out:**}'),
+        urlRoute(new URL('http://localhost/name/some/path')),
+        simpleRoutePattern('name/{out:**}'),
       );
 
       expect(match).toBeTruthy();
@@ -41,10 +41,9 @@ describe('simpleRoutePattern', () => {
 
   describe('name/{:**}', () => {
     it('captures nested path', () => {
-
       const match = routeMatch(
-          urlRoute(new URL('http://localhost/name/some/path')),
-          simpleRoutePattern('name/{:**}'),
+        urlRoute(new URL('http://localhost/name/some/path')),
+        simpleRoutePattern('name/{:**}'),
       );
 
       expect(match).toBeTruthy();
@@ -56,19 +55,17 @@ describe('simpleRoutePattern', () => {
 
   describe('*/file', () => {
     it('matches dir', () => {
-      expect(routeMatch(
-          urlRoute(new URL('http://localhost/dir/file')),
-          simpleRoutePattern('*/file'),
-      )).toBeTruthy();
+      expect(
+        routeMatch(urlRoute(new URL('http://localhost/dir/file')), simpleRoutePattern('*/file')),
+      ).toBeTruthy();
     });
   });
 
   describe('{out}/file', () => {
     it('captures dir', () => {
-
       const match = routeMatch(
-          urlRoute(new URL('http://localhost/dir/file')),
-          simpleRoutePattern('{out}/file'),
+        urlRoute(new URL('http://localhost/dir/file')),
+        simpleRoutePattern('{out}/file'),
       );
 
       expect(match).toBeTruthy();
@@ -79,10 +76,9 @@ describe('simpleRoutePattern', () => {
 
   describe('{out:wrong}/file', () => {
     it('captures dir', () => {
-
       const match = routeMatch(
-          urlRoute(new URL('http://localhost/dir/file')),
-          simpleRoutePattern('{out:wrong}/file'),
+        urlRoute(new URL('http://localhost/dir/file')),
+        simpleRoutePattern('{out:wrong}/file'),
       );
 
       expect(match).toBeTruthy();
@@ -93,10 +89,9 @@ describe('simpleRoutePattern', () => {
 
   describe('{:wrong}/file', () => {
     it('captures dir anonymously', () => {
-
       const match = routeMatch(
-          urlRoute(new URL('http://localhost/dir/file')),
-          simpleRoutePattern('{:wrong}/file'),
+        urlRoute(new URL('http://localhost/dir/file')),
+        simpleRoutePattern('{:wrong}/file'),
       );
 
       expect(match).toBeTruthy();
@@ -108,10 +103,9 @@ describe('simpleRoutePattern', () => {
 
   describe('{}', () => {
     it('captures file', () => {
-
       const match = routeMatch(
-          urlRoute(new URL('http://localhost/test')),
-          simpleRoutePattern('{}'),
+        urlRoute(new URL('http://localhost/test')),
+        simpleRoutePattern('{}'),
       );
 
       match?.(captor);
@@ -122,10 +116,9 @@ describe('simpleRoutePattern', () => {
 
   describe('{)(}', () => {
     it('captures file', () => {
-
       const match = routeMatch(
-          urlRoute(new URL('http://localhost/test')),
-          simpleRoutePattern('{)(}'),
+        urlRoute(new URL('http://localhost/test')),
+        simpleRoutePattern('{)(}'),
       );
 
       expect(match).toBeTruthy();
@@ -136,11 +129,7 @@ describe('simpleRoutePattern', () => {
 
   describe('/', () => {
     it('matches empty route', () => {
-
-      const match = routeMatch(
-          urlRoute(new URL('http://localhost/')),
-          simpleRoutePattern('/'),
-      );
+      const match = routeMatch(urlRoute(new URL('http://localhost/')), simpleRoutePattern('/'));
 
       expect(match).toBeTruthy();
     });

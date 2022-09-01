@@ -18,8 +18,8 @@ import { matrixRoutePattern } from './matrix-route-pattern';
  * @see routeCapture  For route capture mapping rules.
  */
 export function matchMatrixRoute(
-    route: MatrixRoute | URL | string,
-    pattern: RoutePattern<MatrixRoute> | string,
+  route: MatrixRoute | URL | string,
+  pattern: RoutePattern<MatrixRoute> | string,
 ): Record<string, string> | null {
   if (typeof route === 'string' || isURL(route)) {
     route = matrixRoute(route);

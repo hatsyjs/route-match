@@ -11,8 +11,8 @@ import type { RouteMatcher } from './route-matcher';
  * @param capture - A {@link RouteCaptor route capture receiver} function to report partial matches to.
  */
 export type RouteMatch<TRoute extends PathRoute = PathRoute> = (
-    this: void,
-    captor: RouteCaptor<TRoute>,
+  this: void,
+  captor: RouteCaptor<TRoute>,
 ) => void;
 
 /**
@@ -25,12 +25,10 @@ export type RouteMatch<TRoute extends PathRoute = PathRoute> = (
 export type RoutePattern<TRoute extends PathRoute = PathRoute> = readonly RouteMatcher<TRoute>[];
 
 export namespace RouteMatch {
-
   /**
    * Route match options.
    */
   export interface Options {
-
     /**
      * The index of the {@link entry first entry} within the route path to match.
      *
@@ -51,9 +49,7 @@ export namespace RouteMatch {
      * @default `0`
      */
     readonly fromMatcher?: number | undefined;
-
   }
-
 }
 
 /**
@@ -70,18 +66,18 @@ export namespace RouteMatch {
  * @returns  Either successful route match object, or `null` if the route does not match the given pattern.
  */
 export function routeMatch<TRoute extends PathRoute>(
-    this: void,
-    route: TRoute,
-    pattern: RoutePattern<TRoute>,
-    options: RouteMatch.Options = {},
+  this: void,
+  route: TRoute,
+  pattern: RoutePattern<TRoute>,
+  options: RouteMatch.Options = {},
 ): RouteMatch<TRoute> | null {
-
   const { path } = route;
-  let successfulMatch: RouteMatch<TRoute> = () => {/* nothing captured */};
+  let successfulMatch: RouteMatch<TRoute> = () => {
+    /* nothing captured */
+  };
   let { fromEntry: entryIndex = 0, nameOffset = 0, fromMatcher: matcherIndex = 0 } = options;
 
   while (entryIndex < path.length) {
-
     const entry = path[entryIndex];
     const { name } = entry;
     const matcher = pattern[matcherIndex];
@@ -115,12 +111,7 @@ export function routeMatch<TRoute extends PathRoute>(
       return null; // No match.
     }
 
-    const {
-      entries,
-      nameChars = entries ? 0 : name.length,
-      callback,
-      full,
-    } = match;
+    const { entries, nameChars = entries ? 0 : name.length, callback, full } = match;
 
     if (entries) {
       // Some entries matched.
@@ -134,7 +125,6 @@ export function routeMatch<TRoute extends PathRoute>(
 
     // Register a capture callback.
     if (callback) {
-
       const prevMatch = successfulMatch;
 
       successfulMatch = captor => {
@@ -160,13 +150,16 @@ export function routeMatch<TRoute extends PathRoute>(
     // Require them all to match after the end.
     const matcher = pattern[matcherIndex];
 
-    if (!matcher.tail || !matcher.tail({
-      route,
-      entryIndex: path.length,
-      nameOffset: 0,
-      pattern,
-      matcherIndex,
-    })) {
+    if (
+      !matcher.tail
+      || !matcher.tail({
+        route,
+        entryIndex: path.length,
+        nameOffset: 0,
+        pattern,
+        matcherIndex,
+      })
+    ) {
       return null;
     }
 
@@ -174,11 +167,11 @@ export function routeMatch<TRoute extends PathRoute>(
   }
 
   return captor => {
-
     let keySeq = 0;
 
     successfulMatch((kind, key, ...capture) => {
-      if (typeof key === 'number') { // May be any number. E.g. when reporting nested matches
+      if (typeof key === 'number') {
+        // May be any number. E.g. when reporting nested matches
         key = ++keySeq;
       }
       captor(kind, key, ...capture);

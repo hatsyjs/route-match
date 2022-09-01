@@ -6,7 +6,6 @@ import { parseURLRoute } from './url-route.impl';
  * A route representing an URL.
  */
 export interface URLRoute extends PathRoute {
-
   /**
    * URL this route represents, except for the pathname.
    *
@@ -42,14 +41,12 @@ export interface URLRoute extends PathRoute {
    * @returns Raw URL pathname without leading `/` with URL search parameters if present.
    */
   toString(): string;
-
 }
 
 /**
  * URL route entry.
  */
 export interface URLEntry extends PathEntry {
-
   /**
    * File or directory name, URL-decoded.
    */
@@ -68,7 +65,6 @@ export interface URLEntry extends PathEntry {
    * This is used in a {@link PathRoute.toPathString string representation of the route path}.
    */
   readonly rawName: string;
-
 }
 
 /**

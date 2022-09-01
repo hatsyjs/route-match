@@ -6,4 +6,4 @@ import { rcaptureDirs } from './rcapture-dirs';
  *
  * Matches only at the {@link RouteMatcher.Context.nameOffset entry name beginning}.
  */
-export const rmatchDirs: RouteMatcher = (/*#__PURE__*/ rcaptureDirs());
+export const rmatchDirs: RouteMatcher = /*#__PURE__*/ rcaptureDirs();

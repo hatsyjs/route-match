@@ -2,7 +2,6 @@
  * A route representing a path to file or directory.
  */
 export interface PathRoute {
-
   /**
    * A path split onto file and directory entries.
    */
@@ -37,7 +36,6 @@ export interface PathRoute {
    * @returns URL-encoded pathname without leading `/` and extra parts. E.g. without search parameters.
    */
   toPathString(): string;
-
 }
 
 /**
@@ -46,10 +44,8 @@ export interface PathRoute {
  * Represents either file or directory.
  */
 export interface PathEntry {
-
   /**
    * File or directory name.
    */
   readonly name: string;
-
 }

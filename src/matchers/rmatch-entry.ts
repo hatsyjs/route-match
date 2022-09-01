@@ -4,4 +4,4 @@ import { rcaptureEntry } from './rcapture-entry';
 /**
  * Route matcher that matches any route entry.
  */
-export const rmatchEntry: RouteMatcher = (/*#__PURE__*/ rcaptureEntry());
+export const rmatchEntry: RouteMatcher = /*#__PURE__*/ rcaptureEntry();

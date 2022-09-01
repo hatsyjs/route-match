@@ -6,7 +6,6 @@ import { URLRoute, urlRoute } from './url-route';
 import { urlRoutePattern } from './url-route-pattern';
 
 describe('urlRoutePattern', () => {
-
   let captor: RouteCaptor<URLRoute> & Mock<(...args: any[]) => void>;
 
   beforeEach(() => {
@@ -19,19 +18,20 @@ describe('urlRoutePattern', () => {
 
   describe('name/**', () => {
     it('matches any dirs', () => {
-      expect(routeMatch(
+      expect(
+        routeMatch(
           urlRoute(new URL('http://localhost/name/some/path')),
           urlRoutePattern('name/**'),
-      )).toBeTruthy();
+        ),
+      ).toBeTruthy();
     });
   });
 
   describe('name/{out:**}', () => {
     it('captures path', () => {
-
       const match = routeMatch(
-          urlRoute(new URL('http://localhost/name/some/path')),
-          urlRoutePattern('name/{out:**}'),
+        urlRoute(new URL('http://localhost/name/some/path')),
+        urlRoutePattern('name/{out:**}'),
       );
 
       expect(match).toBeTruthy();
@@ -42,10 +42,9 @@ describe('urlRoutePattern', () => {
 
   describe('name/{:**}', () => {
     it('captures nested path', () => {
-
       const match = routeMatch(
-          urlRoute(new URL('http://localhost/name/some/path')),
-          urlRoutePattern('name/{:**}'),
+        urlRoute(new URL('http://localhost/name/some/path')),
+        urlRoutePattern('name/{:**}'),
       );
 
       expect(match).toBeTruthy();
@@ -57,33 +56,29 @@ describe('urlRoutePattern', () => {
 
   describe('*/file', () => {
     it('matches dir', () => {
-      expect(routeMatch(
-          urlRoute(new URL('http://localhost/dir/file')),
-          urlRoutePattern('*/file'),
-      )).toBeTruthy();
+      expect(
+        routeMatch(urlRoute(new URL('http://localhost/dir/file')), urlRoutePattern('*/file')),
+      ).toBeTruthy();
     });
   });
 
   describe('*.html', () => {
     it('matches file name', () => {
-      expect(routeMatch(
-          urlRoute(new URL('http://localhost/file.html')),
-          urlRoutePattern('*.html'),
-      )).toBeTruthy();
+      expect(
+        routeMatch(urlRoute(new URL('http://localhost/file.html')), urlRoutePattern('*.html')),
+      ).toBeTruthy();
     });
   });
 
   describe('file.*', () => {
     it('matches file extension', () => {
-      expect(routeMatch(
-          urlRoute(new URL('http://localhost/file.html')),
-          urlRoutePattern('file.*'),
-      )).toBeTruthy();
+      expect(
+        routeMatch(urlRoute(new URL('http://localhost/file.html')), urlRoutePattern('file.*')),
+      ).toBeTruthy();
     });
   });
 
   describe('**/*.html', () => {
-
     const pattern = urlRoutePattern('**/*.html');
 
     it('matches top-level file', () => {
@@ -93,16 +88,17 @@ describe('urlRoutePattern', () => {
       expect(routeMatch(urlRoute(new URL('route:dir/test.html')), pattern)).toBeTruthy();
     });
     it('matches file deeply inside directory', () => {
-      expect(routeMatch(urlRoute(new URL('route:deeply/nested/dir/test.html')), pattern)).toBeTruthy();
+      expect(
+        routeMatch(urlRoute(new URL('route:deeply/nested/dir/test.html')), pattern),
+      ).toBeTruthy();
     });
   });
 
   describe('{out}/file', () => {
     it('captures dir', () => {
-
       const match = routeMatch(
-          urlRoute(new URL('http://localhost/dir/file')),
-          urlRoutePattern('{out}/file'),
+        urlRoute(new URL('http://localhost/dir/file')),
+        urlRoutePattern('{out}/file'),
       );
 
       expect(match).toBeTruthy();
@@ -113,10 +109,9 @@ describe('urlRoutePattern', () => {
 
   describe('{out:wrong}/file', () => {
     it('captures dir', () => {
-
       const match = routeMatch(
-          urlRoute(new URL('http://localhost/dir/file')),
-          urlRoutePattern('{out:wrong}/file'),
+        urlRoute(new URL('http://localhost/dir/file')),
+        urlRoutePattern('{out:wrong}/file'),
       );
 
       expect(match).toBeTruthy();
@@ -127,10 +122,9 @@ describe('urlRoutePattern', () => {
 
   describe('{:wrong}/file', () => {
     it('captures dir anonymously', () => {
-
       const match = routeMatch(
-          urlRoute(new URL('http://localhost/dir/file')),
-          urlRoutePattern('{:wrong}/file'),
+        urlRoute(new URL('http://localhost/dir/file')),
+        urlRoutePattern('{:wrong}/file'),
       );
 
       match?.(captor);
@@ -141,11 +135,7 @@ describe('urlRoutePattern', () => {
 
   describe('{}', () => {
     it('captures file', () => {
-
-      const match = routeMatch(
-          urlRoute(new URL('http://localhost/test')),
-          urlRoutePattern('{}'),
-      );
+      const match = routeMatch(urlRoute(new URL('http://localhost/test')), urlRoutePattern('{}'));
 
       match?.(captor);
       expect(captor).toHaveBeenCalledWith('capture', 1, 'test', expect.anything());
@@ -155,10 +145,9 @@ describe('urlRoutePattern', () => {
 
   describe('{}.html', () => {
     it('captures file', () => {
-
       const match = routeMatch(
-          urlRoute(new URL('http://localhost/test.html')),
-          urlRoutePattern('{}.html'),
+        urlRoute(new URL('http://localhost/test.html')),
+        urlRoutePattern('{}.html'),
       );
 
       expect(match).toBeTruthy();
@@ -170,10 +159,9 @@ describe('urlRoutePattern', () => {
 
   describe('{out}.html', () => {
     it('captures file name', () => {
-
       const match = routeMatch(
-          urlRoute(new URL('http://localhost/file.html')),
-          urlRoutePattern('{out}.html'),
+        urlRoute(new URL('http://localhost/file.html')),
+        urlRoutePattern('{out}.html'),
       );
 
       expect(match).toBeTruthy();
@@ -184,10 +172,9 @@ describe('urlRoutePattern', () => {
 
   describe('file.{out}', () => {
     it('captures file extension', () => {
-
       const match = routeMatch(
-          urlRoute(new URL('http://localhost/file.html')),
-          urlRoutePattern('file.{out}'),
+        urlRoute(new URL('http://localhost/file.html')),
+        urlRoutePattern('file.{out}'),
       );
 
       expect(match).toBeTruthy();
@@ -198,10 +185,9 @@ describe('urlRoutePattern', () => {
 
   describe('{name}.{ext}', () => {
     it('captures file name and extension extension', () => {
-
       const match = routeMatch(
-          urlRoute(new URL('http://localhost/file.html')),
-          urlRoutePattern('{name}.{ext}'),
+        urlRoute(new URL('http://localhost/file.html')),
+        urlRoutePattern('{name}.{ext}'),
       );
 
       match?.(captor);
@@ -213,10 +199,9 @@ describe('urlRoutePattern', () => {
 
   describe('dir/{(file)}', () => {
     it('captures file', () => {
-
       const match = routeMatch(
-          urlRoute(new URL('http://localhost/dir/file')),
-          urlRoutePattern('dir/{(file)}'),
+        urlRoute(new URL('http://localhost/dir/file')),
+        urlRoutePattern('dir/{(file)}'),
       );
 
       match?.(captor);
@@ -228,10 +213,9 @@ describe('urlRoutePattern', () => {
 
   describe('dir/{out(regexp)i}.txt', () => {
     it('captures file', () => {
-
       const match = routeMatch(
-          urlRoute(new URL('http://localhost/dir/FILE.txt')),
-          urlRoutePattern('dir/{out(\\w+)i}.txt'),
+        urlRoute(new URL('http://localhost/dir/FILE.txt')),
+        urlRoutePattern('dir/{out(\\w+)i}.txt'),
       );
 
       expect(match).toBeTruthy();
@@ -242,10 +226,9 @@ describe('urlRoutePattern', () => {
   });
   describe('dir/{out(regexp(group))i}.txt', () => {
     it('captures file', () => {
-
       const match = routeMatch(
-          urlRoute(new URL('http://localhost/dir/FILE.txt')),
-          urlRoutePattern('dir/{out((fi)le)i}.txt'),
+        urlRoute(new URL('http://localhost/dir/FILE.txt')),
+        urlRoutePattern('dir/{out((fi)le)i}.txt'),
       );
 
       expect(match).toBeTruthy();
@@ -257,11 +240,7 @@ describe('urlRoutePattern', () => {
 
   describe('{)(}', () => {
     it('captures file', () => {
-
-      const match = routeMatch(
-          urlRoute(new URL('http://localhost/test')),
-          urlRoutePattern('{)(}'),
-      );
+      const match = routeMatch(urlRoute(new URL('http://localhost/test')), urlRoutePattern('{)(}'));
 
       expect(match).toBeTruthy();
       match?.(captor);
@@ -271,11 +250,7 @@ describe('urlRoutePattern', () => {
 
   describe('/', () => {
     it('matches empty route', () => {
-
-      const match = routeMatch(
-          urlRoute(new URL('http://localhost/')),
-          urlRoutePattern('/'),
-      );
+      const match = routeMatch(urlRoute(new URL('http://localhost/')), urlRoutePattern('/'));
 
       expect(match).toBeTruthy();
     });
@@ -283,10 +258,9 @@ describe('urlRoutePattern', () => {
 
   describe('{some', () => {
     it('does not capture', () => {
-
       const match = routeMatch(
-          urlRoute(new URL('http://localhost/{some')),
-          urlRoutePattern('{some'),
+        urlRoute(new URL('http://localhost/{some')),
+        urlRoutePattern('{some'),
       );
 
       expect(match).toBeTruthy();
@@ -296,37 +270,34 @@ describe('urlRoutePattern', () => {
   });
 
   describe('**?name', () => {
-
     const pattern = urlRoutePattern('**?name');
 
     it('matches URL with required parameter', () => {
-      expect(routeMatch(
-          urlRoute(new URL('http://localhost/path/to/file?name=value')),
-          pattern,
-      )).toBeTruthy();
+      expect(
+        routeMatch(urlRoute(new URL('http://localhost/path/to/file?name=value')), pattern),
+      ).toBeTruthy();
     });
     it('does not match URL without required parameter', () => {
-      expect(routeMatch(
-          urlRoute(new URL('http://localhost/path/to/file?other=value')),
-          pattern,
-      )).toBeNull();
+      expect(
+        routeMatch(urlRoute(new URL('http://localhost/path/to/file?other=value')), pattern),
+      ).toBeNull();
     });
   });
   describe('**?name=value', () => {
-
     const pattern = urlRoutePattern('**?name=value');
 
     it('matches URL with required parameter value', () => {
-      expect(routeMatch(
+      expect(
+        routeMatch(
           urlRoute(new URL('http://localhost/path/to/file?name=other&name=value')),
           pattern,
-      )).toBeTruthy();
+        ),
+      ).toBeTruthy();
     });
     it('does not match URL wit wrong parameter value', () => {
-      expect(routeMatch(
-          urlRoute(new URL('http://localhost/path/to/file?name=wrong')),
-          pattern,
-      )).toBeNull();
+      expect(
+        routeMatch(urlRoute(new URL('http://localhost/path/to/file?name=wrong')), pattern),
+      ).toBeNull();
     });
   });
 });

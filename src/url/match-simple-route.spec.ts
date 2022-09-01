@@ -11,7 +11,9 @@ describe('matchSimpleRoute', () => {
     expect(matchSimpleRoute('test', [rcaptureEntry('out')])).toEqual({ out: 'test' });
   });
   it('matches provided URL', () => {
-    expect(matchSimpleRoute(new URL('http://localhost/test/'), [rcaptureEntry('out')])).toEqual({ out: 'test' });
+    expect(matchSimpleRoute(new URL('http://localhost/test/'), [rcaptureEntry('out')])).toEqual({
+      out: 'test',
+    });
   });
   it('matches provided route', () => {
     expect(matchSimpleRoute(urlRoute('test'), [rcaptureEntry('out')])).toEqual({ out: 'test' });

@@ -12,13 +12,11 @@ import type { RouteCaptor, RouteCaptorSignatureMap } from './route-captor';
  * @typeParam TRoute - A type of matching route.
  */
 export type RouteCaptureClassifier<TRoute extends PathRoute = PathRoute> = {
-
   readonly [TKind in keyof RouteCaptorSignatureMap<TRoute>]?: (
-      this: void,
-      key: string | number,
-      ...capture: Parameters<RouteCaptorSignatureMap<TRoute>[TKind]>
+    this: void,
+    key: string | number,
+    ...capture: Parameters<RouteCaptorSignatureMap<TRoute>[TKind]>
   ) => void;
-
 };
 
 /**
@@ -31,19 +29,20 @@ export type RouteCaptureClassifier<TRoute extends PathRoute = PathRoute> = {
  * or `fallback` function if no such method defined in classifier.
  */
 export function classifyRouteCapture<TRoute extends PathRoute = PathRoute>(
-    classifier: RouteCaptureClassifier<TRoute>,
-    fallback: RouteCaptor<TRoute> = noop,
+  classifier: RouteCaptureClassifier<TRoute>,
+  fallback: RouteCaptor<TRoute> = noop,
 ): RouteCaptor<TRoute> {
   return <TKind extends keyof RouteCaptorSignatureMap<TRoute>>(
-      kind: TKind,
-      key: string | number,
-      ...capture: Parameters<RouteCaptorSignatureMap<TRoute>[TKind]>
+    kind: TKind,
+    key: string | number,
+    ...capture: Parameters<RouteCaptorSignatureMap<TRoute>[TKind]>
   ) => {
-
-    const kindCaptor = classifier[kind] as ((
-        key: string | number,
-        ...capture: Parameters<RouteCaptorSignatureMap<TRoute>[TKind]>
-    ) => void) | undefined;
+    const kindCaptor = classifier[kind] as
+      | ((
+          key: string | number,
+          ...capture: Parameters<RouteCaptorSignatureMap<TRoute>[TKind]>
+        ) => void)
+      | undefined;
 
     if (kindCaptor) {
       kindCaptor(key, ...capture);

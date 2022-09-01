@@ -17,16 +17,13 @@ const removeGlobalAndStickyFlagsPattern = /[gy]/;
  * @returns New route matcher.
  */
 export function rcaptureRegExp(expected: RegExp, name?: string): RouteMatcher {
-
   const key = name ?? 0;
   const { global, sticky, flags } = expected;
   const re = sticky ? new RegExp(expected) : new RegExp(expected.source, `${flags}y`);
   let searchRe: RegExp | undefined;
 
   return {
-
     test(context): RouteMatcher.Match | undefined {
-
       const { entry, nameOffset } = context;
 
       re.lastIndex = nameOffset;
@@ -42,14 +39,16 @@ export function rcaptureRegExp(expected: RegExp, name?: string): RouteMatcher {
 
       // Fill group names.
       for (;;) {
-
         const prevCallback = resultCallback;
         const match = execResult;
         const nextCallback = (captor: RouteCaptor): void => captor('regexp', key, match, context);
 
         resultCallback = prevCallback
-            ? captor => { prevCallback(captor); nextCallback(captor); }
-            : nextCallback;
+          ? captor => {
+              prevCallback(captor);
+              nextCallback(captor);
+            }
+          : nextCallback;
 
         if (!global) {
           break;
@@ -79,7 +78,10 @@ export function rcaptureRegExp(expected: RegExp, name?: string): RouteMatcher {
     }): [RouteMatch, number] | null | undefined {
       if (!searchRe) {
         if (global || sticky) {
-          searchRe = new RegExp(expected.source, flags.split(removeGlobalAndStickyFlagsPattern).join(''));
+          searchRe = new RegExp(
+            expected.source,
+            flags.split(removeGlobalAndStickyFlagsPattern).join(''),
+          );
         } else {
           searchRe = expected;
         }
@@ -93,18 +95,13 @@ export function rcaptureRegExp(expected: RegExp, name?: string): RouteMatcher {
       }
 
       const offset = nameOffset + found.index;
-      const match = routeMatch(
-          route,
-          pattern,
-          {
-            fromEntry,
-            nameOffset: offset,
-            fromMatcher,
-          },
-      );
+      const match = routeMatch(route, pattern, {
+        fromEntry,
+        nameOffset: offset,
+        fromMatcher,
+      });
 
       return match && [match, offset];
     },
-
   };
 }

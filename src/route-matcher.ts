@@ -7,7 +7,6 @@ import type { RouteMatch, RoutePattern } from './route-match';
  * @typeParam TRoute - A type of supported route.
  */
 export interface RouteMatcher<TRoute extends PathRoute = PathRoute> {
-
   /**
    * Tests whether a fragment of the route satisfying this matcher's conditions.
    *
@@ -17,7 +16,7 @@ export interface RouteMatcher<TRoute extends PathRoute = PathRoute> {
    * or `false`/`null`/`undefined` otherwise.
    */
   test(
-      context: RouteMatcher.Context<TRoute>,
+    context: RouteMatcher.Context<TRoute>,
   ): RouteMatcher.Match<TRoute> | false | null | undefined;
 
   /**
@@ -35,7 +34,7 @@ export interface RouteMatcher<TRoute extends PathRoute = PathRoute> {
    * not found.
    */
   find?(
-      context: RouteMatcher.Context<TRoute>,
+    context: RouteMatcher.Context<TRoute>,
   ): readonly [RouteMatch, number] | false | null | undefined;
 
   /**
@@ -46,11 +45,9 @@ export interface RouteMatcher<TRoute extends PathRoute = PathRoute> {
    * @returns `true` if the route satisfies this matcher's condition, or `false` otherwise.
    */
   tail?(context: RouteMatcher.TailContext<TRoute>): boolean;
-
 }
 
 export namespace RouteMatcher {
-
   /**
    * A position of the match inside the route.
    *
@@ -59,7 +56,6 @@ export namespace RouteMatcher {
    * @typeParam TRoute - A type of tested route.
    */
   export interface Position<TRoute extends PathRoute> {
-
     /**
      * Target route.
      */
@@ -91,7 +87,6 @@ export namespace RouteMatcher {
      * The index of the matcher in the route pattern.
      */
     readonly matcherIndex: number;
-
   }
 
   /**
@@ -103,7 +98,6 @@ export namespace RouteMatcher {
    * @typeParam TRoute - A type of tested route.
    */
   export interface Context<TRoute extends PathRoute> extends Position<TRoute> {
-
     /**
      * The first entry the matcher should match against.
      */
@@ -120,7 +114,6 @@ export namespace RouteMatcher {
      * An offset of the first character within {@link entry first entry} name the matcher should match against.
      */
     readonly nameOffset: number;
-
   }
 
   /**
@@ -132,7 +125,6 @@ export namespace RouteMatcher {
    * @typeParam TRoute - A type of tested route.
    */
   export interface TailContext<TRoute extends PathRoute> extends Position<TRoute> {
-
     /**
      * `undefined` route entry indicating the position after the end of the route.
      */
@@ -147,7 +139,6 @@ export namespace RouteMatcher {
      * Always zero to indicate the position after the end of the route.
      */
     readonly nameOffset: 0;
-
   }
 
   /**
@@ -158,7 +149,6 @@ export namespace RouteMatcher {
    * @typeParam TRoute - A type of matching route.
    */
   export interface Match<TRoute extends PathRoute = PathRoute> {
-
     /**
      * The number of fully matching route entries.
      *
@@ -194,7 +184,5 @@ export namespace RouteMatcher {
      * It will be invoked by {@link RouteMatch successful route match} only.
      */
     readonly callback?: RouteMatch<TRoute> | undefined;
-
   }
-
 }

@@ -11,13 +11,10 @@ import type { RouteMatcher } from '../route-matcher';
  * @see Use {@link rmatchAny} for anonymous capture.
  */
 export function rcaptureAny(name?: string): RouteMatcher {
-
   const key = name ?? 0;
 
   return {
-
     test(context): RouteMatcher.Match | undefined {
-
       const { pattern, matcherIndex } = context;
       const nextMatcher = pattern[matcherIndex + 1];
 
@@ -30,7 +27,7 @@ export function rcaptureAny(name?: string): RouteMatcher {
               key,
               context.entry.name.substring(context.nameOffset, context.entry.name.length),
               context,
-          ),
+            ),
         };
       }
 
@@ -46,19 +43,14 @@ export function rcaptureAny(name?: string): RouteMatcher {
       return {
         entries: context.route.path.length,
         full: true,
-        callback: offset > nameOffset
+        callback:
+          offset > nameOffset
             ? captor => {
-              captor(
-                  'capture',
-                  key,
-                  context.entry.name.substring(nameOffset, offset),
-                  context,
-              );
-              match(captor);
-            }
+                captor('capture', key, context.entry.name.substring(nameOffset, offset), context);
+                match(captor);
+              }
             : match,
       };
     },
-
   };
 }

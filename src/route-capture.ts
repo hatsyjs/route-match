@@ -17,18 +17,17 @@ import type { RouteMatch } from './route-match';
  * @returns A map of string values of named and anonymous captures.
  */
 export function routeCapture(match: RouteMatch): Record<string, string> {
-
   const result: Record<string, string> = {};
-  const nameOf = (key: string | number): string => typeof key === 'string' ? key : `$${key}`;
+  const nameOf = (key: string | number): string => (typeof key === 'string' ? key : `$${key}`);
   const put = (key: string | number, value: string): void => {
     result[nameOf(key)] = value;
   };
 
-  match(classifyRouteCapture(
+  match(
+    classifyRouteCapture(
       {
         capture: put,
         regexp(key, match: RegExpExecArray) {
-
           const name = nameOf(key);
 
           result[name] = match[0];
@@ -46,7 +45,8 @@ export function routeCapture(match: RouteMatch): Record<string, string> {
         },
       },
       (_kind, key, value, _position) => put(key, String(value)),
-  ));
+    ),
+  );
 
   return result;
 }

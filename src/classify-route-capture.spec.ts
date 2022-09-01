@@ -8,12 +8,13 @@ import { routeMatch } from './route-match';
 import { urlRoute } from './url';
 
 describe('classifyRouteCapture', () => {
-
   const pattern = [rcaptureEntry('out')];
-  let capture: Mock<(
+  let capture: Mock<
+    (
       key: string | number,
       ...capture: Parameters<RouteCaptorSignatureMap<PathRoute>['capture']>
-  ) => void>;
+    ) => void
+  >;
   let fallback: RouteCaptor;
 
   beforeEach(() => {
@@ -22,7 +23,6 @@ describe('classifyRouteCapture', () => {
   });
 
   it('classifies capture', () => {
-
     const match = routeMatch(urlRoute(new URL('route:/file')), pattern);
 
     match?.(classifyRouteCapture({ capture }));
@@ -30,19 +30,20 @@ describe('classifyRouteCapture', () => {
     expect(capture).toHaveBeenCalledTimes(1);
   });
   it('does not fall back when capture classified', () => {
-
     const match = routeMatch(urlRoute(new URL('route:/file')), pattern);
 
     match?.(classifyRouteCapture({ capture }, fallback));
     expect(fallback).not.toHaveBeenCalled();
   });
   it('falls back when no classifier method found', () => {
-
-    const dirs = jest.fn<(
-        key: string | number,
-        ...capture: Parameters<RouteCaptorSignatureMap<PathRoute>['dirs']>
-    ) => void>(
-    );
+    const dirs
+      = jest.fn<
+        (
+          key: string | number,
+          ...capture: Parameters<RouteCaptorSignatureMap<PathRoute>['dirs']>
+        ) => void
+      >(
+);
     const match = routeMatch(urlRoute(new URL('route:/file')), pattern);
 
     match?.(classifyRouteCapture({ dirs }, fallback));

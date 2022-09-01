@@ -8,7 +8,6 @@ import { rmatchString } from './rmatch-string';
 
 describe('rmatchDirSep', () => {
   describe('/', () => {
-
     const pattern = [rmatchDirSep];
 
     it('matches empty route', () => {
@@ -23,7 +22,6 @@ describe('rmatchDirSep', () => {
   });
 
   describe('<string>/', () => {
-
     const pattern = [rmatchString('test'), rmatchDirSep];
 
     it('does not match empty route', () => {
@@ -41,7 +39,6 @@ describe('rmatchDirSep', () => {
   });
 
   describe('<name>/', () => {
-
     const pattern = [rmatchName('test'), rmatchDirSep];
 
     it('does not match empty route', () => {
@@ -59,7 +56,6 @@ describe('rmatchDirSep', () => {
   });
 
   describe('*/<name2>', () => {
-
     const pattern = [rmatchAny, rmatchDirSep, rmatchName('file')];
 
     it('does not match empty route', () => {

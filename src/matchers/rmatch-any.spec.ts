@@ -6,7 +6,6 @@ import { rmatchAny } from './rmatch-any';
 import { rmatchDirSep } from './rmatch-dir-sep';
 
 describe('rmatchAny', () => {
-
   let captor: RouteCaptor<URLRoute>;
 
   beforeEach(() => {
@@ -14,14 +13,12 @@ describe('rmatchAny', () => {
   });
 
   describe('*', () => {
-
     const pattern: RoutePattern = [rmatchAny];
 
     it('does not match empty route', () => {
       expect(routeMatch(urlRoute(new URL('http://localhost/')), pattern)).toBeNull();
     });
     it('captures file', () => {
-
       const match = routeMatch(urlRoute(new URL('http://localhost/file')), pattern);
 
       match?.(captor);
@@ -29,7 +26,6 @@ describe('rmatchAny', () => {
       expect(captor).toHaveBeenCalledTimes(1);
     });
     it('captures directory', () => {
-
       const match = routeMatch(urlRoute(new URL('http://localhost/dir/')), pattern);
 
       match?.(captor);
@@ -42,7 +38,6 @@ describe('rmatchAny', () => {
   });
 
   describe('*/*', () => {
-
     const pattern = [rmatchAny, rmatchDirSep, rmatchAny];
 
     it('does not match single file', () => {
@@ -52,7 +47,6 @@ describe('rmatchAny', () => {
       expect(routeMatch(urlRoute(new URL('http://localhost/dir/')), pattern)).toBeNull();
     });
     it('captures two entries', () => {
-
       const match = routeMatch(urlRoute(new URL('http://localhost/dir/file')), pattern);
 
       match?.(captor);

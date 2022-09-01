@@ -7,7 +7,6 @@ import { rmatchDirSep } from './rmatch-dir-sep';
 import { rmatchName } from './rmatch-name';
 
 describe('rcaptureDirs', () => {
-
   let captor: RouteCaptor<URLRoute>;
 
   beforeEach(() => {
@@ -15,11 +14,9 @@ describe('rcaptureDirs', () => {
   });
 
   describe('{capture:**}', () => {
-
     const pattern = [rcaptureDirs('out')];
 
     it('does not capture empty route', () => {
-
       const match = routeMatch(urlRoute(new URL('http://localhost')), pattern);
 
       expect(match).toBeTruthy();
@@ -39,11 +36,9 @@ describe('rcaptureDirs', () => {
   });
 
   describe('{capture:**}<name>', () => {
-
     const pattern = [rcaptureDirs('out'), rmatchName('test')];
 
     it('does not capture named file', () => {
-
       const match = routeMatch(urlRoute(new URL('http://localhost/test')), pattern);
 
       expect(match).toBeTruthy();
@@ -51,7 +46,6 @@ describe('rcaptureDirs', () => {
       expect(captor).not.toHaveBeenCalled();
     });
     it('does not capture named dir', () => {
-
       const match = routeMatch(urlRoute(new URL('http://localhost/test/')), pattern);
 
       expect(match).toBeTruthy();
@@ -71,11 +65,9 @@ describe('rcaptureDirs', () => {
   });
 
   describe('{capture:**}/<name>', () => {
-
     const pattern = [rcaptureDirs('out'), rmatchDirSep, rmatchName('test')];
 
     it('does not capture named file', () => {
-
       const match = routeMatch(urlRoute(new URL('http://localhost/test')), pattern);
 
       expect(match).toBeTruthy();
@@ -83,7 +75,6 @@ describe('rcaptureDirs', () => {
       expect(captor).not.toHaveBeenCalled();
     });
     it('does not capture named dir', () => {
-
       const match = routeMatch(urlRoute(new URL('http://localhost/test/')), pattern);
 
       expect(match).toBeTruthy();
@@ -103,11 +94,9 @@ describe('rcaptureDirs', () => {
   });
 
   describe('{capture:/**}', () => {
-
     const pattern = [rmatchName('test'), rmatchDirSep, rcaptureDirs('out')];
 
     it('does not capture dir itself', () => {
-
       const match = routeMatch(urlRoute(new URL('http://localhost/test/')), pattern);
 
       expect(match).toBeTruthy();

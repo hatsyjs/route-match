@@ -12,13 +12,7 @@ import type { RouteMatcher } from '../route-matcher';
  * When matches at the end of the entry name, moves to the next entry.
  */
 export const rmatchDirSep: RouteMatcher = {
-
-  test({
-    route,
-    entry: { name },
-    entryIndex,
-    nameOffset,
-  }): RouteMatcher.Match | undefined {
+  test({ route, entry: { name }, entryIndex, nameOffset }): RouteMatcher.Match | undefined {
     if (nameOffset >= name.length) {
       // The end of entry name.
       // Move to the next entry.
@@ -39,22 +33,23 @@ export const rmatchDirSep: RouteMatcher = {
   },
 
   find(context) {
-
-    const { route, entry: { name }, entryIndex, pattern, matcherIndex } = context;
+    const {
+      route,
+      entry: { name },
+      entryIndex,
+      pattern,
+      matcherIndex,
+    } = context;
     const fromEntry = entryIndex + 1;
 
     if (!route.dir && fromEntry >= route.path.length) {
       return;
     }
 
-    const match = routeMatch(
-        route,
-        pattern,
-        {
-          fromEntry,
-          fromMatcher: matcherIndex + 1,
-        },
-    );
+    const match = routeMatch(route, pattern, {
+      fromEntry,
+      fromMatcher: matcherIndex + 1,
+    });
 
     if (!match) {
       return;
@@ -64,5 +59,4 @@ export const rmatchDirSep: RouteMatcher = {
   },
 
   tail: valueProvider(true),
-
 };

@@ -13,19 +13,19 @@ import type { RouteMatcher } from './route-matcher';
  * @typeParam TRoute - A type of matching route.
  */
 export type RouteCaptor<TRoute extends PathRoute = PathRoute> =
-/**
- * @typeParam TKind - A type of the capture kind. Corresponds to method names of {@link RouteCaptorSignatureMap}.
- *
- * @param type - A kind of the capture.
- * @param key - The key of the capture. Either named capture name, or anonymous match index.
- * @param capture - The capture to report.
- */
-    <TKind extends keyof RouteCaptorSignatureMap<TRoute>>(
-        this: void,
-        kind: TKind,
-        key: string | number,
-        ...capture: Parameters<RouteCaptorSignatureMap<TRoute>[TKind]>
-    ) => void;
+  /**
+   * @typeParam TKind - A type of the capture kind. Corresponds to method names of {@link RouteCaptorSignatureMap}.
+   *
+   * @param type - A kind of the capture.
+   * @param key - The key of the capture. Either named capture name, or anonymous match index.
+   * @param capture - The capture to report.
+   */
+  <TKind extends keyof RouteCaptorSignatureMap<TRoute>>(
+    this: void,
+    kind: TKind,
+    key: string | number,
+    ...capture: Parameters<RouteCaptorSignatureMap<TRoute>[TKind]>
+  ) => void;
 
 /**
  * A map of the {@link RouteCaptor capture receiver} signatures depending on their kinds.
@@ -35,7 +35,6 @@ export type RouteCaptor<TRoute extends PathRoute = PathRoute> =
  * @typeParam TRoute - A type of matching route.
  */
 export interface RouteCaptorSignatureMap<TRoute extends PathRoute> {
-
   /**
    * Arbitrary route capture.
    *
@@ -68,5 +67,4 @@ export interface RouteCaptorSignatureMap<TRoute extends PathRoute> {
    * @param context - A context of the capturing matcher.
    */
   regexp(match: RegExpExecArray, context: RouteMatcher.Context<TRoute>): void;
-
 }

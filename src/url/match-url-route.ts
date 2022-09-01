@@ -18,8 +18,8 @@ import { isURL } from './url.impl';
  * @see routeCapture  For route capture mapping rules.
  */
 export function matchURLRoute(
-    route: URLRoute | URL | string,
-    pattern: RoutePattern<URLRoute> | string,
+  route: URLRoute | URL | string,
+  pattern: RoutePattern<URLRoute> | string,
 ): Record<string, string> | null {
   if (typeof route === 'string' || isURL(route)) {
     route = urlRoute(route);

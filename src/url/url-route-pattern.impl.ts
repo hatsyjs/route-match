@@ -8,8 +8,8 @@ import type { URLRoute } from './url-route';
  * @internal
  */
 export function parseURLRoutePattern<TRoute extends URLRoute>(
-    pattern: string,
-    addEntryMatchers: (pattern: string, matchers: RouteMatcher<TRoute>[]) => void,
+  pattern: string,
+  addEntryMatchers: (pattern: string, matchers: RouteMatcher<TRoute>[]) => void,
 ): RoutePattern<TRoute> {
   if (!pattern) {
     return [];

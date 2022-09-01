@@ -10,18 +10,15 @@ import { rmatchMatrixAttr } from './rmatch-matrix-attr';
  * @internal
  */
 function addMatrixEntryMatchers(pattern: string, matchers: RouteMatcher<MatrixRoute>[]): void {
-
   const parts = pattern.split(';');
 
   addPathEntryMatchers(parts[0], matchers);
   for (let i = 1; i < parts.length; ++i) {
-
     const [name, value] = parts[i].split('=', 2);
 
-    matchers.push(rmatchMatrixAttr(
-        decodeURLComponent(name),
-        value ? decodeURLComponent(value) : undefined,
-    ));
+    matchers.push(
+      rmatchMatrixAttr(decodeURLComponent(name), value ? decodeURLComponent(value) : undefined),
+    );
   }
 }
 

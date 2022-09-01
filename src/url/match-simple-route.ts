@@ -19,8 +19,8 @@ import { isURL } from './url.impl';
  * @see routeCapture  For route capture mapping rules.
  */
 export function matchSimpleRoute(
-    route: PathRoute | URL | string,
-    pattern: RoutePattern | string,
+  route: PathRoute | URL | string,
+  pattern: RoutePattern | string,
 ): Record<string, string> | null {
   if (typeof route === 'string' || isURL(route)) {
     route = urlRoute(route);

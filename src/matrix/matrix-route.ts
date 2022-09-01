@@ -7,12 +7,10 @@ import { parseURLRoute } from '../url/url-route.impl';
  * A route representing [matrix URL](https://www.w3.org/DesignIssues/MatrixURIs.html).
  */
 export interface MatrixRoute extends URLRoute {
-
   /**
    * A path split onto matrix entries.
    */
   readonly path: readonly MatrixEntry[];
-
 }
 
 /**
@@ -21,28 +19,23 @@ export interface MatrixRoute extends URLRoute {
  * Extends file or directory with matrix attributes.
  */
 export interface MatrixEntry extends URLEntry {
-
   /**
    * Matrix attributes represented by URL search parameters.
    *
    * Intended to be immutable.
    */
   readonly attrs: URLSearchParams;
-
 }
 
 /**
  * @internal
  */
 function parseMatrixEntry(raw: string): MatrixEntry {
-
   const parts = raw.split(';');
   const getAttrs = lazyValue(() => {
-
     const attrs = new URLSearchParams();
 
     for (let i = 1; i < parts.length; ++i) {
-
       const [name, value = ''] = parts[i].split('=');
 
       attrs.append(decodeURLComponent(name), decodeURLComponent(value));

@@ -7,10 +7,9 @@ import { simpleRouteMatcher, simpleRouteWildcard } from './simple-route-pattern.
  * @internal
  */
 export function addPathEntryMatchers(pattern: string, matchers: RouteMatcher[]): void {
-
   const simpleMatcher = simpleRouteMatcher(
-      pattern,
-      spec => simpleRouteWildcard(spec) || pathRouteRegExp(spec),
+    pattern,
+    spec => simpleRouteWildcard(spec) || pathRouteRegExp(spec),
   );
 
   if (simpleMatcher) {
@@ -22,40 +21,38 @@ export function addPathEntryMatchers(pattern: string, matchers: RouteMatcher[]):
   let patternOffset = 0;
 
   for (let i = 0; i < pattern.length;) {
-
     const c = pattern[i];
     let matcher: RouteMatcher;
     let nextOffset: number;
 
     switch (c) {
-    case '*':
-      matcher = rmatchAny;
-      nextOffset = i + 1;
+      case '*':
+        matcher = rmatchAny;
+        nextOffset = i + 1;
 
-      break;
-    case '{': {
+        break;
+      case '{': {
+        const specStart = i + 1;
+        const specEnd = pattern.indexOf('}', specStart);
 
-      const specStart = i + 1;
-      const specEnd = pattern.indexOf('}', specStart);
+        if (specEnd < 0) {
+          ++i;
 
-      if (specEnd < 0) {
+          continue;
+        }
+
+        nextOffset = specEnd + 1;
+
+        const spec = pattern.substring(specStart, specEnd);
+
+        matcher = pathRouteRegExp(spec) || pathRouteCapture(spec);
+
+        break;
+      }
+      default:
         ++i;
 
         continue;
-      }
-
-      nextOffset = specEnd + 1;
-
-      const spec = pattern.substring(specStart, specEnd);
-
-      matcher = pathRouteRegExp(spec) || pathRouteCapture(spec);
-
-      break;
-    }
-    default:
-      ++i;
-
-      continue;
     }
 
     if (patternOffset < i) {
@@ -68,9 +65,11 @@ export function addPathEntryMatchers(pattern: string, matchers: RouteMatcher[]):
   }
 
   if (patternOffset < pattern.length) {
-    matchers.push(patternOffset
+    matchers.push(
+      patternOffset
         ? rmatchString(decodeURLComponent(pattern.substr(patternOffset))) // Suffix after last matcher
-        : rmatchName(decodeURLComponent(pattern))); // No matcher recognized
+        : rmatchName(decodeURLComponent(pattern)),
+    ); // No matcher recognized
   }
 }
 
@@ -78,7 +77,6 @@ export function addPathEntryMatchers(pattern: string, matchers: RouteMatcher[]):
  * @internal
  */
 export function pathRouteRegExp(spec: string): RouteMatcher | undefined {
-
   const openParent = spec.indexOf('(');
 
   if (openParent < 0) {

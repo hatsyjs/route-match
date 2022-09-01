@@ -10,10 +10,18 @@ import type { URLRoute } from './url-route';
  * @returns New URL route matcher.
  */
 export function rmatchSearchParam(name: string, value?: string): RouteMatcher<URLRoute> {
-
-  const condition: (position: RouteMatcher.Position<URLRoute>) => boolean = value == null
-      ? ({ route: { url: { searchParams } } }) => searchParams.has(name)
-      : ({ route: { url: { searchParams } } }) => searchParams.getAll(name).includes(value);
+  const condition: (position: RouteMatcher.Position<URLRoute>) => boolean
+    = value == null
+      ? ({
+          route: {
+            url: { searchParams },
+          },
+        }) => searchParams.has(name)
+      : ({
+          route: {
+            url: { searchParams },
+          },
+        }) => searchParams.getAll(name).includes(value);
 
   return {
     test: context => condition(context) && { nameChars: 0 },

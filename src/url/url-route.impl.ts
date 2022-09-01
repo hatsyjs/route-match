@@ -4,17 +4,15 @@ import type { URLEntry, URLRoute } from './url-route';
  * @internal
  */
 export interface ParsedURLRoute<TEntry extends URLEntry> extends URLRoute {
-
   readonly path: readonly TEntry[];
-
 }
 
 /**
  * @internal
  */
 export function parseURLRoute<TEntry extends URLEntry>(
-    url: URL | string,
-    parseEntry: (name: string) => TEntry,
+  url: URL | string,
+  parseEntry: (name: string) => TEntry,
 ): ParsedURLRoute<TEntry> {
   if (typeof url === 'string') {
     url = new URL(url, 'route:/');
@@ -34,7 +32,7 @@ export function parseURLRoute<TEntry extends URLEntry>(
   }
 
   let dir = false;
-  const from = (pathname.length > 1 && pathname.startsWith('/')) ? 1 : 0;
+  const from = pathname.length > 1 && pathname.startsWith('/') ? 1 : 0;
 
   if (pathname.endsWith('/')) {
     dir = true;
@@ -57,9 +55,9 @@ export function parseURLRoute<TEntry extends URLEntry>(
  * @internal
  */
 export function urlRouteSection<TEntry extends URLEntry, TRoute extends ParsedURLRoute<TEntry>>(
-    this: TRoute,
-    from: number,
-    to: number = this.path.length,
+  this: TRoute,
+  from: number,
+  to: number = this.path.length,
 ): TRoute {
   if (from < 0) {
     from = 0;
@@ -103,10 +101,10 @@ export function urlRouteSection<TEntry extends URLEntry, TRoute extends ParsedUR
  * @internal
  */
 function urlRouteSectionToString<TRoute extends URLRoute>(
-    { path, dir }: TRoute,
-    fromEntry: number,
-    toEntry: number,
-    entryToString: (entry: URLEntry) => string = urlRouteEntryToRawString,
+  { path, dir }: TRoute,
+  fromEntry: number,
+  toEntry: number,
+  entryToString: (entry: URLEntry) => string = urlRouteEntryToRawString,
 ): string {
   if (fromEntry >= toEntry) {
     return '';
@@ -115,7 +113,6 @@ function urlRouteSectionToString<TRoute extends URLRoute>(
   let out = '';
 
   for (let i = fromEntry; i < toEntry; ++i) {
-
     const entry = path[i];
 
     if (out) {
@@ -123,7 +120,7 @@ function urlRouteSectionToString<TRoute extends URLRoute>(
     }
     out += entryToString(entry);
   }
-  if (out && dir || toEntry < path.length) {
+  if ((out && dir) || toEntry < path.length) {
     out += '/';
   }
 

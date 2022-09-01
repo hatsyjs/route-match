@@ -17,13 +17,10 @@ import type { RouteMatcher } from '../route-matcher';
  * @see Use {@link rmatchDirs} for anonymous capture.
  */
 export function rcaptureDirs(name?: string): RouteMatcher {
-
   const key = name ?? 0;
 
   return {
-
     test(context): RouteMatcher.Match | undefined {
-
       const { route, nameOffset, pattern, matcherIndex } = context;
 
       if (nameOffset) {
@@ -35,17 +32,11 @@ export function rcaptureDirs(name?: string): RouteMatcher {
       const fromMatcher = matcherIndex + 1;
 
       if (fromMatcher >= pattern.length) {
-
         // This is the last matcher in pattern.
         // Always match.
         return {
           full: true,
-          callback: captor => captor(
-              'dirs',
-              key,
-              path.length,
-              context,
-          ),
+          callback: captor => captor('dirs', key, path.length, context),
         };
       }
 
@@ -54,23 +45,18 @@ export function rcaptureDirs(name?: string): RouteMatcher {
 
       // Find the next entry matching the rest of the pattern.
       while (fromEntry <= path.length) {
-
         const match = routeMatch(route, pattern, { fromEntry, fromMatcher });
 
         if (match) {
           return {
             entries: context.route.path.length,
             full: true,
-            callback: fromEntry > entryIndex // There is something to capture
+            callback:
+              fromEntry > entryIndex // There is something to capture
                 ? captor => {
-                  captor(
-                      'dirs',
-                      key,
-                      fromEntry,
-                      context,
-                  );
-                  match(captor);
-                }
+                    captor('dirs', key, fromEntry, context);
+                    match(captor);
+                  }
                 : match,
           };
         }
@@ -82,6 +68,5 @@ export function rcaptureDirs(name?: string): RouteMatcher {
     },
 
     tail: valueProvider(true),
-
   };
 }

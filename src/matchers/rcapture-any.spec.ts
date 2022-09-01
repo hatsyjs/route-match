@@ -8,7 +8,6 @@ import { rmatchDirSep } from './rmatch-dir-sep';
 import { rmatchString } from './rmatch-string';
 
 describe('rcaptureAny', () => {
-
   let captor: RouteCaptor<URLRoute>;
 
   beforeEach(() => {
@@ -16,7 +15,6 @@ describe('rcaptureAny', () => {
   });
 
   describe('{capture}', () => {
-
     let pattern: RoutePattern;
 
     beforeEach(() => {
@@ -27,14 +25,12 @@ describe('rcaptureAny', () => {
       expect(routeMatch(urlRoute(new URL('http://localhost/')), pattern)).toBeNull();
     });
     it('matches file', () => {
-
       const match = routeMatch(urlRoute(new URL('http://localhost/file')), pattern);
 
       match?.(captor);
       expect(captor).toHaveBeenCalledWith('capture', 'out', 'file', expect.anything());
     });
     it('captures directory', () => {
-
       const match = routeMatch(urlRoute(new URL('http://localhost/dir/')), pattern);
 
       match?.(captor);
@@ -47,7 +43,6 @@ describe('rcaptureAny', () => {
   });
 
   describe('{capture}/*', () => {
-
     let pattern: RoutePattern;
 
     beforeEach(() => {
@@ -55,7 +50,6 @@ describe('rcaptureAny', () => {
     });
 
     it('captures two entries', () => {
-
       const match = routeMatch(urlRoute(new URL('http://localhost/dir/file')), pattern);
 
       match?.(captor);
@@ -66,7 +60,6 @@ describe('rcaptureAny', () => {
   });
 
   describe('*/{capture}', () => {
-
     let pattern: RoutePattern;
 
     beforeEach(() => {
@@ -74,7 +67,6 @@ describe('rcaptureAny', () => {
     });
 
     it('captures two entries', () => {
-
       const match = routeMatch(urlRoute(new URL('http://localhost/dir/file')), pattern);
 
       match?.(captor);
@@ -85,7 +77,6 @@ describe('rcaptureAny', () => {
   });
 
   describe('<string>{capture}', () => {
-
     let pattern: RoutePattern;
 
     beforeEach(() => {
@@ -93,7 +84,6 @@ describe('rcaptureAny', () => {
     });
 
     it('captures file', () => {
-
       const match = routeMatch(urlRoute(new URL('http://localhost/page-1')), pattern);
 
       match?.(captor);
@@ -106,7 +96,6 @@ describe('rcaptureAny', () => {
   });
 
   describe('{capture}<string>', () => {
-
     let pattern: RoutePattern;
 
     beforeEach(() => {
@@ -114,7 +103,6 @@ describe('rcaptureAny', () => {
     });
 
     it('captures file', () => {
-
       const match = routeMatch(urlRoute(new URL('http://localhost/index.html')), pattern);
 
       match?.(captor);

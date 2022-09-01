@@ -11,14 +11,13 @@ import type { RouteMatcher } from '../route-matcher';
  * @see Use {@link rmatchEntry} for anonymous capture.
  */
 export function rcaptureEntry(name?: string): RouteMatcher {
-
   const key = name ?? 0;
 
   return {
     test: context => !context.nameOffset && {
-      callback(captor) {
-        captor('capture', key, context.entry.name, context);
+        callback(captor) {
+          captor('capture', key, context.entry.name, context);
+        },
       },
-    },
   };
 }
