@@ -36,8 +36,8 @@ describe('classifyRouteCapture', () => {
     expect(fallback).not.toHaveBeenCalled();
   });
   it('falls back when no classifier method found', () => {
-    const dirs
-      = jest.fn<
+    const dirs =
+      jest.fn<
         (
           key: string | number,
           ...capture: Parameters<RouteCaptorSignatureMap<PathRoute>['dirs']>

@@ -10,8 +10,8 @@ import type { URLRoute } from './url-route';
  * @returns New URL route matcher.
  */
 export function rmatchSearchParam(name: string, value?: string): RouteMatcher<URLRoute> {
-  const condition: (position: RouteMatcher.Position<URLRoute>) => boolean
-    = value == null
+  const condition: (position: RouteMatcher.Position<URLRoute>) => boolean =
+    value == null
       ? ({
           route: {
             url: { searchParams },

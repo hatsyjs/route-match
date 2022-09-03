@@ -10,8 +10,8 @@ import type { MatrixRoute } from './matrix-route';
  * @returns New URL route matcher.
  */
 export function rmatchMatrixAttr(name: string, value?: string): RouteMatcher<MatrixRoute> {
-  const condition: (attrs: URLSearchParams) => boolean
-    = value == null ? attrs => attrs.has(name) : attrs => attrs.getAll(name).includes(value);
+  const condition: (attrs: URLSearchParams) => boolean =
+    value == null ? attrs => attrs.has(name) : attrs => attrs.getAll(name).includes(value);
 
   return {
     test: ({ entry: { attrs } }) => condition(attrs) && { nameChars: 0 },
