@@ -1,6 +1,7 @@
 import { beforeEach, describe, expect, it, jest } from '@jest/globals';
 import { RouteCaptor } from '../route-captor';
 import { routeMatch } from '../route-match';
+import { RouteMatcher } from '../route-matcher.js';
 import { URLRoute, urlRoute } from '../url';
 import { rcaptureEntry } from './rcapture-entry';
 
@@ -21,14 +22,24 @@ describe('rcaptureEntry', () => {
       const match = routeMatch(urlRoute(new URL('http://localhost/file')), pattern);
 
       match?.(captor);
-      expect(captor).toHaveBeenCalledWith('capture', 'out', 'file', expect.anything());
+      expect(captor).toHaveBeenCalledWith(
+        'capture',
+        'out',
+        'file',
+        expect.anything() as unknown as RouteMatcher.Context<URLRoute>,
+      );
       expect(captor).toHaveBeenCalledTimes(1);
     });
     it('captures dir', () => {
       const match = routeMatch(urlRoute(new URL('http://localhost/dir/')), pattern);
 
       match?.(captor);
-      expect(captor).toHaveBeenCalledWith('capture', 'out', 'dir', expect.anything());
+      expect(captor).toHaveBeenCalledWith(
+        'capture',
+        'out',
+        'dir',
+        expect.anything() as unknown as RouteMatcher.Context<URLRoute>,
+      );
       expect(captor).toHaveBeenCalledTimes(1);
     });
     it('does not match too long path', () => {

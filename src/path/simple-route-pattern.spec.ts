@@ -1,6 +1,7 @@
 import { beforeEach, describe, expect, it, jest } from '@jest/globals';
 import { RouteCaptor } from '../route-captor';
 import { routeMatch } from '../route-match';
+import { RouteMatcher } from '../route-matcher.js';
 import { URLRoute, urlRoute } from '../url';
 import { simpleRoutePattern } from './simple-route-pattern';
 
@@ -35,7 +36,12 @@ describe('simpleRoutePattern', () => {
 
       expect(match).toBeTruthy();
       match?.(captor);
-      expect(captor).toHaveBeenCalledWith('dirs', 'out', 3, expect.anything());
+      expect(captor).toHaveBeenCalledWith(
+        'dirs',
+        'out',
+        3,
+        expect.anything() as unknown as RouteMatcher.Context<URLRoute>,
+      );
     });
   });
 
@@ -48,7 +54,12 @@ describe('simpleRoutePattern', () => {
 
       expect(match).toBeTruthy();
       match?.(captor);
-      expect(captor).toHaveBeenCalledWith('dirs', 1, 3, expect.anything());
+      expect(captor).toHaveBeenCalledWith(
+        'dirs',
+        1,
+        3,
+        expect.anything() as unknown as RouteMatcher.Context<URLRoute>,
+      );
       expect(captor).toHaveBeenCalledTimes(1);
     });
   });
@@ -70,7 +81,12 @@ describe('simpleRoutePattern', () => {
 
       expect(match).toBeTruthy();
       match?.(captor);
-      expect(captor).toHaveBeenCalledWith('capture', 'out', 'dir', expect.anything());
+      expect(captor).toHaveBeenCalledWith(
+        'capture',
+        'out',
+        'dir',
+        expect.anything() as unknown as RouteMatcher.Context<URLRoute>,
+      );
     });
   });
 
@@ -83,7 +99,12 @@ describe('simpleRoutePattern', () => {
 
       expect(match).toBeTruthy();
       match?.(captor);
-      expect(captor).toHaveBeenCalledWith('capture', 'out', 'dir', expect.anything());
+      expect(captor).toHaveBeenCalledWith(
+        'capture',
+        'out',
+        'dir',
+        expect.anything() as unknown as RouteMatcher.Context<URLRoute>,
+      );
     });
   });
 
@@ -96,7 +117,12 @@ describe('simpleRoutePattern', () => {
 
       expect(match).toBeTruthy();
       match?.(captor);
-      expect(captor).toHaveBeenCalledWith('capture', 1, 'dir', expect.anything());
+      expect(captor).toHaveBeenCalledWith(
+        'capture',
+        1,
+        'dir',
+        expect.anything() as unknown as RouteMatcher.Context<URLRoute>,
+      );
       expect(captor).toHaveBeenCalledTimes(1);
     });
   });
@@ -109,7 +135,12 @@ describe('simpleRoutePattern', () => {
       );
 
       match?.(captor);
-      expect(captor).toHaveBeenCalledWith('capture', 1, 'test', expect.anything());
+      expect(captor).toHaveBeenCalledWith(
+        'capture',
+        1,
+        'test',
+        expect.anything() as unknown as RouteMatcher.Context<URLRoute>,
+      );
       expect(captor).toHaveBeenCalledTimes(1);
     });
   });
@@ -123,7 +154,12 @@ describe('simpleRoutePattern', () => {
 
       expect(match).toBeTruthy();
       match?.(captor);
-      expect(captor).toHaveBeenCalledWith('capture', ')(', 'test', expect.anything());
+      expect(captor).toHaveBeenCalledWith(
+        'capture',
+        ')(',
+        'test',
+        expect.anything() as unknown as RouteMatcher.Context<URLRoute>,
+      );
     });
   });
 

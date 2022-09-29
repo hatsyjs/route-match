@@ -1,6 +1,7 @@
 import { beforeEach, describe, expect, it, jest } from '@jest/globals';
 import { RouteCaptor } from '../route-captor';
 import { routeMatch } from '../route-match';
+import { RouteMatcher } from '../route-matcher.js';
 import { URLRoute, urlRoute } from '../url';
 import { rcaptureDirs } from './rcapture-dirs';
 import { rmatchDirSep } from './rmatch-dir-sep';
@@ -25,12 +26,22 @@ describe('rcaptureDirs', () => {
     });
     it('captures file', () => {
       routeMatch(urlRoute(new URL('http://localhost/file.html')), pattern)?.(captor);
-      expect(captor).toHaveBeenCalledWith('dirs', 'out', 1, expect.anything());
+      expect(captor).toHaveBeenCalledWith(
+        'dirs',
+        'out',
+        1,
+        expect.anything() as unknown as RouteMatcher.Context<URLRoute>,
+      );
       expect(captor).toHaveBeenCalledTimes(1);
     });
     it('captures any route', () => {
       routeMatch(urlRoute(new URL('http://localhost/path/to/file.html')), pattern)?.(captor);
-      expect(captor).toHaveBeenCalledWith('dirs', 'out', 3, expect.anything());
+      expect(captor).toHaveBeenCalledWith(
+        'dirs',
+        'out',
+        3,
+        expect.anything() as unknown as RouteMatcher.Context<URLRoute>,
+      );
       expect(captor).toHaveBeenCalledTimes(1);
     });
   });
@@ -54,12 +65,22 @@ describe('rcaptureDirs', () => {
     });
     it('captures nested file', () => {
       routeMatch(urlRoute(new URL('http://localhost/dir/test')), pattern)?.(captor);
-      expect(captor).toHaveBeenCalledWith('dirs', 'out', 1, expect.anything());
+      expect(captor).toHaveBeenCalledWith(
+        'dirs',
+        'out',
+        1,
+        expect.anything() as unknown as RouteMatcher.Context<URLRoute>,
+      );
       expect(captor).toHaveBeenCalledTimes(1);
     });
     it('captures deeply nested dir', () => {
       routeMatch(urlRoute(new URL('http://localhost/path/to/deep/test/')), pattern)?.(captor);
-      expect(captor).toHaveBeenCalledWith('dirs', 'out', 3, expect.anything());
+      expect(captor).toHaveBeenCalledWith(
+        'dirs',
+        'out',
+        3,
+        expect.anything() as unknown as RouteMatcher.Context<URLRoute>,
+      );
       expect(captor).toHaveBeenCalledTimes(1);
     });
   });
@@ -83,12 +104,22 @@ describe('rcaptureDirs', () => {
     });
     it('captures nested file', () => {
       routeMatch(urlRoute(new URL('http://localhost/dir/test')), pattern)?.(captor);
-      expect(captor).toHaveBeenCalledWith('dirs', 'out', 1, expect.anything());
+      expect(captor).toHaveBeenCalledWith(
+        'dirs',
+        'out',
+        1,
+        expect.anything() as unknown as RouteMatcher.Context<URLRoute>,
+      );
       expect(captor).toHaveBeenCalledTimes(1);
     });
     it('captures deeply nested dir', () => {
       routeMatch(urlRoute(new URL('http://localhost/path/to/deep/test/')), pattern)?.(captor);
-      expect(captor).toHaveBeenCalledWith('dirs', 'out', 3, expect.anything());
+      expect(captor).toHaveBeenCalledWith(
+        'dirs',
+        'out',
+        3,
+        expect.anything() as unknown as RouteMatcher.Context<URLRoute>,
+      );
       expect(captor).toHaveBeenCalledTimes(1);
     });
   });
@@ -105,12 +136,22 @@ describe('rcaptureDirs', () => {
     });
     it('captures nested file', () => {
       routeMatch(urlRoute(new URL('http://localhost/test/file')), pattern)?.(captor);
-      expect(captor).toHaveBeenCalledWith('dirs', 'out', 2, expect.anything());
+      expect(captor).toHaveBeenCalledWith(
+        'dirs',
+        'out',
+        2,
+        expect.anything() as unknown as RouteMatcher.Context<URLRoute>,
+      );
       expect(captor).toHaveBeenCalledTimes(1);
     });
     it('captures nested dir', () => {
       routeMatch(urlRoute(new URL('http://localhost/test/dir/')), pattern)?.(captor);
-      expect(captor).toHaveBeenCalledWith('dirs', 'out', 2, expect.anything());
+      expect(captor).toHaveBeenCalledWith(
+        'dirs',
+        'out',
+        2,
+        expect.anything() as unknown as RouteMatcher.Context<URLRoute>,
+      );
       expect(captor).toHaveBeenCalledTimes(1);
     });
   });

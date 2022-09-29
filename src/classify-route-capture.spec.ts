@@ -5,6 +5,7 @@ import { rcaptureEntry } from './matchers';
 import type { PathRoute } from './path';
 import type { RouteCaptor, RouteCaptorSignatureMap } from './route-captor';
 import { routeMatch } from './route-match';
+import { RouteMatcher } from './route-matcher.js';
 import { urlRoute } from './url';
 
 describe('classifyRouteCapture', () => {
@@ -26,7 +27,11 @@ describe('classifyRouteCapture', () => {
     const match = routeMatch(urlRoute(new URL('route:/file')), pattern);
 
     match?.(classifyRouteCapture({ capture }));
-    expect(capture).toHaveBeenCalledWith('out', 'file', expect.anything());
+    expect(capture).toHaveBeenCalledWith(
+      'out',
+      'file',
+      expect.anything() as unknown as RouteMatcher.Context<PathRoute>,
+    );
     expect(capture).toHaveBeenCalledTimes(1);
   });
   it('does not fall back when capture classified', () => {
@@ -48,7 +53,12 @@ describe('classifyRouteCapture', () => {
 
     match?.(classifyRouteCapture({ dirs }, fallback));
     expect(dirs).not.toHaveBeenCalled();
-    expect(fallback).toHaveBeenCalledWith('capture', 'out', 'file', expect.anything());
+    expect(fallback).toHaveBeenCalledWith(
+      'capture',
+      'out',
+      'file',
+      expect.anything() as unknown as RouteMatcher.Context<PathRoute>,
+    );
     expect(fallback).toHaveBeenCalledTimes(1);
   });
 });

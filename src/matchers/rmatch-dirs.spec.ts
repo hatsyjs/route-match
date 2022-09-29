@@ -1,6 +1,7 @@
 import { beforeEach, describe, expect, it, jest } from '@jest/globals';
 import { RouteCaptor } from '../route-captor';
 import { routeMatch } from '../route-match';
+import { RouteMatcher } from '../route-matcher.js';
 import { URLRoute, urlRoute } from '../url';
 import { rmatchDirSep } from './rmatch-dir-sep';
 import { rmatchDirs } from './rmatch-dirs';
@@ -27,14 +28,24 @@ describe('rmatchDirs', () => {
       const match = routeMatch(urlRoute(new URL('http://localhost/file.html')), pattern);
 
       match?.(captor);
-      expect(captor).toHaveBeenCalledWith('dirs', 1, 1, expect.anything());
+      expect(captor).toHaveBeenCalledWith(
+        'dirs',
+        1,
+        1,
+        expect.anything() as unknown as RouteMatcher.Context<URLRoute>,
+      );
       expect(captor).toHaveBeenCalledTimes(1);
     });
     it('captures any route', () => {
       const match = routeMatch(urlRoute(new URL('http://localhost/path/to/file.html')), pattern);
 
       match?.(captor);
-      expect(captor).toHaveBeenCalledWith('dirs', 1, 3, expect.anything());
+      expect(captor).toHaveBeenCalledWith(
+        'dirs',
+        1,
+        3,
+        expect.anything() as unknown as RouteMatcher.Context<URLRoute>,
+      );
       expect(captor).toHaveBeenCalledTimes(1);
     });
     it('is not applicable inside entry', () => {
@@ -71,14 +82,24 @@ describe('rmatchDirs', () => {
       const match = routeMatch(urlRoute(new URL('http://localhost/dir/test')), pattern);
 
       match?.(captor);
-      expect(captor).toHaveBeenCalledWith('dirs', 1, 1, expect.anything());
+      expect(captor).toHaveBeenCalledWith(
+        'dirs',
+        1,
+        1,
+        expect.anything() as unknown as RouteMatcher.Context<URLRoute>,
+      );
       expect(captor).toHaveBeenCalledTimes(1);
     });
     it('captures deeply nested dir', () => {
       const match = routeMatch(urlRoute(new URL('http://localhost/path/to/deep/test/')), pattern);
 
       match?.(captor);
-      expect(captor).toHaveBeenCalledWith('dirs', 1, 3, expect.anything());
+      expect(captor).toHaveBeenCalledWith(
+        'dirs',
+        1,
+        3,
+        expect.anything() as unknown as RouteMatcher.Context<URLRoute>,
+      );
       expect(captor).toHaveBeenCalledTimes(1);
     });
   });

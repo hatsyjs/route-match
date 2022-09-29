@@ -1,6 +1,7 @@
 import { beforeEach, describe, expect, it, jest } from '@jest/globals';
 import { RouteCaptor } from '../route-captor';
 import { routeMatch } from '../route-match';
+import { RouteMatcher } from '../route-matcher.js';
 import { MatrixRoute, matrixRoute } from './matrix-route';
 import { matrixRoutePattern } from './matrix-route-pattern';
 
@@ -21,7 +22,12 @@ describe('matrixRoutePattern', () => {
       );
 
       match?.(captor);
-      expect(captor).toHaveBeenCalledWith('capture', 1, 'dir', expect.anything());
+      expect(captor).toHaveBeenCalledWith(
+        'capture',
+        1,
+        'dir',
+        expect.anything() as unknown as RouteMatcher.Context<MatrixRoute>,
+      );
       expect(captor).toHaveBeenCalledTimes(1);
     });
     it('does not match file attributes', () => {
@@ -41,7 +47,12 @@ describe('matrixRoutePattern', () => {
       );
 
       match?.(captor);
-      expect(captor).toHaveBeenCalledWith('capture', 1, 'dir', expect.anything());
+      expect(captor).toHaveBeenCalledWith(
+        'capture',
+        1,
+        'dir',
+        expect.anything() as unknown as RouteMatcher.Context<MatrixRoute>,
+      );
       expect(captor).toHaveBeenCalledTimes(1);
     });
     it('does not match file attributes', () => {
