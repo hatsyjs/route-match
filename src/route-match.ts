@@ -30,7 +30,7 @@ export namespace RouteMatch {
    */
   export interface Options {
     /**
-     * The index of the {@link entry first entry} within the route path to match.
+     * The index of the first entry within the route path to match.
      *
      * @default `0`
      */
