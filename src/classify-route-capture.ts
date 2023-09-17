@@ -1,6 +1,6 @@
 import { noop } from '@proc7ts/primitives';
-import type { PathRoute } from './path';
-import type { RouteCaptor, RouteCaptorSignatureMap } from './route-captor';
+import type { RouteCaptor, RouteCaptorSignatureMap } from './route-captor.js';
+import { PathRoute } from './path/path-route.js';
 
 /**
  * Route capture classifier.

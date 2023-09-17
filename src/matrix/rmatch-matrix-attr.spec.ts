@@ -1,8 +1,10 @@
 import { describe, expect, it } from '@jest/globals';
-import { rmatchDirSep, rmatchEntry, rmatchName } from '../matchers';
-import { routeMatch } from '../route-match';
-import { matrixRoute } from './matrix-route';
-import { rmatchMatrixAttr } from './rmatch-matrix-attr';
+import { routeMatch } from '../route-match.js';
+import { matrixRoute } from './matrix-route.js';
+import { rmatchMatrixAttr } from './rmatch-matrix-attr.js';
+import { rmatchEntry } from '../matchers/rmatch-entry.js';
+import { rmatchDirSep } from '../matchers/rmatch-dir-sep.js';
+import { rmatchName } from '../matchers/rmatch-name.js';
 
 describe('rmatchMatrixAttr', () => {
   describe('*;param', () => {
@@ -62,7 +64,7 @@ describe('rmatchMatrixAttr', () => {
         routeMatch(matrixRoute(new URL('http://localhost/dir;param=value/')), pattern),
       ).toBeNull();
     });
-    it('matches when the rignt entry has attribute', () => {
+    it('matches when the right entry has attribute', () => {
       expect(
         routeMatch(matrixRoute(new URL('http://localhost/dir/;param=value')), pattern),
       ).toBeTruthy();

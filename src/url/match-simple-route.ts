@@ -1,10 +1,9 @@
-import type { PathRoute } from '../path';
-import { simpleRoutePattern } from '../path';
-import { routeCapture } from '../route-capture';
-import type { RoutePattern } from '../route-match';
-import { routeMatch } from '../route-match';
-import { urlRoute } from './url-route';
-import { isURL } from './url.impl';
+import { PathRoute } from '../path/path-route.js';
+import { simpleRoutePattern } from '../path/simple-route-pattern.js';
+import { routeCapture } from '../route-capture.js';
+import { RoutePattern, routeMatch } from '../route-match.js';
+import { urlRoute } from './url-route.js';
+import { isURL } from './url.impl.js';
 
 /**
  * Checks whether the given route matches {@link simpleRoutePattern simple pattern}.

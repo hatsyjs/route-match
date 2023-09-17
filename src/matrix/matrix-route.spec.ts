@@ -1,5 +1,5 @@
 import { describe, expect, it } from '@jest/globals';
-import { matrixRoute } from './matrix-route';
+import { matrixRoute } from './matrix-route.js';
 
 describe('matrixRoute', () => {
   it('has attributes', () => {

@@ -1,8 +1,8 @@
 import { describe, expect, it } from '@jest/globals';
-import { rcaptureEntry } from '../matchers';
-import { matchMatrixRoute } from './match-matrix-route';
-import { matrixRoute } from './matrix-route';
-import { rmatchMatrixAttr } from './rmatch-matrix-attr';
+import { matchMatrixRoute } from './match-matrix-route.js';
+import { matrixRoute } from './matrix-route.js';
+import { rmatchMatrixAttr } from './rmatch-matrix-attr.js';
+import { rcaptureEntry } from '../matchers/rcapture-entry.js';
 
 describe('matchMatrixRoute', () => {
   it('returns `null` when route doe not match', () => {

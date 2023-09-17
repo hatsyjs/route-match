@@ -1,10 +1,10 @@
 import { describe, expect, it } from '@jest/globals';
-import { routeMatch } from '../route-match';
-import { urlRoute } from '../url';
-import { rmatchAny } from './rmatch-any';
-import { rmatchDirSep } from './rmatch-dir-sep';
-import { rmatchName } from './rmatch-name';
-import { rmatchString } from './rmatch-string';
+import { routeMatch } from '../route-match.js';
+import { urlRoute } from '../url/url-route.js';
+import { rmatchAny } from './rmatch-any.js';
+import { rmatchDirSep } from './rmatch-dir-sep.js';
+import { rmatchName } from './rmatch-name.js';
+import { rmatchString } from './rmatch-string.js';
 
 describe('rmatchDirSep', () => {
   describe('/', () => {

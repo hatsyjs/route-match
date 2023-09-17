@@ -1,6 +1,6 @@
-import type { PathRoute } from './path';
-import type { RouteCaptor } from './route-captor';
-import type { RouteMatcher } from './route-matcher';
+import { PathRoute } from './path/path-route.js';
+import type { RouteCaptor } from './route-captor.js';
+import type { RouteMatcher } from './route-matcher.js';
 
 /**
  * A successful {@link routeMatch match of the route} against {@link RoutePattern pattern}.

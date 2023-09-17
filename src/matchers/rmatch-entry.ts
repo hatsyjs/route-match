@@ -1,5 +1,5 @@
-import type { RouteMatcher } from '../route-matcher';
-import { rcaptureEntry } from './rcapture-entry';
+import type { RouteMatcher } from '../route-matcher.js';
+import { rcaptureEntry } from './rcapture-entry.js';
 
 /**
  * Route matcher that matches any route entry.

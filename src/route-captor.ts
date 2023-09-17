@@ -1,5 +1,5 @@
-import type { PathRoute } from './path';
-import type { RouteMatcher } from './route-matcher';
+import { PathRoute } from './path/path-route.js';
+import type { RouteMatcher } from './route-matcher.js';
 
 /**
  * Route capture receiver signature.

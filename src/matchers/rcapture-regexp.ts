@@ -1,7 +1,7 @@
-import type { RouteCaptor } from '../route-captor';
-import type { RouteMatch } from '../route-match';
-import { routeMatch } from '../route-match';
-import type { RouteMatcher } from '../route-matcher';
+import type { RouteCaptor } from '../route-captor.js';
+import type { RouteMatch } from '../route-match.js';
+import { routeMatch } from '../route-match.js';
+import type { RouteMatcher } from '../route-matcher.js';
 
 const removeGlobalAndStickyFlagsPattern = /[gy]/;
 

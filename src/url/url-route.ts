@@ -1,6 +1,6 @@
-import { decodeURLComponent } from '@frontmeans/httongue';
-import type { PathEntry, PathRoute } from '../path';
-import { parseURLRoute } from './url-route.impl';
+import { decodeURISearchPart } from 'httongue';
+import { PathEntry, PathRoute } from '../path/path-route.js';
+import { parseURLRoute } from './url-route.impl.js';
 
 /**
  * A route representing an URL.
@@ -71,7 +71,7 @@ export interface URLEntry extends PathEntry {
  * @internal
  */
 function parseURLEntry(raw: string): URLEntry {
-  return { name: decodeURLComponent(raw), raw, rawName: raw };
+  return { name: decodeURISearchPart(raw), raw, rawName: raw };
 }
 
 /**

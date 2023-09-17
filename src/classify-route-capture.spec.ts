@@ -1,12 +1,12 @@
 import { beforeEach, describe, expect, it, jest } from '@jest/globals';
 import type { Mock } from 'jest-mock';
-import { classifyRouteCapture } from './classify-route-capture';
-import { rcaptureEntry } from './matchers';
-import type { PathRoute } from './path';
-import type { RouteCaptor, RouteCaptorSignatureMap } from './route-captor';
-import { routeMatch } from './route-match';
+import { classifyRouteCapture } from './classify-route-capture.js';
+import type { RouteCaptor, RouteCaptorSignatureMap } from './route-captor.js';
+import { routeMatch } from './route-match.js';
 import { RouteMatcher } from './route-matcher.js';
-import { urlRoute } from './url';
+import { rcaptureEntry } from './matchers/rcapture-entry.js';
+import { PathRoute } from './path/path-route.js';
+import { urlRoute } from './url/url-route.js';
 
 describe('classifyRouteCapture', () => {
   const pattern = [rcaptureEntry('out')];

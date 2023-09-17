@@ -1,4 +1,4 @@
-import type { URLEntry, URLRoute } from './url-route';
+import type { URLEntry, URLRoute } from './url-route.js';
 
 /**
  * @internal

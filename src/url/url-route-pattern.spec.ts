@@ -1,9 +1,9 @@
 import { beforeEach, describe, expect, it, jest } from '@jest/globals';
 import { Mock } from 'jest-mock';
-import { RouteCaptor } from '../route-captor';
-import { routeMatch } from '../route-match';
-import { URLRoute, urlRoute } from './url-route';
-import { urlRoutePattern } from './url-route-pattern';
+import { RouteCaptor } from '../route-captor.js';
+import { routeMatch } from '../route-match.js';
+import { URLRoute, urlRoute } from './url-route.js';
+import { urlRoutePattern } from './url-route-pattern.js';
 
 describe('urlRoutePattern', () => {
   let captor: RouteCaptor<URLRoute> & Mock<(...args: any[]) => void>;

@@ -1,4 +1,4 @@
-import type { RouteMatcher } from '../route-matcher';
+import type { RouteMatcher } from '../route-matcher.js';
 
 /**
  * Builds a route matcher that matches the entry with the given name.

@@ -1,5 +1,5 @@
-import type { RouteMatcher } from '../route-matcher';
-import { rcaptureDirs } from './rcapture-dirs';
+import type { RouteMatcher } from '../route-matcher.js';
+import { rcaptureDirs } from './rcapture-dirs.js';
 
 /**
  * Route matcher that matches any number of directories, including none.

@@ -1,7 +1,7 @@
-import { decodeURLComponent } from '@frontmeans/httongue';
+import { decodeURISearchPart } from 'httongue';
 import { lazyValue } from '@proc7ts/primitives';
-import type { URLEntry, URLRoute } from '../url';
-import { parseURLRoute } from '../url/url-route.impl';
+import type { URLEntry, URLRoute } from '../url/url-route.js';
+import { parseURLRoute } from '../url/url-route.impl.js';
 
 /**
  * A route representing [matrix URL](https://www.w3.org/DesignIssues/MatrixURIs.html).
@@ -38,14 +38,14 @@ function parseMatrixEntry(raw: string): MatrixEntry {
     for (let i = 1; i < parts.length; ++i) {
       const [name, value = ''] = parts[i].split('=');
 
-      attrs.append(decodeURLComponent(name), decodeURLComponent(value));
+      attrs.append(decodeURISearchPart(name), decodeURISearchPart(value));
     }
 
     return attrs;
   });
 
   return {
-    name: decodeURLComponent(parts[0]),
+    name: decodeURISearchPart(parts[0]),
     raw: raw,
     rawName: parts[0],
     get attrs() {

@@ -1,5 +1,6 @@
 {
-  "entryPoints": ["src/index.ts"],
+  "entryPoints": ["src/mod.ts"],
   "name": "Route Match",
-  "out": "./target/typedoc"
+  "out": "./target/typedoc",
+  "sort": ["static-first", "visibility", "enum-value-ascending", "alphabetical", "kind"]
 }

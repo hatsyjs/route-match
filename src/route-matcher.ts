@@ -1,5 +1,5 @@
-import type { PathRoute } from './path';
-import type { RouteMatch, RoutePattern } from './route-match';
+import { PathRoute } from './path/path-route.js';
+import type { RouteMatch, RoutePattern } from './route-match.js';
 
 /**
  * Route fragment matcher.

@@ -1,9 +1,9 @@
 import { beforeEach, describe, expect, it, jest } from '@jest/globals';
-import { RouteCaptor } from '../route-captor';
-import { routeMatch } from '../route-match';
+import { RouteCaptor } from '../route-captor.js';
+import { routeMatch } from '../route-match.js';
 import { RouteMatcher } from '../route-matcher.js';
-import { MatrixRoute, matrixRoute } from './matrix-route';
-import { matrixRoutePattern } from './matrix-route-pattern';
+import { MatrixRoute, matrixRoute } from './matrix-route.js';
+import { matrixRoutePattern } from './matrix-route-pattern.js';
 
 describe('matrixRoutePattern', () => {
   let captor: RouteCaptor<MatrixRoute>;

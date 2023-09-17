@@ -1,6 +1,6 @@
-import type { RouteMatch } from '../route-match';
-import { routeMatch } from '../route-match';
-import type { RouteMatcher } from '../route-matcher';
+import type { RouteMatch } from '../route-match.js';
+import { routeMatch } from '../route-match.js';
+import type { RouteMatcher } from '../route-matcher.js';
 
 /**
  * Builds a route matcher that matches if part of the entry name equals to the expected string.

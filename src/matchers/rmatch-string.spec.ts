@@ -1,8 +1,8 @@
 import { describe, expect, it } from '@jest/globals';
-import { routeMatch, RoutePattern } from '../route-match';
-import { urlRoute } from '../url';
-import { rmatchAny } from './rmatch-any';
-import { rmatchString } from './rmatch-string';
+import { routeMatch, RoutePattern } from '../route-match.js';
+import { urlRoute } from '../url/url-route.js';
+import { rmatchAny } from './rmatch-any.js';
+import { rmatchString } from './rmatch-string.js';
 
 describe('rmatchString', () => {
   describe('<string>', () => {

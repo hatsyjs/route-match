@@ -1,8 +1,9 @@
-import { decodeURLComponent } from '@frontmeans/httongue';
-import { rmatchDirSep, rmatchName } from '../matchers';
-import type { RoutePattern } from '../route-match';
-import type { RouteMatcher } from '../route-matcher';
-import { simpleRouteMatcher } from './simple-route-pattern.impl';
+import { decodeURISearchPart } from 'httongue';
+import { rmatchDirSep } from '../matchers/rmatch-dir-sep.js';
+import { rmatchName } from '../matchers/rmatch-name.js';
+import type { RoutePattern } from '../route-match.js';
+import type { RouteMatcher } from '../route-matcher.js';
+import { simpleRouteMatcher } from './simple-route-pattern.impl.js';
 
 /**
  * Parses simple route pattern.
@@ -57,7 +58,7 @@ export function simpleRoutePattern(pattern: string): RoutePattern {
     if (partMatcher) {
       result.push(partMatcher);
     } else {
-      result.push(rmatchName(decodeURLComponent(part)));
+      result.push(rmatchName(decodeURISearchPart(part)));
     }
   }
 

@@ -1,5 +1,5 @@
-import { classifyRouteCapture } from './classify-route-capture';
-import type { RouteMatch } from './route-match';
+import { classifyRouteCapture } from './classify-route-capture.js';
+import type { RouteMatch } from './route-match.js';
 
 /**
  * Extracts captured fragments from the route match.

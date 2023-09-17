@@ -1,8 +1,8 @@
-import { rmatchDirSep } from '../matchers';
-import type { RoutePattern } from '../route-match';
-import type { RouteMatcher } from '../route-matcher';
-import { rmatchSearchParam } from './rmatch-search-param';
-import type { URLRoute } from './url-route';
+import { rmatchDirSep } from '../matchers/rmatch-dir-sep.js';
+import type { RoutePattern } from '../route-match.js';
+import type { RouteMatcher } from '../route-matcher.js';
+import { rmatchSearchParam } from './rmatch-search-param.js';
+import type { URLRoute } from './url-route.js';
 
 /**
  * @internal
