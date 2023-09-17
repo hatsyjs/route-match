@@ -1,7 +1,7 @@
 import { describe, expect, it } from '@jest/globals';
-import { routeMatch } from '../route-match';
-import { urlRoute } from '../url';
-import { rmatchName } from './rmatch-name';
+import { routeMatch } from '../route-match.js';
+import { urlRoute } from '../url/url-route.js';
+import { rmatchName } from './rmatch-name.js';
 
 describe('rmatchName', () => {
   describe('<name>', () => {

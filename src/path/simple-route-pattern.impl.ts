@@ -1,6 +1,9 @@
-import { decodeURLComponent } from '@frontmeans/httongue';
-import { rcaptureDirs, rcaptureEntry, rmatchDirs, rmatchEntry } from '../matchers';
-import type { RouteMatcher } from '../route-matcher';
+import { decodeURISearchPart } from 'httongue';
+import type { RouteMatcher } from '../route-matcher.js';
+import { rmatchEntry } from '../matchers/rmatch-entry.js';
+import { rmatchDirs } from '../matchers/rmatch-dirs.js';
+import { rcaptureDirs } from '../matchers/rcapture-dirs.js';
+import { rcaptureEntry } from '../matchers/rcapture-entry.js';
 
 /**
  * @internal
@@ -16,7 +19,7 @@ export function simpleRouteMatcher(
       return rmatchDirs;
     default:
       if (pattern.startsWith('{') && pattern.indexOf('}') >= pattern.length - 1) {
-        const spec = pattern.substr(1, pattern.length - 2);
+        const spec = pattern.slice(1, pattern.length - 1);
 
         return matcherBySpec(spec) || simpleRouteCapture(spec);
       }
@@ -32,11 +35,11 @@ export function simpleRouteWildcard(spec: string): RouteMatcher | undefined {
   const colonIdx = spec.indexOf(':');
 
   if (colonIdx >= 0) {
-    const capture = decodeURLComponent(spec.substr(0, colonIdx).trim());
-    const arg = spec.substr(colonIdx + 1).trim();
+    const capture = decodeURISearchPart(spec.slice(0, colonIdx).trim());
+    const arg = spec.slice(colonIdx + 1).trim();
 
     if (arg === '**') {
-      return capture ? rcaptureDirs(decodeURLComponent(capture)) : rmatchDirs;
+      return capture ? rcaptureDirs(decodeURISearchPart(capture)) : rmatchDirs;
     }
 
     return capture ? rcaptureEntry(capture) : rmatchEntry;
@@ -51,5 +54,5 @@ export function simpleRouteWildcard(spec: string): RouteMatcher | undefined {
 function simpleRouteCapture(spec: string): RouteMatcher {
   spec = spec.trim();
 
-  return spec ? rcaptureEntry(decodeURLComponent(spec)) : rmatchEntry;
+  return spec ? rcaptureEntry(decodeURISearchPart(spec)) : rmatchEntry;
 }

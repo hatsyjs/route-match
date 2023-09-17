@@ -1,6 +1,6 @@
 import { valueProvider } from '@proc7ts/primitives';
-import { routeMatch } from '../route-match';
-import type { RouteMatcher } from '../route-matcher';
+import { routeMatch } from '../route-match.js';
+import type { RouteMatcher } from '../route-matcher.js';
 
 /**
  * Builds a route matcher that matches any number of directories, and captures them.

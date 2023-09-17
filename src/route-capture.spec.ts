@@ -1,16 +1,14 @@
 import { describe, expect, it } from '@jest/globals';
-import {
-  rcaptureDirs,
-  rcaptureEntry,
-  rcaptureRegExp,
-  rmatchDirs,
-  rmatchDirSep,
-  rmatchEntry,
-  rmatchName,
-} from './matchers';
-import { routeCapture } from './route-capture';
-import { routeMatch } from './route-match';
-import { urlRoute } from './url';
+import { rcaptureDirs } from './matchers/rcapture-dirs.js';
+import { rcaptureEntry } from './matchers/rcapture-entry.js';
+import { rcaptureRegExp } from './matchers/rcapture-regexp.js';
+import { rmatchDirSep } from './matchers/rmatch-dir-sep.js';
+import { rmatchDirs } from './matchers/rmatch-dirs.js';
+import { rmatchEntry } from './matchers/rmatch-entry.js';
+import { rmatchName } from './matchers/rmatch-name.js';
+import { routeCapture } from './route-capture.js';
+import { routeMatch } from './route-match.js';
+import { urlRoute } from './url/url-route.js';
 
 describe('routeCapture', () => {
   it('extracts capture under its name', () => {

@@ -1,5 +1,5 @@
-import type { RouteMatcher } from '../route-matcher';
-import type { MatrixRoute } from './matrix-route';
+import type { RouteMatcher } from '../route-matcher.js';
+import type { MatrixRoute } from './matrix-route.js';
 
 /**
  * Builds matrix route matcher that matches a matrix attribute.

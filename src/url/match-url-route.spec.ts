@@ -1,8 +1,8 @@
 import { describe, expect, it } from '@jest/globals';
-import { rcaptureEntry } from '../matchers';
-import { matchURLRoute } from './match-url-route';
-import { rmatchSearchParam } from './rmatch-search-param';
-import { urlRoute } from './url-route';
+import { matchURLRoute } from './match-url-route.js';
+import { rmatchSearchParam } from './rmatch-search-param.js';
+import { urlRoute } from './url-route.js';
+import { rcaptureEntry } from '../matchers/rcapture-entry.js';
 
 describe('matchURLRoute', () => {
   it('returns `null` when route doe not match', () => {

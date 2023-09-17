@@ -1,9 +1,9 @@
-import { routeCapture } from '../route-capture';
-import type { RoutePattern } from '../route-match';
-import { routeMatch } from '../route-match';
-import { isURL } from '../url/url.impl';
-import { MatrixRoute, matrixRoute } from './matrix-route';
-import { matrixRoutePattern } from './matrix-route-pattern';
+import { routeCapture } from '../route-capture.js';
+import type { RoutePattern } from '../route-match.js';
+import { routeMatch } from '../route-match.js';
+import { isURL } from '../url/url.impl.js';
+import { matrixRoutePattern } from './matrix-route-pattern.js';
+import { MatrixRoute, matrixRoute } from './matrix-route.js';
 
 /**
  * Checks whether the given {@link MatrixRoute matrix route} matches {@link matrixRoutePattern matrix route pattern}.

@@ -1,7 +1,11 @@
-import { decodeURLComponent } from '@frontmeans/httongue';
-import { rcaptureAny, rcaptureRegExp, rmatchAny, rmatchName, rmatchString } from '../matchers';
-import type { RouteMatcher } from '../route-matcher';
-import { simpleRouteMatcher, simpleRouteWildcard } from './simple-route-pattern.impl';
+import { decodeURISearchPart } from 'httongue';
+import { rcaptureAny } from '../matchers/rcapture-any.js';
+import { rcaptureRegExp } from '../matchers/rcapture-regexp.js';
+import { rmatchAny } from '../matchers/rmatch-any.js';
+import { rmatchName } from '../matchers/rmatch-name.js';
+import { rmatchString } from '../matchers/rmatch-string.js';
+import type { RouteMatcher } from '../route-matcher.js';
+import { simpleRouteMatcher, simpleRouteWildcard } from './simple-route-pattern.impl.js';
 
 /**
  * @internal
@@ -57,7 +61,7 @@ export function addPathEntryMatchers(pattern: string, matchers: RouteMatcher[]):
 
     if (patternOffset < i) {
       // String prefix before matcher.
-      matchers.push(rmatchString(decodeURLComponent(pattern.substring(patternOffset, i))));
+      matchers.push(rmatchString(decodeURISearchPart(pattern.substring(patternOffset, i))));
     }
 
     matchers.push(matcher);
@@ -67,8 +71,8 @@ export function addPathEntryMatchers(pattern: string, matchers: RouteMatcher[]):
   if (patternOffset < pattern.length) {
     matchers.push(
       patternOffset
-        ? rmatchString(decodeURLComponent(pattern.substr(patternOffset))) // Suffix after last matcher
-        : rmatchName(decodeURLComponent(pattern)),
+        ? rmatchString(decodeURISearchPart(pattern.slice(patternOffset))) // Suffix after last matcher
+        : rmatchName(decodeURISearchPart(pattern)),
     ); // No matcher recognized
   }
 }
@@ -90,11 +94,11 @@ export function pathRouteRegExp(spec: string): RouteMatcher | undefined {
   }
 
   const pattern = decodeURI(spec.substring(openParent + 1, closeParent));
-  const flags = spec.substring(closeParent + 1).trim();
+  const flags = spec.slice(closeParent + 1).trim();
   const re = new RegExp(pattern, flags);
-  const capture = spec.substr(0, openParent).trim();
+  const capture = spec.slice(0, openParent).trim();
 
-  return rcaptureRegExp(re, capture ? decodeURLComponent(capture) : undefined);
+  return rcaptureRegExp(re, capture ? decodeURISearchPart(capture) : undefined);
 }
 
 /**
@@ -103,5 +107,5 @@ export function pathRouteRegExp(spec: string): RouteMatcher | undefined {
 function pathRouteCapture(spec: string): RouteMatcher {
   spec = spec.trim();
 
-  return spec ? rcaptureAny(decodeURLComponent(spec)) : rmatchAny;
+  return spec ? rcaptureAny(decodeURISearchPart(spec)) : rmatchAny;
 }

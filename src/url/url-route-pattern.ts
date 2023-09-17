@@ -1,7 +1,7 @@
-import { addPathEntryMatchers } from '../path/path-route-pattern.impl';
-import type { RoutePattern } from '../route-match';
-import type { URLRoute } from './url-route';
-import { parseURLRoutePattern } from './url-route-pattern.impl';
+import { addPathEntryMatchers } from '../path/path-route-pattern.impl.js';
+import type { RoutePattern } from '../route-match.js';
+import type { URLRoute } from './url-route.js';
+import { parseURLRoutePattern } from './url-route-pattern.impl.js';
 
 /**
  * Parses URL route pattern.

@@ -1,5 +1,5 @@
-import type { RouteMatcher } from '../route-matcher';
-import type { URLRoute } from './url-route';
+import type { RouteMatcher } from '../route-matcher.js';
+import type { URLRoute } from './url-route.js';
 
 /**
  * Builds URL route matcher that matches URL search parameter.

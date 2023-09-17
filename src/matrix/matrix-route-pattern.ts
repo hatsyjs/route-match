@@ -1,10 +1,10 @@
-import { decodeURLComponent } from '@frontmeans/httongue';
-import { addPathEntryMatchers } from '../path/path-route-pattern.impl';
-import type { RoutePattern } from '../route-match';
-import type { RouteMatcher } from '../route-matcher';
-import { parseURLRoutePattern } from '../url/url-route-pattern.impl';
-import type { MatrixRoute } from './matrix-route';
-import { rmatchMatrixAttr } from './rmatch-matrix-attr';
+import { decodeURISearchPart } from 'httongue';
+import { addPathEntryMatchers } from '../path/path-route-pattern.impl.js';
+import type { RoutePattern } from '../route-match.js';
+import type { RouteMatcher } from '../route-matcher.js';
+import { parseURLRoutePattern } from '../url/url-route-pattern.impl.js';
+import type { MatrixRoute } from './matrix-route.js';
+import { rmatchMatrixAttr } from './rmatch-matrix-attr.js';
 
 /**
  * @internal
@@ -17,7 +17,7 @@ function addMatrixEntryMatchers(pattern: string, matchers: RouteMatcher<MatrixRo
     const [name, value] = parts[i].split('=', 2);
 
     matchers.push(
-      rmatchMatrixAttr(decodeURLComponent(name), value ? decodeURLComponent(value) : undefined),
+      rmatchMatrixAttr(decodeURISearchPart(name), value ? decodeURISearchPart(value) : undefined),
     );
   }
 }

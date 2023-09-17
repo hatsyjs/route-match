@@ -1,11 +1,11 @@
 import { beforeEach, describe, expect, it, jest } from '@jest/globals';
-import { RouteCaptor } from '../route-captor';
-import { routeMatch } from '../route-match';
+import { RouteCaptor } from '../route-captor.js';
+import { routeMatch } from '../route-match.js';
 import { RouteMatcher } from '../route-matcher.js';
-import { URLRoute, urlRoute } from '../url';
-import { rmatchDirSep } from './rmatch-dir-sep';
-import { rmatchDirs } from './rmatch-dirs';
-import { rmatchName } from './rmatch-name';
+import { URLRoute, urlRoute } from '../url/url-route.js';
+import { rmatchDirSep } from './rmatch-dir-sep.js';
+import { rmatchDirs } from './rmatch-dirs.js';
+import { rmatchName } from './rmatch-name.js';
 
 describe('rmatchDirs', () => {
   let captor: RouteCaptor<URLRoute>;

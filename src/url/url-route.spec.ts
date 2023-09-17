@@ -1,5 +1,5 @@
 import { describe, expect, it } from '@jest/globals';
-import { urlRoute } from './url-route';
+import { urlRoute } from './url-route.js';
 
 describe('urlRoute', () => {
   it('constructs URL relative to `route:` base', () => {
