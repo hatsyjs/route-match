@@ -50,10 +50,10 @@ The path can be specified as a string, as URL, or as a [PathRoute] instance. The
 The pattern can be specified as a string, or as a [RoutePattern] instance. The latter can be constructed by
 [simpleRoutePattern()] function.
 
-[pathroute]: https://hatsyjs.github.io/route-match/interfaces/PathRoute.html
-[urlroute()]: https://hatsyjs.github.io/route-match/modules.html#urlRoute
-[routepattern]: https://hatsyjs.github.io/route-match/modules.html#RoutePattern
-[simpleroutepattern()]: https://hatsyjs.github.io/route-match/modules.html#simpleRoutePattern
+[PathRoute]: https://hatsyjs.github.io/route-match/interfaces/PathRoute.html
+[urlRoute()]: https://hatsyjs.github.io/route-match/functions/urlRoute-1.html
+[RoutePattern]: https://hatsyjs.github.io/route-match/types/RoutePattern.html
+[simpleRoutePattern()]: https://hatsyjs.github.io/route-match/functions/simpleRoutePattern.html
 
 ## URL Route
 
@@ -95,8 +95,8 @@ The path can be specified as a string, as URL, or as an [URLRoute] instance. The
 The pattern can be specified as a string, or as a [RoutePattern] instance. The latter can be constructed by
 [urlRoutePattern()] function.
 
-[urlroute]: https://hatsyjs.github.io/route-match/interfaces/URLRoute.html
-[urlroutepattern()]: https://hatsyjs.github.io/route-match/modules.html#urlRoutePattern
+[URLRoute]: https://hatsyjs.github.io/route-match/interfaces/URLRoute.html
+[urlRoutePattern()]: https://hatsyjs.github.io/route-match/functions/urlRoutePattern.html
 
 ## Matrix Route
 
@@ -113,7 +113,7 @@ match = {
 */
 ```
 
-Matrix pattern recognizes [matrix URL]s.
+Matrix pattern recognizes [matrix URI]s.
 
 Pattern format is the same as for [URL Route] with addition of attribute matchers:
 
@@ -126,10 +126,10 @@ The path can be specified as a string, as URL, or as a [MatrixRoute] instance. T
 The pattern can be specified as a string, or as a [RoutePattern] instance. The latter can be constructed by
 [matrixRoutePattern()] function.
 
-[matrixroute]: https://hatsyjs.github.io/route-match/interfaces/MatrixRoute.html
-[matrixroute()]: https://hatsyjs.github.io/route-match/modules.html#matrixRoute
-[matrixroutepattern()]: https://hatsyjs.github.io/route-match/modules.html#matrixRoutePattern
-[matrix url]: https://www.w3.org/DesignIssues/MatrixURIs.html
+[MatrixRoute]: https://hatsyjs.github.io/route-match/interfaces/MatrixRoute.html
+[matrixRoute()]: https://hatsyjs.github.io/route-match/functions/matrixRoute-1.html
+[matrixRoutePattern()]: https://hatsyjs.github.io/route-match/functions/matrixRoutePattern.html
+[matrix URI]: https://www.w3.org/DesignIssues/MatrixURIs.html
 
 ## Advanced Usage
 
@@ -148,6 +148,6 @@ constructed out of `rmatch...` and `rcapture...` matchers, or parsed by correspo
 The [routeMatch()] function does the actual matching. It returns either `null` if the given path does not match
 the pattern, or a [RouteMatch] instance. The latter is a function that reports captured matches when called.
 
-[routematcher]: https://hatsyjs.github.io/route-match/interfaces/RouteMatcher.html
-[routematch()]: https://hatsyjs.github.io/route-match/modules.html#routeMatch
-[routematch]: https://hatsyjs.github.io/route-match/interfaces/RouteMatch.html
+[RouteMatcher]: https://hatsyjs.github.io/route-match/interfaces/RouteMatcher-1.html
+[routeMatch()]: https://hatsyjs.github.io/route-match/functions/routeMatch-2.html
+[RouteMatch]: https://hatsyjs.github.io/route-match/types/RouteMatch-1.html
