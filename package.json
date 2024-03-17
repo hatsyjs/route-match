@@ -25,7 +25,7 @@
   },
   "sideEffects": false,
   "dependencies": {
-    "@proc7ts/primitives": "workspace:@proc7ts/primitives@^4.0.0",
+    "@proc7ts/primitives": "@proc7ts/primitives@^4.0.0",
     "httongue": "^3.1.0"
   },
   "devDependencies": {
