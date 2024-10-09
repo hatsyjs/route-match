@@ -1,16 +1,15 @@
 import { beforeEach, describe, expect, it, jest } from '@jest/globals';
-import type { Mock } from 'jest-mock';
 import { classifyRouteCapture } from './classify-route-capture.js';
+import { rcaptureEntry } from './matchers/rcapture-entry.js';
+import { PathRoute } from './path/path-route.js';
 import type { RouteCaptor, RouteCaptorSignatureMap } from './route-captor.js';
 import { routeMatch } from './route-match.js';
 import { RouteMatcher } from './route-matcher.js';
-import { rcaptureEntry } from './matchers/rcapture-entry.js';
-import { PathRoute } from './path/path-route.js';
 import { urlRoute } from './url/url-route.js';
 
 describe('classifyRouteCapture', () => {
   const pattern = [rcaptureEntry('out')];
-  let capture: Mock<
+  let capture: jest.Mock<
     (
       key: string | number,
       ...capture: Parameters<RouteCaptorSignatureMap<PathRoute>['capture']>
@@ -47,8 +46,7 @@ describe('classifyRouteCapture', () => {
           key: string | number,
           ...capture: Parameters<RouteCaptorSignatureMap<PathRoute>['dirs']>
         ) => void
-      >(
-);
+      >();
     const match = routeMatch(urlRoute(new URL('route:/file')), pattern);
 
     match?.(classifyRouteCapture({ dirs }, fallback));

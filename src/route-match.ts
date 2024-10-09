@@ -151,8 +151,8 @@ export function routeMatch<TRoute extends PathRoute>(
     const matcher = pattern[matcherIndex];
 
     if (
-      !matcher.tail
-      || !matcher.tail({
+      !matcher.tail ||
+      !matcher.tail({
         route,
         entryIndex: path.length,
         nameOffset: 0,

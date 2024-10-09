@@ -14,7 +14,8 @@ export function rcaptureEntry(name?: string): RouteMatcher {
   const key = name ?? 0;
 
   return {
-    test: context => !context.nameOffset && {
+    test: context =>
+      !context.nameOffset && {
         callback(captor) {
           captor('capture', key, context.entry.name, context);
         },

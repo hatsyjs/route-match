@@ -24,7 +24,7 @@ export function addPathEntryMatchers(pattern: string, matchers: RouteMatcher[]):
 
   let patternOffset = 0;
 
-  for (let i = 0; i < pattern.length;) {
+  for (let i = 0; i < pattern.length; ) {
     const c = pattern[i];
     let matcher: RouteMatcher;
     let nextOffset: number;

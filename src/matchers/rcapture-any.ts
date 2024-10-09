@@ -22,7 +22,8 @@ export function rcaptureAny(name?: string): RouteMatcher {
         // This is the last matcher in pattern.
         // Always match.
         return {
-          callback: captor => captor(
+          callback: captor =>
+            captor(
               'capture',
               key,
               context.entry.name.substring(context.nameOffset, context.entry.name.length),
